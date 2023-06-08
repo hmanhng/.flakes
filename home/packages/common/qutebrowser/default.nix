@@ -5,6 +5,7 @@
   programs = {
     qutebrowser = {
       enable = true;
+      package = pkgs.qutebrowser-qt6;
       quickmarks = {
         dr = "https://drive.google.com";
         fb = "https://facebook.com";
@@ -63,7 +64,7 @@
         # }}}
         # ============================== Fonts ============================== {{{
         c.fonts.default_family = 'Iosevka Nerd Font'
-        c.fonts.default_size = '17pt'
+        c.fonts.default_size = '15pt'
         c.fonts.completion.entry = 'default_size default_family'
         c.fonts.debug_console = 'default_size default_family'
         c.fonts.prompts = 'default_size sans-serif'
@@ -96,7 +97,7 @@
         c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 're': 'https://www.reddit.com/r/{}', 'ub': 'https://www.urbandictionary.com/define.php?term={}', 'wiki': 'https://en.wikipedia.org/wiki/{}', 'yt': 'https://www.youtube.com/results?search_query={}', 'np': 'https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}', 'no': 'https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}'}
         c.url.default_page = '${../firefox/homepage.html}'
         c.url.start_pages = '${../firefox/homepage.html}'
-        c.zoom.default = '125'
+        c.zoom.default = '100'
         # }}}
       '';
     };

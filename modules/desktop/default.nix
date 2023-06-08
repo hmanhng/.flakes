@@ -2,7 +2,9 @@
 {
   imports = (import ../hardware) ++
     [ ../fonts ];
-
+  environment.systemPackages = with pkgs; [
+    qt6.qtwayland
+  ];
   programs.dconf.enable = true;
   programs.light.enable = true;
   programs = {

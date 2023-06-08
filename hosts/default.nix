@@ -20,7 +20,7 @@ in
     ] ++ [
       inputs.impermanence.nixosModules.impermanence
       inputs.sops-nix.nixosModules.sops
-      # inputs.nur.nixosModules.nur
+      inputs.nur.nixosModules.nur
       inputs.hyprland.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       {
@@ -43,6 +43,7 @@ in
               ++ [
               self.overlays.default
               inputs.neovim-nightly-overlay.overlay
+              inputs.nur.overlay
               (import inputs.emacs-overlay)
             ];
         };

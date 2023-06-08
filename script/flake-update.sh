@@ -15,7 +15,7 @@ flake_input=(
 	impermanence
 	neovim-nightly-overlay
 	nixpkgs
-	# nur
+	nur
 	sops-nix
 )
 for item in "${flake_input[@]}"; do

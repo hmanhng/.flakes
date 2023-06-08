@@ -1,0 +1,45 @@
+{ fetchurl, lib, stdenv }@args:
+
+let
+
+  buildFirefoxXpiAddon = lib.makeOverridable ({ stdenv ? args.stdenv
+                                              , fetchurl ? args.fetchurl
+                                              , pname
+                                              , version
+                                              , addonId
+                                              , url
+                                              , sha256
+                                              , ...
+                                              }:
+    stdenv.mkDerivation {
+      name = "${pname}-${version}";
+
+      src = fetchurl { inherit url sha256; };
+
+      preferLocalBuild = true;
+      allowSubstitutes = true;
+
+      buildCommand = ''
+        dst="$out/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+        mkdir -p "$dst"
+        install -v -m644 "$src" "$dst/${addonId}.xpi"
+      '';
+    });
+in
+{
+
+  dashlane = buildFirefoxXpiAddon {
+    pname = "dashlane";
+    version = "6.2321.2";
+    addonId = "jetpack-extension@dashlane.com";
+    url = "https://prod.extensions.dashlane.com/downloads/firefox/dashlane-latest-fx.xpi";
+    sha256 = "sha256-YcwL/MFfMrIuLDngK3fzclEC58jR02fe7zOh5XWOZwg=";
+  };
+  default-zoom = buildFirefoxXpiAddon {
+    pname = "default-zoom";
+    version = "1.1.3";
+    addonId = "default-zoom@jamielinux.com";
+    url = "https://addons.mozilla.org/firefox/downloads/file/3567861/default_zoom-1.1.3.xpi";
+    sha256 = "0xhq43cxk5baynxmv775g8jip1ym9v77q5zcs484y593rpgh5c3d";
+  };
+}

@@ -22,6 +22,8 @@
     imv
     meld
     pavucontrol
+    stremio
+    vlc
 
     ## Tool, etc ...
     cargo

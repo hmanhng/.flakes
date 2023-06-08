@@ -40,6 +40,7 @@
       nrt = "doas ~/.flakes/result/bin/switch-to-configuration test";
       ncg = "nix-collect-garbage -d && doas nix-env -p /nix/var/nix/profiles/system --delete-generations old && doas nix-collect-garbage -d";
       fl = "cd ~/.flakes";
+      unpack = "nix-prefetch-url --unpack";
     };
   };
   home.packages = with pkgs; [ fishPlugins.autopair ];

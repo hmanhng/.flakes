@@ -657,6 +657,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1686222498,
+        "narHash": "sha256-9oBA9OjS9UMYFNLHDEIHUU69gFPt4XkR0hjVVKks0fQ=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "22f50b848822fabed3c75cc12c8e38472df306c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -695,6 +710,7 @@
         "impermanence": "impermanence",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_7",
+        "nur": "nur",
         "sops-nix": "sops-nix"
       }
     },
