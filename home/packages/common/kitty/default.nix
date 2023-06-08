@@ -1,0 +1,34 @@
+{ config, pkgs, ... }:
+
+{
+  programs = {
+    kitty = {
+      enable = true;
+      environment = { };
+      keybindings = { };
+      theme = "Catppuccin-Frappe";
+      # font.name = "JetBrainsMono Nerd Font";
+      font.name = "Liga CodeNewRoman Nerd Font";
+      font.size = 20;
+      settings = {
+        bold_font = "auto";
+        italic_font = "auto";
+        bold_italic_font = "auto";
+        mouse_hide_wait = 2;
+        cursor_shape = "underline";
+        shell_integration = "no-cursor";
+        cursor = "none";
+        url_color = "#0087bd";
+        url_style = "dotted";
+        #Close the terminal =  without confirmation;
+        confirm_os_window_close = 0;
+        background_opacity = "0.8";
+        tab_bar_min_tabs = 2;
+        tab_bar_edge = "bottom";
+        tab_bar_style = "powerline";
+        tab_powerline_style = "slanted";
+        tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+      };
+    };
+  };
+}

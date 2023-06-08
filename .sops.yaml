@@ -1,0 +1,9 @@
+keys:
+  - &hmanhng 1cb378c04377b33d117b0a402f3257416226f37f
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+    - pgp:
+      - *hmanhng
+    # - age:
+    #   - *laptop
