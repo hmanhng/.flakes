@@ -28,20 +28,22 @@
           "browser.aboutConfig.showWarning" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "media.ffmpeg.vaapi.enabled" = true;
+          "extensions.autoDisableScopes" = 0;
         };
       };
     };
     profiles.default = {
       extensions = (with pkgs.nur.repos.rycee.firefox-addons; [
-        # privacy-badger
-        # tabcenter-reborn
-        # ublock-origin
-        # translate-web-pages
-        # i-dont-care-about-cookies
-        # enhancer-for-youtube
+        privacy-badger
+        tabcenter-reborn
+        ublock-origin
+        translate-web-pages
+        i-dont-care-about-cookies
+        enhancer-for-youtube
+        stylus
       ]) ++ (with pkgs.firefox-addons;[
         dashlane
-        # default-zoom
+        default-zoom
       ]);
       search.engines = {
         "Nix Packages" = {
