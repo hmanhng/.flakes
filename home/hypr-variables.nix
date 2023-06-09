@@ -7,6 +7,12 @@
       BROWSER = "firefox";
       TERMINAL = "kitty";
 
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_BIN_HOME = "$HOME/.local/bin";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_STATE_HOME = "$HOME/.local/state";
+
       NIXOS_OZONE_WL = "1";
       QT_QPA_PLATFORMTHEME = "gtk3";
       QT_SCALE_FACTOR = "1.25";
@@ -20,11 +26,6 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
 
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_BIN_HOME = "$HOME/.local/bin";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_STATE_HOME = "$HOME/.local/state";
       GNUHOME = "$HOME/.local/share/gnupg";
       NODE_PATH = "$HOME/.local/share/npm-packages/lib/node_modules";
       CARGO_HOME = "$HOME/.local/share/cargo";

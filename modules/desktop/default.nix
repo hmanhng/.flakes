@@ -11,9 +11,8 @@
   programs.npm = {
     enable = true;
     npmrc = ''
-      prefix = ''${HOME}/.local/share/npm-packages
+      prefix=''${HOME}/.local/share/npm-packages
       cache=''${XDG_CACHE_HOME}/npm
-      tmp=''${XDG_RUNTIME_DIR}/npm
       init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
     '';
   };
