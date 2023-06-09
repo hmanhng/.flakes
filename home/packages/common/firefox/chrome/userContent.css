@@ -11,6 +11,15 @@
 /* } */
 
 @-moz-document url-prefix(about:home), url-prefix(about:newtab) {
+  .wordmark { background: url("./firefox-wordmark.svg") no-repeat center center !important;
+    background-size: 134px !important;
+    -moz-context-properties: fill !important;
+    display: inline-block !important;
+    height: 82px !important;
+    margin-inline-start: 16px !important;
+    width: 134px !important;
+    margin-bottom: 402px;
+	}
   /* show nightly logo instead of default firefox logo in newtabpage */
   .search-wrapper .logo-and-wordmark .logo {
     background: url("./logo.png") no-repeat center !important;
@@ -19,18 +28,20 @@
     display: inline-block !important;
     height: 82px !important;
     width: 82px !important;
+    margin-bottom: 402px;
   }
   body {
     background-color: #000000 !important;
-    background: url("./bg.png") no-repeat fixed !important;
+    background: url("https://cutewallpaper.org/21/animated-wallpaper-gifs/1920x1080-Wallpaper-Gifs-Keysinspectorinc.com.gif") no-repeat fixed !important;
     background-size: cover !important;
-    --newtab-background-color: #000000 !important;
-    --newtab-background-color-secondary: #101010 !important;
+    /* --newtab-background-color: #000000 !important; */
+    /* --newtab-background-color-secondary: #101010 !important; */
   }
-  body[lwt-newtab-brighttext] {
-    --newtab-background-color: #000000 !important;
-    --newtab-background-color-secondary: #101010 !important;
-  }
+  /* body[lwt-newtab-brighttext] { */
+  /*   --newtab-background-color: #000000 !important; */
+  /*   --newtab-background-color-secondary: #101010 !important; */
+  /* } */
+  .body-wrapper { display:none; }
   .top-site-outer .top-site-icon {
     background-color: transparent !important;
   }
@@ -44,6 +55,7 @@
     background-color: transparent !important;
   }
   .search-wrapper .search-handoff-button {
+    display: none;
     border-radius: 40px !important;
     background-color: rgba(49, 49, 49, 0.4) !important;
   }

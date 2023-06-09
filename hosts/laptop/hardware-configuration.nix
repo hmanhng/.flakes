@@ -20,12 +20,12 @@
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/4facf3cb-15d5-4cf0-bbe9-221effa7e06e";
+    { device = "/dev/disk/by-uuid/3e03aa38-ae53-42fc-8c37-63f3a3d18dbd";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4A5D-FE3E";
+    { device = "/dev/disk/by-uuid/DE73-D939";
       fsType = "vfat";
     };
 
