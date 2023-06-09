@@ -34,48 +34,44 @@
     };
     profiles.default = {
       extensions = (with pkgs.nur.repos.rycee.firefox-addons; [
-        privacy-badger
-        tabcenter-reborn
-        ublock-origin
-        translate-web-pages
-        i-dont-care-about-cookies
+        duckduckgo-privacy-essentials
         enhancer-for-youtube
+        i-dont-care-about-cookies
+        # privacy-badger
         stylus
+        tabcenter-reborn
+        translate-web-pages
+        ublock-origin
       ]) ++ (with pkgs.firefox-addons;[
         dashlane
         default-zoom
       ]);
-      search.engines = {
-        "Nix Packages" = {
-          urls = [{
-            template = "https://search.nixos.org/packages";
-            params = [
-              { name = "type"; value = "packages"; }
-              { name = "channel"; value = "unstable"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
-          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "np" ];
-        };
-        "Nix Options" = {
-          urls = [{
-            template = "https://search.nixos.org/options";
-            params = [
-              { name = "type"; value = "packages"; }
-              { name = "channel"; value = "unstable"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
-          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "no" ];
-        };
+      search = {
+        force = true;
+        default = "DuckDuckGo";
+        engines = {
+          "Nix Packages" = {
+            urls = [{ template = "https://search.nixos.org/packages?type=packages&channel=unstable&query={searchTerms}"; }];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "np" ];
+          };
+          "Nix Options" = {
+            urls = [{ template = "https://search.nixos.org/options?type=packages&channel=unstable&query={searchTerms}"; }];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "no" ];
+          };
 
-        "NixOS Wiki" = {
-          urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-          iconUpdateURL = "https://nixos.wiki/favicon.png";
-          updateInterval = 24 * 60 * 60 * 1000; # every day
-          definedAliases = [ "nw" ];
+          "NixOS Wiki" = {
+            urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+            iconUpdateURL = "https://nixos.wiki/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "nw" ];
+          };
+          "Google".metaData.alias = "@go";
+          "Wikipedia (en)".metaData.hidden = true;
+          "Amazon.com".metaData.hidden = true;
+          "Bing".metaData.hidden = true;
+          "eBay".metaData.hidden = true;
         };
       };
       settings = {

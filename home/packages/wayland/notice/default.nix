@@ -3,7 +3,7 @@
   services.mako = {
     enable = true;
     font = "Liga CodeNewRoman Nerd Font 14";
-    width = 256;
+    width = 300;
     height = 500;
     margin = "10";
     padding = "5";

@@ -2,21 +2,20 @@
 {
   imports = (import ../hardware) ++
     [ ../fonts ];
+
   environment.systemPackages = with pkgs; [
     qt6.qtwayland
   ];
   programs.dconf.enable = true;
   programs.light.enable = true;
-  programs = {
-    npm = {
-      enable = true;
-      npmrc = ''
-        prefix = ''${HOME}/.local/share/npm-packages
-        cache=''${XDG_CACHE_HOME}/npm
-        tmp=''${XDG_RUNTIME_DIR}/npm
-        init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
-      '';
-    };
+  programs.npm = {
+    enable = true;
+    npmrc = ''
+      prefix = ''${HOME}/.local/share/npm-packages
+      cache=''${XDG_CACHE_HOME}/npm
+      tmp=''${XDG_RUNTIME_DIR}/npm
+      init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
+    '';
   };
 
   services.openssh.enable = true;
@@ -35,9 +34,9 @@
 
   services.geoclue2.enable = true;
 
-  security.pam.services.swaylock = { };
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
+  security.pam.services.swaylock = { }; # Pluggable Authentication Modules
+  security.rtkit.enable = true; # RealtimeKit
+  security.polkit.enable = true; # Controlling system-wide privileges
 
   xdg.portal = {
     enable = true;
