@@ -1,3 +1,3 @@
 [
-  (import ./cinnamon.nemo)
+  # (import ./cinnamon.nemo)
 ]
