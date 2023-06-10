@@ -38,7 +38,7 @@ nixos-generate-config --root /mnt &>/dev/null
 # Copy hardware-configuration to $flake_path
 flake_path="$(cd "$(dirname "$0")"/.. && pwd)"
 cp /mnt/etc/nixos/hardware-configuration.nix $flake_path/hosts/laptop/hardware-configuration.nix
-sed -i 's/swapDevices = \[ ];/swapDevices = [{ device = "\/var\/lib\/swapfile"; size = 16*1024; }];\n  boot.kernel.sysctl = {"vm.swappiness" = 10;};/g' $flake_path/hosts/laptop/hardware-configuration.nix
+sed -i '/swapDevices/a\  zramSwap.enable = true;' $flake_path/hosts/laptop/hardware-configuration.nix
 sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $flake_path/hosts/laptop/hardware-configuration.nix
 
 # Choice Installer version
