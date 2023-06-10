@@ -41,27 +41,5 @@ cp /mnt/etc/nixos/hardware-configuration.nix $flake_path/hosts/laptop/hardware-c
 sed -i '/swapDevices/a\  zramSwap.enable = true;' $flake_path/hosts/laptop/hardware-configuration.nix
 sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $flake_path/hosts/laptop/hardware-configuration.nix
 
-# Choice Installer version
-while true; do
-	echo "Full or Minimal ?:"
-	echo "1. Full"
-	echo "2. Minimal (without GUI)"
-	read -p $'\e[1;34mEnter your choice (number): \e[0m' choice
-	case $choice in
-	1)
-		echo "Install full packages"
-		break
-		;;
-	2)
-		sed -i '/modules\/desktop/s/^/# /' $flake_path/hosts/laptop/{default.nix,home.nix}
-		echo "Install minimal packages"
-		break
-		;;
-	*)
-		echo "Invalid choice, please try again."
-		;;
-	esac
-done
-
 cd $flake_path
 nixos-install --no-channel-copy --no-root-passwd --flake .#laptop
