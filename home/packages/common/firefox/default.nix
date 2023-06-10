@@ -28,7 +28,8 @@
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "media.ffmpeg.vaapi.enabled" = true;
           "media.eme.enabled" = true; # Enable DRM
-          "extensions.autoDisableScopes" = 0;
+          "extensions.autoDisableScopes" = 0; # Enable extensions install default
+          "extensions.htmlaboutaddons.recommendations.enabled" = false; # Disable recommendations extensions
         };
       };
     };
