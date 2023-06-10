@@ -15,7 +15,6 @@ function hmanhng -d "hmanhng function"
         sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $flakeDir/hosts/laptop/hardware-configuration.nix
 
     case {,-}-n{vim,}
-        bat cache --build
         rm -rf $nvimConf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
         mkdir $nvimConf || true
         set item lua init.lua stylua.toml
