@@ -22,7 +22,7 @@
 	}
   /* show nightly logo instead of default firefox logo in newtabpage */
   .search-wrapper .logo-and-wordmark .logo {
-    background: url("./logo.png") no-repeat center !important;
+    background: url("https://blog.mozfr.org/dotclear/public/firefox/android/preview/fenix/Fx-Browser-Nightly-icon-fullColor.png") no-repeat center !important;
     background-size: auto !important;
     background-size: 82px !important;
     display: inline-block !important;
