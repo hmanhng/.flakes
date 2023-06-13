@@ -1,5 +1,8 @@
 # How to install?
 
+## You might want to use my minimal ISO with pre-installed neovim, git, and support for binary cache substituters.
+[**ISO**](https://github.com/hmanhng/.flakes/releases/download/ISO/minimal.iso)
+
 ### I don't have time to write instructions, so please refer to the file [**script/install.sh**](https://github.com/hmanhng/.flakes/blob/tmpfs/script/install.sh) for installation steps (this is the script I use to install on my own machine).
 
 > **Warning**  
