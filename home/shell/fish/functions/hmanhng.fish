@@ -10,9 +10,6 @@ function hmanhng -d "hmanhng function"
 
     case {,-}-c{lone,}
         git clone https://github.com/hmanhng/.flakes $flakeDir --branch=tmpfs
-        cp /etc/nixos/hardware-configuration.nix $flakeDir/hosts/laptop/hardware-configuration.nix
-        sed -i '/swapDevices/a\  zramSwap.enable = true;' $flakeDir/hosts/laptop/hardware-configuration.nix
-        sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $flakeDir/hosts/laptop/hardware-configuration.nix
 
     case {,-}-n{vim,}
         rm -rf $nvimConf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim

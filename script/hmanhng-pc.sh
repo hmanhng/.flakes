@@ -35,11 +35,6 @@ mount -o bind /mnt/nix/persist/etc/nixos /mnt/etc/nixos &>/dev/null
 
 nixos-generate-config --root /mnt &>/dev/null
 
-# Copy hardware-configuration to $flake_path
 flake_path="$(cd "$(dirname "$0")"/.. && pwd)"
-cp /mnt/etc/nixos/hardware-configuration.nix $flake_path/hosts/laptop/hardware-configuration.nix
-sed -i '/swapDevices/a\  zramSwap.enable = true;' $flake_path/hosts/laptop/hardware-configuration.nix
-sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $flake_path/hosts/laptop/hardware-configuration.nix
-
 cd $flake_path
 nixos-install --no-channel-copy --no-root-passwd --flake .#laptop
