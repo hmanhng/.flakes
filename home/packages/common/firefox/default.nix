@@ -52,12 +52,12 @@
         default = "DuckDuckGo";
         engines = {
           "Nix Packages" = {
-            urls = [{ template = "https://search.nixos.org/packages?type=packages&channel=unstable&query={searchTerms}"; }];
+            urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "np" ];
           };
           "Nix Options" = {
-            urls = [{ template = "https://search.nixos.org/options?type=packages&channel=unstable&query={searchTerms}"; }];
+            urls = [{ template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; }];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "no" ];
           };

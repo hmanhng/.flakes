@@ -13,6 +13,7 @@
         gm = "https://mail.google.com";
         hm = "https://mipmip.github.io/home-manager-option-search";
         nf = "https://netflix.com";
+        nt = "https://nettruyen.com";
         sp = "https://open.spotify.com";
         ytb = "https://www.youtube.com";
       };
@@ -94,7 +95,7 @@
         c.editor.command = ['kitty', 'nvim', '{file}']
         c.statusbar.show = 'always'
         c.tabs.show = 'always'
-        c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 're': 'https://www.reddit.com/r/{}', 'ub': 'https://www.urbandictionary.com/define.php?term={}', 'wiki': 'https://en.wikipedia.org/wiki/{}', 'yt': 'https://www.youtube.com/results?search_query={}', 'np': 'https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}', 'no': 'https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}'}
+        c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 're': 'https://www.reddit.com/r/{}', 'ub': 'https://www.urbandictionary.com/define.php?term={}', 'wiki': 'https://en.wikipedia.org/wiki/{}', 'yt': 'https://www.youtube.com/results?search_query={}', 'np': 'https://search.nixos.org/packages?channel=unstable&query={}', 'no': 'https://search.nixos.org/options?channel=unstable&query={}'}
         c.url.default_page = '${../firefox/homepage.html}'
         c.url.start_pages = '${../firefox/homepage.html}'
         c.zoom.default = '100'
