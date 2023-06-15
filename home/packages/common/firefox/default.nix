@@ -49,7 +49,7 @@
       ]);
       search = {
         force = true;
-        default = "DuckDuckGo";
+        default = "Google";
         engines = {
           "Nix Packages" = {
             urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
@@ -68,7 +68,8 @@
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "nw" ];
           };
-          "Google".metaData.alias = "@go";
+          "Google".metaData.alias = "gg";
+          "DuckDuckGo".metaData.alias = "duck";
           "Wikipedia (en)".metaData.hidden = true;
           "Amazon.com".metaData.hidden = true;
           "Bing".metaData.hidden = true;
