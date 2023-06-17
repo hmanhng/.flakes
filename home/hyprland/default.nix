@@ -74,7 +74,7 @@
         inactive_opacity = 1.0
         fullscreen_opacity = 1.0
 
-        blur = yes
+        blur = no
         blur_size = 3
         blur_passes = 3
         blur_new_optimizations = true

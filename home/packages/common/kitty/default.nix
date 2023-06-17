@@ -22,7 +22,7 @@
         url_style = "dotted";
         #Close the terminal =  without confirmation;
         confirm_os_window_close = 0;
-        background_opacity = "0.8";
+        background_opacity = "0.5";
         tab_bar_min_tabs = 2;
         tab_bar_edge = "bottom";
         tab_bar_style = "powerline";

@@ -35,17 +35,17 @@
     };
     profiles.default = {
       extensions = (with pkgs.nur.repos.rycee.firefox-addons; [
-        duckduckgo-privacy-essentials
+        # duckduckgo-privacy-essentials
         enhancer-for-youtube
         i-dont-care-about-cookies
-        # privacy-badger
+        privacy-badger
         stylus
         tabcenter-reborn
         translate-web-pages
         ublock-origin
       ]) ++ (with pkgs.firefox-addons;[
-        dashlane
-        default-zoom
+        dashlane-firefox
+        default-zoom-firefox
       ]);
       search = {
         force = true;

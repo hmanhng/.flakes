@@ -28,14 +28,14 @@ let
 in
 {
 
-  dashlane = buildFirefoxXpiAddon {
+  dashlane-firefox = buildFirefoxXpiAddon {
     pname = "dashlane";
     version = "6.2321.2";
     addonId = "jetpack-extension@dashlane.com";
     url = "https://prod.extensions.dashlane.com/downloads/firefox/dashlane-latest-fx.xpi";
     sha256 = "sha256-YcwL/MFfMrIuLDngK3fzclEC58jR02fe7zOh5XWOZwg=";
   };
-  default-zoom = buildFirefoxXpiAddon {
+  default-zoom-firefox = buildFirefoxXpiAddon {
     pname = "default-zoom";
     version = "1.1.3";
     addonId = "default-zoom@jamielinux.com";
