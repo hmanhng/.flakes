@@ -17,7 +17,7 @@
     xdg-utils
 
     ## Programs
-    cinnamon.nemo
+    cinnamon.nemo-with-extensions
     gnome.file-roller
     imv
     meld
@@ -38,6 +38,7 @@
     # alsa-utils
     flac
     # pulsemixer
+    unrar
     unzip
     wget
     zip
