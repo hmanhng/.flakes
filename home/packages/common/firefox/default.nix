@@ -68,8 +68,13 @@
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "nw" ];
           };
-          "Google".metaData.alias = "gg";
-          "DuckDuckGo".metaData.alias = "duck";
+          "YouTube" = {
+            urls = [{ template = "https://www.youtube.com/results?search_query={searchTerms}"; }];
+            iconUpdateURL = "https://cdn-icons-png.flaticon.com/512/1384/1384060.png";
+            definedAliases = [ "yt" ];
+          };
+          # "Google".metaData.alias = "gg";
+          "DuckDuckGo".metaData.hidden = true;
           "Wikipedia (en)".metaData.hidden = true;
           "Amazon.com".metaData.hidden = true;
           "Bing".metaData.hidden = true;
