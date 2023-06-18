@@ -21,6 +21,7 @@
     gnome.file-roller
     imv
     meld
+    motrix
     pavucontrol
     stremio
     vlc

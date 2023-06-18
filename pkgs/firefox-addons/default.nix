@@ -40,6 +40,13 @@ in
     version = "1.1.3";
     addonId = "default-zoom@jamielinux.com";
     url = "https://addons.mozilla.org/firefox/downloads/file/3567861/default_zoom-1.1.3.xpi";
-    sha256 = "0xhq43cxk5baynxmv775g8jip1ym9v77q5zcs484y593rpgh5c3d";
+    sha256 = "sha256-bbAC380jFU8Q0ewXfM5O1YcbJXrlnF279WqV2dkgGHY=";
+  };
+  aria2-firefox = buildFirefoxXpiAddon {
+    pname = "aria2-integration";
+    version = "4.3.0";
+    addonId = "baptistecdr@users.noreply.github.com";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4099805/aria2_extension-4.3.0.xpi";
+    sha256 = "sha256-MXDHbdSYzaEpQcUz/YXQqKQ5t6q4h83O+84KHN2nAqI=";
   };
 }
