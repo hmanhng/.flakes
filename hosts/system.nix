@@ -34,17 +34,16 @@
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader = {
-      systemd-boot = {
-        enable = true;
-        consoleMode = "auto";
-      };
-      # grub = {
-      #   enable = false;
-      #   version = 2;
-      #   efiSupport = true;
-      #   # useOSProber = true;
-      #   device = "nodev";
+      # systemd-boot = {
+      #   enable = true;
+      #   consoleMode = "auto";
       # };
+      grub = {
+        enable = true;
+        efiSupport = true;
+        useOSProber = true;
+        device = "nodev";
+      };
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
