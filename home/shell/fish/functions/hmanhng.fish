@@ -1,29 +1,39 @@
-set flakeDir ~/.flakes
-set nvimDir $flakeDir/home/editors/nvim
-set nvimConf ~/.config/nvim
+set flake_dir ~/.flakes
+
+function clone_flakes
+    set hardware_configuration $flake_dir"/hosts/laptop/hardware-configuration.nix"
+    git clone https://github.com/hmanhng/.flakes $flake_dir --branch=tmpfs
+    cp /etc/nixos/hardware-configuration.nix $hardware_configuration
+    perl -i -pe 'if ($in_section) { s/by-uuid\/[^"]+/by-label\/nixos/; $in_section = 0; } elsif (/fileSystems."\/nix" =/) { $in_section = 1; }' $hardware_configuration
+    perl -i -pe 'if ($in_section) { s/by-uuid\/[^"]+/by-label\/boot/; $in_section = 0; } elsif (/fileSystems."\/boot" =/) { $in_section = 1; }' $hardware_configuration
+    sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $hardware_configuration
+    sed -i '/swapDevices/a\  zramSwap.enable = true;' $hardware_configuration
+end
+
+function symbolic_nvim
+    set nvim_flake $flake_dir"/home/editors/nvim"
+    set nvim_dir ~/.config/nvim
+    rm -rf $nvim_dir ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
+    mkdir $nvim_dir || true
+    set item lua init.lua stylua.toml
+    for i in $item
+        ln -vsn $nvim_flake/$i $nvim_dir/$i
+    end
+end
+
 function hmanhng -d "hmanhng function"
-  switch "$argv"
-    case {,-}-s{sh,}
-        unzip /run/media/hmanhng/Ventoy/ssh.zip -d ~/.ssh
-    case {,-}-g{pg,}
-        nix develop $flakeDir/.#secret -c ssh-to-pgp -private-key -i ~/.ssh/id_rsa | gpg --import --quiet
-
-    case {,-}-c{lone,}
-        git clone https://github.com/hmanhng/.flakes $flakeDir --branch=tmpfs
-
-    case {,-}-n{vim,}
-        rm -rf $nvimConf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
-        mkdir $nvimConf || true
-        set item lua init.lua stylua.toml
-        for i in $item
-            ln -vsn $nvimDir/$i $nvimConf/$i
-        end
-
-    case \*
-        echo -e "\ahmanhng function:"
-        echo -e "[-s | --ssh]:          Unzip .ssh from usb"
-        echo -e "[-c | --clone]:        Clone .flakes --branch=tmpfs"
-        echo -e "[-g | --gpg]:          ssh-to-pgp for sops"
-        echo -e "[-n | --nvim]:         Symbolic nvim from flakes"
-  end
+    switch "$argv"
+        case {,-}-c{lone,}
+            clone_flakes
+            symbolic_nvim
+        case {,-}-g{pg,}
+            nix develop $flake_dir/.#secret -c ssh-to-pgp -private-key -i ~/.ssh/id_rsa | gpg --import --quiet
+        case {,-}-s{sh,}
+            unzip /run/media/hmanhng/Ventoy/ssh.zip -d ~/.ssh
+        case \*
+            echo -e "\ahmanhng function:"
+            echo -e "[-c | --clone]:        Clone .flakes --branch=tmpfs and Symbolic nvim from flakes"
+            echo -e "[-g | --gpg]:          Import ssh-to-pgp for sops"
+            echo -e "[-s | --ssh]:          Unzip .ssh from usb"
+    end
 end

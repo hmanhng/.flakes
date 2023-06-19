@@ -1,45 +1,47 @@
 #!/usr/bin/env bash
 
 disk=/dev/nvme0n1
-efiPart=$disk"p1"
-rootPart=$disk"p2"
+flake_dir="$(cd "$(dirname "$0")"/.. && pwd)"
+hardware_configuration=$flake_dir"/hosts/laptop/hardware-configuration.nix"
 
-while true; do
-	read -p $'\e[1;34mScript will format your device\nContinue running? (yes/no): \e[0m' answer
-	answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
-	case $answer in
-	yes | y)
-		echo "Continue running"
-		break
-		;;
-	no | n)
-		echo "Stop"
-		exit 0 # Exit the program with exit code 0
-		;;
-	*)
-		echo "Invalid answer!"
-		;;
-	esac
-done
-parted $disk --script mklabel gpt mkpart primary fat32 1MiB 512MB set 1 esp on mkpart primary ext4 512MB 100%
-mkfs.fat -F 32 -n boot $efiPart &>/dev/null
-mkfs.ext4 -F -L nixos $rootPart &>/dev/null
-parted $disk print
+copy_hardware_configuration() {
+    nixos-generate-config --root /mnt &>/dev/null
+    # Copy hardware-configuration to $hardware-configuration
+    cp /mnt/etc/nixos/hardware-configuration.nix $hardware_configuration
+    perl -i -pe 'if ($in_section) { s/by-uuid\/[^"]+/by-label\/nixos/; $in_section = 0; } elsif (/fileSystems."\/nix" =/) { $in_section = 1; }' $hardware_configuration
+    perl -i -pe 'if ($in_section) { s/by-uuid\/[^"]+/by-label\/boot/; $in_section = 0; } elsif (/fileSystems."\/boot" =/) { $in_section = 1; }' $hardware_configuration
+    sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $hardware_configuration
+    sed -i '/swapDevices/a\  zramSwap.enable = true;' $hardware_configuration
+}
 
-mount -t tmpfs none /mnt
-mkdir -p /mnt/{boot,nix,etc/nixos}
-mount /dev/disk/by-label/nixos /mnt/nix
-mount /dev/disk/by-label/boot /mnt/boot
-mkdir -p /mnt/nix/persist/etc/nixos
-mount -o bind /mnt/nix/persist/etc/nixos /mnt/etc/nixos &>/dev/null
+format_device() {
+    #parted $disk --script mklabel gpt mkpart primary fat32 1MiB 512MB set 1 esp on mkpart primary ext4 512MB 100%
+    parted $disk print
+    # Format EFI
+    read -p $'\e[1;34mEFI partition (enter Number): \e[0m' answer
+    efiPart=$disk"p"$answer
+    mkfs.fat -F 32 -n boot $efiPart &>/dev/null
+    # Format Root
+    read -p $'\e[1;34mRoot partition (enter Number): \e[0m' answer
+    rootPart=$disk"p"$answer
+    mkfs.ext4 -F -L nixos $rootPart &>/dev/null
+}
 
-nixos-generate-config --root /mnt &>/dev/null
+mount_tmpfs() {
+    mount -t tmpfs none /mnt
+    mkdir -p /mnt/{boot,nix,etc/nixos}
+    mount /dev/disk/by-label/nixos /mnt/nix
+    mount /dev/disk/by-label/boot /mnt/boot
+    mkdir -p /mnt/nix/persist/etc/nixos
+    mount -o bind /mnt/nix/persist/etc/nixos /mnt/etc/nixos &>/dev/null
+}
 
-# Copy hardware-configuration to $flake_path
-flake_path="$(cd "$(dirname "$0")"/.. && pwd)"
-cp /mnt/etc/nixos/hardware-configuration.nix $flake_path/hosts/laptop/hardware-configuration.nix
-sed -i '/swapDevices/a\  zramSwap.enable = true;' $flake_path/hosts/laptop/hardware-configuration.nix
-sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $flake_path/hosts/laptop/hardware-configuration.nix
+nixos_install() {
+    cd $flake_dir
+    nixos-install --no-channel-copy --no-root-passwd --flake .#laptop
+}
 
-cd $flake_path
-nixos-install --no-channel-copy --no-root-passwd --flake .#laptop
+format_device
+mount_tmpfs
+copy_hardware_configuration
+nixos_install
