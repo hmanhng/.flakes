@@ -34,7 +34,7 @@
       #black
       nixpkgs-fmt
       #rustfmt
-      #beautysh
+      beautysh
       #nodePackages.prettier
       # stylish-haskell
       #-- Debug --#
