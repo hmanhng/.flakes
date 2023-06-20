@@ -30,6 +30,8 @@
       ## Autostart
       exec-once = launch_waybar &
       exec-once = border_color &
+      exec-once = wl-paste --type text --watch cliphist store &
+      exec-once = wl-paste --type image --watch cliphist store &
 
       input {
         kb_layout = us
@@ -121,6 +123,7 @@
 
       bind = $mainMod, Return, exec, kitty
       bind = $mainMod SHIFT, Return, exec, kitty --class="termfloat"
+      bind = CTRL, semicolon, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh
       bind = $mainMod, E, exec, emacs
       bind = $mainMod, Q, killactive
       bind = $mainMod SHIFT, Q, exit

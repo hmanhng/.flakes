@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     ## Requirement for hyprland
     alsa-lib
+    cliphist
     imagemagick # for grimblast
     inputs.hypr-contrib.packages.${pkgs.system}.grimblast
     inputs.hyprpicker.packages.${pkgs.system}.hyprpicker

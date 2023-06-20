@@ -5,8 +5,8 @@
       rofi-wayland
     ];
   };
-  xdg.configFile."rofi/launchers" = {
-    source = ./launchers;
+  xdg.configFile."rofi/cliphist" = {
+    source = ./cliphist;
     recursive = true;
   };
   home.file.".config/rofi/off.sh".source = ./off.sh;
