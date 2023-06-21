@@ -4,10 +4,6 @@ let
   cava-internal = pkgs.writeShellScriptBin "cava-internal" ''
     cava -p ~/.config/cava/config1 | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'
   '';
-  wallpaper_random = pkgs.writeShellScriptBin "wallpaper_random" ''
-    killall dynamic_wallpaper
-    swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
-  '';
   grimblast_watermark = pkgs.writeShellScriptBin "grimblast_watermark" ''
         FILE=$(date "+%Y-%m-%d"T"%H:%M:%S").png
     # Get the picture from maim
@@ -46,18 +42,20 @@ let
            --grace 2 \
            --fade-in 0.3
   '';
-  # myi3lock = pkgs.writeShellScriptBin "myi3lock" ''
-  # '';
+  wallpaper_random = pkgs.writeShellScriptBin "wallpaper_random" ''
+    killall dynamic_wallpaper
+    swww img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1) --transition-type random
+  '';
   dynamic_wallpaper = pkgs.writeShellScriptBin "dynamic_wallpaper" ''
-    swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
+    swww img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1) --transition-type random
     OLD_PID=$!
     while true; do
-        sleep 120
-    swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1)
-        NEXT_PID=$!
-        sleep 5
-        kill $OLD_PID
-        OLD_PID=$NEXT_PID
+      sleep 120
+      swww img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1)
+      NEXT_PID=$!
+      sleep 5
+      kill $OLD_PID
+      OLD_PID=$NEXT_PID
     done
   '';
   default_wall = pkgs.writeShellScriptBin "default_wall" ''
