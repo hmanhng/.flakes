@@ -32,6 +32,7 @@
       exec-once = border_color &
       exec-once = wl-paste --type text --watch cliphist store &
       exec-once = wl-paste --type image --watch cliphist store &
+      exec-once = spoof-dpi &
 
       input {
         kb_layout = us

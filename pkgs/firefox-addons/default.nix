@@ -28,21 +28,21 @@ let
 in
 {
 
-  dashlane-firefox = buildFirefoxXpiAddon {
+  dashlane = buildFirefoxXpiAddon {
     pname = "dashlane";
     version = "6.2321.2";
     addonId = "jetpack-extension@dashlane.com";
     url = "https://prod.extensions.dashlane.com/downloads/firefox/dashlane-latest-fx.xpi";
     sha256 = "sha256-YcwL/MFfMrIuLDngK3fzclEC58jR02fe7zOh5XWOZwg=";
   };
-  default-zoom-firefox = buildFirefoxXpiAddon {
+  default-zoom = buildFirefoxXpiAddon {
     pname = "default-zoom";
     version = "1.1.3";
     addonId = "default-zoom@jamielinux.com";
     url = "https://addons.mozilla.org/firefox/downloads/file/3567861/default_zoom-1.1.3.xpi";
     sha256 = "sha256-bbAC380jFU8Q0ewXfM5O1YcbJXrlnF279WqV2dkgGHY=";
   };
-  aria2-firefox = buildFirefoxXpiAddon {
+  aria2 = buildFirefoxXpiAddon {
     pname = "aria2-integration";
     version = "4.3.0";
     addonId = "baptistecdr@users.noreply.github.com";

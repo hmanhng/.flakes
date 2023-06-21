@@ -40,6 +40,7 @@
     # alsa-utils
     flac
     # pulsemixer
+    spoof-dpi
     unrar
     unzip
     wget

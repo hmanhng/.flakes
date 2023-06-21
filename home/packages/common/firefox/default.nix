@@ -37,6 +37,7 @@
       extensions = (with pkgs.nur.repos.rycee.firefox-addons; [
         # duckduckgo-privacy-essentials
         enhancer-for-youtube
+        foxyproxy-standard
         i-dont-care-about-cookies
         privacy-badger
         stylus
@@ -44,8 +45,8 @@
         translate-web-pages
         ublock-origin
       ]) ++ (with pkgs.firefox-addons;[
-        dashlane-firefox
-        default-zoom-firefox
+        dashlane
+        default-zoom
       ]);
       search = {
         force = true;
