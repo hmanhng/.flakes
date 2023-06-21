@@ -17,7 +17,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
-      --[[ transparent_background = true, ]]
+      transparent_background = true,
       highlight_overrides = {
         all = function(colors)
           return {
@@ -40,7 +40,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-macchiato",
+      colorscheme = "catppuccin-mocha",
       --[[ colorscheme = "nightfox", ]]
     },
   },

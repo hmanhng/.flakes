@@ -2,6 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      autoformat = false,
       servers = {
         nil_ls = {},
         --[[ pyright = {}, ]]

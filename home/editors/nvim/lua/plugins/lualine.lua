@@ -71,8 +71,8 @@ return {
     }
     opts.options.component_separators = ""
     opts.options.section_separators = { left = "", right = "" }
-    --[[ opts.sections.lualine_a = {} ]]
-    opts.sections.lualine_b = {}
+    opts.sections.lualine_a = {}
+    --[[ opts.sections.lualine_b = {} ]]
     --[[ opts.sections.lualine_y = {} ]]
     opts.sections.lualine_z = {}
     local function ins_left(component)
@@ -81,10 +81,10 @@ return {
     local function ins_x(component)
       table.insert(opts.sections.lualine_x, component)
     end
-    local function ins_z(component)
-      table.insert(opts.sections.lualine_z, component)
+    local function ins_y(component)
+      table.insert(opts.sections.lualine_y, component)
     end
-    opts.sections.lualine_a = {
+    opts.sections.lualine_b = {
       function()
         local mode_map = {
           ["n"] = "N",
@@ -155,7 +155,7 @@ return {
       icon = " ",
       color = { gui = "bold" },
     })
-    ins_z({ "branch", icon = "", color = { gui = "bold" } })
+    ins_y({ "branch", icon = "", color = { gui = "bold" } })
     table.insert(opts.extensions, "fzf")
   end,
 }
