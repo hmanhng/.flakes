@@ -49,9 +49,9 @@
       }
       general {
         gaps_in = 3
-        gaps_out = 4
-        border_size = 2
-        col.active_border = rgb(ffc0cb)
+        gaps_out = 5
+        border_size = 3
+        col.active_border = rgba(F38BA8FF) rgba(A6E3A1FF) rgba(F9E2AFFF) rgba(89B4FAFF) rgba(F5C2E7FF) rgba(94E2D5FF) 45deg
         col.inactive_border = false
         no_border_on_floating = false
         layout = dwindle # master|dwindle
@@ -76,7 +76,7 @@
         inactive_opacity = 1.0
         fullscreen_opacity = 1.0
 
-        blur = no
+        blur = yes
         blur_size = 3
         blur_passes = 3
         blur_new_optimizations = true
@@ -84,8 +84,8 @@
         blur_ignore_opacity = false
       }
       # Blurring layerSurfaces
-      # blurls = waybar
-      blurls = lockscreen
+      blurls = waybar
+      # blurls = notifications
       # Animations
       animations {
         enabled = true

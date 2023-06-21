@@ -1,12 +1,10 @@
-{ config, pkgs, ... }:
-
 {
   programs = {
     kitty = {
       enable = true;
       environment = { };
       keybindings = { };
-      theme = "Catppuccin-Frappe";
+      theme = "Catppuccin-Mocha";
       # font.name = "JetBrainsMono Nerd Font";
       font.name = "Liga CodeNewRoman Nerd Font";
       font.size = 20;
@@ -14,6 +12,7 @@
         bold_font = "auto";
         italic_font = "auto";
         bold_italic_font = "auto";
+        window_padding_width = "5 10";
         mouse_hide_wait = 2;
         cursor_shape = "underline";
         shell_integration = "no-cursor";
@@ -22,7 +21,7 @@
         url_style = "dotted";
         #Close the terminal =  without confirmation;
         confirm_os_window_close = 0;
-        background_opacity = "0.5";
+        background_opacity = "0.8";
         tab_bar_min_tabs = 2;
         tab_bar_edge = "bottom";
         tab_bar_style = "powerline";

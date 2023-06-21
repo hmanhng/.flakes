@@ -19,10 +19,9 @@
         @define-color network-color #cba6f7;
         @define-color network-dis-color #988ba2;
       * {
-        border-radius: 0px;
+        border-radius: 5px;
         transition-property: background-color;
         transition-duration: 0.5s;
-        min-height: 0;
       }
       @keyframes blink_red {
         to {
@@ -43,19 +42,11 @@
       window#waybar {
         font-family: "Vanilla Caramel", "JetBrainsMono Nerd Font";
         font-size: 15pt;
-        background-color: transparent;
-      }
-      window > box {
-        /* margin-left: 5px;
-        margin-right: 5px;
-        margin-top: 5px;
-        border-radius: 5px; */
-        background-color: #303446;
+        background-color: alpha(#303446, 0.8);
       }
       #workspaces {
         padding-left: 0px;
         padding-right: 5px;
-        border-radius: 5px;
       }
       #workspaces button {
         padding-top: 2px;
@@ -63,7 +54,6 @@
         padding-left: 7px;
         padding-right: 7px;
         color: @bg-color;
-        border-radius: 5px;
         margin: 5px 5px 5px 0px;
       }
       #workspaces button.active {
@@ -83,6 +73,9 @@
         background: #3b4253;
       }
       tooltip label {
+        font-family: "Liga CodeNewRoman Nerd Font";
+        font-weight: bold;
+        font-size: 14pt;
         color: #e4e8ef;
       }
       #window {
@@ -97,9 +90,7 @@
       #custom-wall,
       #pulseaudio,
       #backlight,
-      #network,
-      #battery,
-      #custom-number-windows {
+      #network {
         border-radius: 0px 5px 5px 0px;
         padding: 3px 8px 0px 8px;
         margin: 5px 0px 5px 0px;
@@ -124,14 +115,12 @@
         padding-right: 15px;
         color: #8aadf4;
       }
-      #custom-spacer {
-        padding-left: 0px;
-      }
+
       #custom-number-windows {
         color: @fg-color;
         background-color: #b4befe;
-        border-radius: 5px;
         padding: 3px 10px 0px 10px;
+        margin: 5px 0px 5px 0px;
       }
 
       #temperature.icons {
@@ -219,7 +208,6 @@
         color: @fg-color;
         background-color: #cf876f;
         margin: 5px 0px 5px 10px;
-        border-radius: 5px;
         padding: 3px 10px 0px 10px;
       }
       #battery.full,
@@ -227,7 +215,6 @@
         color: @fg-color;
         background-color: #a6da95;
         margin: 5px 0px 5px 10px;
-        border-radius: 5px;
         padding: 3px 10px 0px 10px;
       }
       #battery.critical:not(.charging) {
@@ -239,7 +226,6 @@
         background-color: #bd6069;
         margin: 5px 5px 5px 10px;
         padding: 0px 10px 0px 10px;
-        border-radius: 5px;
       }
 
       #tray {
@@ -277,6 +263,7 @@
     settings = [{
       "layer" = "top";
       "position" = "top";
+      "margin" = "5px 5px 0px 5px";
       modules-left = [
         "custom/launcher"
         "wlr/workspaces"
@@ -401,6 +388,7 @@
       "clock" = {
         "format" = "{:%H:%M}";
         "format-alt" = "<span foreground='#FF6699'>  </span>{:%A, %d %B %Y}";
+        "locale" = "en_US.UTF-8";
         "interval" = 1;
         "tooltip" = true;
         "tooltip-format" = "Devops go go\n<tt>{calendar}</tt>";
