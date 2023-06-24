@@ -17,12 +17,6 @@
     '';
   };
 
-  services.openssh.enable = true;
-  services.dbus = {
-    enable = true;
-    packages = [ pkgs.gcr ];
-  };
-  services.gvfs.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -30,6 +24,12 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  services.openssh.enable = true;
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.gcr ];
+  };
+  services.gvfs.enable = true;
 
   services.geoclue2.enable = true;
 

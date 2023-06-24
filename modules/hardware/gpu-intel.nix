@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  services = {
+    tlp.enable = true; # optimized for battery life
+    auto-cpufreq.enable = true; # Automatic CPU speed & power optimizer for Linux
+    # xserver.videoDrivers = [ "nvidia" ];
+  };
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
