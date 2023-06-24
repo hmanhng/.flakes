@@ -24,8 +24,8 @@
     meld
     motrix
     pavucontrol
-    stremio
-    vlc
+    /* stremio
+    vlc */
 
     ## Tool, etc ...
     cargo
