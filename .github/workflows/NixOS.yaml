@@ -53,7 +53,7 @@ jobs:
 
       - name: "Build NixOS config ❄️"
         run: |
-          nix --experimental-features 'nix-command flakes' build -L '.#nixosConfigurations.laptop.config.system.build.toplevel'
+          nix --accept-flake-config --experimental-features 'nix-command flakes' build -L '.#nixosConfigurations.laptop.config.system.build.toplevel'
 
       - name: "Print nixpkgs version ❄️"
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
