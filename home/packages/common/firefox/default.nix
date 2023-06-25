@@ -23,6 +23,7 @@
 
         DisplayBookmarksToolbar = true;
         Preferences = {
+          "browser.toolbars.bookmarks.visibility" = "never"; # Show bookmarks
           "browser.tabs.inTitlebar" = 0;
           "browser.aboutConfig.showWarning" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -83,7 +84,6 @@
         };
       };
       settings = {
-        "browser.toolbars.bookmarks.visibility" = "always"; # Show bookmarks
         "browser.startup.homepage" = "file://${./homepage.html}";
         "extensions.activeThemeID" = "firefox-compact-light@mozilla.org";
       };

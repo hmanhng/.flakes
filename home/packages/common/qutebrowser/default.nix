@@ -6,17 +6,7 @@
     qutebrowser = {
       enable = true;
       package = pkgs.qutebrowser-qt6;
-      quickmarks = {
-        dr = "https://drive.google.com";
-        fb = "https://facebook.com";
-        gh = "https://github.com/hmanhng";
-        gm = "https://mail.google.com";
-        hm = "https://mipmip.github.io/home-manager-option-search";
-        nf = "https://netflix.com";
-        nt = "https://nettruyen.com";
-        sp = "https://open.spotify.com";
-        ytb = "https://www.youtube.com";
-      };
+      quickmarks = { };
       extraConfig = ''
         # vim:fileencoding=utf-8:foldmethod=marker
         # from qutebrowser.config.configfiles import ConfigAPI  # noqa: F401,E501 pylint: disable=unused-import

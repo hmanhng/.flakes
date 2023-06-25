@@ -16,6 +16,7 @@
     wlr-randr
     wf-recorder
     xdg-utils
+    ydotool
 
     ## Programs
     cinnamon.nemo-with-extensions

@@ -33,6 +33,7 @@
       exec-once = wl-paste --type text --watch cliphist store &
       exec-once = wl-paste --type image --watch cliphist store &
       exec-once = spoof-dpi &
+      exec-once = ydotoold &
 
       input {
         kb_layout = us
@@ -243,10 +244,16 @@
       bind = $mainMod, bracketleft, exec, grimblast --notify --cursor  copysave area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
       bind = $mainMod, bracketright, exec, grimblast --notify --cursor  copy area
       bind = $mainMod, A, exec, grimblast_watermark
-      bindr = SUPER, SUPER_L, exec, pkill rofi || ~/.config/rofi/launcher/launcher.sh
+
+      # Rofi
+      bind = $mainMod, Space, exec, pkill rofi || ~/.config/rofi/launcher/launcher.sh
       bind = CTRL, semicolon, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh
       bind = $mainMod SHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh
       # bind = $mainMod SHIFT, K, exec, pkill rofi || ~/.config/rofi/launchers/keybind.sh
+
+      # Bookmarks
+      bind = SUPER, semicolon, exec, pkill rofi || ~/.flakes/home/bookmarks/bm_rofi.sh
+      bind = SUPER SHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh
 
       #-----------------------------------------#
       # control volume,brightness,media players-#
