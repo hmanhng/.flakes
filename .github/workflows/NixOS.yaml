@@ -49,7 +49,7 @@ jobs:
         with:
           name: hmanhng
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-          extraPullNames: nix-community
+          extraPullNames: nix-community, hyprland
 
       - name: "Build NixOS config ❄️"
         run: |
@@ -57,9 +57,9 @@ jobs:
 
       - name: "Print nixpkgs version ❄️"
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
-      - name: "Check free space"
-        run: |
-          sudo apt install neofetch
-          neofetch
-          echo "Free space:"
-          df -h
+      # - name: "Check free space"
+      #   run: |
+      #     sudo apt install neofetch
+      #     neofetch
+      #     echo "Free space:"
+      #     df -h

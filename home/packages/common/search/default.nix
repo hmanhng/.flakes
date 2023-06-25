@@ -7,7 +7,21 @@
       ripgrep
     ];
   };
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    defaultCommand = "fd --type f";
+    defaultOptions = [
+      "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+      "--height 80%"
+      "--layout reverse"
+      "--info inline"
+      "--border --color 'border:#b48ead'"
+    ];
+    fileWidgetCommand = "fd --type f";
+    fileWidgetOptions = [
+      "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+    ];
+  };
   programs.bat = {
     enable = true;
     themes = {

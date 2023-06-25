@@ -24,13 +24,17 @@
       lt = "exa -FaT -L 3 --icons --color=always --group-directories-first"; # tree listing
       "l." = "exa -Fa | grep -E \"^\\.\"";
 
+      v = "nvim";
       vi = "nvim";
       suvi = "doas nvim";
+      nf = "nvim $(fzf)";
+      f = "fzf";
 
       j = "z";
       ji = "zi";
 
-      r = "ranger";
+      r = "lfub"; # change ranger -> lf -- faster
+      lf = "lfub";
       n = "neofetch";
 
       wget = "wget --hsts-file=\"\$XDG_DATA_HOME/wget-hsts\"";
@@ -40,13 +44,10 @@
       nrt = "doas ~/.flakes/result/bin/switch-to-configuration test";
       ncg = "nix-collect-garbage -d && doas nix-env -p /nix/var/nix/profiles/system --delete-generations old && doas nix-collect-garbage -d";
       fl = "cd ~/.flakes";
-      unpack = "nix-prefetch-url --unpack";
     };
   };
   home.packages = with pkgs; [ fishPlugins.autopair ];
   home.file.".config/fish/fish_variables".text = import ./fish_variables.nix;
-  home.file.".config/fish/functions/f.fish".text = import ./functions/f.nix;
-  home.file.".config/fish/functions/nf.fish".text = import ./functions/nf.nix;
   home.file.".config/fish/functions/owf.fish".text = import ./functions/owf.nix;
   home.file.".config/fish/functions/xdg-get.fish".text = import ./functions/xdg-get.nix;
   home.file.".config/fish/functions/xdg-set.fish".text = import ./functions/xdg-set.nix;

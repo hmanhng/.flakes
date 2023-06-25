@@ -22,6 +22,7 @@ in
       # "CodeNewRoman"
       # ];
       # })
+      # font-awesome
     ];
     fontconfig = {
       localConf = ''

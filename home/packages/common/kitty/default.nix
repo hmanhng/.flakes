@@ -22,6 +22,7 @@
         #Close the terminal =  without confirmation;
         confirm_os_window_close = 0;
         background_opacity = "0.8";
+        dynamic_background_opacity = true;
         tab_bar_min_tabs = 2;
         tab_bar_edge = "bottom";
         tab_bar_style = "powerline";
