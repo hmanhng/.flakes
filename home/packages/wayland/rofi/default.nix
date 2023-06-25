@@ -5,13 +5,8 @@
       rofi-wayland
     ];
   };
-  xdg.configFile."rofi/cliphist" = {
-    source = ./cliphist;
-    recursive = true;
-  };
-  home.file.".config/rofi/off.sh".source = ./off.sh;
-  home.file.".config/rofi/launcher.sh".source = ./launcher.sh;
-  home.file.".config/rofi/launcher_theme.rasi".source = ./launcher_theme.rasi;
-  home.file.".config/rofi/powermenu.sh".source = ./powermenu.sh;
-  home.file.".config/rofi/powermenu_theme.rasi".source = ./powermenu_theme.rasi;
+  xdg.configFile."rofi/launcher" = { source = ./launcher; recursive = true; };
+  xdg.configFile."rofi/cliphist" = { source = ./cliphist; recursive = true; };
+  xdg.configFile."rofi/powermenu" = { source = ./powermenu; recursive = true; };
+  xdg.configFile."rofi/colors.rasi".source = ./colors.rasi;
 }

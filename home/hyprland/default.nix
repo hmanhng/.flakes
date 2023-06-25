@@ -86,7 +86,7 @@
       }
       # Blurring layerSurfaces
       blurls = waybar
-      # blurls = notifications
+      blurls = rofi
       # Animations
       animations {
         enabled = true
@@ -124,7 +124,6 @@
 
       bind = $mainMod, Return, exec, kitty
       bind = $mainMod SHIFT, Return, exec, kitty --class="termfloat"
-      bind = CTRL, semicolon, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh
       bind = $mainMod, E, exec, emacs
       bind = $mainMod, Q, killactive
       bind = $mainMod SHIFT, Q, exit
@@ -244,9 +243,10 @@
       bind = $mainMod, bracketleft, exec, grimblast --notify --cursor  copysave area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
       bind = $mainMod, bracketright, exec, grimblast --notify --cursor  copy area
       bind = $mainMod, A, exec, grimblast_watermark
-      bind = $mainMod, Space, exec, pkill rofi || ~/.config/rofi/launcher.sh
-      bind = $mainMod SHIFT, K, exec, pkill rofi || ~/.config/rofi/launchers/keybind.sh
-      bind = $mainMod SHIFT, P, exec, bash ~/.config/rofi/powermenu.sh
+      bindr = SUPER, SUPER_L, exec, pkill rofi || ~/.config/rofi/launcher/launcher.sh
+      bind = CTRL, semicolon, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh
+      bind = $mainMod SHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh
+      # bind = $mainMod SHIFT, K, exec, pkill rofi || ~/.config/rofi/launchers/keybind.sh
 
       #-----------------------------------------#
       # control volume,brightness,media players-#
