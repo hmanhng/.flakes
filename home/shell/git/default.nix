@@ -10,8 +10,31 @@
         };
       };
     };
-    /* delta.enable = true; */
-    difftastic.enable = true;
+    delta = {
+      enable = true;
+      options = {
+        decorations = {
+          file-decoration-style = "none";
+          file-modified-label = "modified:";
+          file-style = "bold blue ul";
+          hunk-header-style = "omit";
+          hunk-header-decoration-style = "";
+          /* minus-style = "#d91e46"; */
+          /* minus-emph-style = "normal"; */
+          /* plus-style = "#9feb98"; */
+          /* plus-emph-style = "normal"; */
+          line-numbers = true;
+          line-numbers-left-format = "{nm}⋮";
+          line-numbers-minus-style = "#d91e46";
+          line-numbers-right-format = " {np} ";
+          line-numbers-plus-style = "#9feb98";
+        };
+        features = "decorations";
+        whitespace-error-style = "22 reverse";
+      };
+    };
+    difftastic = { enable = false; display = "inline"; };
+    diff-so-fancy = { enable = false; };
   };
   programs.gitui = {
     enable = true;
