@@ -1,23 +1,6 @@
 {
   description = "Hmanhng's NixOS configuration";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    nur.url = "github:nix-community/NUR";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
-    hypr-contrib.url = "github:hyprwm/contrib";
-    impermanence.url = "github:nix-community/impermanence"; # for tmpfs rootfs
-    sops-nix.url = "github:Mic92/sops-nix";
-  };
-
   outputs = inputs @ { self, nixpkgs, flake-parts, ... }:
     let
       user = "hmanhng";
@@ -59,6 +42,23 @@
         );
       };
     };
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nur.url = "github:nix-community/NUR";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+    hypr-contrib.url = "github:hyprwm/contrib";
+    impermanence.url = "github:nix-community/impermanence"; # for tmpfs rootfs
+    sops-nix.url = "github:Mic92/sops-nix";
+  };
 
   nixConfig = {
     extra-substituters = [

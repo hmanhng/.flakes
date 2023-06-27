@@ -5,7 +5,7 @@
 
 > **Warning**  
 > **Please don't blindly use my repository.**
-  - Instead, fork this repository and make some changes such as the [**username**](https://github.com/hmanhng/.flakes/blob/tmpfs/flake.nix#L23) and [**password**](https://github.com/hmanhng/.flakes/blob/tmpfs/hosts/laptop/default.nix#L5).
+  - Instead, fork this repository and make some changes such as the [**username**](https://github.com/hmanhng/.flakes/blob/tmpfs/flake.nix#L6) and [**password**](https://github.com/hmanhng/.flakes/blob/tmpfs/hosts/laptop/default.nix#L5).
   - And replace your [**hardware-configuration.nix**](https://github.com/hmanhng/.flakes/blob/tmpfs/hosts/laptop/hardware-configuration.nix) file in the `/etc/nixos/hardware-configuration.nix` directory.
 
 > **Note**  

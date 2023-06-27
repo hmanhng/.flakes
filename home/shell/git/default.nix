@@ -3,6 +3,21 @@
     enable = true;
     userName = "Hmanhng";
     userEmail = "hmanhng@icloud.com";
+    aliases = {
+      aa = "add -A";
+      br = "branch";
+      co = "checkout";
+      cm = "commit";
+      cmm = "commit -m";
+      cmam = "commit -am";
+      cam = "commit --amend -m";
+      lg = "!sh -c 'if [ $0 = sh ]; then git log --oneline; else git log --oneline -$0; fi'";
+	    lgg = "log --oneline --graph";
+      rs = "reset";
+      rss = "reset --soft";
+      rsh = "reset --hard";
+      st = "status";
+    };
     extraConfig = {
       url = {
         "git@github.com:hmanhng/" = {
