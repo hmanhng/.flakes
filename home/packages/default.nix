@@ -13,6 +13,7 @@
     socat
     swaylock-effects
     wl-clipboard
+    wl-clip-persist
     wlr-randr
     wf-recorder
     xdg-utils

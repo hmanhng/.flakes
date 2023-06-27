@@ -29,11 +29,12 @@
 
       ## Autostart
       exec-once = launch_waybar &
-      exec-once = border_color &
+      # exec-once = border_color &
       exec-once = wl-paste --type text --watch cliphist store &
       exec-once = wl-paste --type image --watch cliphist store &
       exec-once = spoof-dpi &
       exec-once = ydotoold &
+      exec-once = wl-clip-persist --clipboard regular &
 
       input {
         kb_layout = us
@@ -120,9 +121,9 @@
         enable_swallow = true
         swallow_regex = ^(kitty)$
       }
-
-      ## BIND
-
+      #---------#
+      # BINDING #
+      #---------#
       bind = $mainMod, Return, exec, kitty
       bind = $mainMod SHIFT, Return, exec, kitty --class="termfloat"
       bind = $mainMod, E, exec, emacs
@@ -133,6 +134,31 @@
       bind = $mainMod, Y, pin
       bind = $mainMod, P, pseudo # dwindle
       bind = $mainMod, J, togglesplit # dwindle
+
+      #------------------------#
+      # quickly launch program #
+      #------------------------#
+      bind = $mainMod, B, exec, [workspace name:Qutebrowser] hyprctl workspaces | rg ID | rg Qutebrowser || qutebrowser
+      bind = $mainMod, W, exec, [workspace name:Firefox] hyprctl workspaces | rg ID | rg Firefox || firefox
+      bind = $mainMod SHIFT, W, exec, firefox --private-window
+      bind = $mainMod, M, exec, netease-cloud-music-gtk4
+      bind = $mainMod SHIFT, M, exec, [workspace name:Music]kitty --class="ncmpcpp" --hold sh -c "ncmpcpp"
+      bind = $mainMod SHIFT, X, exec, myswaylock
+
+      # Rofi
+      bind = $mainMod, Space, exec, pkill rofi || ~/.config/rofi/launcher/launcher.sh
+      bind = CTRL, semicolon, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh
+      bind = $mainMod SHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh
+      # bind = $mainMod SHIFT, K, exec, pkill rofi || ~/.config/rofi/launchers/keybind.sh
+
+      # Bookmarks
+      bind = SUPER, semicolon, exec, pkill rofi || ~/.flakes/home/bookmarks/bm_rofi.sh
+      bind = SUPER SHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh
+
+      # Grimblast
+      bind = $mainMod, bracketleft, exec, grimblast --notify --cursor  copysave area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
+      bind = $mainMod, bracketright, exec, grimblast --notify --cursor  copy area
+      bind = $mainMod, A, exec, grimblast_watermark
 
       #-----------------------#
       # Toggle grouped layout #
@@ -231,29 +257,6 @@
            allow_workspace_cycles = 1
       }
       bind = $mainMod, slash, workspace, previous
-
-      #------------------------#
-      # quickly launch program #
-      #------------------------#
-      bind = $mainMod, B, exec, [workspace name:Qutebrowser] hyprctl workspaces | rg ID | rg Qutebrowser || qutebrowser
-      bind = $mainMod, W, exec, [workspace name:Firefox] hyprctl workspaces | rg ID | rg Firefox || firefox
-      bind = $mainMod SHIFT, W, exec, firefox --private-window
-      bind = $mainMod, M, exec, netease-cloud-music-gtk4
-      bind = $mainMod SHIFT, M, exec, [workspace name:Music]kitty --class="ncmpcpp" --hold sh -c "ncmpcpp"
-      bind = $mainMod SHIFT, X, exec, myswaylock
-      bind = $mainMod, bracketleft, exec, grimblast --notify --cursor  copysave area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
-      bind = $mainMod, bracketright, exec, grimblast --notify --cursor  copy area
-      bind = $mainMod, A, exec, grimblast_watermark
-
-      # Rofi
-      bind = $mainMod, Space, exec, pkill rofi || ~/.config/rofi/launcher/launcher.sh
-      bind = CTRL, semicolon, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh
-      bind = $mainMod SHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh
-      # bind = $mainMod SHIFT, K, exec, pkill rofi || ~/.config/rofi/launchers/keybind.sh
-
-      # Bookmarks
-      bind = SUPER, semicolon, exec, pkill rofi || ~/.flakes/home/bookmarks/bm_rofi.sh
-      bind = SUPER SHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh
 
       #-----------------------------------------#
       # control volume,brightness,media players-#
