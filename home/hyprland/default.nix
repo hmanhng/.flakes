@@ -118,8 +118,12 @@
         disable_hyprland_logo = true
         disable_splash_rendering = true
         focus_on_activate = true
-        enable_swallow = true
+        enable_swallow = false
         swallow_regex = ^(kitty)$
+        render_titles_in_groupbar = true
+        groupbar_titles_font_size = 15
+        groupbar_gradients = true
+        groupbar_text_color = rgba(FFFFFFFF)
       }
       #---------#
       # BINDING #
