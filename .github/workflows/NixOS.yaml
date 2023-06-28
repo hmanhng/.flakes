@@ -27,7 +27,8 @@ jobs:
       - name: "Install Nix ❄️ "
         uses: cachix/install-nix-action@v22
         with:
-          # github_access_token: ${{ secrets.TOKEN }}
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          install_url: https://nixos.org/nix/install
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             accept-flake-config = true
@@ -39,6 +40,7 @@ jobs:
         with:
           name: hmanhng
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: nix-community, hyprland, hmanhng
 
       - name: Set default git branch (to reduce log spam)
         run: git config --global init.defaultBranch tmpfs
@@ -49,12 +51,3 @@ jobs:
       - name: "Build NixOS config ❄️ "
         run: |
           nix build -L '.#nixosConfigurations.laptop.config.system.build.toplevel'
-
-      - name: "Print nixpkgs version ❄️ "
-        run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
-      # - name: "Check free space"
-      #   run: |
-      #     sudo apt install neofetch
-      #     neofetch
-      #     echo "Free space:"
-      #     df -h
