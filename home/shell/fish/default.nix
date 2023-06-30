@@ -42,7 +42,7 @@
       nrb = "cd ~/.flakes && nixos-rebuild build --flake ~/.flakes/.#laptop";
       nrf = "doas nixos-rebuild switch --flake ~/.flakes/.#laptop";
       nrt = "doas ~/.flakes/result/bin/switch-to-configuration test";
-      ncg = "nix-collect-garbage -d && doas nix-env -p /nix/var/nix/profiles/system --delete-generations old && doas nix-collect-garbage -d";
+      ncg = "nix-collect-garbage -d && doas nix-collect-garbage -d";
       fl = "cd ~/.flakes";
     };
   };
