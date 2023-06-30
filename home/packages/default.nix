@@ -1,13 +1,13 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs', self', ... }:
 {
   imports = (import ./wayland);
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     ## Requirement for hyprland
     alsa-lib
     cliphist
     imagemagick # for grimblast
-    inputs.hypr-contrib.packages.${pkgs.system}.grimblast
-    inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+    inputs'.hypr-contrib.packages.grimblast
+    inputs'.hyprpicker.packages.hyprpicker
     killall
     pamixer
     socat
@@ -42,12 +42,13 @@
     # alsa-utils
     flac
     # pulsemixer
-    spoof-dpi
     unrar
     unzip
     wget
     zip
-  ];
+  ]) ++ (with self'.legacyPackages; [
+    spoof-dpi
+  ]);
   programs.gpg = {
     enable = true;
     package = pkgs.gnupg;

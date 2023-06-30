@@ -1,8 +1,6 @@
 { config, pkgs, lib, inputs, user, ... }:
 
 {
-  nixpkgs.system = "x86_64-linux";
-
   networking = {
     hostName = "nixos"; # Define your hostname.
     networkmanager.enable = true;

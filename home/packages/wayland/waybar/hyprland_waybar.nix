@@ -1,9 +1,9 @@
-{ config, pkgs, user, inputs, ... }:
+{ config, pkgs, user, inputs', ... }:
 
 {
   programs.waybar = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
+    package = inputs'.hyprland.packages.waybar-hyprland;
     systemd = {
       enable = false;
       target = "graphical-session.target";

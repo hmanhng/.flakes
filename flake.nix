@@ -1,45 +1,34 @@
 {
   description = "Hmanhng's NixOS configuration";
 
-  outputs = inputs @ { self, nixpkgs, flake-parts, ... }:
+  outputs = inputs @ { flake-parts, ... }:
     let
       user = "hmanhng";
-      selfPkgs = import ./pkgs;
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ];
       systems = [ "x86_64-linux" ];
-      perSystem = { config, self', inputs', pkgs, system, ... }:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [
-              self.overlays.default
-            ];
-          };
-        in
-        {
-          devShells = {
-            #run by `nix devlop` or `nix-shell`(legacy)
-            default = import ./shell.nix { inherit pkgs; };
-            #run by `nix develop .#<name>`
-            secret = with pkgs; mkShell {
-              name = "secret";
-              nativeBuildInputs = [ sops age gnupg ssh-to-age ssh-to-pgp ];
-              shellHook = ''
-                export PS1="\e[0;31m(Secret)\$ \e[m"
-              '';
-            };
+      imports = [
+        ./hosts
+        ./modules
+        ./lib
+        ./pkgs
+        { _module.args = { inherit user; }; }
+      ];
+      perSystem = { config, self', inputs', pkgs, system, ... }: {
+        # set flake-wide pkgs to the one exported by ./lib
+        imports = [{ _module.args.pkgs = config.legacyPackages; }];
+        devShells = {
+          #run by `nix devlop` or `nix-shell`(legacy)
+          default = import ./shell.nix { inherit pkgs; };
+          #run by `nix develop .#<name>`
+          secret = with pkgs; mkShell {
+            name = "secret";
+            nativeBuildInputs = [ sops age gnupg ssh-to-age ssh-to-pgp ];
+            shellHook = ''
+              export PS1="\e[0;31m(Secret)\$ \e[m"
+            '';
           };
         };
-      flake = {
-        overlays.default = selfPkgs.overlay;
-        nixosConfigurations = (
-          import ./hosts {
-            system = "x86_64-linux";
-            inherit nixpkgs self inputs user;
-          }
-        );
       };
     };
 

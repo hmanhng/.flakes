@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, self', ... }:
 
 {
   programs.firefox = {
@@ -45,7 +45,7 @@
         tabcenter-reborn
         translate-web-pages
         ublock-origin
-      ]) ++ (with pkgs.firefox-addons;[
+      ]) ++ (with self'.legacyPackages.firefox-addons;[
         dashlane
         default-zoom
       ]);

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, user, ... }:
+{ config, lib, pkgs, inputs', user, ... }:
 {
   imports = (import ../hardware) ++
     [ ../fonts ];
@@ -40,6 +40,6 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = [ inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland ];
+    extraPortals = [ inputs'.hyprland.packages.xdg-desktop-portal-hyprland ];
   };
 }
