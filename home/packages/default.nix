@@ -23,6 +23,7 @@
     cinnamon.nemo-with-extensions
     gnome.file-roller
     imv
+    libreoffice-qt
     meld
     motrix
     pavucontrol
