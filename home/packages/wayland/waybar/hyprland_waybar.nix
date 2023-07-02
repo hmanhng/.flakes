@@ -9,8 +9,8 @@
       target = "graphical-session.target";
     };
     style = ''
-        @define-color fg-color #303446;
-        @define-color bg-color #e4e8ef;
+        @define-color bg-color alpha(#303446, 0.8);
+        @define-color fg-color #e4e8ef;
         @define-color temperature-color #f5a97f;
         @define-color cpu-color #ed8796;
         @define-color memory-color #91d7e3;
@@ -42,31 +42,31 @@
       window#waybar {
         font-family: "Vanilla Caramel", "JetBrainsMono Nerd Font";
         font-size: 15pt;
-        background-color: alpha(#303446, 0.8);
+        background-color: @bg-color;
       }
       #workspaces {
         padding-left: 0px;
-        padding-right: 5px;
+        padding-right: 0px;
       }
       #workspaces button {
         padding-top: 2px;
         padding-bottom: 0px;
         padding-left: 7px;
         padding-right: 7px;
-        color: @bg-color;
-        margin: 5px 5px 5px 0px;
+        color: @fg-color;
+        margin: 5px 0px 5px 0px;
       }
       #workspaces button.active {
-        background-color: rgb(181, 232, 224);
-        color: rgb(26, 24, 38);
+        background-color: #b5e8e0;
+        color: #1a1826;
         font-style: italic;
       }
       #workspaces button.urgent {
-        color: rgb(26, 24, 38);
+        color: #1a1826;
       }
       #workspaces button:hover {
         background-color: #b38dac;
-        color: rgb(26, 24, 38);
+        color: #1a1826;
       }
       tooltip {
         /* background: rgb(250, 244, 252); */
@@ -82,7 +82,6 @@
         font-style: italic;
       }
 
-      #clock,
       #temperature,
       #memory,
       #cpu,
@@ -91,8 +90,9 @@
       #pulseaudio,
       #backlight,
       #network {
+        color: @bg-color;
         border-radius: 0px 5px 5px 0px;
-        padding: 3px 8px 0px 8px;
+        padding: 3px 8px 0px 0px;
         margin: 5px 0px 5px 0px;
       }
       #temperature.icons,
@@ -103,21 +103,21 @@
       #backlight.icons,
       #network.icons.disconnected,
       #network.icons {
-        color: @fg-color;
+        color: @bg-color;
         border-radius: 5px 0px 0px 5px;
-        margin: 5px 0px 5px 10px;
+        margin: 5px 0px 5px 5px;
       }
 
       #custom-launcher {
-        font-size: 25px;
+        font-size: 27px;
         padding-left: 15px;
         padding-top: 2px;
         padding-right: 15px;
-        color: #8aadf4;
+        color: #6db7f7;
       }
 
       #custom-number-windows {
-        color: @fg-color;
+        color: @bg-color;
         background-color: #b4befe;
         padding: 3px 10px 0px 10px;
         margin: 5px 0px 5px 0px;
@@ -128,7 +128,7 @@
         padding: 0px 8px 0px 10px;
       }
       #temperature {
-        color: @temperature-color;
+        background-color: @temperature-color;
         border: 2px solid @temperature-color;
       }
 
@@ -137,7 +137,7 @@
         padding: 0px 8px 0px 9px;
       }
       #memory {
-        color: @memory-color;
+        background-color: @memory-color;
         border: 2px solid @memory-color;
       }
 
@@ -146,7 +146,7 @@
         padding: 0px 6px 0px 8px;
       }
       #cpu {
-        color: @cpu-color;
+        background-color: @cpu-color;
         border: 2px solid @cpu-color;
       }
 
@@ -159,13 +159,13 @@
       }
 
       #clock {
-        color: @bg-color;
+        color: @fg-color;
         font-size: 17pt;
         padding: 2px 10px 0px 10px;
       }
 
       #pulseaudio {
-        color: @pulseaudio-color;
+        background-color: @pulseaudio-color;
         border: 2px solid @pulseaudio-color;
       }
       #pulseaudio.icons {
@@ -182,7 +182,7 @@
         padding: 0px 5px 0px 7px;
       }
       #backlight {
-        color: @backlight-color;
+        background-color: @backlight-color;
         border: 2px solid @backlight-color;
       }
 
@@ -194,27 +194,27 @@
         background-color: @network-dis-color;
       }
       #network {
-        color: @network-color;
+        background-color: @network-color;
         border: 2px solid @network-color;
-        padding: 2px 8px 0px 8px;
+        padding: 2px 8px 0px 0px;
       }
       #network.disconnected {
-        color: @network-dis-color;
+        background-color: @network-dis-color;
         border: 2px solid @network-dis-color;
       }
 
       #battery.charging,
       #battery.discharging {
-        color: @fg-color;
+        color: @bg-color;
         background-color: #cf876f;
-        margin: 5px 0px 5px 10px;
+        margin: 5px 0px 5px 5px;
         padding: 3px 10px 0px 10px;
       }
       #battery.full,
       #battery.plugged {
-        color: @fg-color;
+        color: @bg-color;
         background-color: #a6da95;
-        margin: 5px 0px 5px 10px;
+        margin: 5px 0px 5px 5px;
         padding: 3px 10px 0px 10px;
       }
       #battery.critical:not(.charging) {
@@ -222,9 +222,9 @@
       }
 
       #custom-powermenu {
-        color: @fg-color;
+        color: @bg-color;
         background-color: #bd6069;
-        margin: 5px 5px 5px 10px;
+        margin: 5px;
         padding: 0px 10px 0px 10px;
       }
 
@@ -235,8 +235,8 @@
       #tray menu {
         font-family: "JetBrainsMono Nerd Font";
         font-size: 14pt;
-        background: @fg-color;
-        color: @bg-color;
+        background: @bg-color;
+        color: @fg-color;
       }
 
       #mpd.paused {
@@ -267,7 +267,7 @@
       modules-left = [
         "custom/launcher"
         "wlr/workspaces"
-        "custom/number-windows"
+        # "custom/number-windows"
         "hyprland/submap"
         "temperature#icons"
         "temperature"
@@ -278,7 +278,7 @@
         # "idle_inhibitor"
         # "custom/wall"
         "mpd"
-        "custom/cava-internal"
+        # "custom/cava-internal"
         # "hyprland/window"
       ];
       modules-center = [ "clock" ];
@@ -340,14 +340,14 @@
 
       "memory#icons" = { "format" = "﬙"; };
       "memory" = {
-        "interval" = 1;
+        "interval" = 10;
         "format" = "{percentage}%";
         "states" = { "warning" = 85; };
       };
 
       "cpu#icons" = { "format" = ""; };
       "cpu" = {
-        "interval" = 1;
+        "interval" = 10;
         "format" = "{usage}%";
       };
 
@@ -389,7 +389,7 @@
         "format" = "{:%H:%M}";
         "format-alt" = "<span foreground='#FF6699'>  </span>{:%A, %d %B %Y}";
         "locale" = "en_US.UTF-8";
-        "interval" = 1;
+        "interval" = 60;
         "tooltip" = true;
         "tooltip-format" = "Devops go go\n<tt>{calendar}</tt>";
       };
@@ -458,7 +458,6 @@
         "format-ethernet" = "";
         "format-linked" = "󰯡";
         "format-wifi" = "󰒢";
-        "interval" = 1;
         "tooltip" = false;
       };
       "network" = {
@@ -466,7 +465,6 @@
         "format-ethernet" = "{ifname} ({ipaddr})";
         "format-linked" = "{essid} (No IP)";
         "format-wifi" = "{essid}";
-        "interval" = 1;
         "tooltip" = false;
       };
 
@@ -476,7 +474,6 @@
         "format-full" = "󰚥 Full";
         "format-plugged" = "󰚥 Full";
         "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
-        "interval" = 10;
         "states" = { "critical" = 10; "warning" = 20; };
         "full-at" = 96;
         "tooltip" = true;
