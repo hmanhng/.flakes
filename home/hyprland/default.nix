@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../hypr-variables.nix
+    ./hypr-variables.nix
     ../gtk.nix
     ../scripts
     ../packages
