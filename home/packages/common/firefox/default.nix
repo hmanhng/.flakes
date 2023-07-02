@@ -31,6 +31,7 @@
           "media.eme.enabled" = true; # Enable DRM
           "extensions.autoDisableScopes" = 0; # Enable extensions install default
           "extensions.htmlaboutaddons.recommendations.enabled" = false; # Disable recommendations extensions
+          "browser.tabs.firefox-view" = false; # Disable firefox-view
         };
       };
     };
@@ -42,7 +43,7 @@
         i-dont-care-about-cookies
         privacy-badger
         stylus
-        tabcenter-reborn
+        /* tabcenter-reborn */
         translate-web-pages
         ublock-origin
       ]) ++ (with self'.legacyPackages.firefox-addons;[
@@ -85,7 +86,7 @@
       };
       settings = {
         "browser.startup.homepage" = "file://${./homepage.html}";
-        "extensions.activeThemeID" = "firefox-compact-light@mozilla.org";
+        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
       };
       # userChrome = builtins.readFile ./userChrome.css;
     };
