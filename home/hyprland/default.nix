@@ -72,7 +72,7 @@
       }
       # cursor_inactive_timeout = 0
       decoration {
-        rounding = 3
+        rounding = 0
         multisample_edges = true
 
         active_opacity = 1.0

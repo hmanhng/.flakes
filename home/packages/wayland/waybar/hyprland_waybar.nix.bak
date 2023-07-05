@@ -19,7 +19,7 @@
         @define-color network-color #cba6f7;
         @define-color network-dis-color #988ba2;
       * {
-        border-radius: 0px;
+        border-radius: 5px;
         transition-property: background-color;
         transition-duration: 0.5s;
       }
@@ -40,8 +40,7 @@
         animation-direction: alternate;
       }
       window#waybar {
-        font-family: "Operator Mono Lig", "JetBrainsMono Nerd Font";
-        /* font-weight: bold; */
+        font-family: "Vanilla Caramel", "JetBrainsMono Nerd Font";
         font-size: 15pt;
         background-color: @bg-color;
       }
@@ -50,8 +49,12 @@
         padding-right: 0px;
       }
       #workspaces button {
-        padding: 0px 6px 0px 6px;
+        padding-top: 2px;
+        padding-bottom: 0px;
+        padding-left: 7px;
+        padding-right: 7px;
         color: @fg-color;
+        margin: 5px 0px 5px 0px;
       }
       #workspaces button.active {
         background-color: #b5e8e0;
@@ -75,7 +78,11 @@
         font-size: 14pt;
         color: #e4e8ef;
       }
-      /* #temperature,
+      #window {
+        font-style: italic;
+      }
+
+      #temperature,
       #memory,
       #cpu,
       #mpd,
@@ -87,8 +94,8 @@
         border-radius: 0px 5px 5px 0px;
         padding: 3px 8px 0px 0px;
         margin: 5px 0px 5px 0px;
-      } */
-      /* #temperature.icons,
+      }
+      #temperature.icons,
       #memory.icons,
       #cpu.icons,
       #pulseaudio.icons,
@@ -96,43 +103,51 @@
       #backlight.icons,
       #network.icons.disconnected,
       #network.icons {
-        padding: 0px 5px 0px 10px;
-      } */
+        color: @bg-color;
+        border-radius: 5px 0px 0px 5px;
+        margin: 5px 0px 5px 5px;
+      }
 
       #custom-launcher {
-        font-size: 25px;
-        padding: 0px 7px 0px 7px;
+        font-size: 27px;
+        padding-left: 15px;
+        padding-top: 2px;
+        padding-right: 15px;
         color: #6db7f7;
       }
 
       #custom-number-windows {
         color: @bg-color;
         background-color: #b4befe;
-        padding: 0px 10px 0px 10px;
+        padding: 3px 10px 0px 10px;
+        margin: 5px 0px 5px 0px;
       }
 
       #temperature.icons {
-        color: @temperature-color;
-        padding: 0px 4px 0px 10px;
+        background-color: @temperature-color;
+        padding: 0px 8px 0px 10px;
       }
       #temperature {
-        color: @temperature-color;
+        background-color: @temperature-color;
+        border: 2px solid @temperature-color;
       }
 
       #memory.icons {
-        color: @memory-color;
-        padding: 0px 4px 0px 10px;
+        background-color: @memory-color;
+        padding: 0px 8px 0px 9px;
       }
       #memory {
-        color: @memory-color;
+        background-color: @memory-color;
+        border: 2px solid @memory-color;
       }
 
       #cpu.icons {
-        color: @cpu-color;
-        padding: 0px 3px 0px 10px;
+        background-color: @cpu-color;
+        padding: 0px 6px 0px 8px;
       }
       #cpu {
-        color: @cpu-color;
+        background-color: @cpu-color;
+        border: 2px solid @cpu-color;
       }
 
       /*
@@ -146,55 +161,61 @@
       #clock {
         color: @fg-color;
         font-size: 17pt;
-        padding: 0px 10px 0px 10px;
+        padding: 2px 10px 0px 10px;
       }
 
       #pulseaudio {
-        color: @pulseaudio-color;
+        background-color: @pulseaudio-color;
+        border: 2px solid @pulseaudio-color;
       }
       #pulseaudio.icons {
-        color: @pulseaudio-color;
-        padding: 0px 6px 0px 10px;
+        background-color: @pulseaudio-color;
+        padding: 0px 10px 0px 10px;
       }
       #pulseaudio.microphone-icons {
-        color: @pulseaudio-color;
-        padding: 0px 3px 0px 10px;
+        background-color: @pulseaudio-color;
+        padding: 0px 8px 0px 10px;
       }
 
       #backlight.icons {
-        color: @backlight-color;
-        padding: 0px 2px 0px 10px;
+        background-color: @backlight-color;
+        padding: 0px 5px 0px 7px;
       }
       #backlight {
-        color: @backlight-color;
+        background-color: @backlight-color;
+        border: 2px solid @backlight-color;
       }
 
-      #network.icons,
+      #network.icons {
+        background-color: @network-color;
+        padding: 0px 10px 0px 8px;
+      }
       #network.icons.disconnected {
-        padding: 0px 8px 0px 10px;
+        background-color: @network-dis-color;
       }
       #network {
-        color: @network-color;
+        background-color: @network-color;
+        border: 2px solid @network-color;
+        padding: 2px 8px 0px 0px;
       }
       #network.disconnected {
-        color: @network-dis-color;
+        background-color: @network-dis-color;
+        border: 2px solid @network-dis-color;
       }
 
-      #battery.icons.charging,
-      #battery.icons.discharging,
-      #battery.icons.full,
-      #battery.icons.plugged {
-        padding: 0px 3px 0px 10px;
-      }
       #battery.charging,
       #battery.discharging {
-        color: #cf876f;
-        padding: 0px 10px 0px 0px;
+        color: @bg-color;
+        background-color: #cf876f;
+        margin: 5px 0px 5px 5px;
+        padding: 3px 10px 0px 10px;
       }
       #battery.full,
       #battery.plugged {
-        color: #a6da95;
-        padding: 0px 10px 0px 0px;
+        color: @bg-color;
+        background-color: #a6da95;
+        margin: 5px 0px 5px 5px;
+        padding: 3px 10px 0px 10px;
       }
       #battery.critical:not(.charging) {
         color: #d6dce7;
@@ -203,12 +224,13 @@
       #custom-powermenu {
         color: @bg-color;
         background-color: #bd6069;
-        padding: 0px 9px 0px 9px;
+        margin: 5px;
+        padding: 0px 10px 0px 10px;
       }
 
       #tray {
         padding-right: 10px;
-        padding-left: 10px;
+        padding-left: 5px;
       }
       #tray menu {
         font-family: "JetBrainsMono Nerd Font";
@@ -241,7 +263,7 @@
     settings = [{
       "layer" = "top";
       "position" = "top";
-      /* "margin" = "5px 5px 0px 5px"; */
+      "margin" = "5px 5px 0px 5px";
       modules-left = [
         "custom/launcher"
         "wlr/workspaces"
@@ -269,7 +291,6 @@
         "backlight"
         "network#icons"
         "network"
-        "battery#icons"
         "battery"
         "custom/powermenu"
         "tray"
@@ -366,7 +387,7 @@
 
       "clock" = {
         "format" = "{:%H:%M}";
-        "format-alt" = "<span foreground='#FF6699'> </span>{:%d %B %Y (%a)}";
+        "format-alt" = "<span foreground='#FF6699'>  </span>{:%A, %d %B %Y}";
         "locale" = "en_US.UTF-8";
         "interval" = 60;
         "tooltip" = true;
@@ -447,21 +468,12 @@
         "tooltip" = false;
       };
 
-      "battery#icons" = {
-        "format" = "{icon}";
-        "format-charging" = "󰚥";
-        "format-full" = "󰚥";
-        "format-plugged" = "󰚥";
-        "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
-        "states" = { "critical" = 10; "warning" = 20; };
-        "full-at" = 96;
-        "tooltip" = true;
-      };
       "battery" = {
-        "format" = "{capacity}%";
-        "format-charging" = "{capacity}%";
-        "format-full" = "Full";
-        "format-plugged" = "Full";
+        "format" = "{icon} {capacity}%";
+        "format-charging" = "󰚥 {capacity}%";
+        "format-full" = "󰚥 Full";
+        "format-plugged" = "󰚥 Full";
+        "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
         "states" = { "critical" = 10; "warning" = 20; };
         "full-at" = 96;
         "tooltip" = true;
@@ -469,7 +481,7 @@
 
       "custom/powermenu" = {
         "format" = "";
-        "on-click" = "pkill rofi || ~/.config/rofi/powermenu/powermenu.sh";
+        "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";
         "tooltip" = false;
       };
 

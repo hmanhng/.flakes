@@ -10,7 +10,7 @@ window {
   width:                      100%;
   location:                   north;
   x-offset:                   0;
-  y-offset:                   -50;
+  y-offset:                   -34;
 }
 
 mainbox {
