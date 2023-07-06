@@ -46,6 +46,7 @@
     unrar
     unzip
     wget
+    wireguard-tools
     zip
   ]) ++ (with self'.legacyPackages; [
     spoof-dpi
