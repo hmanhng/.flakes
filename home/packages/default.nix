@@ -27,6 +27,7 @@
     meld
     motrix
     pavucontrol
+    qbittorrent
     /* stremio
     vlc */
 
