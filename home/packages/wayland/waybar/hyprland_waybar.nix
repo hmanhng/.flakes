@@ -3,7 +3,7 @@
 {
   programs.waybar = {
     enable = true;
-    package = inputs'.hyprland.packages.waybar-hyprland;
+    /* package = inputs'.hyprland.packages.waybar-hyprland; */
     systemd = {
       enable = false;
       target = "graphical-session.target";
@@ -244,7 +244,7 @@
       /* "margin" = "5px 5px 0px 5px"; */
       modules-left = [
         "custom/launcher"
-        "wlr/workspaces"
+        "hyprland/workspaces"
         # "custom/number-windows"
         "hyprland/submap"
         "temperature#icons"
@@ -288,8 +288,8 @@
         "tooltip" = false;
       };
 
-      "wlr/workspaces" = {
-        "format" = "{icon}";
+      "hyprland/workspaces" = {
+        "format" = "{name}";
         "on-click" = "activate";
         # "on-scroll-up" = "hyprctl dispatch workspace e+1";
         # "on-scroll-down" = "hyprctl dispatch workspace e-1";

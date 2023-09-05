@@ -22,7 +22,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
-    nvidiaPatches = false;
+    enableNvidiaPatches = false;
     extraConfig = ''
       $mainMod = SUPER
       monitor = , preferred, auto, 1
@@ -79,12 +79,14 @@
         inactive_opacity = 1.0
         fullscreen_opacity = 1.0
 
-        blur = yes
-        blur_size = 3
-        blur_passes = 3
-        blur_new_optimizations = true
-        blur_xray = false
-        blur_ignore_opacity = false
+        blur {
+        enabled = yes
+        size = 3
+        passes = 3
+        new_optimizations = true
+        xray = false
+        ignore_opacity = false
+        }
       }
       # Blurring layerSurfaces
       blurls = waybar

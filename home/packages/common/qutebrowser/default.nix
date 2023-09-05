@@ -5,7 +5,7 @@
   programs = {
     qutebrowser = {
       enable = true;
-      package = pkgs.qutebrowser-qt6;
+      package = pkgs.qutebrowser;
       quickmarks = { };
       extraConfig = ''
         # vim:fileencoding=utf-8:foldmethod=marker
