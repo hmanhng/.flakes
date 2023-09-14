@@ -52,6 +52,7 @@
   ]) ++ (with self'.legacyPackages; [
     spoof-dpi
   ]);
+  programs.java.enable = true;
   programs.gpg = {
     enable = true;
     package = pkgs.gnupg;
