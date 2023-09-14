@@ -17,12 +17,12 @@
       }
       ]; */
     shellAliases = {
-      l = "exa -F --color=always --group-directories-first";
-      ls = "exa -Falhg --color=always --group-directories-first"; # my preferred listing
-      la = "exa -Fa --color=always --group-directories-first"; # all files and dirs
-      ll = "exa -Flhg --color=always --group-directories-first"; # long format
-      lt = "exa -FaT -L 3 --icons --color=always --group-directories-first"; # tree listing
-      "l." = "exa -Fa | grep -E \"^\\.\"";
+      l = "eza -F --color=always --group-directories-first";
+      ls = "eza -Falhg --color=always --group-directories-first"; # my preferred listing
+      la = "eza -Fa --color=always --group-directories-first"; # all files and dirs
+      ll = "eza -Flhg --color=always --group-directories-first"; # long format
+      lt = "eza -FaT -L 3 --icons --color=always --group-directories-first"; # tree listing
+      "l." = "eza -Fa | grep -E \"^\\.\"";
 
       v = "nvim";
       vi = "nvim";
@@ -56,6 +56,6 @@
   xdg.configFile."fish/functions/hmanhng.fish".source = ./functions/hmanhng.fish;
   programs.zoxide.enable = true;
   programs.starship.enable = true;
-  programs.exa.enable = true;
+  programs.eza.enable = true;
   xdg.configFile."starship.toml".source = ./starship.toml;
 }
