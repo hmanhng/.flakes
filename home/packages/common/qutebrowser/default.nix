@@ -49,14 +49,14 @@
         c.fonts.statusbar = 'default_size default_family'
         # }}}
         # ============================== Bind ============================== {{{
-        config.bind('.', 'set-cmd-text :')
+        config.bind('.', 'cmd-set-text :')
         config.bind(',D', 'hint links spawn kitty yt-dlp {hint-url}')
         config.bind(',d', 'hint links spawn xdman {hint-url}')
         config.bind(',m', 'hint links spawn mpv --profile=M60 {hint-url}')
         config.bind(',p', 'set content.proxy http://localhost:8080/')
         config.bind(',P', 'set content.proxy system')
         config.bind('ch', 'history-clear')
-        config.bind('t', 'set-cmd-text -s :open -t')
+        config.bind('t', 'cmd-set-text -s :open -t')
         config.bind('wr', 'config-source')
         config.bind('ww', 'config-write-py -f')
         config.bind('xb', 'config-cycle statusbar.show always never')
