@@ -4,7 +4,7 @@ return {
     --[[ enabled = false, ]]
     opts = {
       --[[ vim.opt.listchars:append("eol:↴"), ]]
-      char = "¦",
+      indent = { char = "¦" },
     },
   },
   {

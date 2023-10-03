@@ -30,7 +30,7 @@ return {
       },
       integrations = {
         telescope = false,
-        mini = false,
+        --[[ mini = false, ]]
         noice = false,
       },
     },
