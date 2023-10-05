@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs', ... }:
 
 {
   imports = [
@@ -9,6 +9,25 @@
   ] ++
   (import ../shell) ++
   (import ../editors);
+
+    home.packages = with pkgs; [
+    ## Requirement for hyprland
+    alsa-lib
+    cliphist
+    imagemagick # for grimblast
+    inputs'.hypr-contrib.packages.grimblast
+    inputs'.hyprpicker.packages.hyprpicker
+    killall
+    pamixer
+    socat
+    swaylock-effects
+    wl-clipboard
+    wl-clip-persist
+    wlr-randr
+    wf-recorder
+    xdg-utils
+    ydotool
+  ];
 
   programs = {
     fish = {

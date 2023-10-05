@@ -32,10 +32,14 @@ let
 in
 {
   home.packages = with pkgs; [
+    atool
+    exiftool
+    ffmpegthumbnailer
     file
     ueberzugpp
     lf
     lf-ueberzugpp
+    poppler_utils
   ];
 
   xdg.configFile."lf" = {
