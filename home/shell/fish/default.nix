@@ -16,6 +16,7 @@
       };
       }
       ]; */
+    interactiveShellInit = ''set fish_greeting ""'';
     shellAliases = {
       l = "eza -F --color=always --group-directories-first";
       ls = "eza -Falhg --color=always --group-directories-first"; # my preferred listing
@@ -47,11 +48,9 @@
     };
   };
   home.packages = with pkgs; [ fishPlugins.autopair ];
-  home.file.".config/fish/fish_variables".text = import ./fish_variables.nix;
   home.file.".config/fish/functions/owf.fish".text = import ./functions/owf.nix;
   home.file.".config/fish/functions/xdg-get.fish".text = import ./functions/xdg-get.nix;
   home.file.".config/fish/functions/xdg-set.fish".text = import ./functions/xdg-set.nix;
-  # home.file.".config/fish/functions/fish_prompt.fish".source = ./functions/fish_prompt.fish;
   home.file.".config/fish/conf.d/nord.fish".text = import ./conf.d/nord_theme.nix;
   xdg.configFile."fish/functions/hmanhng.fish".source = ./functions/hmanhng.fish;
   programs.zoxide.enable = true;
