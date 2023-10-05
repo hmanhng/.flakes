@@ -6,7 +6,10 @@
       inherit system;
       modules = sharedModules ++ [
         ./laptop
-        ./system.nix
+        ../modules/boot.nix
+        ../modules/impermanence.nix
+        ../modules/desktop.nix
+        ../secrets/secrets.nix
       ] ++ [{
         home-manager = {
           users.${user}.imports = [

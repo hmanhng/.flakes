@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs', user, ... }:
 {
-  imports = (import ../hardware) ++
-    [ ../fonts ];
+  imports = (import ./hardware) ++
+    [ ./fonts.nix ];
 
   environment.systemPackages = with pkgs; [
     qt6.qtwayland

@@ -40,6 +40,8 @@ in
         inputs.hyprland.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
         module_args
+        ./core.nix
+        ./nix.nix
       ];
     };
   }];
