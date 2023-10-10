@@ -9,6 +9,7 @@
         ../modules/boot.nix
         ../modules/impermanence.nix
         ../modules/desktop.nix
+        ../modules/virtualisation
         ../secrets/secrets.nix
       ] ++ [{
         home-manager = {
