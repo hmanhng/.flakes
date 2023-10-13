@@ -39,6 +39,9 @@
       # stylish-haskell
       #-- Debug --#
       #lldb
+      
+      #-- Latex --#
+      texlive.combined.scheme-full
     ];
   };
 
