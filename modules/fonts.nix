@@ -13,7 +13,8 @@ in
   fonts = {
     packages = with pkgs; [
       noto-fonts
-      # noto-fonts-emoji
+      noto-fonts-emoji
+      twemoji-color-font
       # nerdfonts
       # (nerdfonts.override {
       #   fonts = [
@@ -75,151 +76,6 @@ in
             </edit>
           </match>
 
-          <match target="pattern">
-            <test name="lang">
-              <string>zh-HK</string>
-            </test>
-            <test name="family">
-              <string>Noto Sans CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Sans CJK HK</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>zh-HK</string>
-            </test>
-            <test name="family">
-              <string>Noto Serif CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <!-- not have HK -->
-              <string>Noto Serif CJK TC</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>zh-HK</string>
-            </test>
-            <test name="family">
-              <string>Noto Sans Mono CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Sans Mono CJK HK</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>zh-TW</string>
-            </test>
-            <test name="family">
-              <string>Noto Sans CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Sans CJK TC</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>zh-TW</string>
-            </test>
-            <test name="family">
-              <string>Noto Serif CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Serif CJK TC</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>zh-TW</string>
-            </test>
-            <test name="family">
-              <string>Noto Sans Mono CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Sans Mono CJK TC</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>ja</string>
-            </test>
-            <test name="family">
-              <string>Noto Sans CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Sans CJK JP</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-                <string>ja</string>
-            </test>
-            <test name="family">
-              <string>Noto Serif CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Serif CJK JP</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>ja</string>
-            </test>
-            <test name="family">
-              <string>Noto Sans Mono CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Sans Mono CJK JP</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>ko</string>
-            </test>
-            <test name="family">
-              <string>Noto Sans CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Sans CJK KR</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>ko</string>
-            </test>
-            <test name="family">
-              <string>Noto Serif CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Serif CJK KR</string>
-            </edit>
-          </match>
-
-          <match target="pattern">
-            <test name="lang">
-              <string>ko</string>
-            </test>
-            <test name="family">
-              <string>Noto Sans Mono CJK SC</string>
-            </test>
-            <edit name="family" binding="strong">
-              <string>Noto Sans Mono CJK KR</string>
-            </edit>
-          </match>
-
           <!-- Replace monospace fonts -->
           <match target="pattern">
             <test name="family" compare="contains">
@@ -266,5 +122,4 @@ in
       '';
     };
   };
-
 }
