@@ -48,7 +48,7 @@
         ublock-origin
       ]) ++ (with self'.legacyPackages.firefox-addons;[
         dashlane
-        default-zoom
+        /* default-zoom */
       ]);
       search = {
         force = true;
