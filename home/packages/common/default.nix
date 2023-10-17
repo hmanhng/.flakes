@@ -2,7 +2,6 @@
   # ./chromium
   ./firefox
   ./kitty
-  ./lf
   ./mpv
   ./music
   ./neofetch
@@ -10,5 +9,6 @@
   ./qutebrowser
   ./resource_monitor
   ./search
+  ./yazi
   ./zathura
 ]

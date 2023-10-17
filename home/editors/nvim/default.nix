@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+  home = {
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
+  };
   programs = {
     neovim = {
       enable = true;

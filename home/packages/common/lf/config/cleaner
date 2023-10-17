@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-ueberzugpp cmd -s $UB_SOCKET -a remove -i PREVIEW

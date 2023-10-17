@@ -63,7 +63,6 @@
     enable = true;
     pinentryFlavor = "gnome3";
   };
-  services.network-manager-applet.enable = true;
   services.udiskie.enable = true;
   services.gammastep = {
     enable = true;

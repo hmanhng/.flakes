@@ -1,11 +1,17 @@
 { config, pkgs, user, inputs', ... }:
 
 {
+	/* systemd.user.targets.tray = {
+		Unit = {
+			Description = "Home Manager System Tray";
+			Requires = [ "graphical-session-pre.target" ];
+		};
+	}; */
   programs.waybar = {
     enable = true;
     /* package = inputs'.hyprland.packages.waybar-hyprland; */
     systemd = {
-      enable = false;
+      enable = true;
       target = "graphical-session.target";
     };
     style = ''

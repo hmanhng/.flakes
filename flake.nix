@@ -47,6 +47,7 @@
     hypr-contrib.url = "github:hyprwm/contrib";
     impermanence.url = "github:nix-community/impermanence"; # for tmpfs rootfs
     sops-nix.url = "github:Mic92/sops-nix";
+    yazi.url = "github:sxyazi/yazi";
   };
 
   nixConfig = {

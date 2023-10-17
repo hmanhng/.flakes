@@ -31,11 +31,8 @@
       nf = "nvim $(fzf)";
       f = "fzf";
 
-      j = "z";
-      ji = "zi";
-
-      r = "lfub"; # change ranger -> lf -- faster
-      lf = "lfub";
+      r = "yazi"; # change ranger -> yazi -- faster
+      y = "yazi";
       n = "neofetch";
 
       wget = "wget --hsts-file=\"\$XDG_DATA_HOME/wget-hsts\"";

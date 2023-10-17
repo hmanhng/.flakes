@@ -16,6 +16,10 @@
       init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
     '';
   };
+  programs.nm-applet = {
+    enable = true;
+    indicator = true;
+  };
 
   services.pipewire = {
     enable = true;
@@ -40,6 +44,6 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = [ inputs'.hyprland.packages.xdg-desktop-portal-hyprland ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk inputs'.hyprland.packages.xdg-desktop-portal-hyprland ];
   };
 }
