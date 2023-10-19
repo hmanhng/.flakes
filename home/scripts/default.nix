@@ -60,7 +60,7 @@ let
   '';
   default_wall = pkgs.writeShellScriptBin "default_wall" ''
     killall dynamic_wallpaper
-    swww img "${../packages/wayland/swww/default.png}" --transition-type random
+    swww img "${../packages/swww/default.png}" --transition-type random
   '';
   launch_waybar = pkgs.writeShellScriptBin "launch_waybar" ''
     #!/usr/bin/env bash

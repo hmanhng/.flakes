@@ -6,6 +6,7 @@
     ../gtk.nix
     ../scripts
     ../packages
+    ../packages/waybar/hyprland_waybar.nix
   ] ++
   (import ../shell) ++
   (import ../editors);
