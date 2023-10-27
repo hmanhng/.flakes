@@ -43,7 +43,10 @@
 
   xdg.portal = {
     enable = true;
-    xdgOpenUsePortal = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk inputs'.hyprland.packages.xdg-desktop-portal-hyprland ];
+    /* xdgOpenUsePortal = true; */
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      inputs'.hyprland.packages.xdg-desktop-portal-hyprland
+    ];
   };
 }

@@ -30,6 +30,7 @@
         { directory = ".ssh"; mode = "0700"; }
         ".mozilla"
         ".vscode"
+        ".logseq"
       ];
       files = [
       ];

@@ -73,7 +73,7 @@ symbol = " "
 [username]
 style_user = "mauve bold"
 style_root = "green bold"
-format = '[\(](bold blue)[$user]($style)[\)](bold blue) [ ](bold pink) '
+format = '[\(](bold blue)[$user]($style)[\)](bold blue) [󰥚 ](bold pink) ' # 
 disabled = false
 show_always = true
 
