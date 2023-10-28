@@ -7,7 +7,7 @@
       monitor = , preferred, auto, 1
 
       ## Autostart
-      # exec-once = launch_waybar &
+      exec-once = launch_waybar &
       # exec-once = border_color &
       exec-once = wl-paste --type text --watch cliphist store &
       exec-once = wl-paste --type image --watch cliphist store &

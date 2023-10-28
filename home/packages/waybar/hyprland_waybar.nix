@@ -11,7 +11,7 @@
     enable = true;
     /* package = inputs'.hyprland.packages.waybar-hyprland; */
     systemd = {
-      enable = true;
+      enable = false;
       target = "graphical-session.target";
     };
     style = ''
