@@ -22,10 +22,10 @@
   home = {
     packages = with pkgs; [
       #-- LSP --#
-      nil
-      nodePackages.bash-language-server
+      #nil
+      #nodePackages.bash-language-server
       #install_lsp
-      lua-language-server
+      #lua-language-server
       #gopls
       #pyright
       #zk
@@ -35,18 +35,18 @@
       #-- tree-sitter --#
       tree-sitter
       #-- format --#
-      stylua
+      #stylua
       #black
-      nixpkgs-fmt
+      #nixpkgs-fmt
       #rustfmt
-      beautysh
+      #beautysh
       #nodePackages.prettier
       # stylish-haskell
       #-- Debug --#
       #lldb
       
       #-- Latex --#
-      texlive.combined.scheme-full
+      #texlive.combined.scheme-full
     ];
   };
 
