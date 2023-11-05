@@ -40,9 +40,17 @@ in
         inputs.hyprland.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
         module_args
-        ./core.nix
-        ./nix.nix
+        self.nixosModules.boot
+        self.nixosModules.core
+        self.nixosModules.nix
+        self.nixosModules.network
       ];
     };
   }];
+  flake.nixosModules = {
+    core = import ./core.nix;
+    nix = import ./nix.nix;
+    network = import ./network.nix;
+    boot = import ./boot.nix;
+  };
 }

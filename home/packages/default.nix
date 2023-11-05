@@ -20,6 +20,7 @@ in
     qbittorrent
     stremio
     vlc
+    teams-for-linux
 
     ## Tool, etc ...
     cargo

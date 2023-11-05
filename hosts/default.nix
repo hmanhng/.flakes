@@ -6,7 +6,6 @@
       inherit system;
       modules = sharedModules ++ [
         ./laptop
-        ../modules/boot.nix
         ../modules/impermanence.nix
         ../modules/desktop.nix
         ../modules/devops

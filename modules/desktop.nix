@@ -16,10 +16,7 @@
       init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
     '';
   };
-  programs.nm-applet = {
-    enable = true;
-    indicator = true;
-  };
+  programs.nm-applet = { enable = true; indicator = true; };
 
   services.pipewire = {
     enable = true;
@@ -28,11 +25,7 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  services.openssh.enable = true;
-  services.dbus = {
-    enable = true;
-    packages = [ pkgs.gcr ];
-  };
+  services.dbus = { enable = true; packages = [ pkgs.gcr ]; };
   services.gvfs.enable = true;
 
   services.geoclue2.enable = true;
