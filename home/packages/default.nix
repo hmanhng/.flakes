@@ -44,10 +44,7 @@ in
   ]) ++ (with self'.legacyPackages; [
     spoof-dpi
   ]);
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk17;
-  };
+
   programs.gpg = {
     enable = true;
     package = pkgs.gnupg;

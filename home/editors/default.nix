@@ -2,4 +2,5 @@
   ./code
   ./nvim
   # ./emacs
+  ./jetbrains
 ]

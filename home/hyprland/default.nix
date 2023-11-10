@@ -61,10 +61,10 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
 
-      GNUHOME = "$HOME/.local/share/gnupg";
-      NODE_PATH = "$HOME/.local/share/npm-packages/lib/node_modules";
-      CARGO_HOME = "$HOME/.local/share/cargo";
-      GOPATH = "$HOME/.local/share/go";
+      GNUHOME = "${config.xdg.dataHome}/gnupg";
+      NODE_PATH = "${config.xdg.dataHome}/npm-packages/lib/node_modules";
+      CARGO_HOME = "${config.xdg.dataHome}/cargo";
+      GOPATH = "${config.xdg.dataHome}/go";
     };
     sessionPath = [
       "$HOME/.local/bin"

@@ -247,6 +247,7 @@
     settings = [{
       "layer" = "top";
       "position" = "top";
+      /* "mode" = "dock"; */
       /* "margin" = "5px 5px 0px 5px"; */
       modules-left = [
         "custom/launcher"

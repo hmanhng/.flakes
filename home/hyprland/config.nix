@@ -47,12 +47,12 @@
         fullscreen_opacity = 1.0
 
         blur {
-        enabled = yes
-        size = 3
-        passes = 3
-        new_optimizations = true
-        xray = false
-        ignore_opacity = false
+          enabled = yes
+          size = 3
+          passes = 3
+          new_optimizations = true
+          xray = false
+          ignore_opacity = false
         }
       }
 
@@ -334,6 +334,7 @@
       windowrule=noblur,^(firefox)$
 
       windowrule=workspace name:Firefox, title:Mozilla Firefox
+      windowrulev2=center 1, class:(firefox),floating:1
     '';
   };
 }

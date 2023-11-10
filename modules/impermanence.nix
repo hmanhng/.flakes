@@ -31,6 +31,7 @@
         ".mozilla"
         ".vscode"
         ".logseq"
+        ".java"
       ];
       files = [
       ];
