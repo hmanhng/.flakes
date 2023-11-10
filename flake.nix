@@ -1,34 +1,42 @@
 {
   description = "Hmanhng's NixOS configuration";
 
-  outputs = inputs @ { flake-parts, ... }:
-    let
-      user = "hmanhng";
-    in
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
+  outputs = inputs @ {flake-parts, ...}: let
+    user = "hmanhng";
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
       imports = [
         ./hosts
         ./modules
         ./lib
         ./pkgs
-        { _module.args = { inherit user; }; }
+        {_module.args = {inherit user;};}
       ];
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
+      perSystem = {
+        config,
+        self',
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: {
         # set flake-wide pkgs to the one exported by ./lib
-        imports = [{ _module.args.pkgs = config.legacyPackages; }];
+        imports = [{_module.args.pkgs = config.legacyPackages;}];
         devShells = {
           #run by `nix devlop` or `nix-shell`(legacy)
-          default = import ./shell.nix { inherit pkgs; };
+          default = import ./shell.nix {inherit pkgs;};
           #run by `nix develop .#<name>`
-          secret = with pkgs; mkShell {
-            name = "secret";
-            nativeBuildInputs = [ sops age gnupg ssh-to-age ssh-to-pgp ];
-            shellHook = ''
-              export PS1="\e[0;31m(Secret)\$ \e[m"
-            '';
-          };
+          secret = with pkgs;
+            mkShell {
+              name = "secret";
+              nativeBuildInputs = [sops age gnupg ssh-to-age ssh-to-pgp];
+              shellHook = ''
+                export PS1="\e[0;31m(Secret)\$ \e[m"
+              '';
+            };
         };
+        formatter = pkgs.alejandra;
       };
     };
 

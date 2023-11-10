@@ -1,15 +1,20 @@
-{ config, lib, pkgs, inputs', ... }:
-
 {
-  imports = [
-    ./config.nix
-    ../gtk.nix
-    ../scripts
-    ../packages
-    ../packages/waybar/hyprland_waybar.nix
-  ] ++
-  (import ../shell) ++
-  (import ../editors);
+  config,
+  lib,
+  pkgs,
+  inputs',
+  ...
+}: {
+  imports =
+    [
+      ./config.nix
+      ../gtk.nix
+      ../scripts
+      ../packages
+      ../packages/waybar/hyprland_waybar.nix
+    ]
+    ++ (import ../shell)
+    ++ (import ../editors);
 
   programs.fish.loginShellInit = ''
     set TTY1 (tty)
@@ -20,7 +25,7 @@
     systemdIntegration = true;
     enableNvidiaPatches = false;
   };
-  systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+  systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
 
   home.packages = with pkgs; [
     ## Requirement for hyprland

@@ -1,5 +1,4 @@
-{ user, ... }:
-{
+{user, ...}: {
   sops.defaultSopsFile = ./secrets.yaml;
   # sops.gnupg.sshKeyPaths = [ "/home/${user}/.ssh" ];
   # sops.age.sshKeyPaths = [ ];

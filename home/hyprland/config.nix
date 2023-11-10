@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     extraConfig = ''
       $mainMod = SUPER
@@ -204,7 +206,7 @@
 
       #-------------------------------#
       # special workspace(scratchpad) #
-      #-------------------------------# 
+      #-------------------------------#
       bind = $mainMod, minus, movetoworkspace, special
       bind = $mainMod, equal, togglespecialworkspace
 

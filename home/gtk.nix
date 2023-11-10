@@ -1,6 +1,11 @@
-{ config, pkgs, lib, inputs, user, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  user,
+  ...
+}: {
   home.sessionVariables = {
     GTK_THEME = "Nordic";
     QT_QPA_PLATFORMTHEME = "gtk3";

@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   boot = {
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader = {
       # systemd-boot = {
@@ -29,5 +27,4 @@
     consoleLogLevel = 0;
     initrd.verbose = false;
   };
-
 }

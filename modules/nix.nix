@@ -1,13 +1,17 @@
-{ pkgs, inputs, user, ... }:
 {
+  pkgs,
+  inputs,
+  user,
+  ...
+}: {
   nix = {
     settings = {
       warn-dirty = false;
       accept-flake-config = true;
-      trusted-users = [ "root" "${user}" ];
+      trusted-users = ["root" "${user}"];
       builders-use-substitutes = true;
       auto-optimise-store = true; # Optimise syslinks
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       use-xdg-base-directories = true;
 
       # for direnv GC roots

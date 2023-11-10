@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
 {
-  home.packages = with pkgs;[ libnotify ];
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [libnotify];
   services.mako = {
     enable = true;
     font = "Liga CodeNewRoman Nerd Font 14";

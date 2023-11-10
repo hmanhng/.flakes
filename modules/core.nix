@@ -1,9 +1,13 @@
-{ config, pkgs, user, ... }:
 {
+  config,
+  pkgs,
+  user,
+  ...
+}: {
   # Change default shell to fish
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
-  environment.shells = with pkgs; [ fish ];
+  environment.shells = with pkgs; [fish];
 
   time.timeZone = "Asia/Ho_Chi_Minh";
 

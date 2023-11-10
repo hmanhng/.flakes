@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cava-internal = pkgs.writeShellScriptBin "cava-internal" ''
     cava -p ~/.config/cava/config1 | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'
   '';
@@ -19,7 +22,7 @@ let
         convert $HOME/Pictures/output.png -bordercolor none -border 20 \( +clone -background black -shadow 80x8+15+15 \) \
           +swap -background transparent -layers merge +repage $HOME/Pictures/$FILE
     #
-        composite -gravity Southeast "${./watermark.png}" $HOME/Pictures/$FILE $HOME/Pictures/$FILE 
+        composite -gravity Southeast "${./watermark.png}" $HOME/Pictures/$FILE $HOME/Pictures/$FILE
     #
         wl-copy < $HOME/Pictures/$FILE
     #   remove the other pictures
@@ -66,12 +69,12 @@ let
     #!/usr/bin/env bash
     killall .waybar-wrapped
     SDIR="$HOME/.config/waybar"
-    waybar -c "$SDIR"/config -s "$SDIR"/style.css > /dev/null 2>&1 & 
+    waybar -c "$SDIR"/config -s "$SDIR"/style.css > /dev/null 2>&1 &
   '';
   border_color = pkgs.writeShellScriptBin "border_color" ''
       function border_color {
       if [[ "$GTK_THEME" == "Catppuccin-Frappe-Pink" ]]; then
-        hyprctl keyword general:col.active_border rgb\(ffc0cb\) 
+        hyprctl keyword general:col.active_border rgb\(ffc0cb\)
       elif [[ "$GTK_THEME" == "Catppuccin-Latte-Green" ]]; then
           hyprctl keyword general:col.active_border rgb\(C4ACEB\)
       else
@@ -81,8 +84,7 @@ let
 
     socat - UNIX-CONNECT:/tmp/hypr/$(echo $HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock | while read line; do border_color $line; done
   '';
-in
-{
+in {
   home.packages = with pkgs; [
     cava-internal
     wallpaper_random

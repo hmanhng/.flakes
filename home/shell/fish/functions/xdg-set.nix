@@ -6,12 +6,12 @@
       if test -d $arr1
         set -a arr2 $arr1
       end
-    end 
+    end
     set filename (f)
     if test "$filename" = ""
-    else 
+    else
       set beforeprogram (xdg-mime query default (xdg-mime query filetype $filename))
-      set program (find $arr2 -type l | f) 
+      set program (find $arr2 -type l | f)
       if test "$program" = ""
       else
         echo "Open with $beforeprogram before changing"

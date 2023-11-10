@@ -7,8 +7,8 @@
   programs = {
     kitty = {
       enable = true;
-      environment = { };
-      keybindings = { };
+      environment = {};
+      keybindings = {};
       theme = "Catppuccin-Mocha";
       # font.name = "JetBrainsMono Nerd Font";
       font.name = "Liga CodeNewRoman Nerd Font";

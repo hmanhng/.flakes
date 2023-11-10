@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home = {
     sessionVariables = {
       EDITOR = "nvim";
@@ -14,7 +12,7 @@
       extraPackages = [
       ];
       #-- Plugins --#
-      plugins = with pkgs.vimPlugins;[
+      plugins = with pkgs.vimPlugins; [
       ];
       #-- --#
     };
@@ -22,7 +20,7 @@
   home = {
     packages = with pkgs; [
       #-- LSP --#
-      #nil
+      nil
       #nodePackages.bash-language-server
       #install_lsp
       #lua-language-server
@@ -35,7 +33,8 @@
       #-- tree-sitter --#
       tree-sitter
       #-- format --#
-      #stylua
+      alejandra
+      stylua
       #black
       #nixpkgs-fmt
       #rustfmt
@@ -44,7 +43,7 @@
       # stylish-haskell
       #-- Debug --#
       #lldb
-      
+
       #-- Latex --#
       #texlive.combined.scheme-full
     ];

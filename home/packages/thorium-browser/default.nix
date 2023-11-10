@@ -1,6 +1,5 @@
-{ self', ... }:
-{
-  home.packages = [ self'.legacyPackages.thorium-browser ];
+{self', ...}: {
+  home.packages = [self'.legacyPackages.thorium-browser];
 
   home = {
     sessionVariables = {

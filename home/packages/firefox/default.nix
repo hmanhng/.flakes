@@ -1,6 +1,9 @@
-{ config, pkgs, self', ... }:
-
 {
+  config,
+  pkgs,
+  self',
+  ...
+}: {
   home = {
     sessionVariables = {
       BROWSER = "firefox";
@@ -42,45 +45,51 @@
       };
     };
     profiles.default = {
-      extensions = (with pkgs.nur.repos.rycee.firefox-addons; [
-        # duckduckgo-privacy-essentials
-        enhancer-for-youtube
-        foxyproxy-standard
-        i-dont-care-about-cookies
-        privacy-badger
-        stylus
-        /* tabcenter-reborn */
-        translate-web-pages
-        ublock-origin
-      ]) ++ (with self'.legacyPackages.firefox-addons;[
-        dashlane
-        /* default-zoom */
-      ]);
+      extensions =
+        (with pkgs.nur.repos.rycee.firefox-addons; [
+          # duckduckgo-privacy-essentials
+          enhancer-for-youtube
+          foxyproxy-standard
+          i-dont-care-about-cookies
+          privacy-badger
+          stylus
+          /*
+          tabcenter-reborn
+          */
+          translate-web-pages
+          ublock-origin
+        ])
+        ++ (with self'.legacyPackages.firefox-addons; [
+          dashlane
+          /*
+          default-zoom
+          */
+        ]);
       search = {
         force = true;
         default = "Google";
         engines = {
           "Nix Packages" = {
-            urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
+            urls = [{template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";}];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "np" ];
+            definedAliases = ["np"];
           };
           "Nix Options" = {
-            urls = [{ template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; }];
+            urls = [{template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}";}];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "no" ];
+            definedAliases = ["no"];
           };
 
           "NixOS Wiki" = {
-            urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+            urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
             iconUpdateURL = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = [ "nw" ];
+            definedAliases = ["nw"];
           };
           "YouTube" = {
-            urls = [{ template = "https://www.youtube.com/results?search_query={searchTerms}"; }];
+            urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
             iconUpdateURL = "https://cdn-icons-png.flaticon.com/512/1384/1384060.png";
-            definedAliases = [ "yt" ];
+            definedAliases = ["yt"];
           };
           # "Google".metaData.alias = "gg";
           "DuckDuckGo".metaData.hidden = true;

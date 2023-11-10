@@ -1,8 +1,13 @@
-{ inputs', pkgs, ... }:
 {
+  inputs',
+  pkgs,
+  ...
+}: {
   programs.yazi = {
     enable = true;
-    /* package = inputs'.yazi.packages.yazi; */
+    /*
+    package = inputs'.yazi.packages.yazi;
+    */
     enableFishIntegration = true;
   };
 

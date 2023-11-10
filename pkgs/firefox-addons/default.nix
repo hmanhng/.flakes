@@ -1,13 +1,22 @@
-{ fetchurl, lib, stdenv }@args:
-
-let
-  buildFirefoxXpiAddon = lib.makeOverridable ({ stdenv ? args.stdenv
-    , fetchurl ? args.fetchurl, pname, version, addonId, url, sha256,...
-    }:
+{
+  fetchurl,
+  lib,
+  stdenv,
+} @ args: let
+  buildFirefoxXpiAddon = lib.makeOverridable ({
+    stdenv ? args.stdenv,
+    fetchurl ? args.fetchurl,
+    pname,
+    version,
+    addonId,
+    url,
+    sha256,
+    ...
+  }:
     stdenv.mkDerivation {
       name = "${pname}-${version}";
 
-      src = fetchurl { inherit url sha256; };
+      src = fetchurl {inherit url sha256;};
 
       preferLocalBuild = true;
       allowSubstitutes = true;
@@ -18,9 +27,7 @@ let
         install -v -m644 "$src" "$dst/${addonId}.xpi"
       '';
     });
-in
-{
-
+in {
   dashlane = buildFirefoxXpiAddon {
     pname = "dashlane";
     version = "6.2321.2";

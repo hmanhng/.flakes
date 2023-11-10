@@ -12,7 +12,7 @@
       cmam = "commit -am";
       cam = "commit --amend -m";
       lg = "!sh -c 'if [ $0 = sh ]; then git log --oneline; else git log --oneline -$0; fi'";
-	    lgg = "log --oneline --graph";
+      lgg = "log --oneline --graph";
       rs = "reset";
       rss = "reset --soft";
       rsh = "reset --hard";
@@ -34,10 +34,18 @@
           file-style = "bold blue ul";
           hunk-header-style = "omit";
           hunk-header-decoration-style = "";
-          /* minus-style = "#d91e46"; */
-          /* minus-emph-style = "normal"; */
-          /* plus-style = "#9feb98"; */
-          /* plus-emph-style = "normal"; */
+          /*
+          minus-style = "#d91e46";
+          */
+          /*
+          minus-emph-style = "normal";
+          */
+          /*
+          plus-style = "#9feb98";
+          */
+          /*
+          plus-emph-style = "normal";
+          */
           line-numbers = true;
           line-numbers-left-format = "{nm}⋮";
           line-numbers-minus-style = "#d91e46";
@@ -48,8 +56,11 @@
         whitespace-error-style = "22 reverse";
       };
     };
-    difftastic = { enable = false; display = "inline"; };
-    diff-so-fancy = { enable = false; };
+    difftastic = {
+      enable = false;
+      display = "inline";
+    };
+    diff-so-fancy = {enable = false;};
   };
   programs.gitui = {
     enable = true;

@@ -1,6 +1,9 @@
-{ lib, pkgs, user, ... }:
-
 {
+  lib,
+  pkgs,
+  user,
+  ...
+}: {
   programs.zathura = {
     enable = true;
     extraConfig = ''

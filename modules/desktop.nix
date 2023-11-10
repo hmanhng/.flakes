@@ -1,7 +1,14 @@
-{ config, lib, pkgs, inputs', user, ... }:
 {
-  imports = (import ./hardware) ++
-    [ ./fonts.nix ];
+  config,
+  lib,
+  pkgs,
+  inputs',
+  user,
+  ...
+}: {
+  imports =
+    (import ./hardware)
+    ++ [./fonts.nix];
 
   environment.systemPackages = with pkgs; [
     qt6.qtwayland
@@ -16,7 +23,10 @@
       init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
     '';
   };
-  programs.nm-applet = { enable = true; indicator = true; };
+  programs.nm-applet = {
+    enable = true;
+    indicator = true;
+  };
 
   services.pipewire = {
     enable = true;
@@ -25,18 +35,23 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  services.dbus = { enable = true; packages = [ pkgs.gcr ]; };
+  services.dbus = {
+    enable = true;
+    packages = [pkgs.gcr];
+  };
   services.gvfs.enable = true;
 
   services.geoclue2.enable = true;
 
-  security.pam.services.swaylock = { }; # Pluggable Authentication Modules
+  security.pam.services.swaylock = {}; # Pluggable Authentication Modules
   security.rtkit.enable = true; # RealtimeKit
   security.polkit.enable = true; # Controlling system-wide privileges
 
   xdg.portal = {
     enable = true;
-    /* xdgOpenUsePortal = true; */
+    /*
+    xdgOpenUsePortal = true;
+    */
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       inputs'.hyprland.packages.xdg-desktop-portal-hyprland

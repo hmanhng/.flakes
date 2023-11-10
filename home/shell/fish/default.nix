@@ -1,21 +1,26 @@
-{ lib, pkgs, user, ... }:
-
 {
+  lib,
+  pkgs,
+  user,
+  ...
+}: {
   programs.fish = {
     enable = true;
     loginShellInit = ''
     '';
-    /* plugins = [
-      {
-      name = "autopair.fish";
-      src = pkgs.fetchFromGitHub {
-      owner = "jorgebucaran";
-      repo = "autopair.fish";
-      rev = "1.0.4";
-      sha256 = "0mfx43n3ngbmyfp4a4m9a04gcgwlak6f9myx2089bhp5qkrkanmk";
-      };
-      }
-      ]; */
+    /*
+     plugins = [
+    {
+    name = "autopair.fish";
+    src = pkgs.fetchFromGitHub {
+    owner = "jorgebucaran";
+    repo = "autopair.fish";
+    rev = "1.0.4";
+    sha256 = "0mfx43n3ngbmyfp4a4m9a04gcgwlak6f9myx2089bhp5qkrkanmk";
+    };
+    }
+    ];
+    */
     interactiveShellInit = ''set fish_greeting ""'';
     shellAliases = {
       l = "eza -F --color=always --group-directories-first";
@@ -44,7 +49,7 @@
       fl = "cd ~/.flakes";
     };
   };
-  home.packages = with pkgs; [ fishPlugins.autopair ];
+  home.packages = with pkgs; [fishPlugins.autopair];
   home.file.".config/fish/functions/owf.fish".text = import ./functions/owf.nix;
   home.file.".config/fish/functions/xdg-get.fish".text = import ./functions/xdg-get.nix;
   home.file.".config/fish/functions/xdg-set.fish".text = import ./functions/xdg-set.nix;

@@ -1,5 +1,4 @@
-{user, ...}:
-{
+{user, ...}: {
   environment.persistence."/nix/persist" = {
     hideMounts = true;
     directories = [
@@ -27,7 +26,10 @@
         ".flakes"
         # "Kvm"
         # { directory = ".gnupg"; mode = "0700"; }
-        { directory = ".ssh"; mode = "0700"; }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
         ".mozilla"
         ".vscode"
         ".logseq"

@@ -1,5 +1,9 @@
-{ lib, stdenv, fetchzip, ... }:
-
+{
+  lib,
+  stdenv,
+  fetchzip,
+  ...
+}:
 stdenv.mkDerivation rec {
   pname = "spoof-dpi";
   version = "0.7";
@@ -15,6 +19,6 @@ stdenv.mkDerivation rec {
     description = "A simple and fast anti-censorship tool written in Go";
     homepage = "https://github.com/xvzc/SpoofDPI";
     license = licenses.asl20;
-    maintainers = with maintainers; [ hmanhng ];
+    maintainers = with maintainers; [hmanhng];
   };
 }

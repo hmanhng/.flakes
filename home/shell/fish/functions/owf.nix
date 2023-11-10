@@ -2,11 +2,11 @@
   function owf
     set path (f)
     if test "$path" = ""
-      else if [ "$path" != "" ] 
+      else if [ "$path" != "" ]
         if test -d $path
-         $path 
+         $path
         else
-        xdg-open $path 
+        xdg-open $path
       end
     end
   end

@@ -1,13 +1,16 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.emacs = {
     enable = true;
     package =
-      if builtins.hasAttr "wayland" pkgs == true then
-        pkgs.emacs-pgtk
-      else
-        pkgs.emacsGit;
-    overrides = self: super: { };
+      if builtins.hasAttr "wayland" pkgs == true
+      then pkgs.emacs-pgtk
+      else pkgs.emacsGit;
+    overrides = self: super: {};
     extraPackages = epkgs: [
       # epkgs.emms
       # epkgs.magit

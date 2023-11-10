@@ -1,12 +1,14 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   xdg.configFile."qutebrowser/userscripts/translate".source = ./translate;
   programs = {
     qutebrowser = {
       enable = true;
       package = pkgs.qutebrowser;
-      quickmarks = { };
+      quickmarks = {};
       extraConfig = ''
         # vim:fileencoding=utf-8:foldmethod=marker
         # from qutebrowser.config.configfiles import ConfigAPI  # noqa: F401,E501 pylint: disable=unused-import

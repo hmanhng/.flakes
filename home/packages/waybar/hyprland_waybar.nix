@@ -1,15 +1,21 @@
-{ config, pkgs, user, inputs', ... }:
-
 {
-	systemd.user.targets.tray = {
-		Unit = {
-			Description = "Home Manager System Tray";
-			Requires = [ "graphical-session-pre.target" ];
-		};
-	};
+  config,
+  pkgs,
+  user,
+  inputs',
+  ...
+}: {
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = ["graphical-session-pre.target"];
+    };
+  };
   programs.waybar = {
     enable = true;
-    /* package = inputs'.hyprland.packages.waybar-hyprland; */
+    /*
+    package = inputs'.hyprland.packages.waybar-hyprland;
+    */
     systemd = {
       enable = false;
       target = "graphical-session.target";
@@ -244,246 +250,272 @@
         color: #cccccc;
       }
     '';
-    settings = [{
-      "layer" = "top";
-      "position" = "top";
-      /* "mode" = "dock"; */
-      /* "margin" = "5px 5px 0px 5px"; */
-      modules-left = [
-        "custom/launcher"
-        "hyprland/workspaces"
-        # "custom/number-windows"
-        "hyprland/submap"
-        "temperature#icons"
-        "temperature"
-        "memory#icons"
-        "memory"
-        "cpu#icons"
-        "cpu"
-        # "idle_inhibitor"
-        # "custom/wall"
-        "mpd"
-        # "custom/cava-internal"
-        # "hyprland/window"
-      ];
-      modules-center = [ "clock" ];
-      modules-right = [
-        "pulseaudio#icons"
-        "pulseaudio"
-        "pulseaudio#microphone-icons"
-        "pulseaudio#microphone"
-        "backlight#icons"
-        "backlight"
-        "network#icons"
-        "network"
-        "battery#icons"
-        "battery"
-        "custom/powermenu"
-        "tray"
-      ];
-      "custom/spacer" = {
-        "format" = " ";
-        "tooltip" = false;
-      };
+    settings = [
+      {
+        "layer" = "top";
+        "position" = "top";
+        /*
+        "mode" = "dock";
+        */
+        /*
+        "margin" = "5px 5px 0px 5px";
+        */
+        modules-left = [
+          "custom/launcher"
+          "hyprland/workspaces"
+          # "custom/number-windows"
+          "hyprland/submap"
+          "temperature#icons"
+          "temperature"
+          "memory#icons"
+          "memory"
+          "cpu#icons"
+          "cpu"
+          # "idle_inhibitor"
+          # "custom/wall"
+          "mpd"
+          # "custom/cava-internal"
+          # "hyprland/window"
+        ];
+        modules-center = ["clock"];
+        modules-right = [
+          "pulseaudio#icons"
+          "pulseaudio"
+          "pulseaudio#microphone-icons"
+          "pulseaudio#microphone"
+          "backlight#icons"
+          "backlight"
+          "network#icons"
+          "network"
+          "battery#icons"
+          "battery"
+          "custom/powermenu"
+          "tray"
+        ];
+        "custom/spacer" = {
+          "format" = " ";
+          "tooltip" = false;
+        };
 
-      "custom/launcher" = {
-        "format" = "";
-        "on-click" = "wallpaper_random";
-        "on-click-middle" = "default_wall";
-        "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
-        # "on-click" = "pkill rofi || ~/.config/rofi/launcher.sh";
-        "tooltip" = false;
-      };
+        "custom/launcher" = {
+          "format" = "";
+          "on-click" = "wallpaper_random";
+          "on-click-middle" = "default_wall";
+          "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
+          # "on-click" = "pkill rofi || ~/.config/rofi/launcher.sh";
+          "tooltip" = false;
+        };
 
-      "hyprland/workspaces" = {
-        "format" = "{name}";
-        "on-click" = "activate";
-        # "on-scroll-up" = "hyprctl dispatch workspace e+1";
-        # "on-scroll-down" = "hyprctl dispatch workspace e-1";
-      };
+        "hyprland/workspaces" = {
+          "format" = "{name}";
+          "on-click" = "activate";
+          # "on-scroll-up" = "hyprctl dispatch workspace e+1";
+          # "on-scroll-down" = "hyprctl dispatch workspace e-1";
+        };
 
-      "custom/number-windows" = {
-        "exec" = "hyprctl activeworkspace | rg windows | cut -d \" \" -f2";
-        "restart-interval" = 1;
-        "format" = "󰹑   {}";
-        "tooltip" = false;
-      };
+        "custom/number-windows" = {
+          "exec" = "hyprctl activeworkspace | rg windows | cut -d \" \" -f2";
+          "restart-interval" = 1;
+          "format" = "󰹑   {}";
+          "tooltip" = false;
+        };
 
-      "hyprland/submap" = {
-        "format" = "submap= {} ";
-        # "max-length" = 8;
-        # "tooltip" = false;
-      };
+        "hyprland/submap" = {
+          "format" = "submap= {} ";
+          # "max-length" = 8;
+          # "tooltip" = false;
+        };
 
-      "temperature#icons" = { "format" = ""; "tooltip" = false; };
-      "temperature" = {
-        # "hwmon-path"= "${env:HWMON_PATH}";
-        #"critical-threshold"= 80;
-        "thermal-zone" = 2;
-        "tooltip" = false;
-        "format" = "{temperatureC}°C";
-      };
+        "temperature#icons" = {
+          "format" = "";
+          "tooltip" = false;
+        };
+        "temperature" = {
+          # "hwmon-path"= "${env:HWMON_PATH}";
+          #"critical-threshold"= 80;
+          "thermal-zone" = 2;
+          "tooltip" = false;
+          "format" = "{temperatureC}°C";
+        };
 
-      "memory#icons" = { "format" = "﬙"; };
-      "memory" = {
-        "interval" = 10;
-        "format" = "{percentage}%";
-        "states" = { "warning" = 85; };
-      };
+        "memory#icons" = {"format" = "﬙";};
+        "memory" = {
+          "interval" = 10;
+          "format" = "{percentage}%";
+          "states" = {"warning" = 85;};
+        };
 
-      "cpu#icons" = { "format" = ""; };
-      "cpu" = {
-        "interval" = 10;
-        "format" = "{usage}%";
-      };
+        "cpu#icons" = {"format" = "";};
+        "cpu" = {
+          "interval" = 10;
+          "format" = "{usage}%";
+        };
 
-      "idle_inhibitor" = {
-        "format" = "{icon}";
-        "format-icons" = { "activated" = ""; "deactivated" = ""; };
-        "tooltip" = false;
-      };
+        "idle_inhibitor" = {
+          "format" = "{icon}";
+          "format-icons" = {
+            "activated" = "";
+            "deactivated" = "";
+          };
+          "tooltip" = false;
+        };
 
-      "custom/wall" = {
-        "on-click" = "wallpaper_random";
-        "on-click-middle" = "default_wall";
-        "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
-        "format" = " ﴔ ";
-        "tooltip" = false;
-      };
+        "custom/wall" = {
+          "on-click" = "wallpaper_random";
+          "on-click-middle" = "default_wall";
+          "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
+          "format" = " ﴔ ";
+          "tooltip" = false;
+        };
 
-      "mpd" = {
-        "max-length" = 25;
-        "format" = "<span foreground='#bb9af7'> </span>{title}";
-        "format-paused" = " {title}";
-        "format-stopped" = "<span foreground='#bb9af7'> </span>";
-        "format-disconnected" = "";
-        "on-click" = "mpc --quiet toggle";
-        "on-click-right" = "mpc update; mpc ls | mpc add";
-        "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-        "on-scroll-up" = "mpc --quiet prev";
-        "on-scroll-down" = "mpc --quiet next";
-        "smooth-scrolling-threshold" = 5;
-        "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
-      };
+        "mpd" = {
+          "max-length" = 25;
+          "format" = "<span foreground='#bb9af7'> </span>{title}";
+          "format-paused" = " {title}";
+          "format-stopped" = "<span foreground='#bb9af7'> </span>";
+          "format-disconnected" = "";
+          "on-click" = "mpc --quiet toggle";
+          "on-click-right" = "mpc update; mpc ls | mpc add";
+          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
+          "on-scroll-up" = "mpc --quiet prev";
+          "on-scroll-down" = "mpc --quiet next";
+          "smooth-scrolling-threshold" = 5;
+          "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
+        };
 
-      "custom/cava-internal" = {
-        "exec" = "sleep 1s && cava-internal";
-        "tooltip" = false;
-      };
+        "custom/cava-internal" = {
+          "exec" = "sleep 1s && cava-internal";
+          "tooltip" = false;
+        };
 
-      "clock" = {
-        "format" = "{:%H:%M}";
-        "format-alt" = "<span foreground='#FF6699'> </span>{:%d %B %Y (%a)}";
-        "locale" = "en_US.UTF-8";
-        "interval" = 60;
-        "tooltip" = true;
-        "tooltip-format" = "Devops go go\n<tt>{calendar}</tt>";
-      };
+        "clock" = {
+          "format" = "{:%H:%M}";
+          "format-alt" = "<span foreground='#FF6699'> </span>{:%d %B %Y (%a)}";
+          "locale" = "en_US.UTF-8";
+          "interval" = 60;
+          "tooltip" = true;
+          "tooltip-format" = "Devops go go\n<tt>{calendar}</tt>";
+        };
 
-      "pulseaudio#icons" = {
-        "format" = "{icon}";
-        "format-icons" = { "headphone" = ""; "hands-free" = ""; "headset" = ""; "phone" = ""; "portable" = ""; "car" = ""; "default" = [ "󰕿" "󰖀" "󰕾" ]; };
-        "format-muted" = "婢";
-        "on-click" = "pamixer -t";
-        "on-click-right" = "pavucontrol";
-        "scroll-step" = 5;
-        "tooltip" = false;
-      };
-      "pulseaudio" = {
-        "format" = "{volume}%";
-        "format-bluetooth" = " {volume}%";
-        "format-muted" = "Muted";
-        "on-click" = "pamixer -t";
-        "on-click-right" = "pavucontrol";
-        "scroll-step" = 5;
-        # "states" = { "warning" = 85; };
-        "tooltip" = false;
-      };
+        "pulseaudio#icons" = {
+          "format" = "{icon}";
+          "format-icons" = {
+            "headphone" = "";
+            "hands-free" = "";
+            "headset" = "";
+            "phone" = "";
+            "portable" = "";
+            "car" = "";
+            "default" = ["󰕿" "󰖀" "󰕾"];
+          };
+          "format-muted" = "婢";
+          "on-click" = "pamixer -t";
+          "on-click-right" = "pavucontrol";
+          "scroll-step" = 5;
+          "tooltip" = false;
+        };
+        "pulseaudio" = {
+          "format" = "{volume}%";
+          "format-bluetooth" = " {volume}%";
+          "format-muted" = "Muted";
+          "on-click" = "pamixer -t";
+          "on-click-right" = "pavucontrol";
+          "scroll-step" = 5;
+          # "states" = { "warning" = 85; };
+          "tooltip" = false;
+        };
 
-      "pulseaudio#microphone-icons" = {
-        "format" = "{format_source}";
-        "format-source" = "";
-        "format-source-muted" = "";
-        "on-click" = "pamixer --default-source -t";
-        "on-click-right" = "pavucontrol";
-        "on-scroll-down" = "pamixer --default-source -d 5";
-        "on-scroll-up" = "pamixer --default-source -i 5";
-        "scroll-step" = 5;
-        "tooltip" = false;
-      };
-      "pulseaudio#microphone" = {
-        "format" = "{format_source}";
-        "format-source" = "{volume}%";
-        "format-source-muted" = "Muted";
-        "on-click" = "pamixer --default-source -t";
-        "on-click-right" = "pavucontrol";
-        "on-scroll-down" = "pamixer --default-source -d 5";
-        "on-scroll-up" = "pamixer --default-source -i 5";
-        "scroll-step" = 5;
-        "tooltip" = false;
-      };
+        "pulseaudio#microphone-icons" = {
+          "format" = "{format_source}";
+          "format-source" = "";
+          "format-source-muted" = "";
+          "on-click" = "pamixer --default-source -t";
+          "on-click-right" = "pavucontrol";
+          "on-scroll-down" = "pamixer --default-source -d 5";
+          "on-scroll-up" = "pamixer --default-source -i 5";
+          "scroll-step" = 5;
+          "tooltip" = false;
+        };
+        "pulseaudio#microphone" = {
+          "format" = "{format_source}";
+          "format-source" = "{volume}%";
+          "format-source-muted" = "Muted";
+          "on-click" = "pamixer --default-source -t";
+          "on-click-right" = "pavucontrol";
+          "on-scroll-down" = "pamixer --default-source -d 5";
+          "on-scroll-up" = "pamixer --default-source -i 5";
+          "scroll-step" = 5;
+          "tooltip" = false;
+        };
 
-      "backlight#icons" = {
-        "device" = "intel_backlight";
-        "on-scroll-up" = "light -A 5";
-        "on-scroll-down" = "light -U 5";
-        "format" = "{icon}";
-        "format-icons" = [ "" "" "" "" ];
-        "tooltip" = false;
-      };
-      "backlight" = {
-        "device" = "intel_backlight";
-        "on-scroll-up" = "light -A 5";
-        "on-scroll-down" = "light -U 5";
-        "format" = "{percent}%";
-        "tooltip" = false;
-      };
+        "backlight#icons" = {
+          "device" = "intel_backlight";
+          "on-scroll-up" = "light -A 5";
+          "on-scroll-down" = "light -U 5";
+          "format" = "{icon}";
+          "format-icons" = ["" "" "" ""];
+          "tooltip" = false;
+        };
+        "backlight" = {
+          "device" = "intel_backlight";
+          "on-scroll-up" = "light -A 5";
+          "on-scroll-down" = "light -U 5";
+          "format" = "{percent}%";
+          "tooltip" = false;
+        };
 
-      "network#icons" = {
-        "format-disconnected" = "󰞃";
-        "format-ethernet" = "";
-        "format-linked" = "󰯡";
-        "format-wifi" = "󰒢";
-        "tooltip" = false;
-      };
-      "network" = {
-        "format-disconnected" = "Disconnected";
-        "format-ethernet" = "{ifname} ({ipaddr})";
-        "format-linked" = "{essid} (No IP)";
-        "format-wifi" = "{essid}";
-        "tooltip" = false;
-      };
+        "network#icons" = {
+          "format-disconnected" = "󰞃";
+          "format-ethernet" = "";
+          "format-linked" = "󰯡";
+          "format-wifi" = "󰒢";
+          "tooltip" = false;
+        };
+        "network" = {
+          "format-disconnected" = "Disconnected";
+          "format-ethernet" = "{ifname} ({ipaddr})";
+          "format-linked" = "{essid} (No IP)";
+          "format-wifi" = "{essid}";
+          "tooltip" = false;
+        };
 
-      "battery#icons" = {
-        "format" = "{icon}";
-        "format-charging" = "󰚥";
-        "format-full" = "󰚥";
-        "format-plugged" = "󰚥";
-        "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
-        "states" = { "critical" = 10; "warning" = 20; };
-        "full-at" = 96;
-        "tooltip" = true;
-      };
-      "battery" = {
-        "format" = "{capacity}%";
-        "format-charging" = "{capacity}%";
-        "format-full" = "Full";
-        "format-plugged" = "Full";
-        "states" = { "critical" = 10; "warning" = 20; };
-        "full-at" = 96;
-        "tooltip" = true;
-      };
+        "battery#icons" = {
+          "format" = "{icon}";
+          "format-charging" = "󰚥";
+          "format-full" = "󰚥";
+          "format-plugged" = "󰚥";
+          "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          "states" = {
+            "critical" = 10;
+            "warning" = 20;
+          };
+          "full-at" = 96;
+          "tooltip" = true;
+        };
+        "battery" = {
+          "format" = "{capacity}%";
+          "format-charging" = "{capacity}%";
+          "format-full" = "Full";
+          "format-plugged" = "Full";
+          "states" = {
+            "critical" = 10;
+            "warning" = 20;
+          };
+          "full-at" = 96;
+          "tooltip" = true;
+        };
 
-      "custom/powermenu" = {
-        "format" = "";
-        "on-click" = "pkill rofi || ~/.config/rofi/powermenu/powermenu.sh";
-        "tooltip" = false;
-      };
+        "custom/powermenu" = {
+          "format" = "";
+          "on-click" = "pkill rofi || ~/.config/rofi/powermenu/powermenu.sh";
+          "tooltip" = false;
+        };
 
-      "tray" = {
-        # "icon-size" = 15;
-        "spacing" = 5;
-      };
-    }];
+        "tray" = {
+          # "icon-size" = 15;
+          "spacing" = 5;
+        };
+      }
+    ];
   };
 }

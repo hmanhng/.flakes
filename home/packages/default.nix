@@ -1,49 +1,56 @@
-{ config, pkgs, inputs', self', ... }:
-let
+{
+  config,
+  pkgs,
+  inputs',
+  self',
+  ...
+}: let
   directoryContents = builtins.readDir ./.;
-  directories = builtins.filter
+  directories =
+    builtins.filter
     (name: directoryContents."${name}" == "directory" && name != "waybar")
     (builtins.attrNames directoryContents);
   imports = map (name: ./. + "/${name}") directories;
-in
-{
+in {
   imports = imports;
-  home.packages = (with pkgs; [
-    ## Programs
-    cinnamon.nemo-with-extensions
-    gnome.file-roller
-    imv
-    libreoffice-qt
-    meld
-    motrix
-    pavucontrol
-    qbittorrent
-    stremio
-    vlc
-    teams-for-linux
+  home.packages =
+    (with pkgs; [
+      ## Programs
+      cinnamon.nemo-with-extensions
+      gnome.file-roller
+      imv
+      libreoffice-qt
+      meld
+      motrix
+      pavucontrol
+      qbittorrent
+      stremio
+      vlc
+      teams-for-linux
 
-    ## Tool, etc ...
-    cargo
-    cmake
-    dotnet-sdk_7
-    gcc
-    go
-    gnumake
-    lua
-    nodejs
+      ## Tool, etc ...
+      cargo
+      cmake
+      dotnet-sdk_7
+      gcc
+      go
+      gnumake
+      lua
+      nodejs
 
-    ##
-    # alsa-utils
-    flac
-    # pulsemixer
-    unrar
-    unzip
-    wget
-    wireguard-tools
-    zip
-  ]) ++ (with self'.legacyPackages; [
-    spoof-dpi
-  ]);
+      ##
+      # alsa-utils
+      flac
+      # pulsemixer
+      unrar
+      unzip
+      wget
+      wireguard-tools
+      zip
+    ])
+    ++ (with self'.legacyPackages; [
+      spoof-dpi
+    ]);
 
   programs.gpg = {
     enable = true;
