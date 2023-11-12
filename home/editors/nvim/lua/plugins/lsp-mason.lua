@@ -10,13 +10,16 @@ return {
         --[[ cssls = {}, ]]
       },
     },
+    config = function(_, opts)
+      vim.g.autoformat = false
+    end,
   },
   --[[ { "williamboman/mason-lspconfig.nvim", enabled = false }, -- Never use it, compile ? fuk shit ]]
   {
     "williamboman/mason.nvim",
     enabled = true,
-    opts = {
-      ensure_installed = {},
-    },
+    opts = function(_, opts)
+      table.remove(opts.ensure_installed, 1)
+    end,
   },
 }
