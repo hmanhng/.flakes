@@ -56,6 +56,10 @@
     impermanence.url = "github:nix-community/impermanence"; # for tmpfs rootfs
     sops-nix.url = "github:Mic92/sops-nix";
     yazi.url = "github:sxyazi/yazi";
+    spicetify-nix = {
+      url = "github:MichaelPachec0/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
