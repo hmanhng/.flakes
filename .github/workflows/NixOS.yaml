@@ -9,6 +9,7 @@ jobs:
       - name: "Maximize Disk Space"
         uses: easimon/maximize-build-space@v8
         with:
+          build-mount-path: /nix
           remove-android: true
           remove-codeql: true
           remove-docker-images: true
@@ -17,7 +18,7 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: nixbuild/nix-quick-install-action@v26
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: "Install Cachix ❄️ "
