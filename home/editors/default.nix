@@ -1,6 +1,8 @@
-[
-  ./code
-  ./nvim
-  # ./emacs
-  ./jetbrains
-]
+{
+  imports = [
+    ./code
+    ./nvim
+    # ./emacs
+    ./jetbrains
+  ];
+}

@@ -1,8 +1,7 @@
 {
   config,
   pkgs,
-  inputs',
-  self',
+  self,
   ...
 }: let
   directoryContents = builtins.readDir ./.;
@@ -16,7 +15,9 @@ in {
   home.packages =
     (with pkgs; [
       ## Programs
-      cinnamon.nemo-with-extensions
+      xfce.thunar
+      xfce.thunar-archive-plugin
+      xfce.tumbler
       gnome.file-roller
       imv
       libreoffice-qt
@@ -38,19 +39,19 @@ in {
       lua
       nodejs
 
-      ##
-      # alsa-utils
-      flac
-      # pulsemixer
+      #
+      killall
+      pamixer
+      socat
+      xdg-utils
       unrar
       unzip
       wget
       wireguard-tools
       zip
     ])
-    ++ (with self'.legacyPackages; [
-      spoof-dpi
-    ]);
+    ++ (with self.legacyPackages.${pkgs.system}; [
+      ]);
 
   programs.gpg = {
     enable = true;
@@ -76,8 +77,4 @@ in {
     pinentryFlavor = "gnome3";
   };
   services.udiskie.enable = true;
-  services.gammastep = {
-    enable = true;
-    provider = "geoclue2";
-  };
 }

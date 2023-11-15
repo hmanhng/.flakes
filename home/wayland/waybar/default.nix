@@ -1,21 +1,9 @@
 {
-  config,
   pkgs,
-  user,
-  inputs',
   ...
 }: {
-  systemd.user.targets.tray = {
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = ["graphical-session-pre.target"];
-    };
-  };
   programs.waybar = {
     enable = true;
-    /*
-    package = inputs'.hyprland.packages.waybar-hyprland;
-    */
     systemd = {
       enable = false;
       target = "graphical-session.target";
@@ -52,9 +40,9 @@
         animation-direction: alternate;
       }
       window#waybar {
-        font-family: "Operator Mono Lig", "JetBrainsMono Nerd Font";
+        font-family: Operator Mono Lig, JetBrainsMono Nerd Font;
         /* font-weight: bold; */
-        font-size: 15pt;
+        font-size: 16pt;
         background-color: @bg-color;
       }
       #workspaces {
@@ -82,9 +70,9 @@
         background: #3b4253;
       }
       tooltip label {
-        font-family: "Liga CodeNewRoman Nerd Font";
-        font-weight: bold;
-        font-size: 14pt;
+        font-family: Operator Mono Lig;
+        /* font-weight: bold; */
+        font-size: 15pt;
         color: #e4e8ef;
       }
       /* #temperature,
@@ -111,10 +99,22 @@
         padding: 0px 5px 0px 10px;
       } */
 
-      #custom-launcher {
+      #custom-launcher,
+      #custom-hyprpicker,
+      #custom-screenshot {
         font-size: 25px;
+      }
+      #custom-launcher {
         padding: 0px 7px 0px 7px;
         color: #6db7f7;
+      }
+      #custom-hyprpicker {
+        padding: 0px 0px 0px 7px;
+        color: #4BF6BC;
+      }
+      #custom-screenshot {
+        padding: 0px 10px 0px 12px;
+        color: #9255FC;
       }
 
       #custom-number-windows {
@@ -166,16 +166,18 @@
       }
       #pulseaudio.icons {
         color: @pulseaudio-color;
-        padding: 0px 6px 0px 10px;
+        padding: 0px 10px 0px 3px;
+        font-size: 19pt;
       }
       #pulseaudio.microphone-icons {
         color: @pulseaudio-color;
-        padding: 0px 3px 0px 10px;
+        padding: 0px 10px 0px 3px;
+        font-size: 18pt;
       }
 
       #backlight.icons {
         color: @backlight-color;
-        padding: 0px 2px 0px 10px;
+        padding: 0px 10px 0px 3px;
       }
       #backlight {
         color: @backlight-color;
@@ -183,7 +185,7 @@
 
       #network.icons,
       #network.icons.disconnected {
-        padding: 0px 8px 0px 10px;
+        padding: 0px 5px 0px 0px;
       }
       #network {
         color: @network-color;
@@ -223,7 +225,7 @@
         padding-left: 10px;
       }
       #tray menu {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: JetBrainsMono Nerd Font;
         font-size: 14pt;
         background: @bg-color;
         color: @fg-color;
@@ -243,7 +245,7 @@
         /* color: #c0caf5; */
       }
       #custom-cava-internal {
-        font-family: "Liga CodeNewRoman Nerd Font", "JetBrainsMono Nerd Font";
+        font-family: Liga CodeNewRoman Nerd Font, JetBrainsMono Nerd Font;
         font-weight: bold;
         padding-left: 0px;
         padding-right: 5px;
@@ -261,7 +263,7 @@
         "margin" = "5px 5px 0px 5px";
         */
         modules-left = [
-          "custom/launcher"
+          "group/launcher"
           "hyprland/workspaces"
           # "custom/number-windows"
           "hyprland/submap"
@@ -279,12 +281,8 @@
         ];
         modules-center = ["clock"];
         modules-right = [
-          "pulseaudio#icons"
-          "pulseaudio"
-          "pulseaudio#microphone-icons"
-          "pulseaudio#microphone"
-          "backlight#icons"
-          "backlight"
+          "group/audio"
+          "group/backlight"
           "network#icons"
           "network"
           "battery#icons"
@@ -297,12 +295,33 @@
           "tooltip" = false;
         };
 
+        "group/launcher" = {
+          "orientation" = "inherit";
+          "drawer" = {
+            "transition-duration" = 500;
+            "children-class" = "launcher";
+            "transition-left-to-right" = false;
+          };
+          "modules" = ["custom/launcher" "custom/hyprpicker" "custom/screenshot"];
+        };
         "custom/launcher" = {
           "format" = "";
           "on-click" = "wallpaper_random";
           "on-click-middle" = "default_wall";
           "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
           # "on-click" = "pkill rofi || ~/.config/rofi/launcher.sh";
+          "tooltip" = false;
+        };
+        "custom/hyprpicker" = {
+          "format" = "";
+          "on-click" = "hyprpicker -a";
+          "tooltip" = false;
+        };
+        "custom/screenshot" = {
+          "format" = "󰸉";
+          "on-click" = "grimblast --notify --cursor  copy area";
+          "on-click-middle" = "grimblast --notify --cursor  copysave area ~/Pictures/$(date \"+%Y-%m-%d\"T\"%H:%M:%S_no_watermark\").png";
+          "on-click-right" = "grimblast_watermark";
           "tooltip" = false;
         };
 
@@ -321,7 +340,7 @@
         };
 
         "hyprland/submap" = {
-          "format" = "submap= {} ";
+          "format" = "submap = {} ";
           # "max-length" = 8;
           # "tooltip" = false;
         };
@@ -390,13 +409,40 @@
 
         "clock" = {
           "format" = "{:%H:%M}";
-          "format-alt" = "<span foreground='#FF6699'> </span>{:%d %B %Y (%a)}";
+          "format-alt" = "{:%d %B %Y (%a)}";
           "locale" = "en_US.UTF-8";
-          "interval" = 60;
-          "tooltip" = true;
-          "tooltip-format" = "Devops go go\n<tt>{calendar}</tt>";
+          "tooltip-format" = "Devops go go\n<span size='13pt' font='JetBrainsMono Nerd Font'>{calendar}</span>";
+          "calendar" = {
+            "mode-mon-col" = 3;
+            /* "weeks-pos" = "right"; */
+            "on-scroll" = 1;
+            "on-click-right" = "mode";
+            "format" = {
+              "months" = "<span color='#ffead3'><b>{}</b></span>";
+              "days" = "<span color='#ecc6d9'><b>{}</b></span>";
+              "weeks" = "<span color='#99ffdd'><b>W{}</b></span>";
+              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
+              "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+          };
+          "actions" = {
+            "on-click-right" = "mode";
+            "on-click-forward" = "tz_up";
+            "on-click-backward" = "tz_down";
+            "on-scroll-up" = "shift_up";
+            "on-scroll-down" = "shift_down";
+          };
         };
 
+        "group/audio" = {
+          "orientation" = "inherit";
+          "drawer" = {
+            "transition-duration" = 500;
+            "children-class" = "audio";
+            "transition-left-to-right" = true;
+          };
+          "modules" = ["pulseaudio#icons" "pulseaudio#microphone" "pulseaudio#microphone-icons" "pulseaudio"];
+        };
         "pulseaudio#icons" = {
           "format" = "{icon}";
           "format-icons" = {
@@ -408,7 +454,7 @@
             "car" = "";
             "default" = ["󰕿" "󰖀" "󰕾"];
           };
-          "format-muted" = "婢";
+          "format-muted" = "󰝟";
           "on-click" = "pamixer -t";
           "on-click-right" = "pavucontrol";
           "scroll-step" = 5;
@@ -417,7 +463,9 @@
         "pulseaudio" = {
           "format" = "{volume}%";
           "format-bluetooth" = " {volume}%";
+          /*
           "format-muted" = "Muted";
+          */
           "on-click" = "pamixer -t";
           "on-click-right" = "pavucontrol";
           "scroll-step" = 5;
@@ -427,8 +475,8 @@
 
         "pulseaudio#microphone-icons" = {
           "format" = "{format_source}";
-          "format-source" = "";
-          "format-source-muted" = "";
+          "format-source" = "󰍬";
+          "format-source-muted" = "󰍭";
           "on-click" = "pamixer --default-source -t";
           "on-click-right" = "pavucontrol";
           "on-scroll-down" = "pamixer --default-source -d 5";
@@ -439,7 +487,9 @@
         "pulseaudio#microphone" = {
           "format" = "{format_source}";
           "format-source" = "{volume}%";
+          /*
           "format-source-muted" = "Muted";
+          */
           "on-click" = "pamixer --default-source -t";
           "on-click-right" = "pavucontrol";
           "on-scroll-down" = "pamixer --default-source -d 5";
@@ -448,31 +498,40 @@
           "tooltip" = false;
         };
 
+        "group/backlight" = {
+          "orientation" = "inherit";
+          "drawer" = {
+            "transition-duration" = 500;
+            "children-class" = "audio";
+            "transition-left-to-right" = true;
+          };
+          "modules" = ["backlight#icons" "backlight"];
+        };
         "backlight#icons" = {
           "device" = "intel_backlight";
-          "on-scroll-up" = "light -A 5";
-          "on-scroll-down" = "light -U 5";
+          "on-scroll-up" = "brillo -A 5";
+          "on-scroll-down" = "brillo -U 5";
           "format" = "{icon}";
           "format-icons" = ["" "" "" ""];
           "tooltip" = false;
         };
         "backlight" = {
           "device" = "intel_backlight";
-          "on-scroll-up" = "light -A 5";
-          "on-scroll-down" = "light -U 5";
+          "on-scroll-up" = "brillo -A 5";
+          "on-scroll-down" = "brillo -U 5";
           "format" = "{percent}%";
           "tooltip" = false;
         };
 
         "network#icons" = {
-          "format-disconnected" = "󰞃";
+          "format-disconnected" = "";
           "format-ethernet" = "";
           "format-linked" = "󰯡";
-          "format-wifi" = "󰒢";
+          "format-wifi" = "";
           "tooltip" = false;
         };
         "network" = {
-          "format-disconnected" = "Disconnected";
+          /* "format-disconnected" = "Disconnected"; */
           "format-ethernet" = "{ifname} ({ipaddr})";
           "format-linked" = "{essid} (No IP)";
           "format-wifi" = "{essid}";
@@ -484,7 +543,7 @@
           "format-charging" = "󰚥";
           "format-full" = "󰚥";
           "format-plugged" = "󰚥";
-          "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          "format-icons" = ["" "" "" "" ""];
           "states" = {
             "critical" = 10;
             "warning" = 20;
@@ -495,8 +554,12 @@
         "battery" = {
           "format" = "{capacity}%";
           "format-charging" = "{capacity}%";
+          /*
           "format-full" = "Full";
+          */
+          /*
           "format-plugged" = "Full";
+          */
           "states" = {
             "critical" = 10;
             "warning" = 20;

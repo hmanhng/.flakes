@@ -1,4 +1,9 @@
-{user, ...}: {
+{
+  inputs,
+  user,
+  ...
+}: {
+  imports = [inputs.impermanence.nixosModules.impermanence];
   environment.persistence."/nix/persist" = {
     hideMounts = true;
     directories = [

@@ -1,4 +1,4 @@
-{
+{default, ...}: {
   home = {
     sessionVariables = {
       TERMINAL = "kitty";
@@ -11,8 +11,8 @@
       keybindings = {};
       theme = "Catppuccin-Mocha";
       # font.name = "JetBrainsMono Nerd Font";
-      font.name = "Liga CodeNewRoman Nerd Font";
-      font.size = 20;
+      font.name = default.terminal.font;
+      font.size = default.terminal.size;
       settings = {
         bold_font = "auto";
         italic_font = "auto";
@@ -26,7 +26,7 @@
         url_style = "dotted";
         #Close the terminal =  without confirmation;
         confirm_os_window_close = 0;
-        background_opacity = "0.8";
+        background_opacity = toString default.terminal.opacity;
         dynamic_background_opacity = true;
         tab_bar_min_tabs = 2;
         tab_bar_edge = "bottom";

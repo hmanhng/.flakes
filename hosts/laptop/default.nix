@@ -1,6 +1,4 @@
 {
-  config,
-  pkgs,
   user,
   ...
 }: let
@@ -14,6 +12,6 @@ in {
   users.users.${user} = {
     initialHashedPassword = initialHashedPassword;
     isNormalUser = true;
-    extraGroups = ["wheel" "video" "audio"];
+    extraGroups = ["wheel" "video" "audio" "networkmanager"];
   };
 }

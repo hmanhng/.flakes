@@ -2,20 +2,12 @@
   self,
   inputs,
   user,
-  withSystem,
+  default,
   ...
 }: let
-  module_args = withSystem "x86_64-linux" ({
-    system,
-    self',
-    inputs',
-    ...
-  }: {
-    # system-agnostic args
-    _module.args = {
-      inherit inputs self inputs' self' user;
-    };
-  });
+  module_args._module.args = {
+    inherit inputs self user default;
+  };
 in {
   imports = [
     {
@@ -27,10 +19,7 @@ in {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${user}.imports = [
-                inputs.hyprland.homeManagerModules.default
-                module_args
-              ];
+              extraSpecialArgs = {inherit inputs;};
             };
           }
           {
@@ -44,12 +33,11 @@ in {
                 ];
             };
           }
-          inputs.impermanence.nixosModules.impermanence
-          inputs.sops-nix.nixosModules.sops
           inputs.nur.nixosModules.nur
-          inputs.hyprland.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
+          inputs.nh.nixosModules.default
           module_args
+
           self.nixosModules.boot
           self.nixosModules.core
           self.nixosModules.nix

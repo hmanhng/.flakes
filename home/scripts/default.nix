@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  default,
   ...
 }: let
   cava-internal = pkgs.writeShellScriptBin "cava-internal" ''
@@ -29,7 +30,7 @@
         rm $HOME/Pictures/src.png $HOME/Pictures/output.png
   '';
   myswaylock = pkgs.writeShellScriptBin "myswaylock" ''
-    swaylock  \
+    ${pkgs.swaylock-effects}/bin/swaylock \
            --screenshots \
            --clock \
            --indicator \
@@ -47,14 +48,14 @@
   '';
   wallpaper_random = pkgs.writeShellScriptBin "wallpaper_random" ''
     killall dynamic_wallpaper
-    swww img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1) --transition-type random
+    ${lib.getExe pkgs.swww} img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1) --transition-type random
   '';
   dynamic_wallpaper = pkgs.writeShellScriptBin "dynamic_wallpaper" ''
-    swww img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1) --transition-type random
+    ${lib.getExe pkgs.swww} img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1) --transition-type random
     OLD_PID=$!
     while true; do
       sleep 120
-      swww img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1)
+      ${lib.getExe pkgs.swww} img $(find ~/Pictures/wallpapers/. -iregex '.*\.\(jpg\|jpeg\|png\|gif\|bmp\)' | shuf -n1)
       NEXT_PID=$!
       sleep 5
       kill $OLD_PID
@@ -63,7 +64,7 @@
   '';
   default_wall = pkgs.writeShellScriptBin "default_wall" ''
     killall dynamic_wallpaper
-    swww img "${../packages/swww/default.png}" --transition-type random
+    ${lib.getExe pkgs.swww} img ${default.wallpaper} --transition-type random
   '';
   launch_waybar = pkgs.writeShellScriptBin "launch_waybar" ''
     #!/usr/bin/env bash

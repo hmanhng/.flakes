@@ -15,26 +15,26 @@ cache_dir = ""
 
 [opener]
 folder = [
-  { exec = 'nemo "$@" &>/dev/null &', display_name = "Reveal in Nemo" },
+  { exec = 'thunar "$@" &>/dev/null &', desc = "Reveal in Thunar" },
   { exec = '$EDITOR "$@"', block = true },
 ]
-archive = [{ exec = 'unar "$1"', display_name = "Extract here" }]
+archive = [{ exec = 'unar "$1"', desc = "Extract here" }]
 text = [{ exec = '$EDITOR "$@"', block = true }]
 image = [
-  { exec = 'xdg-open "$@"', display_name = "Open" },
-  { exec = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, display_name = "Show EXIF" },
+  { exec = 'xdg-open "$@"', desc = "Open" },
+  { exec = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
 ]
 video = [
   { exec = 'mpv "$@"' },
-  { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, display_name = "Show media info" },
+  { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 audio = [
   { exec = 'mpv "$@"' },
-  { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, display_name = "Show media info" },
+  { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 fallback = [
-  { exec = 'xdg-open "$@"', display_name = "Open" },
-  { exec = 'nemo "$@" &>/dev/null &', display_name = "Reveal in Nemo" },
+  { exec = 'xdg-open "$@"', desc = "Open" },
+  { exec = 'thunar "$@" &>/dev/null &', desc = "Reveal in Thunar" },
 ]
 
 [open]

@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: {
@@ -23,5 +22,9 @@
       [urgency=high]
       border-color=#B45C65
     '';
+  };
+  xdg.dataFile."icons/svg" = {
+    source = ./svg;
+    recursive = true;
   };
 }

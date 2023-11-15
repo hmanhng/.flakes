@@ -1,9 +1,6 @@
 {
   config,
   pkgs,
-  lib,
-  inputs,
-  user,
   ...
 }: {
   home.sessionVariables = {

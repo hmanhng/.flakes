@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+get_light() {
+	light=$(brillo | awk '{print int($1+0.5)}')
+	icon="/home/hmanhng/.local/share/icons/svg/"
+	if [ "$light" -lt 30 ]; then
+		icon+="brightness-1.svg"
+	elif [ "$light" -ge 30 ] && [ "$light" -le 70 ]; then
+		icon+="brightness-2.svg"
+	else
+		icon+="brightness-3.svg"
+	fi
+}
+
+down() {
+	brillo -U 5
+  get_light
+	notify-send -a "BRIGHTNESS" "Decreasing to $light%" -h int:value:"$light" -i $icon -r 2593 -u normal
+}
+
+up() {
+	brillo -A 5
+  get_light
+	notify-send -a "BRIGHTNESS" "Increasing to $light%" -h int:value:"$light" -i $icon -r 2593 -u normal
+}
+case "$1" in
+up) up ;;
+down) down ;;
+esac

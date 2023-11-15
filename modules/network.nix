@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
+{lib, ...}:
 # networking configuration
 {
   networking = {
@@ -56,5 +52,5 @@
   };
 
   # Don't wait for network startup
-  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  # systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 }

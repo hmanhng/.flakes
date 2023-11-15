@@ -1,4 +1,11 @@
-{user, ...}: {
+{
+  inputs,
+  user,
+  pkgs,
+  ...
+}: {
+  imports = [inputs.sops-nix.nixosModules.sops];
+  environment.systemPackages = with pkgs; [sops];
   sops.defaultSopsFile = ./secrets.yaml;
   # sops.gnupg.sshKeyPaths = [ "/home/${user}/.ssh" ];
   # sops.age.sshKeyPaths = [ ];

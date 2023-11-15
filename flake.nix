@@ -8,6 +8,7 @@
       systems = ["x86_64-linux"];
       imports = [
         ./hosts
+        ./home/profiles
         ./modules
         ./lib
         ./pkgs
@@ -15,10 +16,7 @@
       ];
       perSystem = {
         config,
-        self',
-        inputs',
         pkgs,
-        system,
         ...
       }: {
         # set flake-wide pkgs to the one exported by ./lib
@@ -51,8 +49,8 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
     hypr-contrib.url = "github:hyprwm/contrib";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
     impermanence.url = "github:nix-community/impermanence"; # for tmpfs rootfs
     sops-nix.url = "github:Mic92/sops-nix";
     yazi.url = "github:sxyazi/yazi";
@@ -60,20 +58,28 @@
       url = "github:MichaelPachec0/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
 
+    nh.url = "github:viperML/nh";
+
+    nix-index-db = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
       # "https://helix.cachix.org"
       "https://hmanhng.cachix.org"
+      "https://viperml.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       # "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
       "hmanhng.cachix.org-1:+pXFpN2CtS0rNUdCdeiOu6QUWMVBX0nCbWREhfiiKtI="
+      "viperml.cachix.org-1:qZhKBMTfmcLL+OG6fj/hzsMEedgKvZVFRRAhq7j8Vh8="
     ];
   };
 }

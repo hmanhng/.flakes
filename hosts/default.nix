@@ -1,37 +1,28 @@
 {
-  withSystem,
   user,
   sharedModules,
   inputs,
+  homeImports,
   ...
 }: {
-  flake.nixosConfigurations = withSystem "x86_64-linux" ({
-    system,
-    self',
-    inputs',
-    ...
-  }: {
-    laptop = inputs.nixpkgs.lib.nixosSystem {
-      inherit system;
+  flake.nixosConfigurations = let
+    inherit (inputs.nixpkgs.lib) nixosSystem;
+  in {
+    laptop = nixosSystem {
+      specialArgs = {inherit inputs;};
       modules =
-        sharedModules
-        ++ [
+        [
           ./laptop
-          ../modules/impermanence.nix
           ../modules/desktop.nix
-          ../modules/devops
+          ../modules/impermanence.nix
+          # ../modules/devops
           ../secrets/secrets.nix
-        ]
-        ++ [
           {
-            home-manager = {
-              users.${user}.imports = [
-                ../home
-                ../home/hyprland
-              ];
-            };
+            home-manager.users.${user}.imports =
+              homeImports."hmanhng@laptop";
           }
-        ];
+        ]
+        ++ sharedModules;
     };
-  });
+  };
 }

@@ -1,0 +1,7 @@
+{
+  imports = [
+    ../../editors
+    ../../packages
+    ../../wayland
+  ];
+}

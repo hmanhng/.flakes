@@ -1,7 +1,6 @@
 {
-  config,
   pkgs,
-  self',
+  self,
   ...
 }: {
   home = {
@@ -59,7 +58,7 @@
           translate-web-pages
           ublock-origin
         ])
-        ++ (with self'.legacyPackages.firefox-addons; [
+        ++ (with self.legacyPackages.${pkgs.system}.firefox-addons; [
           dashlane
           /*
           default-zoom

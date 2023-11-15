@@ -1,6 +1,8 @@
-[
-  #./zsh/zsh.nix
-  ./fish
-  # ./bash
-  ./git
-]
+{
+  imports = [
+    #./zsh/zsh.nix
+    ./fish
+    # ./bash
+    ./git
+  ];
+}

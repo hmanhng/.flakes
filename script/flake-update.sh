@@ -6,17 +6,21 @@ function trap_ctrlc {
 trap "trap_ctrlc" 2
 
 flake_input=(
-	emacs-overlay
-	flake-parts
+	nixpkgs
 	home-manager
-	hypr-contrib
+	flake-parts
+	nur
+	emacs-overlay
+	neovim-nightly-overlay
 	hyprland
+	hypr-contrib
 	hyprpicker
 	impermanence
-	neovim-nightly-overlay
-	nixpkgs
-	nur
 	sops-nix
+	yazi
+	spicetify-nix
+	nh
+	nix-index-db
 )
 for item in "${flake_input[@]}"; do
 	echo -e "\033[1;34m${item}: \033[0m"

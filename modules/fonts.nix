@@ -1,8 +1,7 @@
 {
-  config,
-  lib,
   pkgs,
   user,
+  self,
   ...
 }: let
   myFont = builtins.fetchTarball {
@@ -18,31 +17,28 @@ in {
   };
 
   fonts = {
-    packages = with pkgs; [
-      lexend
-      corefonts
-      roboto
-      roboto-serif
-      /*
-      noto-fonts
-      */
-      noto-fonts-emoji
-      twemoji-color-font
-      # nerdfonts
-      # (nerdfonts.override {
-      #   fonts = [
-      # "Iosevka"
-      # "JetBrainsMono"
-      # "CodeNewRoman"
-      # ];
-      # })
-    ];
+    packages =
+      (with pkgs; [
+        lexend
+        corefonts
+        roboto
+        roboto-serif
+        /*
+        noto-fonts
+        */
+        maple-mono
+
+        noto-fonts-emoji
+        twemoji-color-font
+      ])
+      ++ (with self.legacyPackages.${pkgs.system}; [
+        apple-fonts
+      ]);
     fontconfig = {
       defaultFonts = {
-        serif = ["Roboto Serif"];
-        sansSerif = ["Roboto"];
+        serif = ["SF Pro Display"];
+        sansSerif = ["SF Pro Display"];
         monospace = ["JetBrainsMono Nerd Font"];
-        emoji = ["Noto Color Emoji" "Twitter Color Emoji"];
       };
       localConf = ''
         <?xml version="1.0"?>

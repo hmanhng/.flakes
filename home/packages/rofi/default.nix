@@ -1,12 +1,11 @@
 {
-  config,
   pkgs,
   ...
 }: {
-  home = {
-    packages = with pkgs; [
-      rofi-wayland
-    ];
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    plugins = [pkgs.rofi-calc];
   };
   xdg.configFile."rofi/launcher" = {
     source = ./launcher;

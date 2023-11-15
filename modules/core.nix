@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  user,
   ...
 }: {
   # Change default shell to fish
@@ -11,25 +9,29 @@
 
   time.timeZone = "Asia/Ho_Chi_Minh";
 
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "vi_VN";
+    LC_IDENTIFICATION = "vi_VN";
+    LC_MEASUREMENT = "vi_VN";
+    LC_MONETARY = "vi_VN";
+    LC_NAME = "vi_VN";
+    LC_NUMERIC = "vi_VN";
+    LC_PAPER = "vi_VN";
+    LC_TELEPHONE = "vi_VN";
+    LC_TIME = "vi_VN";
+  };
+
   environment = {
     binsh = "${pkgs.dash}/bin/dash";
     systemPackages = with pkgs; [
-      sops
       git
     ];
   };
 
   security.sudo = {
-    enable = false;
-    extraConfig = ''
-      ${user} ALL=(ALL) NOPASSWD:ALL
-    '';
-  };
-  security.doas = {
     enable = true;
-    extraConfig = ''
-      permit nopass ${user}
-    '';
+    wheelNeedsPassword = false;
   };
 
   system.stateVersion = "22.11";
