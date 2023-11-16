@@ -1,15 +1,14 @@
-{
-  /* colorlib, */
-  lib,
-}: rec {
+{lib}: rec {
+  editor = "emacsclient";
+
   browser = "firefox";
 
   launcher = "rofi";
 
   # linuxmobile font -> AestheticIosevka Nerd Font Mono
   terminal = {
-    font = "Maple Mono";
     name = "kitty";
+    font = "Maple Mono";
     opacity = 0.8;
     size = 19;
   };

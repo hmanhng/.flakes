@@ -29,26 +29,8 @@ in {
       vlc
       teams-for-linux
 
-      ## Tool, etc ...
-      cargo
-      cmake
-      dotnet-sdk_7
-      gcc
-      go
-      gnumake
-      lua
-      nodejs
-
-      #
-      killall
-      pamixer
-      socat
-      xdg-utils
-      unrar
-      unzip
-      wget
+      # cli
       wireguard-tools
-      zip
     ])
     ++ (with self.legacyPackages.${pkgs.system}; [
       ]);

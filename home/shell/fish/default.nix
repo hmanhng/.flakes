@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
     loginShellInit = ''
@@ -28,9 +25,11 @@
       lt = "eza -FaT -L 3 --icons --color=always --group-directories-first"; # tree listing
       "l." = "eza -Fa | grep -E \"^\\.\"";
 
+      e = "emacsclient -c";
+      ei = "emacsclient";
       v = "nvim";
       vi = "nvim";
-      suvi = "doas nvim";
+      suvi = "sudo nvim";
       nf = "nvim $(fzf)";
       f = "fzf";
 
@@ -40,10 +39,10 @@
 
       wget = "wget --hsts-file=\"\$XDG_DATA_HOME/wget-hsts\"";
 
-      nrb = "cd ~/.flakes && nixos-rebuild build --flake ~/.flakes/.#laptop";
-      nrf = "doas nixos-rebuild switch --flake ~/.flakes/.#laptop";
-      nrt = "doas ~/.flakes/result/bin/switch-to-configuration test";
-      ncg = "nix-collect-garbage -d && doas nix-collect-garbage -d";
+      nhb = "nh os boot -H laptop";
+      nht = "nh os test -H laptop";
+      nhs = "nh os switch -H laptop";
+      fc = "nix flake check";
       fl = "cd ~/.flakes";
     };
   };
@@ -53,8 +52,5 @@
   home.file.".config/fish/functions/xdg-set.fish".text = import ./functions/xdg-set.nix;
   home.file.".config/fish/conf.d/nord.fish".text = import ./conf.d/nord_theme.nix;
   xdg.configFile."fish/functions/hmanhng.fish".source = ./functions/hmanhng.fish;
-  programs.zoxide.enable = true;
-  programs.starship.enable = true;
-  programs.eza.enable = true;
   xdg.configFile."starship.toml".source = ./starship.toml;
 }

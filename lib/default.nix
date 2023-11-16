@@ -8,7 +8,7 @@ let
 in {
   imports = [{
     # get default across the module system
-    _module.args = { default = import ./theme { inherit lib; }; };
+    _module.args = { default = import ./base { inherit lib; }; };
   }];
   perSystem = {system, ...}: {
     legacyPackages = import inputs.nixpkgs {
