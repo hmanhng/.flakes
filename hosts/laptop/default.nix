@@ -1,7 +1,4 @@
-{
-  user,
-  ...
-}: let
+{user, ...}: let
   # Password for root and ${user}
   initialHashedPassword = "$6$X8/X.cOzzY2d.ak9$VyhhkfKFgxFiKfbPQt6AzkL3duOr43B.O27N6eJy07tgZvOyzdygARwXv7R2dXBOegrTk2F.N7NC9RkBi/sff0";
 in {

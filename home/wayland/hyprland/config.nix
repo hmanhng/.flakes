@@ -12,6 +12,8 @@
         GDK_BACKEND,wayland
       '';
       exec-once = [
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "launch_waybar"
         "${lib.getExe pkgs.networkmanagerapplet}"
         "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
@@ -104,7 +106,8 @@
       bind = [
         "$MOD, Return, exec, ${default.terminal.name}"
         "$MODSHIFT, Return, exec, ${default.terminal.name} --class='termfloat'"
-        "$MOD, E, exec, thunar"
+        "$MOD, E, exec, [workspace name:Emacs] hyprctl workspaces | rg ID | rg Emacs || emacsclient -c"
+        "$MOD, D, exec, thunar"
         "$MOD, B, exec, [workspace name:Qutebrowser] hyprctl workspaces | rg ID | rg Qutebrowser || qutebrowser"
         "$MOD, W, exec, [workspace name:Firefox] hyprctl workspaces | rg ID | rg Firefox || firefox"
         "$MODSHIFT, W, exec, firefox --private-window"
@@ -114,7 +117,7 @@
         "$MOD, O, exec, killall -SIGUSR1 .waybar-wrapped"
         # Rofi
         "$MOD, Space, exec, pkill rofi || ~/.config/rofi/launcher/launcher.sh"
-        "CTRL, semicolon, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh"
+        "$MOD, apostrophe, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh"
         "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
         # bind = $MODSHIFT, K, exec, pkill rofi || ~/.config/rofi/launchers/keybind.sh
 
@@ -171,6 +174,7 @@
 
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
+        "$MOD, E, workspace, Emacs"
         "$MOD, B, workspace, Qutebrowser"
         "$MOD, W, workspace, Firefox"
         "$MOD, T, workspace, TG"
@@ -192,6 +196,7 @@
         "opacity 0.80 0.80, title:^(Spotify)$"
         "workspace name:Music, title:^(Spotify)$"
         "size 1100 600, class:^(termfloat)$"
+        "workspace name:Emacs, class:^(emacs)$"
 
         "float, title:^(Picture-in-Picture)$"
         "float, class:^(imv)$"

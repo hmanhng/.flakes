@@ -19,7 +19,6 @@
     go
     gnumake
     lua
-    nodejs
 
     #
     killall

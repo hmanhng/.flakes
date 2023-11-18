@@ -11,17 +11,9 @@
   environment.systemPackages = with pkgs; [
     qt6.qtwayland
   ];
+
   hardware.brillo.enable = true;
   programs.dconf.enable = true;
-  programs.npm = {
-    enable = true;
-    npmrc = ''
-      prefix=''${HOME}/.local/share/npm-packages
-      cache=''${XDG_CACHE_HOME}/npm
-      init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
-    '';
-  };
-
   location.provider = "geoclue2";
 
   hardware.pulseaudio.enable = lib.mkForce false;

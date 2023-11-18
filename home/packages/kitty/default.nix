@@ -17,7 +17,7 @@
         bold_font = "auto";
         italic_font = "auto";
         bold_italic_font = "auto";
-        window_padding_width = "5 10";
+        # window_padding_width = "5 10";
         mouse_hide_wait = 2;
         cursor_shape = "underline";
         shell_integration = "no-cursor";

@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Change default shell to fish
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;

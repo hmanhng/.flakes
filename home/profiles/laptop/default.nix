@@ -3,5 +3,6 @@
     ../../editors
     ../../packages
     ../../wayland
+    ../../dev
   ];
 }

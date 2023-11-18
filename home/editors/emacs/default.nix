@@ -12,21 +12,27 @@
       else pkgs.emacs29;
     overrides = self: super: {};
     extraPackages = epkgs: [
+      epkgs.vterm
       # epkgs.emms
       # epkgs.magit
     ];
     extraConfig = ''
-
     '';
   };
   home = {
     sessionVariables = {
       # Minemacs
-      # MINEMACS_DIR = "$HOME/.config/minemacs";
+      DOOMDIR = "$HOME/.flakes/home/editors/emacs/doom";
       # MINEMACS_ALPHA = "90";
     };
     sessionPath = ["$HOME/.config/emacs/bin"];
   };
+  # systemd.user.services.emacs.Service = {
+  #   Environment = [
+  #     "MINEMACS_DIR=${config.home.homeDirectory}/.config/minemacs"
+  #     "MINEMACS_ALPHA=90"
+  #   ];
+  # };
   services.emacs = {
     enable = true;
     defaultEditor = false;

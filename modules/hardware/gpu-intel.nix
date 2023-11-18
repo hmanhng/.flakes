@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services = {
     tlp.enable = true; # optimized for battery life
     auto-cpufreq.enable = true; # Automatic CPU speed & power optimizer for Linux

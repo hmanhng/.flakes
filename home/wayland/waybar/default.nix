@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.waybar = {
     enable = true;
     systemd = {
@@ -414,7 +411,7 @@
           "tooltip-format" = "Devops go go\n<span size='13pt' font='JetBrainsMono Nerd Font'>{calendar}</span>";
           "calendar" = {
             "mode-mon-col" = 3;
-            /* "weeks-pos" = "right"; */
+            # "weeks-pos" = "right";
             "on-scroll" = 1;
             "on-click-right" = "mode";
             "format" = {
@@ -531,7 +528,7 @@
           "tooltip" = false;
         };
         "network" = {
-          /* "format-disconnected" = "Disconnected"; */
+          # "format-disconnected" = "Disconnected";
           "format-ethernet" = "{ifname} ({ipaddr})";
           "format-linked" = "{essid} (No IP)";
           "format-wifi" = "{essid}";

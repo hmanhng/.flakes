@@ -1,0 +1,11 @@
+#+TITLE: Flake config
+#+AUTHOR: Hmanhng
+
+* TABLE OF CONTENT :TOC:
+- [[#nix][Nix]]
+- [[#emacs][Emacs]]
+
+* Nix
+[[https:github.com/hmanhng/.flakes/releases/download/ISO/minimal.iso][Link download Iso minimal]]
+* Emacs
+[[file:./home/editors/emacs/doom/config.org][Emacs config]]

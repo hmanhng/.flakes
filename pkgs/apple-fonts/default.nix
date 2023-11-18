@@ -14,15 +14,15 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-nkuHge3/Vy8lwYx9z+pvsQZfzrNIP4K0OutpPl4yXn0=";
   };
 
-  /* compact = fetchurl { */
-  /*   url = "https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg"; */
-  /*   sha256 = "sha256-SIht9sqmeijEeU4uLwm+tlZtFlTnD/G5GH8haUL6dlU="; */
-  /* }; */
+  # compact = fetchurl {
+  #   url = "https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg";
+  #   sha256 = "sha256-SIht9sqmeijEeU4uLwm+tlZtFlTnD/G5GH8haUL6dlU=";
+  # };
 
-  /* mono = fetchurl { */
-  /*   url = "https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg"; */
-  /*   sha256 = "sha256-jnhTTmSy5J8MJotbsI8g5hxotgjvyDbccymjABwajYw="; */
-  /* }; */
+  # mono = fetchurl {
+  #   url = "https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg";
+  #   sha256 = "sha256-jnhTTmSy5J8MJotbsI8g5hxotgjvyDbccymjABwajYw=";
+  # };
 
   ny = fetchurl {
     url = "https://devimages-cdn.apple.com/design/resources/download/NY.dmg";
