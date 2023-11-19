@@ -4,10 +4,11 @@
   self,
   ...
 }: let
+  excludedDirectories = ["waybar" "logseq"];
   directoryContents = builtins.readDir ./.;
   directories =
     builtins.filter
-    (name: directoryContents."${name}" == "directory" && name != "waybar")
+    (name: directoryContents."${name}" == "directory" && ! (builtins.elem name excludedDirectories))
     (builtins.attrNames directoryContents);
   imports = map (name: ./. + "/${name}") directories;
 in {
@@ -20,7 +21,7 @@ in {
       xfce.tumbler
       gnome.file-roller
       imv
-      libreoffice-qt
+      # libreoffice-qt
       meld
       motrix
       pavucontrol
