@@ -11,7 +11,7 @@ copy_hardware_configuration() {
     perl -i -pe 'if ($in_section) { s/by-uuid\/[^"]+/by-label\/nixos/; $in_section = 0; } elsif (/fileSystems."\/nix" =/) { $in_section = 1; }' $hardware_configuration
     perl -i -pe 'if ($in_section) { s/by-uuid\/[^"]+/by-label\/boot/; $in_section = 0; } elsif (/fileSystems."\/boot" =/) { $in_section = 1; }' $hardware_configuration
     sed -i '/tmpfs/a\      options = [ "defaults" "size=10G" "mode=755"  ];' $hardware_configuration
-    sed -i '/swapDevices/a\  zramSwap.enable = true;' $hardware_configuration
+    sed -i 's/swapDevices = \[ ];/swapDevices = [{ device = "\/var\/lib\/swapfile"; size = 16*1024; }];\n  boot.kernel.sysctl = {"vm.swappiness" = 10;};/g' $hardware_configuration
 }
 
 format_device() {
