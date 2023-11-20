@@ -9,7 +9,7 @@
       enable = true;
       environment = {};
       keybindings = {};
-      theme = "Catppuccin-Mocha";
+      theme = "Rosé Pine";
       # font.name = "JetBrainsMono Nerd Font";
       font.name = default.terminal.font;
       font.size = default.terminal.size;

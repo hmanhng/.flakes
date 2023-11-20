@@ -21,8 +21,8 @@
     nil
     alejandra
 
-    texlive.combined.scheme-medium
+    # texlive.combined.scheme-medium
     # required by +jupyter
-    (python3.withPackages (ps: with ps; [jupyter]))
+    # (python3.withPackages (ps: with ps; [jupyter]))
   ];
 }

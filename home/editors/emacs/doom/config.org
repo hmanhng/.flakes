@@ -1,28 +1,46 @@
 #+TITLE: DOOM CONFIG
 #+AUTHOR: Hmanhng
 #+DESCRIPTION: hmanhng's Doom Config
-#+STARTUP: showeverything
+#+STARTUP: show2levels
 
 * TABLE OF CONTEN :TOC_3:
 - [[#module][Module]]
 - [[#config][Config]]
   - [[#user-info][User Info]]
-  - [[#fonts][Fonts]]
-  - [[#themes][Themes]]
-  - [[#relative-numberline][Relative numberline]]
-  - [[#make-cursor-center][Make cursor center]]
   - [[#no-ask-kill-emacs][No ask kill emacs]]
   - [[#make-lsp-fast][Make lsp fast]]
+  - [[#evil][Evil]]
+    - [[#splits][Splits]]
+    - [[#fine-undo][Fine undo]]
+    - [[#global-substitute][Global substitute]]
+    - [[#ignore-visual-text-in-the-kill-ring][Ignore visual text in the kill ring]]
+    - [[#use-emacs-binds-in-insert-mode][Use emacs binds in insert mode]]
   - [[#which-key][Which-key]]
   - [[#basic-undo][Basic undo]]
-  - [[#org][Org]]
-  - [[#rainbow][Rainbow]]
   - [[#format][Format]]
   - [[#map][Map]]
-    - [[#split][Split]]
+    - [[#split-in-find][Split in find]]
     - [[#zoom-inout][Zoom in/out]]
+    - [[#save][Save]]
+    - [[#search][Search]]
+  - [[#graphical-setup][Graphical setup]]
+    - [[#pixel-precision-scrolling][Pixel-precision scrolling]]
+    - [[#which-key-1][which-key]]
+    - [[#marginalia][Marginalia]]
+    - [[#info-pages][Info pages]]
+    - [[#dashboard][Dashboard]]
+    - [[#rainbow][Rainbow]]
+    - [[#modeline][Modeline]]
+    - [[#fonts][Fonts]]
+    - [[#themes][Themes]]
+    - [[#make-cursor-center][Make cursor center]]
+    - [[#line-numbers][Line Numbers]]
+  - [[#org][Org]]
+    - [[#fill-column][fill-column]]
+    - [[#properties][Properties]]
 
 * Module
+
 #+begin_src emacs-lisp :tangle init.el
 ;;; init.el -*- lexical-binding: t; -*-
 
@@ -47,7 +65,7 @@
        ;;(emoji +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
-       indent-guides     ; highlighted indent columns
+       ;; indent-guides     ; highlighted indent columns
        ligatures         ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
@@ -75,7 +93,7 @@
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
-       snippets          ; my elves. They type so I don't have to
+       ;; snippets          ; my elves. They type so I don't have to
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
@@ -154,7 +172,7 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        ;;json              ; At least it ain't XML
-       (java +lsp)         ; the poster child for carpal tunnel syndrome
+       (java +tree-sitter +lsp)         ; the poster child for carpal tunnel syndrome
        (javascript +tree-sitter +lsp)       ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
@@ -168,7 +186,7 @@
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         +dragndrop         ; drag-and-drop support for images and files
-        +jupyter           ; Enable Jupyter integration for babel.
+        ;; +jupyter           ; Enable Jupyter integration for babel.
         +journal           ; enable org journal
         +roam2             ; create a personal wiki
         +pretty)           ; replace asterisks with pretty org bullets
@@ -214,6 +232,7 @@
 
 * Config
 ** User Info
+
 #+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
@@ -221,60 +240,57 @@
       user-mail-address "hmanhng@icloud.com")
 #+end_src
 
-** Fonts
-#+begin_src emacs-lisp
-(setq doom-font (font-spec :family "Maple Mono" :size 25)
-      doom-variable-pitch-font (font-spec :family "SF Pro Display" :size 20))
-;; Makes commented text and keywords italics.
-;; This is working in emacsclient but not emacs.
-;; Your font must have an italic face available.
-(set-face-attribute 'font-lock-comment-face nil
-                    :slant 'italic)
-(set-face-attribute 'font-lock-keyword-face nil
-                    :slant 'italic)
-#+end_src
-
-** Themes
-#+begin_src emacs-lisp
-(setq doom-theme 'doom-one)
-(custom-theme-set-faces! 'doom-one
-  '(line-number :foreground "dim gray")
-  '(line-number-current-line :foreground "white"))
-(add-to-list 'default-frame-alist '(alpha-background . 90))
-#+end_src
-
-** Relative numberline
-#+begin_src emacs-lisp
-(setq display-line-numbers-type 'relative)
-#+end_src
-
-** Make cursor center
-#+begin_src emacs-lisp :tangle packages.el
-;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
-
-(package! centered-cursor-mode)
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package! centered-cursor-mode
-  :demand
-  :config
-  ;; Optional, enables centered-cursor-mode in all buffers.
-  (global-centered-cursor-mode))
-#+end_src
-
 ** No ask kill emacs
+
 #+begin_src emacs-lisp
 (setq confirm-kill-emacs nil)
 #+end_src
 
 ** Make lsp fast
+
 #+begin_src emacs-lisp
 (setq lsp-idle-delay 0.500)
 #+end_src
 
+** Evil
+*** Splits
+I make a lot of splits, and it finally got annoying having to swap to them all the time. So, let’s change that
+
+#+begin_src emacs-lisp
+(setq evil-split-window-below t
+      evil-vsplit-window-right t)
+#+end_src
+
+*** Fine undo
+I don’t need this because I, like all programmers, make 0 mistaeks.
+
+#+begin_src emacs-lisp
+(setq evil-want-fine-undo t)
+#+end_src
+
+*** Global substitute
+More often than not, I’d argue always, I want ~s/~ on my ex commands, so let’s sort that out.
+
+#+begin_src emacs-lisp
+(setq evil-ex-substitute-global t)
+#+end_src
+
+*** Ignore visual text in the kill ring
+When we overwrite text in visual mode, say =vip=, don’t add to the kill ring.
+
+#+begin_src emacs-lisp
+(setq evil-kill-on-visual-paste nil)
+#+end_src
+
+*** Use emacs binds in insert mode
+Some of them are quite useful, and I normally use them in the DE.
+
+#+begin_src emacs-lisp
+(setq evil-disable-insert-state-bindings t)
+#+end_src
+
 ** Which-key
+
 #+begin_src emacs-lisp
 (setq  ;; See https://github.com/justbur/emacs-which-key
  which-key-idle-delay 0.2
@@ -283,32 +299,13 @@
 #+end_src
 
 ** Basic undo
+
 #+begin_src emacs-lisp
 (setq undo-fu-ignore-keyboard-quit t)
 #+end_src
 
-** Org
-#+begin_src emacs-lisp
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Desktop/org/")
-#+end_src
-
-** Rainbow
-#+begin_src emacs-lisp :tangle packages.el
-(package! rainbow-mode)
-#+end_src
-
-#+begin_src emacs-lisp
-(define-globalized-minor-mode global-rainbow-mode rainbow-mode
-  (lambda ()
-    (when (not (memq major-mode
-                (list 'org-agenda-mode)))
-     (rainbow-mode 1))))
-(global-rainbow-mode 1 )
-#+end_src
-
 ** Format
+
 #+begin_src emacs-lisp
 (after! nix-mode
   (set-formatter! 'alejandra '("alejandra" "-q") :modes '(nix-mode)))
@@ -318,7 +315,8 @@
 #+end_src
 
 ** Map
-*** Split
+*** Split in find
+
 #+begin_src emacs-lisp
 (defun cust/vsplit-file-open (f)
   (let ((evil-vsplit-window-right t))
@@ -336,6 +334,7 @@
 #+end_src
 
 *** Zoom in/out
+
 #+begin_src emacs-lisp
 (map!
  ;; needf to invert + and =
@@ -345,4 +344,242 @@
  :n "C-=" #'doom/reset-font-size
  :n "<C-wheel-up>" #'doom/increase-font-size
  :n "<C-wheel-down>" #'doom/decrease-font-size)
+#+end_src
+
+*** Save
+
+#+begin_src emacs-lisp
+(map! :g "C-s" #'save-buffer)
+#+end_src
+
+*** Search
++Swiper+ Consult is much better than isearch
+
+#+begin_src emacs-lisp
+(map! :after evil :gnvi "C-f" #'consult-line)
+#+end_src
+
+** Graphical setup
+*** Pixel-precision scrolling
+Emacs 29 has some new hotness, including a cool new scrolling thing.
+
+#+begin_src emacs-lisp
+(when (version< "29.0.50" emacs-version)
+  (pixel-scroll-precision-mode))
+#+end_src
+
+*** which-key
+Remove some of the useless =evil-= prefixes from which-key commands.
+
+#+begin_src emacs-lisp
+(setq which-key-allow-multiple-replacements t)
+(after! which-key
+  (pushnew!
+   which-key-replacement-alist
+   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . " \\1"))
+   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . " \\1"))))
+#+end_src
+
+*** Marginalia
+Marginalia is part of the Vertico stack, and is responsible for all the fancy
+faces and extra information.
+**** Files
+The doom module out of the box includes a number of customizations, but the
+below from Teco gives a much better experience for files.
+
+#+begin_src emacs-lisp
+(after! marginalia
+  (setq marginalia-censor-variables nil)
+
+  (defadvice! +marginalia--anotate-local-file-colorful (cand)
+    "Just a more colourful version of `marginalia--anotate-local-file'."
+    :override #'marginalia--annotate-local-file
+    (when-let (attrs (file-attributes (substitute-in-file-name
+                                       (marginalia--full-candidate cand))
+                                      'integer))
+      (marginalia--fields
+       ((marginalia--file-owner attrs)
+        :width 12 :face 'marginalia-file-owner)
+       ((marginalia--file-modes attrs))
+       ((+marginalia-file-size-colorful (file-attribute-size attrs))
+        :width 7)
+       ((+marginalia--time-colorful (file-attribute-modification-time attrs))
+        :width 12))))
+
+  (defun +marginalia--time-colorful (time)
+    (let* ((seconds (float-time (time-subtract (current-time) time)))
+           (color (doom-blend
+                   (face-attribute 'marginalia-date :foreground nil t)
+                   (face-attribute 'marginalia-documentation :foreground nil t)
+                   (/ 1.0 (log (+ 3 (/ (+ 1 seconds) 345600.0)))))))
+      ;; 1 - log(3 + 1/(days + 1)) % grey
+      (propertize (marginalia--time time) 'face (list :foreground color))))
+
+  (defun +marginalia-file-size-colorful (size)
+    (let* ((size-index (/ (log10 (+ 1 size)) 7.0))
+           (color (if (< size-index 10000000) ; 10m
+                      (doom-blend 'orange 'green size-index)
+                    (doom-blend 'red 'orange (- size-index 1)))))
+      (propertize (file-size-human-readable size) 'face (list :foreground color)))))
+#+end_src
+
+*** Info pages
+Slightly improve the look and feel of Info pages, might actually encourage me to /read/ them.
+
+#+begin_src elisp :tangle packages.el
+(package! info-colors)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! info-colors
+  :after info
+  :commands (info-colors-fontify-node)
+  :hook (Info-selection . info-colors-fontify-node))
+#+end_src
+
+*** Dashboard
+Inhibit the menu to improve things slightly
+
+#+begin_src emacs-lisp
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
+(setq +doom-dashboard-banner-file (expand-file-name "images/banner.png" doom-private-dir))
+#+end_src
+
+*** Rainbow
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! rainbow-mode)
+#+end_src
+
+#+begin_src emacs-lisp
+(define-globalized-minor-mode global-rainbow-mode rainbow-mode
+  (lambda ()
+    (when (not (memq major-mode
+                (list 'org-agenda-mode)))
+     (rainbow-mode 1))))
+(global-rainbow-mode 1 )
+#+end_src
+
+*** Modeline
+Default modeline is a tad cluttered, and because I don't use exwm anymore the
+modeline from that module isn't in use. So, it's duplicated here and tweaked.
+
+#+begin_src emacs-lisp
+(after! doom-modeline
+  (setq all-the-icons-scale-factor 1.1
+        auto-revert-check-vc-info t
+        doom-modeline-major-mode-icon (display-graphic-p)
+        doom-modeline-major-mode-color-icon (display-graphic-p)
+        doom-modeline-buffer-file-name-style 'relative-to-project
+        doom-modeline-github t
+        doom-modeline-github-interval 60
+        doom-modeline-vcs-max-length 60)
+  (remove-hook 'doom-modeline-mode-hook #'size-indication-mode)
+  (doom-modeline-def-modeline 'main
+    '(bar modals workspace-name window-number persp-name buffer-position selection-info buffer-info matches remote-host debug vcs matches)
+    '(github mu4e grip gnus checker misc-info repl lsp " ")))
+#+end_src
+
+*** Fonts
+**** Default
+
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "Maple Mono" :size 25)
+      doom-variable-pitch-font (font-spec :family "SF Pro Display" :size 20))
+;; Makes commented text and keywords italics.
+;; This is working in emacsclient but not emacs.
+;; Your font must have an italic face available.
+(set-face-attribute 'font-lock-comment-face nil
+                    :slant 'italic)
+(set-face-attribute 'font-lock-keyword-face nil
+                    :slant 'italic)
+#+end_src
+
+**** Ligatures
+Ligatures are a mess in programming languages, however they make org documents
+quite nice so let's just use them here until a good fix is found.
+
+#+begin_src emacs-lisp
+(setq-hook! org-mode
+  prettify-symbols-alist '(("#+end_quote" . "”")
+                           ("#+END_QUOTE" . "”")
+                           ("#+begin_quote" . "“")
+                           ("#+BEGIN_QUOTE" . "“")
+                           ("#+end_src" . "«")
+                           ("#+END_SRC" . "«")
+                           ("#+begin_src" . "»")
+                           ("#+BEGIN_SRC" . "»")
+                           ("#+name:" . "»")
+                           ("#+NAME:" . "»")))
+#+end_src
+
+*** Themes
+
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-one)
+(custom-theme-set-faces! 'doom-one
+  '(line-number :foreground "dim gray")
+  '(line-number-current-line :foreground "white"))
+(add-to-list 'default-frame-alist '(alpha-background . 100))
+#+end_src
+
+*** Make cursor center
+
+#+begin_src emacs-lisp :tangle packages.el
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
+
+(package! centered-cursor-mode)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! centered-cursor-mode
+  :demand
+  :config
+  ;; Optional, enables centered-cursor-mode in all buffers.
+  (global-centered-cursor-mode))
+#+end_src
+
+*** Line Numbers
+Set the default line number format to be relative and disable line numbers for
+specific modes
+
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type 'relative)
+
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+END_SRC
+** Org
+
+#+begin_src emacs-lisp
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/Desktop/org/")
+#+end_src
+
+*** fill-column
+Keep the content centered on the page when writing org documents
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! visual-fill-column)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! visual-fill-column
+  :custom
+  (visual-fill-column-width 300)
+  (visual-fill-column-center-text t)
+  :hook (org-mode . visual-fill-column-mode))
+#+end_src
+*** Properties
+**** Allow property inheritance
+This may be the solution to /so/ many weird issues with src blocks.
+
+#+begin_src emacs-lisp
+(setq org-use-property-inheritance t)
 #+end_src

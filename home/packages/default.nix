@@ -4,7 +4,7 @@
   self,
   ...
 }: let
-  excludedDirectories = ["waybar" "logseq"];
+  excludedDirectories = ["waybar" "logseq" "music"];
   directoryContents = builtins.readDir ./.;
   directories =
     builtins.filter

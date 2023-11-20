@@ -25,8 +25,9 @@
       lt = "eza -FaT -L 3 --icons --color=always --group-directories-first"; # tree listing
       "l." = "eza -Fa | grep -E \"^\\.\"";
 
-      e = "${../../wayland/hyprland/script/previousWorkspace} Emacs& && emacsclient -c";
-      ei = "emacsclient -c -nw";
+      e = "emacs";
+      ee = "emacsclient -c -a 'emacs'";
+      ei = "emacsclient -c -nw -a 'emacs -nw'";
       v = "nvim";
       vi = "nvim";
       suvi = "sudo nvim";

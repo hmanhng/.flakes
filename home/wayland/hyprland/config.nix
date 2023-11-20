@@ -23,6 +23,7 @@
         "${lib.getExe self.legacyPackages.${pkgs.system}.spoof-dpi}"
         "ydotoold"
         "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
+        "emacs --daemon"
       ];
       xwayland = {force_zero_scaling = true;};
       input = {
@@ -106,7 +107,7 @@
       bind = [
         "$MOD, Return, exec, ${default.terminal.name}"
         "$MODSHIFT, Return, exec, ${default.terminal.name} --class='termfloat'"
-        "$MOD, E, exec, [workspace name:Emacs] hyprctl workspaces | rg ID | rg Emacs || emacsclient -c"
+        "$MOD, E, exec, emacs"
         "$MOD, D, exec, thunar"
         "$MOD, B, exec, [workspace name:Qutebrowser] hyprctl workspaces | rg ID | rg Qutebrowser || qutebrowser"
         "$MOD, W, exec, [workspace name:Firefox] hyprctl workspaces | rg ID | rg Firefox || firefox"
@@ -144,6 +145,7 @@
         "$MODSHIFT, Q, exit"
         "$MODSHIFT, Space, togglefloating"
         "$MOD, F, fullscreen"
+        "$MOD, M, fullscreen, 1"
         "$MOD, Y, pin"
         "$MOD, P, pseudo" # dwindle"
         "$MOD, S, togglesplit" # dwindle
@@ -174,11 +176,10 @@
 
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
-        "$MOD, E, workspace, Emacs"
         "$MOD, B, workspace, Qutebrowser"
         "$MOD, W, workspace, Firefox"
         "$MOD, T, workspace, TG"
-        "$MOD, M, workspace, Music"
+        # "$MOD, M, workspace, Music"
 
         "$MOD, minus, movetoworkspace, special"
         "$MOD, equal, togglespecialworkspace"
@@ -195,8 +196,9 @@
         "workspace name:Firefox, class:^(firefox)$"
         "opacity 0.80 0.80, title:^(Spotify)$"
         "workspace name:Music, title:^(Spotify)$"
+        "center 1, class:^(termfloat)$"
         "size 1100 600, class:^(termfloat)$"
-        "workspace name:Emacs, class:^(emacs)$"
+        "size 1100 600, class:^(thunar)$"
 
         "float, title:^(Picture-in-Picture)$"
         "float, class:^(imv)$"
