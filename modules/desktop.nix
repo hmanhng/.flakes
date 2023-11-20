@@ -29,6 +29,8 @@
     # needed for GNOME services outside of GNOME Desktop
     dbus.packages = [pkgs.gcr];
 
+    gvfs.enable = true; # Needed for udiskie
+
     logind.extraConfig = ''
       HandlePowerKey=suspend
     '';
