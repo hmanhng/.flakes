@@ -39,6 +39,7 @@
         ".vscode"
         # ".logseq"
         ".java"
+        ".fly"
       ];
       files = [
       ];

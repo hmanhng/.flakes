@@ -52,17 +52,13 @@
           i-dont-care-about-cookies
           privacy-badger
           stylus
-          /*
-          tabcenter-reborn
-          */
+          # tabcenter-reborn
           translate-web-pages
           ublock-origin
+          bitwarden
         ])
         ++ (with self.legacyPackages.${pkgs.system}.firefox-addons; [
-          dashlane
-          /*
           default-zoom
-          */
         ]);
       search = {
         force = true;

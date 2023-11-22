@@ -23,6 +23,6 @@
 
     # texlive.combined.scheme-medium
     # required by +jupyter
-    # (python3.withPackages (ps: with ps; [jupyter]))
+    # (python3.withPackages (ps: with ps; [xdg]))
   ];
 }

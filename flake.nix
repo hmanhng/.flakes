@@ -65,6 +65,8 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    bitwarden-menu.url = "github:firecat53/bitwarden-menu";
   };
   nixConfig = {
     extra-substituters = [

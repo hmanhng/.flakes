@@ -6,6 +6,14 @@
 (setq confirm-kill-emacs nil)
 
 (setq lsp-idle-delay 0.500)
+(setq lsp-enable-indentation nil)
+
+(use-package! treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
@@ -142,18 +150,6 @@
 (set-face-attribute 'font-lock-keyword-face nil
                     :slant 'italic)
 
-(setq-hook! org-mode
-  prettify-symbols-alist '(("#+end_quote" . "”")
-                           ("#+END_QUOTE" . "”")
-                           ("#+begin_quote" . "“")
-                           ("#+BEGIN_QUOTE" . "“")
-                           ("#+end_src" . "«")
-                           ("#+END_SRC" . "«")
-                           ("#+begin_src" . "»")
-                           ("#+BEGIN_SRC" . "»")
-                           ("#+name:" . "»")
-                           ("#+NAME:" . "»")))
-
 (setq doom-theme 'doom-one)
 (custom-theme-set-faces! 'doom-one
   '(line-number :foreground "dim gray")
@@ -185,3 +181,10 @@
   :hook (org-mode . visual-fill-column-mode))
 
 (setq org-use-property-inheritance t)
+
+(use-package! org-tempo
+  :after org
+  :init
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("els" . "src elisp"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp")))

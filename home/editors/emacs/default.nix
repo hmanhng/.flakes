@@ -13,6 +13,7 @@
     overrides = self: super: {};
     extraPackages = epkgs: [
       epkgs.vterm
+      epkgs.editorconfig
       # epkgs.emms
       # epkgs.magit
     ];

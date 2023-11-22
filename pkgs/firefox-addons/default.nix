@@ -28,13 +28,6 @@
       '';
     });
 in {
-  dashlane = buildFirefoxXpiAddon {
-    pname = "dashlane";
-    version = "6.2321.2";
-    addonId = "jetpack-extension@dashlane.com";
-    url = "https://prod.extensions.dashlane.com/downloads/firefox/dashlane-latest-fx.xpi";
-    sha256 = "sha256-YcwL/MFfMrIuLDngK3fzclEC58jR02fe7zOh5XWOZwg=";
-  };
   default-zoom = buildFirefoxXpiAddon {
     pname = "default-zoom";
     version = "1.1.3";

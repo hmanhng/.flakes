@@ -10,6 +10,7 @@
     ../shell
     module_args
     inputs.nix-index-db.hmModules.nix-index
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   homeImports = {

@@ -8,7 +8,8 @@
 - [[#config][Config]]
   - [[#user-info][User Info]]
   - [[#no-ask-kill-emacs][No ask kill emacs]]
-  - [[#make-lsp-fast][Make lsp fast]]
+  - [[#lsp][Lsp]]
+  - [[#treesitter][Treesitter]]
   - [[#evil][Evil]]
     - [[#splits][Splits]]
     - [[#fine-undo][Fine undo]]
@@ -38,6 +39,7 @@
   - [[#org][Org]]
     - [[#fill-column][fill-column]]
     - [[#properties][Properties]]
+    - [[#better-snippets][Better snippets]]
 
 * Module
 
@@ -83,10 +85,10 @@
        ;;zen               ; distraction-free coding or writing
 
        :editor
-       (evil +everywhere); come to the dark side, we have cookies
-       file-templates    ; auto-snippets for empty files
-       fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
+       (evil +everywhere)  ; come to the dark side, we have cookies
+       file-templates      ; auto-snippets for empty files
+       fold                ; (nigh) universal code folding
+       format              ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        ;;multiple-cursors  ; editing in many places at once
@@ -121,7 +123,7 @@
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        ;;docker
-       ;;editorconfig      ; let someone else argue about tabs vs spaces
+       editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
@@ -231,6 +233,12 @@
 #+end_src
 
 * Config
+
+#+begin_src emacs-lisp :tangle packages.el
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
+#+end_src
+
 ** User Info
 
 #+begin_src emacs-lisp
@@ -246,10 +254,26 @@
 (setq confirm-kill-emacs nil)
 #+end_src
 
-** Make lsp fast
+** Lsp
 
 #+begin_src emacs-lisp
 (setq lsp-idle-delay 0.500)
+(setq lsp-enable-indentation nil)
+#+end_src
+
+** Treesitter
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! treesit-auto)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 #+end_src
 
 ** Evil
@@ -496,24 +520,6 @@ modeline from that module isn't in use. So, it's duplicated here and tweaked.
                     :slant 'italic)
 #+end_src
 
-**** Ligatures
-Ligatures are a mess in programming languages, however they make org documents
-quite nice so let's just use them here until a good fix is found.
-
-#+begin_src emacs-lisp
-(setq-hook! org-mode
-  prettify-symbols-alist '(("#+end_quote" . "”")
-                           ("#+END_QUOTE" . "”")
-                           ("#+begin_quote" . "“")
-                           ("#+BEGIN_QUOTE" . "“")
-                           ("#+end_src" . "«")
-                           ("#+END_SRC" . "«")
-                           ("#+begin_src" . "»")
-                           ("#+BEGIN_SRC" . "»")
-                           ("#+name:" . "»")
-                           ("#+NAME:" . "»")))
-#+end_src
-
 *** Themes
 
 #+begin_src emacs-lisp
@@ -527,9 +533,6 @@ quite nice so let's just use them here until a good fix is found.
 *** Make cursor center
 
 #+begin_src emacs-lisp :tangle packages.el
-;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
-
 (package! centered-cursor-mode)
 #+end_src
 
@@ -583,3 +586,13 @@ This may be the solution to /so/ many weird issues with src blocks.
 #+begin_src emacs-lisp
 (setq org-use-property-inheritance t)
 #+end_src
+
+*** Better snippets
+#+begin_src emacs-lisp
+(use-package! org-tempo
+  :after org
+  :init
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("els" . "src elisp"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp")))
+  #+end_src
