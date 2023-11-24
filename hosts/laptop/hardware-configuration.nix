@@ -8,44 +8,16 @@
   modulesPath,
   ...
 }: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  imports =
+    [(import ../../lib/disko/btrfs-single-luks.nix {})]
+    ++ [
+      (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
-
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = ["defaults" "size=10G" "mode=755"];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
-    fsType = "vfat";
-  };
-
-  fileSystems."/etc/nixos" = {
-    device = "/nix/persist/etc/nixos";
-    fsType = "none";
-    options = ["bind"];
-  };
-
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024;
-    }
-  ];
-  boot.kernel.sysctl = {"vm.swappiness" = 10;};
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

@@ -1,6 +1,9 @@
 {pkgs, ...}: {
   boot = {
-    supportedFilesystems = ["ntfs"];
+    initrd = {
+      verbose = true;
+      supportedFilesystems = ["btrfs"];
+    };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader = {
       # systemd-boot = {
@@ -12,6 +15,7 @@
         efiSupport = true;
         useOSProber = true;
         device = "nodev";
+        enableCryptodisk = true;
       };
       efi = {
         canTouchEfiVariables = true;
@@ -22,9 +26,9 @@
     kernelParams = [
       "quiet"
       "splash"
+      "fbcon=nodefer"
       # "nvidia-drm.modeset=1"
     ];
     consoleLogLevel = 0;
-    initrd.verbose = false;
   };
 }

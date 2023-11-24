@@ -36,6 +36,7 @@ in {
           inputs.nur.nixosModules.nur
           inputs.home-manager.nixosModules.home-manager
           inputs.nh.nixosModules.default
+          inputs.disko.nixosModules.disko
           module_args
 
           self.nixosModules.boot

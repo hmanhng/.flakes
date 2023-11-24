@@ -51,9 +51,13 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hypr-contrib.url = "github:hyprwm/contrib";
     hyprpicker.url = "github:hyprwm/hyprpicker";
-    impermanence.url = "github:nix-community/impermanence"; # for tmpfs rootfs
+    impermanence.url = "github:nix-community/impermanence"; # Systems with ephemeral root storage.
     sops-nix.url = "github:Mic92/sops-nix";
+
+    disko.url = "github:nix-community/disko";
+
     yazi.url = "github:sxyazi/yazi";
+
     spicetify-nix = {
       url = "github:MichaelPachec0/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
