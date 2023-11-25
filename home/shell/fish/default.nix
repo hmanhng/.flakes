@@ -45,6 +45,9 @@
       nhs = "nh os switch -H laptop";
       fc = "nix flake check";
       fl = "cd ~/.flakes";
+
+      xdg-ninja = ", xdg-ninja";
+      xdg-user-dirs = ", xdg-user-dirs-update";
     };
   };
   home.packages = with pkgs; [fishPlugins.autopair];
