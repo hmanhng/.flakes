@@ -47,6 +47,15 @@ while true; do
 done
 
 nix run github:nix-community/disko -- --mode disko "$partition_layout"
+if [[ "$partition_layout" = *"btrfs"* ]]; then
+    mkdir -p /run/rootvol
+    mount -t btrfs -o rw,subvol=/ /dev/mapper/pool-root /run/rootvol
+    btrfs subvolume snapshot -r /run/rootvol/root /run/rootvol/root-blank
+    btrfs property set /run/rootvol/root-blank ro false
+    rm -rf /run/rootvol/root-blank/{.*,*}
+    btrfs property set /run/rootvol/root-blank ro true
+    umount /run/rootvol
+fi
 
 nixos-generate-config --no-filesystems --root /mnt
 cd /mnt/etc/nixos
