@@ -1,4 +1,4 @@
-{ disks ? [ "/dev/nvme0n1" ], ... }: {
+{disks ? ["/dev/nvme0n1"], ...}: {
   disko.devices = {
     disk = {
       vdb = {
@@ -29,7 +29,7 @@
               content = {
                 type = "luks";
                 name = "crypted";
-                extraOpenArgs = [ "--allow-discards" ];
+                extraOpenArgs = ["--allow-discards"];
                 passwordFile = "/tmp/secret.key";
                 content = {
                   type = "lvm_pv";

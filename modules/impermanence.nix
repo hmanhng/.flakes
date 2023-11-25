@@ -17,7 +17,8 @@
     files = [
       "/etc/machine-id"
     ];
-    /* users.${user} = {
+    /*
+       users.${user} = {
       directories = [
         "Downloads"
         "Music"
@@ -43,6 +44,7 @@
       ];
       files = [
       ];
-    }; */
+    };
+    */
   };
 }

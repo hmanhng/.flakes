@@ -15,13 +15,13 @@
     };
     */
   };
-  programs.fish.functions = {code = "command code $argv --enable-wayland-ime";};
+  programs.fish.functions = {code = "command env WAYLAND_DISPLAY= code $argv --enable-wayland-ime";};
   xdg.desktopEntries = {
     code = {
       name = "Visual Studio Code";
       icon = "vscode";
       genericName = "Text Editor";
-      exec = "code --enable-wayland-ime %U";
+      exec = "env WAYLAND_DISPLAY= code --enable-wayland-ime %U";
       categories = ["Utility" "TextEditor" "Development" "IDE"];
       mimeType = ["text/plain" "inode/directory"];
     };

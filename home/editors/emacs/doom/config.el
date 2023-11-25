@@ -10,7 +10,7 @@
 
 (use-package! treesit-auto
   :custom
-  (treesit-auto-install 'prompt)
+  (treesit-auto-install t)
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
@@ -150,11 +150,11 @@
 (set-face-attribute 'font-lock-keyword-face nil
                     :slant 'italic)
 
-(setq doom-theme 'doom-one)
-(custom-theme-set-faces! 'doom-one
+(setq doom-theme 'doom-horizon)
+(custom-theme-set-faces! 'doom-horizon
   '(line-number :foreground "dim gray")
   '(line-number-current-line :foreground "white"))
-(add-to-list 'default-frame-alist '(alpha-background . 100))
+(add-to-list 'default-frame-alist '(alpha-background . 90))
 
 (use-package! centered-cursor-mode
   :demand
