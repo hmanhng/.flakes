@@ -12,4 +12,6 @@ nixos_install() {
 }
 mkdir -p /mnt/nix/persist
 nixos_install
+sed -i '/nh = {/,+4 s/^#*//' modules/nix.nix # Comment nh module , error with nixos-install
+sed -i '/inputs\.nh\./ s/^#*//' modules/default.nix
 cp -r "$flake_dir" /mnt/nix/persist/.flakes

@@ -42,17 +42,17 @@
           # Anyhow, deleting these subvolumes hasn't resulted
           # in any issues so far, except for fairly
           # benign-looking errors from systemd-tmpfiles.
-          btrfs subvolume list -o /mnt/root |
+          btrfs subvolume list -o /mnt/rootfs |
           cut -f9 -d' ' |
           while read subvolume; do
             echo "deleting /$subvolume subvolume..."
             btrfs subvolume delete "/mnt/$subvolume"
           done &&
-          echo "deleting /root subvolume..." &&
-          btrfs subvolume delete /mnt/root
+          echo "deleting /rootfs subvolume..." &&
+          btrfs subvolume delete /mnt/rootfs
 
-          echo "restoring blank /root subvolume..."
-          btrfs subvolume snapshot /mnt/root-blank /mnt/root
+          echo "restoring blank /rootfs subvolume..."
+          btrfs subvolume snapshot /mnt/rootfs-blank /mnt/rootfs
 
           # Once we're done rolling back to a blank snapshot,
           # we can unmount /mnt and continue on the boot process.

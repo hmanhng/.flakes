@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+clear
 set -e
 
 flake_dir="$(cd "$(dirname "$0")"/../.. && pwd)"
@@ -21,6 +22,7 @@ function ask {
 }
 # Select the disk partition layout and edit it
 while true; do
+    lsblk -f
     echo "Please select a disk partition layout:"
     echo "1. ext4-single-luks"
     echo "2. btrfs-single-luks"
@@ -47,15 +49,6 @@ while true; do
 done
 
 nix run github:nix-community/disko -- --mode disko "$partition_layout"
-if [[ "$partition_layout" = *"btrfs"* ]]; then
-    mkdir -p /run/rootvol
-    mount -t btrfs -o rw,subvol=/ /dev/mapper/pool-root /run/rootvol
-    btrfs subvolume snapshot -r /run/rootvol/root /run/rootvol/root-blank
-    btrfs property set /run/rootvol/root-blank ro false
-    rm -rf /run/rootvol/root-blank/{.*,*}
-    btrfs property set /run/rootvol/root-blank ro true
-    umount /run/rootvol
-fi
 
 nixos-generate-config --no-filesystems --root /mnt
 cd /mnt/etc/nixos
@@ -65,5 +58,6 @@ relative_path="../../lib/disko"
 layout_filepath="$relative_path/$(basename $partition_layout)"
 
 sed -i "/imports\ =/cimports\ = [(import\ $layout_filepath\ {})]++" "$flake_dir"/hosts/laptop/hardware-configuration.nix
+nix-shell -p alejandra --run "alejandra $flake_dir/hosts/laptop/hardware-configuration.nix"
 
-lsblk
+lsblk -f

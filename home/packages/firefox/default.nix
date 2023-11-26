@@ -11,7 +11,7 @@
   };
   programs.firefox = {
     enable = true;
-    # package = pkgs.firefox-unwrapped;
+    package = pkgs.firefox-wayland;
     policies = {
       CaptivePortal = false;
       DisableFirefoxStudies = true;
@@ -34,16 +34,18 @@
     profiles.default = {
       extensions =
         (with pkgs.nur.repos.rycee.firefox-addons; [
-          # duckduckgo-privacy-essentials
-          enhancer-for-youtube
-          foxyproxy-standard
-          i-dont-care-about-cookies
+          bitwarden
+          consent-o-matic
+          decentraleyes
+          multi-account-containers
+          onetab
           privacy-badger
-          stylus
-          # tabcenter-reborn
+          temporary-containers
+          foxyproxy-standard
           translate-web-pages
           ublock-origin
-          bitwarden
+          stylus
+          # tabcenter-reborn
         ])
         ++ (with self.legacyPackages.${pkgs.system}.firefox-addons; [
           default-zoom
@@ -74,7 +76,7 @@
             iconUpdateURL = "https://cdn-icons-png.flaticon.com/512/1384/1384060.png";
             definedAliases = ["yt"];
           };
-          # "Google".metaData.alias = "gg";
+          #"Google".metaData.hidden = true;
           "DuckDuckGo".metaData.hidden = true;
           "Wikipedia (en)".metaData.hidden = true;
           "Amazon.com".metaData.hidden = true;

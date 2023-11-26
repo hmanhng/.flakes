@@ -71,6 +71,15 @@
     };
 
     bitwarden-menu.url = "github:firecat53/bitwarden-menu";
+
+    catppuccin-starship = {
+      url = "github:catppuccin/starship";
+      flake = false;
+    };
+    carapace = {
+      url = "github:rsteube/carapace-bin";
+      flake = false;
+    };
   };
   nixConfig = {
     extra-substituters = [

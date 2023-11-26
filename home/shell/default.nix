@@ -2,8 +2,10 @@
   imports = [
     #./zsh/zsh.nix
     ./fish
-    # ./bash
+    ./bash
     ./git
+    ./starship.nix
+    ./carapace.nix
   ];
   programs.nix-index-database.comma.enable = true;
 
@@ -30,7 +32,6 @@
     wget
     zip
   ];
-  programs.starship.enable = true;
   programs.zoxide.enable = true;
   programs.eza.enable = true;
   programs.fzf = {

@@ -11,36 +11,17 @@
   };
 
   services = {
-    /*
     # network discovery, mDNS
-    */
-    /*
-    avahi = {
-    */
-    /*
-    enable = true;
-    */
-    /*
-    nssmdns = true;
-    */
-    /*
-    publish = {
-    */
-    /*
-    enable = true;
-    */
-    /*
-    domain = true;
-    */
-    /*
-    userServices = true;
-    */
-    /*
-    };
-    */
-    /*
-    };
-    */
+
+    # avahi = {
+    #   enable = true;
+    #   nssmdns = true;
+    #   publish = {
+    #     enable = true;
+    #     domain = true;
+    #     userServices = true;
+    #   };
+    # };
 
     openssh = {
       enable = true;

@@ -4,9 +4,11 @@
   inputs,
   ...
 }: {
-  imports =
-    (import ./hardware)
-    ++ [./fonts.nix];
+  imports = [./fonts.nix];
+
+  environment.sessionVariables = {
+    LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib";
+  };
 
   environment.systemPackages = with pkgs; [
     qt6.qtwayland
@@ -17,6 +19,24 @@
   location.provider = "geoclue2";
 
   hardware.pulseaudio.enable = lib.mkForce false;
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
+  };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+      libGL
+      xorg.libXtst
+    ];
+  };
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   services = {
     pipewire = {

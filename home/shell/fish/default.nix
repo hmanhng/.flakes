@@ -47,7 +47,6 @@
       fl = "cd ~/.flakes";
 
       xdg-ninja = ", xdg-ninja";
-      xdg-user-dirs = ", xdg-user-dirs-update";
     };
   };
   home.packages = with pkgs; [fishPlugins.autopair];
@@ -56,5 +55,4 @@
   home.file.".config/fish/functions/xdg-set.fish".text = import ./functions/xdg-set.nix;
   home.file.".config/fish/conf.d/nord.fish".text = import ./conf.d/nord_theme.nix;
   xdg.configFile."fish/functions/hmanhng.fish".source = ./functions/hmanhng.fish;
-  xdg.configFile."starship.toml".source = ./starship.toml;
 }

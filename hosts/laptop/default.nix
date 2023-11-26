@@ -11,4 +11,14 @@ in {
     isNormalUser = true;
     extraGroups = ["wheel" "video" "audio" "networkmanager"];
   };
+
+  services = {
+    tlp.enable = true; # optimized for battery life
+    auto-cpufreq.enable = true; # Automatic CPU speed & power optimizer for Linux
+    # xserver.videoDrivers = [ "nvidia" ];
+  };
+  hardware.logitech.wireless = {
+    enable = true;
+    enableGraphical = true;
+  };
 }

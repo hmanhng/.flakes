@@ -1,8 +1,9 @@
-{disks ? ["/dev/nvme0n1"], ...}: {
+{disk ? "nvme0n1", ...}: {
   disko.devices = {
     disk = {
-      vdb = {
-        device = builtins.elemAt disks 0;
+      ${disk} = {
+        device = "/dev/${disk}";
+        type = "disk";
         content = {
           type = "table";
           format = "gpt";
@@ -15,6 +16,7 @@
               content = {
                 type = "filesystem";
                 format = "vfat";
+                extraArgs = ["-F 32"];
                 mountpoint = "/boot";
                 mountOptions = [
                   "defaults"
@@ -22,7 +24,7 @@
               };
             }
             {
-              name = "nixos";
+              name = "root";
               start = "512MiB";
               end = "100%";
               content = {
@@ -48,22 +50,28 @@
             size = "100%FREE";
             content = {
               type = "btrfs";
+              extraArgs = ["-f"];
+              mountOptions = [
+                "defaults"
+                "lazytime"
+              ];
+              postCreateHook = ''
+                MNTPOINT=$(mktemp -d)
+                mount "/dev/mapper/pool-root" "$MNTPOINT" -o subvol=/
+                trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+                btrfs subvolume snapshot -r $MNTPOINT/rootfs $MNTPOINT/rootfs-blank
+              '';
               subvolumes = {
-                "root" = {
+                "rootfs" = {
                   mountpoint = "/";
-                  mountOptions = ["compress=zstd" "noatime"];
                 };
-                "nix" = {
+                "/nix" = {
                   mountpoint = "/nix";
                   mountOptions = ["compress=zstd" "noatime"];
                 };
-                "home" = {
+                "/home" = {
                   mountpoint = "/home";
-                  mountOptions = ["compress=zstd" "noatime"];
-                };
-                "swap" = {
-                  mountpoint = "/.swapvol";
-                  swap.swapfile.size = "16G";
+                  mountOptions = ["compress=zstd"];
                 };
               };
             };
