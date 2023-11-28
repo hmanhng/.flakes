@@ -1,4 +1,8 @@
-{lib, ...}:
+{
+  lib,
+  config,
+  ...
+}:
 # networking configuration
 {
   networking = {
@@ -10,7 +14,16 @@
     };
   };
 
+  sops.secrets.tailscale_auth = {};
   services = {
+    tailscaleAutoconnect = {
+      enable = true;
+      authkeyFile = config.sops.secrets.tailscale_auth.path;
+      loginServer = "https://login.tailscale.com";
+      advertiseExitNode = lib.mkDefault false;
+      exitNode = "100.77.206.139";
+      exitNodeAllowLanAccess = true;
+    };
     # network discovery, mDNS
 
     # avahi = {

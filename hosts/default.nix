@@ -16,8 +16,9 @@
           ../modules/desktop.nix
           ../modules/impermanence.nix
           # ../modules/devops
-          ../secrets/secrets.nix
+          ../secrets
           ../modules/virtual
+          ../modules/dev.nix
           {
             home-manager.users.${user}.imports =
               homeImports."hmanhng@laptop";

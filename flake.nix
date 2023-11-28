@@ -46,15 +46,26 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     nur.url = "github:nix-community/NUR";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     hyprland.url = "github:hyprwm/Hyprland";
     hypr-contrib.url = "github:hyprwm/contrib";
     hyprpicker.url = "github:hyprwm/hyprpicker";
     impermanence.url = "github:nix-community/impermanence"; # Systems with ephemeral root storage.
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    disko.url = "github:nix-community/disko";
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }; # Run unpatched dynamic binaries on NixOS
+    nix-alien.url = "github:thiagokokada/nix-alien"; # Run unpatched binaries on Nix/NixOS
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     yazi.url = "github:sxyazi/yazi";
 
@@ -70,14 +81,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    bitwarden-menu.url = "github:firecat53/bitwarden-menu";
+    bitwarden-menu = {
+      url = "github:firecat53/bitwarden-menu";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     catppuccin-starship = {
       url = "github:catppuccin/starship";
-      flake = false;
-    };
-    carapace = {
-      url = "github:rsteube/carapace-bin";
       flake = false;
     };
   };

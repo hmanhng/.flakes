@@ -25,6 +25,7 @@ function hmanhng -d "hmanhng function"
         case {,-}-w{allpapers,}
             git clone --depth 1 https://github.com/hmanhng/wallpapers ~/Pictures/wallpapers
         case {,-}-e{macs,}
+            rm -rf ~/.emacs.d
             git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
             ~/.config/emacs/bin/doom sync
         case \*

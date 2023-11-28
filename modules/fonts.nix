@@ -23,9 +23,7 @@ in {
         corefonts
         roboto
         roboto-serif
-        /*
-        noto-fonts
-        */
+        # noto-fonts
         maple-mono
 
         noto-fonts-emoji

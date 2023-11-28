@@ -1,18 +1,16 @@
-{pkgs, ...}: {
-  home = {
-    packages = with pkgs; [
-      logseq
-    ];
+{pkgs, ...}: let
+  logseq = pkgs.symlinkJoin {
+    name = "logseq";
+    inherit (pkgs.logseq) pname version;
+    paths = [pkgs.logseq];
+    buildInputs = [pkgs.makeWrapper];
+    postBuild = ''
+      wrapProgram $out/bin/logseq \
+        --add-flags "--enable-wayland-ime"
+    '';
   };
-  programs.fish.shellAliases = {logseq = "logseq --enable-wayland-ime";};
-  xdg.desktopEntries = {
-    logseq = {
-      name = "Logseq";
-      icon = "logseq";
-      exec = "logseq --enable-wayland-ime %U";
-      terminal = false;
-      categories = ["Utility"];
-      mimeType = ["x-scheme-handler/logseq"];
-    };
-  };
+in {
+  home.packages = [
+    logseq
+  ];
 }

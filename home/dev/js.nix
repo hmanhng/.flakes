@@ -5,8 +5,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    nodejs
-    nodePackages.pnpm
+    nodejs-slim_latest
+    nodePackages_latest.pnpm
     deno
   ];
 }

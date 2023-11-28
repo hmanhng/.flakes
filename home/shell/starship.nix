@@ -1,9 +1,9 @@
-{ config
-, pkgs
-, inputs
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
   icons = ''
     [aws]
     symbol = "  "
@@ -137,48 +137,50 @@ let
     symbol = "🅢 "
   '';
   flavour = "mocha";
-in
-{
+in {
   programs.starship = {
     enable = true;
 
-    settings = builtins.fromTOML icons // {
-      add_newline = false;
-      # We don't use terraform workspaces so don't consume the space
-      terraform = {
-        disabled = true;
-      };
+    settings =
+      builtins.fromTOML icons
+      // {
+        add_newline = false;
+        # We don't use terraform workspaces so don't consume the space
+        terraform = {
+          disabled = true;
+        };
 
-      # Directory config, truncation_length is subpath count not char count
-      # don't truncate to git repo (not sure how i feel about this one yet)
-      directory = {
-        truncate_to_repo = false;
-        truncation_length = 10;
-      };
+        # Directory config, truncation_length is subpath count not char count
+        # don't truncate to git repo (not sure how i feel about this one yet)
+        directory = {
+          truncate_to_repo = false;
+          truncation_length = 10;
+        };
 
-      # Show exit codes
-      status = {
-        disabled = false;
-      };
+        # Show exit codes
+        status = {
+          disabled = false;
+        };
 
-      kubernetes = {
-        disabled = false;
-      };
+        kubernetes = {
+          disabled = false;
+        };
 
-      sudo = {
-        disabled = false;
-      };
+        sudo = {
+          disabled = false;
+        };
 
-      line_break.disabled = true;
+        line_break.disabled = true;
 
-      # Display which shell we're in
-      # Do we actually need this? We use xonsh all the time.
-      env_var.STARSHIP_SHELL = {
-        format = "🐙 [$env_value]($style) ";
-        style = "fg:green";
-      };
+        # Display which shell we're in
+        # Do we actually need this? We use xonsh all the time.
+        env_var.STARSHIP_SHELL = {
+          format = "🐙 [$env_value]($style) ";
+          style = "fg:green";
+        };
 
-      palette = "catppuccin_${flavour}";
-    } // builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/palettes/${flavour}.toml");
+        palette = "catppuccin_${flavour}";
+      }
+      // builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/palettes/${flavour}.toml");
   };
 }

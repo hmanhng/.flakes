@@ -20,7 +20,7 @@
         # "border_color"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        "${lib.getExe self.legacyPackages.${pkgs.system}.spoof-dpi}"
+        # "${lib.getExe self.legacyPackages.${pkgs.system}.spoof-dpi}"
         "ydotoold"
         "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
         "emacs --daemon"

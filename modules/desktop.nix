@@ -6,9 +6,9 @@
 }: {
   imports = [./fonts.nix];
 
-  environment.sessionVariables = {
-    LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib";
-  };
+  # environment.sessionVariables = {
+  #  LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib"; # THIS BREAK PACKAGES dynamic binaries on NixOs
+  # };
 
   environment.systemPackages = with pkgs; [
     qt6.qtwayland
@@ -16,6 +16,13 @@
 
   hardware.brillo.enable = true;
   programs.dconf.enable = true;
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
   location.provider = "geoclue2";
 
   hardware.pulseaudio.enable = lib.mkForce false;
@@ -30,8 +37,6 @@
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
-      libGL
-      xorg.libXtst
     ];
   };
 
@@ -48,6 +53,8 @@
     };
     # needed for GNOME services outside of GNOME Desktop
     dbus.packages = [pkgs.gcr];
+
+    tumbler.enable = true; # Thumbnail support for images
 
     gvfs.enable = true; # Needed for udiskie
 
@@ -67,6 +74,12 @@
 
   xdg.portal = {
     enable = true;
+    config = {
+      common = {
+        default = ["hyprland"];
+        "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+      };
+    };
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland

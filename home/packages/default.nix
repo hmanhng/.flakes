@@ -4,7 +4,7 @@
   self,
   ...
 }: let
-  excludedDirectories = ["waybar" "logseq" "music"];
+  excludedDirectories = ["logseq" "music"];
   directoryContents = builtins.readDir ./.;
   directories =
     builtins.filter
@@ -16,9 +16,6 @@ in {
   home.packages =
     (with pkgs; [
       ## Programs
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.tumbler
       gnome.file-roller
       imv
       # libreoffice-qt
@@ -36,29 +33,6 @@ in {
     ++ (with self.legacyPackages.${pkgs.system}; [
       ]);
 
-  programs.gpg = {
-    enable = true;
-    package = pkgs.gnupg;
-    homedir = "${config.xdg.dataHome}/gnupg";
-  };
-  programs = {
-    yt-dlp = {
-      enable = true;
-    };
-  };
-  home.file.".config/yt-dlp/config".text = ''
-    --ignore-errors
-    -o %(title)s.%(ext)s
-    # Prefer 1080p or lower resolutions
-    -f bestvideo[ext=mp4][width<2000][height<=1200]+bestaudio[ext=m4a]/bestvideo[ext=webm][width<2000][height<=1200]+bestaudio[ext=webm]/bestvideo[width<2000][height<=1200]+bestaudio/best[width<2000][height<=1200]/best
-    --add-metadata
-    --embed-thumbnail
-  '';
-
-  services.gpg-agent = {
-    enable = true;
-    pinentryFlavor = "gnome3";
-  };
   services.udiskie.enable = true;
 
   systemd.user.services.xdg-user-data-dirs = {

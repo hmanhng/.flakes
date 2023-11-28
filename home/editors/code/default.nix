@@ -1,7 +1,19 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  code = pkgs.symlinkJoin {
+    name = "code";
+    inherit (pkgs.vscode-fhs) pname version;
+    paths = [pkgs.vscode-fhs];
+    buildInputs = [pkgs.makeWrapper];
+    postBuild = ''
+      wrapProgram $out/bin/code \
+        --set WAYLAND_DISPLAY "" \
+        --add-flags "--enable-wayland-ime"
+    '';
+  };
+in {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode-fhs;
+    package = code;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
     ];
@@ -14,16 +26,5 @@
       "editor.fontSize" = 19;
     };
     */
-  };
-  programs.fish.functions = {code = "command env WAYLAND_DISPLAY= code $argv --enable-wayland-ime";};
-  xdg.desktopEntries = {
-    code = {
-      name = "Visual Studio Code";
-      icon = "vscode";
-      genericName = "Text Editor";
-      exec = "env WAYLAND_DISPLAY= code --enable-wayland-ime %U";
-      categories = ["Utility" "TextEditor" "Development" "IDE"];
-      mimeType = ["text/plain" "inode/directory"];
-    };
   };
 }

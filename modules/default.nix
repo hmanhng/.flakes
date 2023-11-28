@@ -29,7 +29,6 @@ in {
                 ++ [
                   inputs.neovim-nightly-overlay.overlay
                   inputs.nur.overlay
-                  (import inputs.emacs-overlay)
                 ];
             };
           }
@@ -43,14 +42,16 @@ in {
           self.nixosModules.core
           self.nixosModules.nix
           self.nixosModules.network
+          self.nixosModules.tailscale
         ];
       };
     }
   ];
   flake.nixosModules = {
+    boot = import ./boot.nix;
     core = import ./core.nix;
     nix = import ./nix.nix;
     network = import ./network.nix;
-    boot = import ./boot.nix;
+    tailscale = import ./tailscale-autoconnect.nix;
   };
 }
