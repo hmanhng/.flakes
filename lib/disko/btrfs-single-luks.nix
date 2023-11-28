@@ -26,7 +26,7 @@
             {
               name = "root";
               start = "512MiB";
-              end = "100%";
+              end = "70%";
               content = {
                 type = "luks";
                 name = "crypted";
