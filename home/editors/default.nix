@@ -7,7 +7,7 @@
     ./code
     ./nvim
     ./emacs
-    ./jetbrains
+    # ./jetbrains
   ];
   home = {
     sessionVariables = {
