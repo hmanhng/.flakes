@@ -30,6 +30,17 @@
       };
 
       DisplayBookmarksToolbar = true;
+      Preferences = {
+        "browser.toolbars.bookmarks.visibility" = "never"; # Show bookmarks
+        "browser.tabs.inTitlebar" = 0;
+        "browser.aboutConfig.showWarning" = false;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
+        "media.eme.enabled" = true; # Enable DRM
+        "extensions.autoDisableScopes" = 0; # Enable extensions install default
+        "extensions.htmlaboutaddons.recommendations.enabled" = false; # Disable recommendations extensions
+        "browser.tabs.firefox-view" = false; # Disable firefox-view
+      };
     };
     profiles.default = {
       extensions =
@@ -85,16 +96,6 @@
         };
       };
       settings = {
-        "browser.toolbars.bookmarks.visibility" = "never"; # Show bookmarks
-        "browser.tabs.inTitlebar" = 0;
-        "browser.aboutConfig.showWarning" = false;
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "media.ffmpeg.vaapi.enabled" = true;
-        "media.eme.enabled" = true; # Enable DRM
-        "extensions.autoDisableScopes" = 0; # Enable extensions install default
-        "extensions.htmlaboutaddons.recommendations.enabled" = false; # Disable recommendations extensions
-        "browser.tabs.firefox-view" = false; # Disable firefox-view
-
         "browser.startup.homepage" = "file://${./homepage.html}";
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
       };

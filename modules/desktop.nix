@@ -23,6 +23,7 @@
       thunar-volman
     ];
   };
+  programs.file-roller.enable = true;
   location.provider = "geoclue2";
 
   hardware.pulseaudio.enable = lib.mkForce false;

@@ -16,7 +16,6 @@ in {
   home.packages =
     (with pkgs; [
       ## Programs
-      gnome.file-roller
       imv
       # libreoffice-qt
       meld

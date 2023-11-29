@@ -260,7 +260,7 @@
         "margin" = "5px 5px 0px 5px";
         */
         modules-left = [
-          "group/launcher"
+          "custom/launcher"
           "hyprland/workspaces"
           # "custom/number-windows"
           "hyprland/submap"
