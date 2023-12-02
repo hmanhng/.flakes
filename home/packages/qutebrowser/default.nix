@@ -51,8 +51,8 @@
       quickmarks = {};
       settings = {
         fonts = {
-          default_family = "Maple Mono";
-          default_size = "12pt";
+          default_family = "Iosevka Term";
+          default_size = "14pt";
         };
         downloads.location.directory = "~/Downloads";
         editor.command = ["kitty" "nvim" "{file}"];

@@ -1,0 +1,113 @@
+/**
+ * ROFI Color theme
+ * NAME: center.rasi
+ * DESCRIPTION: This is a centered prompt.
+ * AUTHOR: Hmanhng
+ */
+
+* {
+    background-color:            #282c34;
+    border-color:                #282c34;
+    text-color:                  #bfbfbf;
+    font:                        "Maple Mono 16";
+    prompt-font:                 "Maple Mono Bold 15";
+    prompt-background:           #51afef;
+    prompt-foreground:           #282c34;
+    prompt-padding:              2px 4px 0px 4px;
+    alternate-normal-background: #21242b;
+    alternate-normal-foreground: @text-color;
+    selected-normal-background:  #a9a1e1;
+    selected-normal-foreground:  @background-color;
+    spacing:                     3;
+}
+/*****----- Main Window -----*****/
+window {
+    border:             1;
+    padding:            5;
+    location:           north west;
+    y-offset:           -34;
+    width:              100%;
+}
+/*****----- Main Box -----*****/
+mainbox {
+    children:           [ "inputbar", "message", "listview", "mode-switcher" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    spacing:            0;
+    padding:            1px ;
+}
+prompt {
+    padding:            @prompt-padding;
+    background-color:   @prompt-background;
+    text-color:         @prompt-foreground;
+    font:               @prompt-font;
+    border-radius:      2px;
+}
+entry {
+    padding:            0px 6px;
+    expand:             false;
+    width:              20em;
+}
+case-indicator {
+    spacing:            0;
+}
+
+/*****----- Listview -----*****/
+listview {
+    fixed-height:       0;
+    border:             2px dash 0px 0px ;
+    spacing:            2px;
+    scrollbar:          true;
+    padding:            2px 0px 0px ;
+}
+scrollbar {
+    width:              0px ;
+    border:             0;
+    handle-width:       0px ;
+    padding:            0;
+}
+element {
+    border:             0;
+    border-radius:      2px;
+    padding:            2px 10px 2px 10px;
+}
+element-text {
+    background-color:   inherit;
+    text-color:         inherit;
+}
+element.selected.normal {
+    background-color:   @selected-normal-background;
+    text-color:         @selected-normal-foreground;
+}
+element.alternate.normal {
+    background-color:   @alternate-normal-background;
+    text-color:         @alternate-normal-foreground;
+}
+
+/* Not actually relevant for this configuration, but it might
+be useful to someone having issues with their icons' background color
+
+element-icon {
+    background-color:   inherit;
+}
+*/
+
+/*****----- Mode Switcher -----*****/
+mode-switcher{
+    enabled:            false;
+    spacing:            10px;
+    background-color:   transparent;
+}
+button.selected {
+    background-color:   @selected-normal-background;
+    text-color:         @selected-normal-foreground;
+    border-radius:      2px;
+}
+
+/*****----- Message -----*****/
+message {
+    border:             1px dash 0px 0px;
+    padding:            1px;
+}

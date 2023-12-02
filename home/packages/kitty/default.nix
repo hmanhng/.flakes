@@ -13,6 +13,10 @@
       # font.name = "JetBrainsMono Nerd Font";
       font.name = default.terminal.font;
       font.size = default.terminal.size;
+      keybindings = {
+        "ctrl+c" = "copy_and_clear_or_interrupt";
+        "ctrl+v" = "paste_from_clipboard";
+      };
       settings = {
         bold_font = "auto";
         italic_font = "auto";

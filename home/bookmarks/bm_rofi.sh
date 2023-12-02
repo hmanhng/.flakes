@@ -1,6 +1,8 @@
 #/usr/bin/env bash
 
-bookmarks=~/.flakes/home/bookmarks/default
-rofi="rofi -dmenu -theme ~/.config/rofi/cliphist/cliphist-rofi.rasi -p Bookmarks"
+trap 'rm /tmp/.bookmarks' EXIT
+rofi -modes bookmarks:~/.flakes/home/bookmarks/bm -show bookmarks
 
-ydotool type -d 1 "$(grep -v "^#" $bookmarks | $rofi)"
+if [ -f /tmp/.bookmarks ]; then
+    ydotool key 29:1 47:1 47:0 29:0
+fi

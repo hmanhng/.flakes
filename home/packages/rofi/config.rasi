@@ -1,0 +1,6 @@
+configuration {
+  modes: "combi,calc";
+  combi-modes: "window,drun,ssh";
+}
+@theme "~/.config/rofi/themes/center.rasi"
+

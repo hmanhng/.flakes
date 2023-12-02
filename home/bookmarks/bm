@@ -1,0 +1,10 @@
+#/usr/bin/env bash
+
+bookmarks=~/.flakes/home/bookmarks/default
+
+if [ -z "$1" ]; then
+    grep -v "^#" $bookmarks
+else
+    wl-copy "$1"
+    touch /tmp/.bookmarks
+fi

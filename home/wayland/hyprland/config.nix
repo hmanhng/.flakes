@@ -45,7 +45,7 @@
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         focus_on_activate = true;
-        enable_swallow = true;
+        # enable_swallow = true;
         swallow_regex = "^(${default.terminal.name})$";
         # swallow_exception_regex = "";
       };
@@ -117,7 +117,7 @@
         "$MODSHIFT, X, exec, loginctl lock-session"
         "$MOD, O, exec, killall -SIGUSR1 .waybar-wrapped"
         # Rofi
-        "$MOD, Space, exec, pkill rofi || ~/.config/rofi/launcher/launcher.sh"
+        "$MOD, Space, exec, pkill rofi || rofi -show combi"
         "$MOD, apostrophe, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh"
         "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
         "$MOD, comma, exec, bwm" # bwm for password manager
