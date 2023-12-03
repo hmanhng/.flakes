@@ -21,7 +21,7 @@
       authkeyFile = config.sops.secrets.tailscale_auth.path;
       loginServer = "https://login.tailscale.com";
       advertiseExitNode = lib.mkDefault false;
-      exitNode = "100.77.206.139";
+      exitNode = "amazone";
       exitNodeAllowLanAccess = true;
     };
     # network discovery, mDNS

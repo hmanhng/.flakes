@@ -70,7 +70,7 @@ in {
         sleep 2
 
         # check if we are already authenticated to tailscale
-        status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
+        status="$(${tailscale}/bin/tailscale status -json | ${jaq}/bin/jaq -r .BackendState)"
         # if status is not null, then we are already authenticated
         echo "tailscale status: $status"
         if [ "$status" != "NeedsLogin" ]; then
