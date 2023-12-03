@@ -84,6 +84,7 @@
       "splash"
       "fbcon=nodefer"
       # "nvidia-drm.modeset=1"
+      "i915.enable_guc=2"
     ];
     consoleLogLevel = 0;
   };

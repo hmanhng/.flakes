@@ -20,7 +20,8 @@
     inputs.hypr-contrib.packages.${pkgs.system}.grimblast
 
     # utils
-    wf-recorder
+    wl-screenrec
+    slurp
     wl-clipboard
     cliphist
     # wl-clip-persist

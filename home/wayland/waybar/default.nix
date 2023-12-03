@@ -211,9 +211,20 @@
         color: #d6dce7;
       }
 
-      #custom-powermenu {
-        color: @bg-color;
-        background-color: #bd6069;
+      #custom-poweroff {
+        color: #ff6c6b;
+        padding: 0px 9px 0px 9px;
+      }
+      #custom-reboot {
+        color: #ecbe7b;
+        padding: 0px 9px 0px 9px;
+      }
+      #custom-suspend {
+        color: #4db5bd;
+        padding: 0px 9px 0px 9px;
+      }
+      #custom-lockscreen {
+        color: #c678dd;
         padding: 0px 9px 0px 9px;
       }
 
@@ -251,14 +262,10 @@
     '';
     settings = [
       {
-        "layer" = "top";
-        "position" = "top";
-        /*
-        "mode" = "dock";
-        */
-        /*
-        "margin" = "5px 5px 0px 5px";
-        */
+        layer = "top";
+        position = "top";
+        # mode = "dock";
+        # margin = "5px 5px 0px 5px";
         modules-left = [
           "custom/launcher"
           "hyprland/workspaces"
@@ -284,296 +291,314 @@
           "network"
           "battery#icons"
           "battery"
-          "custom/powermenu"
+          "group/powermenu"
           "tray"
         ];
         "custom/spacer" = {
-          "format" = " ";
-          "tooltip" = false;
+          format = " ";
+          tooltip = false;
         };
 
         "group/launcher" = {
-          "orientation" = "inherit";
-          "drawer" = {
-            "transition-duration" = 500;
-            "children-class" = "launcher";
-            "transition-left-to-right" = false;
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            children-class = "launcher";
+            transition-left-to-right = false;
           };
-          "modules" = ["custom/launcher" "custom/hyprpicker" "custom/screenshot"];
+          modules = ["custom/launcher" "custom/hyprpicker" "custom/screenshot"];
         };
         "custom/launcher" = {
-          "format" = "";
-          "on-click" = "wallpaper_random";
-          "on-click-middle" = "default_wall";
-          "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
-          # "on-click" = "pkill rofi || ~/.config/rofi/launcher.sh";
-          "tooltip" = false;
+          format = "";
+          on-click = "wallpaper_random";
+          on-click-middle = "default_wall";
+          on-click-right = "killall dynamic_wallpaper || dynamic_wallpaper &";
+          # on-click = "pkill rofi || ~/.config/rofi/launcher.sh";
+          tooltip = false;
         };
         "custom/hyprpicker" = {
-          "format" = "";
-          "on-click" = "hyprpicker -a";
-          "tooltip" = false;
+          format = "";
+          on-click = "hyprpicker -a";
+          tooltip = false;
         };
         "custom/screenshot" = {
-          "format" = "󰸉";
-          "on-click" = "grimblast --notify --cursor  copy area";
-          "on-click-middle" = "grimblast --notify --cursor  copysave area ~/Pictures/$(date \"+%Y-%m-%d\"T\"%H:%M:%S_no_watermark\").png";
-          "on-click-right" = "grimblast_watermark";
-          "tooltip" = false;
+          format = "󰸉";
+          on-click = "grimblast --notify --cursor  copy area";
+          on-click-middle = "grimblast --notify --cursor  copysave area ~/Pictures/$(date \"+%Y-%m-%d\"T\"%H:%M:%S_no_watermark\").png";
+          on-click-right = "grimblast_watermark";
+          tooltip = false;
         };
 
         "hyprland/workspaces" = {
-          "format" = "{name}";
-          "on-click" = "activate";
-          # "on-scroll-up" = "hyprctl dispatch workspace e+1";
-          # "on-scroll-down" = "hyprctl dispatch workspace e-1";
+          format = "{name}";
+          on-click = "activate";
+          # on-scroll-up = "hyprctl dispatch workspace e+1";
+          # on-scroll-down = "hyprctl dispatch workspace e-1";
         };
 
         "custom/number-windows" = {
-          "exec" = "hyprctl activeworkspace | rg windows | cut -d \" \" -f2";
-          "restart-interval" = 1;
-          "format" = "󰹑   {}";
-          "tooltip" = false;
+          exec = "hyprctl activeworkspace | rg windows | cut -d \" \" -f2";
+          restart-interval = 1;
+          format = "󰹑   {}";
+          tooltip = false;
         };
 
         "hyprland/submap" = {
-          "format" = "submap = {} ";
-          # "max-length" = 8;
-          # "tooltip" = false;
+          format = "submap = {} ";
+          # max-length = 8;
+          # tooltip = false;
         };
 
         "temperature#icons" = {
-          "format" = "";
-          "tooltip" = false;
+          format = "";
+          tooltip = false;
         };
-        "temperature" = {
-          # "hwmon-path"= "${env:HWMON_PATH}";
-          #"critical-threshold"= 80;
-          "thermal-zone" = 2;
-          "tooltip" = false;
-          "format" = "{temperatureC}°C";
-        };
-
-        "memory#icons" = {"format" = "﬙";};
-        "memory" = {
-          "interval" = 10;
-          "format" = "{percentage}%";
-          "states" = {"warning" = 85;};
+        temperature = {
+          # hwmon-path= "${env:HWMON_PATH}";
+          #critical-threshold= 80;
+          thermal-zone = 2;
+          tooltip = false;
+          format = "{temperatureC}°C";
         };
 
-        "cpu#icons" = {"format" = "";};
-        "cpu" = {
-          "interval" = 10;
-          "format" = "{usage}%";
+        "memory#icons" = {format = "﬙";};
+        memory = {
+          interval = 10;
+          format = "{percentage}%";
+          states = {"warning" = 85;};
         };
 
-        "idle_inhibitor" = {
-          "format" = "{icon}";
-          "format-icons" = {
-            "activated" = "";
-            "deactivated" = "";
+        "cpu#icons" = {format = "";};
+        cpu = {
+          interval = 10;
+          format = "{usage}%";
+        };
+
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
           };
-          "tooltip" = false;
+          tooltip = false;
         };
 
         "custom/wall" = {
-          "on-click" = "wallpaper_random";
-          "on-click-middle" = "default_wall";
-          "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
-          "format" = " ﴔ ";
-          "tooltip" = false;
+          on-click = "wallpaper_random";
+          on-click-middle = "default_wall";
+          on-click-right = "killall dynamic_wallpaper || dynamic_wallpaper &";
+          format = " ﴔ ";
+          tooltip = false;
         };
 
-        "mpd" = {
-          "max-length" = 25;
-          "format" = "<span foreground='#bb9af7'> </span>{title}";
-          "format-paused" = " {title}";
-          "format-stopped" = "<span foreground='#bb9af7'> </span>";
-          "format-disconnected" = "";
-          "on-click" = "mpc --quiet toggle";
-          "on-click-right" = "mpc update; mpc ls | mpc add";
-          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-          "on-scroll-up" = "mpc --quiet prev";
-          "on-scroll-down" = "mpc --quiet next";
-          "smooth-scrolling-threshold" = 5;
-          "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
+        mpd = {
+          max-length = 25;
+          format = "<span foreground='#bb9af7'> </span>{title}";
+          format-paused = " {title}";
+          format-stopped = "<span foreground='#bb9af7'> </span>";
+          format-disconnected = "";
+          on-click = "mpc --quiet toggle";
+          on-click-right = "mpc update; mpc ls | mpc add";
+          on-click-middle = "kitty --class='ncmpcpp' ncmpcpp ";
+          on-scroll-up = "mpc --quiet prev";
+          on-scroll-down = "mpc --quiet next";
+          smooth-scrolling-threshold = 5;
+          tooltip-format = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
         };
 
         "custom/cava-internal" = {
-          "exec" = "sleep 1s && cava-internal";
-          "tooltip" = false;
+          exec = "sleep 1s && cava-internal";
+          tooltip = false;
         };
 
-        "clock" = {
-          "format" = "{:%H:%M}";
-          "format-alt" = "{:%d %B %Y (%a)}";
-          "locale" = "en_US.UTF-8";
-          "tooltip-format" = "Devops go go\n<span size='13pt' font='JetBrainsMono Nerd Font'>{calendar}</span>";
-          "calendar" = {
-            "mode-mon-col" = 3;
-            # "weeks-pos" = "right";
-            "on-scroll" = 1;
-            "on-click-right" = "mode";
-            "format" = {
-              "months" = "<span color='#ffead3'><b>{}</b></span>";
-              "days" = "<span color='#ecc6d9'><b>{}</b></span>";
-              "weeks" = "<span color='#99ffdd'><b>W{}</b></span>";
-              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
-              "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
+        clock = {
+          format = "{:%H:%M}";
+          format-alt = "{:%d %B %Y (%a)}";
+          locale = "en_US.UTF-8";
+          tooltip-format = "Devops go go\n<span size='13pt' font='JetBrainsMono Nerd Font'>{calendar}</span>";
+          calendar = {
+            mode-mon-col = 3;
+            # weeks-pos = "right";
+            on-scroll = 1;
+            on-click-right = "mode";
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
             };
           };
-          "actions" = {
-            "on-click-right" = "mode";
-            "on-click-forward" = "tz_up";
-            "on-click-backward" = "tz_down";
-            "on-scroll-up" = "shift_up";
-            "on-scroll-down" = "shift_down";
+          actions = {
+            on-click-right = "mode";
+            on-click-forward = "tz_up";
+            on-click-backward = "tz_down";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
           };
         };
 
         "group/audio" = {
-          "orientation" = "inherit";
-          "drawer" = {
-            "transition-duration" = 500;
-            "children-class" = "audio";
-            "transition-left-to-right" = true;
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            children-class = "audio";
+            transition-left-to-right = true;
           };
-          "modules" = ["pulseaudio#icons" "pulseaudio#microphone" "pulseaudio#microphone-icons" "pulseaudio"];
+          modules = ["pulseaudio#icons" "pulseaudio#microphone" "pulseaudio#microphone-icons" "pulseaudio"];
         };
         "pulseaudio#icons" = {
-          "format" = "{icon}";
-          "format-icons" = {
-            "headphone" = "";
-            "hands-free" = "";
-            "headset" = "";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = ["󰕿" "󰖀" "󰕾"];
+          format = "{icon}";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["󰕿" "󰖀" "󰕾"];
           };
-          "format-muted" = "󰝟";
-          "on-click" = "pamixer -t";
-          "on-click-right" = "pavucontrol";
-          "scroll-step" = 5;
-          "tooltip" = false;
+          format-muted = "󰝟";
+          on-click = "pamixer -t";
+          on-click-right = "pavucontrol";
+          scroll-step = 5;
+          tooltip = false;
         };
-        "pulseaudio" = {
-          "format" = "{volume}%";
-          "format-bluetooth" = " {volume}%";
+        pulseaudio = {
+          format = "{volume}%";
+          format-bluetooth = " {volume}%";
           /*
-          "format-muted" = "Muted";
+          format-muted = "Muted";
           */
-          "on-click" = "pamixer -t";
-          "on-click-right" = "pavucontrol";
-          "scroll-step" = 5;
-          # "states" = { "warning" = 85; };
-          "tooltip" = false;
+          on-click = "pamixer -t";
+          on-click-right = "pavucontrol";
+          scroll-step = 5;
+          # states = { "warning" = 85; };
+          tooltip = false;
         };
 
         "pulseaudio#microphone-icons" = {
-          "format" = "{format_source}";
-          "format-source" = "󰍬";
-          "format-source-muted" = "󰍭";
-          "on-click" = "pamixer --default-source -t";
-          "on-click-right" = "pavucontrol";
-          "on-scroll-down" = "pamixer --default-source -d 5";
-          "on-scroll-up" = "pamixer --default-source -i 5";
-          "scroll-step" = 5;
-          "tooltip" = false;
+          format = "{format_source}";
+          format-source = "󰍬";
+          format-source-muted = "󰍭";
+          on-click = "pamixer --default-source -t";
+          on-click-right = "pavucontrol";
+          on-scroll-down = "pamixer --default-source -d 5";
+          on-scroll-up = "pamixer --default-source -i 5";
+          scroll-step = 5;
+          tooltip = false;
         };
         "pulseaudio#microphone" = {
-          "format" = "{format_source}";
-          "format-source" = "{volume}%";
-          /*
-          "format-source-muted" = "Muted";
-          */
-          "on-click" = "pamixer --default-source -t";
-          "on-click-right" = "pavucontrol";
-          "on-scroll-down" = "pamixer --default-source -d 5";
-          "on-scroll-up" = "pamixer --default-source -i 5";
-          "scroll-step" = 5;
-          "tooltip" = false;
+          format = "{format_source}";
+          format-source = "{volume}%";
+          # format-source-muted = "Muted";
+          on-click = "pamixer --default-source -t";
+          on-click-right = "pavucontrol";
+          on-scroll-down = "pamixer --default-source -d 5";
+          on-scroll-up = "pamixer --default-source -i 5";
+          scroll-step = 5;
+          tooltip = false;
         };
 
         "group/backlight" = {
-          "orientation" = "inherit";
-          "drawer" = {
-            "transition-duration" = 500;
-            "children-class" = "audio";
-            "transition-left-to-right" = true;
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            children-class = "audio";
+            transition-left-to-right = true;
           };
-          "modules" = ["backlight#icons" "backlight"];
+          modules = ["backlight#icons" "backlight"];
         };
         "backlight#icons" = {
-          "device" = "intel_backlight";
-          "on-scroll-up" = "brillo -A 5";
-          "on-scroll-down" = "brillo -U 5";
-          "format" = "{icon}";
-          "format-icons" = ["" "" "" ""];
-          "tooltip" = false;
+          device = "intel_backlight";
+          on-scroll-up = "brillo -A 5";
+          on-scroll-down = "brillo -U 5";
+          format = "{icon}";
+          format-icons = ["" "" "" ""];
+          tooltip = false;
         };
-        "backlight" = {
-          "device" = "intel_backlight";
-          "on-scroll-up" = "brillo -A 5";
-          "on-scroll-down" = "brillo -U 5";
-          "format" = "{percent}%";
-          "tooltip" = false;
+        backlight = {
+          device = "intel_backlight";
+          on-scroll-up = "brillo -A 5";
+          on-scroll-down = "brillo -U 5";
+          format = "{percent}%";
+          tooltip = false;
         };
 
         "network#icons" = {
-          "format-disconnected" = "";
-          "format-ethernet" = "";
-          "format-linked" = "󰯡";
-          "format-wifi" = "";
-          "tooltip" = false;
+          format-disconnected = "";
+          format-ethernet = "";
+          format-linked = "󰯡";
+          format-wifi = "";
+          tooltip = false;
         };
-        "network" = {
-          # "format-disconnected" = "Disconnected";
-          "format-ethernet" = "{ifname} ({ipaddr})";
-          "format-linked" = "{essid} (No IP)";
-          "format-wifi" = "{essid}";
-          "tooltip" = false;
+        network = {
+          # format-disconnected = "Disconnected";
+          format-ethernet = "{ifname} ({ipaddr})";
+          format-linked = "{essid} (No IP)";
+          format-wifi = "{essid}";
+          tooltip = false;
         };
 
         "battery#icons" = {
-          "format" = "{icon}";
-          "format-charging" = "󰚥";
-          "format-full" = "󰚥";
-          "format-plugged" = "󰚥";
-          "format-icons" = ["" "" "" "" ""];
-          "states" = {
-            "critical" = 10;
-            "warning" = 20;
+          format = "{icon}";
+          format-charging = "󰚥";
+          format-full = "󰚥";
+          format-plugged = "󰚥";
+          format-icons = ["" "" "" "" ""];
+          states = {
+            critical = 10;
+            warning = 20;
           };
-          "full-at" = 96;
-          "tooltip" = true;
+          full-at = 96;
+          tooltip = true;
         };
-        "battery" = {
-          "format" = "{capacity}%";
-          "format-charging" = "{capacity}%";
-          /*
-          "format-full" = "Full";
-          */
-          /*
-          "format-plugged" = "Full";
-          */
-          "states" = {
-            "critical" = 10;
-            "warning" = 20;
+        battery = {
+          format = "{capacity}%";
+          format-charging = "{capacity}%";
+          # format-full = "Full";
+          # format-plugged = "Full";
+          states = {
+            critical = 10;
+            warning = 20;
           };
-          "full-at" = 96;
-          "tooltip" = true;
+          full-at = 96;
+          tooltip = true;
         };
 
-        "custom/powermenu" = {
-          "format" = "";
-          "on-click" = "pkill rofi || ~/.config/rofi/powermenu/powermenu.sh";
-          "tooltip" = false;
+        "group/powermenu" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            children-class = "audio";
+            transition-left-to-right = true;
+          };
+          modules = ["custom/poweroff" "custom/lockscreen" "custom/suspend" "custom/reboot"];
+        };
+        "custom/poweroff" = {
+          format = "";
+          on-click = "systemctl poweroff";
+          tooltip = false;
+        };
+        "custom/reboot" = {
+          format = "";
+          on-click = "systemctl reboot";
+          tooltip = false;
+        };
+        "custom/suspend" = {
+          format = "";
+          on-click = "systemctl suspend";
+          tooltip = false;
+        };
+        "custom/lockscreen" = {
+          format = "󰌾";
+          on-click = "myswaylock";
+          tooltip = false;
         };
 
-        "tray" = {
-          # "icon-size" = 15;
-          "spacing" = 5;
+        tray = {
+          # icon-size = 15;
+          spacing = 5;
         };
       }
     ];

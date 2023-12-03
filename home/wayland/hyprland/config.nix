@@ -119,9 +119,8 @@
         # Rofi
         "$MOD, Space, exec, pkill rofi || rofi -show combi"
         "$MOD, apostrophe, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh"
-        "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
+        # "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
         "$MOD, comma, exec, bwm" # bwm for password manager
-        # bind = $MODSHIFT, K, exec, pkill rofi || ~/.config/rofi/launchers/keybind.sh
 
         # Bookmarks
         "$MOD, semicolon, exec, pkill rofi || ~/.flakes/home/bookmarks/bm_rofi.sh"

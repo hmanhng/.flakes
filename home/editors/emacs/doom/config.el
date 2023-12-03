@@ -150,8 +150,8 @@
 (set-face-attribute 'font-lock-keyword-face nil
                     :slant 'italic)
 
-(setq doom-theme 'doom-horizon)
-(custom-theme-set-faces! 'doom-horizon
+(setq doom-theme 'doom-one)
+(custom-theme-set-faces! 'doom-one
   '(line-number :foreground "dim gray")
   '(line-number-current-line :foreground "white"))
 (add-to-list 'default-frame-alist '(alpha-background . 90))
