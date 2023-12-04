@@ -1,6 +1,5 @@
 {
   pkgs,
-  user,
   self,
   ...
 }: let
@@ -9,7 +8,7 @@
     sha256 = "02ifsl1rvigslxdlrfm54d8lgx14i70zc0w6r3k1izzh13m76ggg";
   };
 in {
-  home-manager.users.${user} = {
+  home-manager.users.hmanhng = {
     xdg.dataFile."./fonts" = {
       source = "${myFont}";
       recursive = true;

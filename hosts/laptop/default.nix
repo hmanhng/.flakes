@@ -1,24 +1,28 @@
-{user, ...}: let
-  # Password for root and ${user}
-  initialHashedPassword = "$6$X8/X.cOzzY2d.ak9$VyhhkfKFgxFiKfbPQt6AzkL3duOr43B.O27N6eJy07tgZvOyzdygARwXv7R2dXBOegrTk2F.N7NC9RkBi/sff0";
-in {
+{
   imports = [./hardware-configuration.nix];
 
-  users.users.root.initialHashedPassword = initialHashedPassword;
-  services.getty.autologinUser = "${user}";
-  users.users.${user} = {
-    initialHashedPassword = initialHashedPassword;
-    isNormalUser = true;
-    extraGroups = ["wheel" "video" "audio" "networkmanager"];
-  };
+  networking.hostName = "laptop"; # Define your hostname.
+
+  security.tpm2.enable = true;
 
   services = {
     tlp.enable = true; # optimized for battery life
     auto-cpufreq.enable = true; # Automatic CPU speed & power optimizer for Linux
     # xserver.videoDrivers = [ "nvidia" ];
   };
+
   hardware.logitech.wireless = {
     enable = true;
     enableGraphical = true;
   };
+
+  boot.kernelParams = [
+    "quiet"
+    "loglevel=3"
+    "systemd.show_status=auto"
+    "rd.udev.log_level=3"
+    # "fbcon=nodefer"
+    "i915.enable_guc=2"
+    # "nvidia-drm.modeset=1"
+  ];
 }

@@ -1,8 +1,4 @@
-{
-  inputs,
-  user,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.impermanence.nixosModules.impermanence];
   #fileSystems."/persist".neededForBoot = true;
   environment.persistence."/nix/persist" = {
@@ -18,7 +14,7 @@
       "/etc/machine-id"
     ];
     /*
-       users.${user} = {
+       users.hmanhng = {
       directories = [
         "Downloads"
         "Music"

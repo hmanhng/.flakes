@@ -1,10 +1,18 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [
+    ./boot.nix
+    ./nix.nix
+  ];
   # Change default shell to fish
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
   environment.shells = with pkgs; [fish];
 
-  time.timeZone = "Asia/Ho_Chi_Minh";
+  time.timeZone = lib.mkDefault "Asia/Ho_Chi_Minh";
 
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -26,10 +34,17 @@
     ];
   };
 
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
+  # don't ask for password for wheel group
+  security.sudo.wheelNeedsPassword = false;
+
+  services.getty.autologinUser = "hmanhng";
+  users.users.hmanhng = {
+    isNormalUser = true;
+    extraGroups = ["wheel" "video" "audio" "networkmanager" "input" "libvirtd" "plugdev"];
   };
 
-  system.stateVersion = "23.05";
+  # compresses half the ram for use as swap
+  zramSwap.enable = true;
+
+  system.stateVersion = lib.mkDefault "23.05";
 }

@@ -1,11 +1,11 @@
-{user, ...}: {
+{lib, ...}: {
   home = {
-    username = "${user}";
-    homeDirectory = "/home/${user}";
+    username = "hmanhng";
+    homeDirectory = "/home/hmanhng";
   };
   programs = {
     home-manager.enable = true;
   };
 
-  home.stateVersion = "23.05";
+  home.stateVersion = lib.mkDefault "23.05";
 }

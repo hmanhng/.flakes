@@ -1,5 +1,4 @@
 {
-  user,
   sharedModules,
   inputs,
   homeImports,
@@ -13,16 +12,14 @@
       modules =
         [
           ./laptop
-          ../modules/desktop.nix
-          ../modules/impermanence.nix
-          # ../modules/devops
           ../secrets
-          ../modules/virtual
           ../modules/dev.nix
-          {
-            home-manager.users.${user}.imports =
-              homeImports."hmanhng@laptop";
-          }
+          ../modules/desktop
+          ../modules/impermanence
+          ../modules/impermanence/btrfs.nix
+          ../modules/virtual
+          # ../modules/devops
+          {home-manager.users.hmanhng.imports = homeImports."hmanhng@laptop";}
         ]
         ++ sharedModules;
     };

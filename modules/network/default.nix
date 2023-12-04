@@ -5,8 +5,11 @@
 }:
 # networking configuration
 {
+  imports = [
+    ./security.nix
+    ./tailscale-autoconnect.nix
+  ];
   networking = {
-    hostName = "nixos"; # Define your hostname.
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";

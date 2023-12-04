@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./config.nix
-    ../../scripts
   ];
 
   programs.fish.loginShellInit = ''

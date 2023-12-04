@@ -25,9 +25,6 @@ in {
       stremio
       vlc
       teams-for-linux
-
-      # cli
-      wireguard-tools
     ])
     ++ (with self.legacyPackages.${pkgs.system}; [
       ]);

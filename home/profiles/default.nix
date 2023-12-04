@@ -7,7 +7,7 @@
 }: let
   sharedModules = [
     ../.
-    ../shell
+    ../cli
     module_args
     inputs.nix-index-db.hmModules.nix-index
     inputs.sops-nix.homeManagerModules.sops
@@ -17,7 +17,7 @@
     "hmanhng@laptop" = [./laptop] ++ sharedModules;
   };
 
-  inherit (inputs.hm.lib) homeManagerConfiguration;
+  inherit (inputs.home-manager.lib) homeManagerConfiguration;
 in {
   imports = [
     # we need to pass this to NixOS' HM module
@@ -32,6 +32,7 @@ in {
       };
     });
 
-    # homeManagerModules.eww-hyprland = import ../programs/eww;
+    # homeManagerModules = {
+    # };
   };
 }

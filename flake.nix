@@ -1,9 +1,7 @@
 {
   description = "Hmanhng's NixOS configuration";
 
-  outputs = inputs @ {flake-parts, ...}: let
-    user = "hmanhng";
-  in
+  outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
       imports = [
@@ -12,7 +10,6 @@
         ./modules
         ./lib
         ./pkgs
-        {_module.args = {inherit user;};}
       ];
       perSystem = {
         config,

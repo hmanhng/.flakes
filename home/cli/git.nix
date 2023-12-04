@@ -34,18 +34,10 @@
           file-style = "bold blue ul";
           hunk-header-style = "omit";
           hunk-header-decoration-style = "";
-          /*
-          minus-style = "#d91e46";
-          */
-          /*
-          minus-emph-style = "normal";
-          */
-          /*
-          plus-style = "#9feb98";
-          */
-          /*
-          plus-emph-style = "normal";
-          */
+          # minus-style = "#d91e46";
+          # minus-emph-style = "normal";
+          # plus-style = "#9feb98";
+          # plus-emph-style = "normal";
           line-numbers = true;
           line-numbers-left-format = "{nm}⋮";
           line-numbers-minus-style = "#d91e46";

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  osConfig,
+  ...
+}: {
   programs.fish = {
     enable = true;
     loginShellInit = ''
@@ -28,10 +32,10 @@
     interactiveShellInit = ''set fish_greeting ""'';
     shellAliases = {
       l = "eza -F --color=always --group-directories-first";
-      ls = "eza -Falhg --color=always --group-directories-first"; # my preferred listing
+      ls = "eza -Falhg --icons --git --color=always --group-directories-first"; # my preferred listing
       la = "eza -Fa --color=always --group-directories-first"; # all files and dirs
-      ll = "eza -Flhg --color=always --group-directories-first"; # long format
-      lt = "eza -FaT -L 3 --icons --color=always --group-directories-first"; # tree listing
+      ll = "eza -Flhg --icons --git --color=always --group-directories-first"; # long format
+      lt = "eza -FaT -L 3 -I \".git\" --icons --color=always --group-directories-first"; # tree listing
       "l." = "eza -Fa | grep -E \"^\\.\"";
 
       e = "emacs";
@@ -41,6 +45,7 @@
       vi = "nvim";
       suvi = "sudo nvim";
       nf = "nvim $(fzf)";
+      ef = "ei $(fzf)";
       f = "fzf";
 
       r = "yazi"; # change ranger -> yazi -- faster
@@ -49,9 +54,9 @@
 
       wget = "wget --hsts-file=\"\$XDG_DATA_HOME/wget-hsts\"";
 
-      nhb = "nh os boot -H laptop";
-      nht = "nh os test -H laptop";
-      nhs = "nh os switch -H laptop";
+      nhb = "nh os boot -H ${osConfig.networking.hostName}";
+      nht = "nh os test -H ${osConfig.networking.hostName}";
+      nhs = "nh os switch -H ${osConfig.networking.hostName}";
       fc = "nix flake check";
       fl = "cd ~/.flakes";
 

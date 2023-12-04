@@ -1,8 +1,4 @@
-{
-  user,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     terraform
   ];

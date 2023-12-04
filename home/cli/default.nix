@@ -2,8 +2,9 @@
   imports = [
     #./zsh/zsh.nix
     ./fish
-    ./bash
-    ./git
+    ./bash.nix
+    ./git.nix
+    ./top.nix
     ./starship.nix
   ];
   programs.nix-index-database.comma.enable = true;
@@ -11,6 +12,7 @@
   home.packages = with pkgs; [
     fd
     ripgrep
+    jaq
 
     ## Tool, etc ...
     cargo
@@ -22,10 +24,9 @@
     lua
 
     #
+    speedtest-go
     killall
-    pamixer
     socat
-    xdg-utils
     unrar
     unzip
     wget

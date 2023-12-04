@@ -7,11 +7,11 @@
 {
   imports = [
     ./hyprland
+    ./scripts
     ./waybar
     ./mako
     ./swayidle.nix
     ./swww.nix
-    # ./eww
   ];
 
   home.packages = with pkgs; [

@@ -1,12 +1,11 @@
 {
   self,
   inputs,
-  user,
   default,
   ...
 }: let
   module_args._module.args = {
-    inherit inputs self user default;
+    inherit inputs self default;
   };
 in {
   imports = [
@@ -38,20 +37,14 @@ in {
           inputs.disko.nixosModules.disko
           module_args
 
-          self.nixosModules.boot
           self.nixosModules.core
-          self.nixosModules.nix
           self.nixosModules.network
-          self.nixosModules.tailscale
         ];
       };
     }
   ];
   flake.nixosModules = {
-    boot = import ./boot.nix;
-    core = import ./core.nix;
-    nix = import ./nix.nix;
-    network = import ./network.nix;
-    tailscale = import ./tailscale-autoconnect.nix;
+    core = import ./core;
+    network = import ./network;
   };
 }

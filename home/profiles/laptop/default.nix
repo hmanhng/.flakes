@@ -1,4 +1,4 @@
-{user, ...}: {
+{
   imports = [
     ../../editors
     ../../packages
@@ -6,5 +6,5 @@
     ../../dev
   ];
 
-  sops.gnupg.sshKeyPaths = ["/home/${user}/.ssh/id_rsa"];
+  sops.gnupg.sshKeyPaths = ["/home/hmanhng/.ssh/id_rsa"];
 }
