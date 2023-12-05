@@ -4,7 +4,10 @@
   inputs,
   ...
 }: {
-  imports = [./fonts.nix];
+  imports = [
+    ./fonts.nix
+    # ./greetd.nix
+  ];
 
   # environment.sessionVariables = {
   #  LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib"; # THIS BREAK PACKAGES dynamic binaries on NixOs

@@ -16,7 +16,7 @@
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "launch_waybar"
         "${lib.getExe pkgs.networkmanagerapplet}"
-        "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
+        # "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
         # "border_color"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"

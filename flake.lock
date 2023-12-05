@@ -573,6 +573,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-howdy": {
+      "locked": {
+        "lastModified": 1698343272,
+        "narHash": "sha256-cxd6XFnPWewMqixVlavOLKzS9AnC9IthvZVY0HLHrJE=",
+        "owner": "fufexan",
+        "repo": "nixpkgs",
+        "rev": "16580bfd4d329e82da4060a2bc78aa8abe8cf378",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "ref": "howdy",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "dir": "lib",
@@ -769,6 +785,7 @@
         "nix-index-db": "nix-index-db",
         "nix-ld": "nix-ld",
         "nixpkgs": "nixpkgs_7",
+        "nixpkgs-howdy": "nixpkgs-howdy",
         "nur": "nur",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",

@@ -24,6 +24,7 @@
     lua
 
     #
+    nitch
     speedtest-go
     killall
     socat

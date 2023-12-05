@@ -75,6 +75,11 @@
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["no"];
           };
+          "MyNixOS" = {
+            urls = [{template = "https://mynixos.com/search?q={searchTerms}";}];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = ["nm"];
+          };
 
           "NixOS Wiki" = {
             urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
