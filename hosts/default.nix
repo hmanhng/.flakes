@@ -21,9 +21,9 @@
           ../modules/virtual
           # ../modules/devops
           {home-manager.users.hmanhng.imports = homeImports."hmanhng@laptop";}
-          {disabledModules = ["security/pam.nix"];}
-          "${howdy}/nixos/modules/security/pam.nix"
-          "${howdy}/nixos/modules/services/security/howdy"
+          # {disabledModules = ["security/pam.nix"];}
+          # "${howdy}/nixos/modules/security/pam.nix"
+          # "${howdy}/nixos/modules/services/security/howdy"
           # "${howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
         ]
         ++ sharedModules;
