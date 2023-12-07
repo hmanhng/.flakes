@@ -154,7 +154,7 @@
 (custom-theme-set-faces! 'doom-one
   '(line-number :foreground "dim gray")
   '(line-number-current-line :foreground "white"))
-(add-to-list 'default-frame-alist '(alpha-background . 90))
+(add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (use-package! centered-cursor-mode
   :demand

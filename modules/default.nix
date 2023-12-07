@@ -23,12 +23,10 @@ in {
           }
           {
             nixpkgs = {
-              overlays =
-                (import ../overlays)
-                ++ [
-                  inputs.neovim-nightly-overlay.overlay
-                  inputs.nur.overlay
-                ];
+              overlays = [
+                inputs.neovim-nightly-overlay.overlay
+                inputs.nur.overlay
+              ];
             };
           }
           inputs.nur.nixosModules.nur

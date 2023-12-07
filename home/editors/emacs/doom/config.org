@@ -527,7 +527,7 @@ modeline from that module isn't in use. So, it's duplicated here and tweaked.
 (custom-theme-set-faces! 'doom-one
   '(line-number :foreground "dim gray")
   '(line-number-current-line :foreground "white"))
-(add-to-list 'default-frame-alist '(alpha-background . 90))
+(add-to-list 'default-frame-alist '(alpha-background . 100))
 #+end_src
 
 *** Make cursor center

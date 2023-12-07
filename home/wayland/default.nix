@@ -10,7 +10,7 @@
     ./scripts
     ./waybar
     ./mako
-    ./swayidle.nix
+    # ./swayidle.nix
     ./swww.nix
   ];
 

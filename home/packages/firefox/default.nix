@@ -11,7 +11,7 @@
   };
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
+    # package = pkgs.floorp;
     policies = {
       CaptivePortal = false;
       DisableFirefoxStudies = true;
