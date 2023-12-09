@@ -52,7 +52,7 @@
           onetab
           privacy-badger
           temporary-containers
-          foxyproxy-standard
+          # foxyproxy-standard
           translate-web-pages
           ublock-origin
           stylus
