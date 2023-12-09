@@ -1,13 +1,13 @@
 {pkgs, ...}: let
   code = pkgs.symlinkJoin {
     name = "code";
-    inherit (pkgs.vscode-fhs) pname version;
-    paths = [pkgs.vscode-fhs];
+    inherit (pkgs.vscode) pname version;
+    paths = [pkgs.vscode];
     buildInputs = [pkgs.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/code \
-        --set WAYLAND_DISPLAY "" \
-        --add-flags "--enable-wayland-ime"
+        --unset WAYLAND_DISPLAY \
+        --append-flags "--enable-wayland-ime"
     '';
   };
 in {
