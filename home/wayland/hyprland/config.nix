@@ -45,7 +45,7 @@
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         focus_on_activate = true;
-        # enable_swallow = true;
+        enable_swallow = true;
         swallow_regex = "^(${default.terminal.name})$";
         # swallow_exception_regex = "";
       };
