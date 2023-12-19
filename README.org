@@ -1,5 +1,6 @@
-#+TITLE: Flake config
-#+AUTHOR: Hmanhng
+#+title: Flake config
+#+author: Hmanhng
+#+description: My config in nixos with flake, minemacs, ... many awesome packages.
 
 * TABLE OF CONTENT :TOC:
 - [[#nix][Nix]]
@@ -7,5 +8,9 @@
 
 * Nix
 [[https:github.com/hmanhng/.flakes/releases/download/ISO/minimal.iso][Link download Iso minimal]]
+
 * Emacs
-[[file:./home/editors/emacs/doom/config.org][Emacs config]]
+I switched from [[https://github.com/doomemacs/doomemacs][Doomemacs]] to [[https://github.com/abougouffa/minemacs][Minemacs]]
+because I found ~doomemacs~ to have many unnecessary customizations, too heavy for my liking.
+
+I migrated my [[https://github.com/hmanhng/.minemacs.d][.minemacs.d]] configuration to a new repository for easier modification and maintenance. 
