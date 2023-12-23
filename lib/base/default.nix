@@ -1,5 +1,5 @@
 {lib}: rec {
-  editor = "emacsclient -t -c";
+  editor = "emacsclient -nw -c -a 'emacs -nw'";
 
   browser = "firefox";
 

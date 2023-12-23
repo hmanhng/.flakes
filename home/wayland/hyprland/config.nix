@@ -23,7 +23,7 @@
         # "${lib.getExe self.legacyPackages.${pkgs.system}.spoof-dpi}"
         "ydotoold"
         "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
-        "emacs --daemon"
+        "MINEMACS_ALPHA=90 emacs --daemon"
       ];
       xwayland = {force_zero_scaling = true;};
       input = {
@@ -107,7 +107,7 @@
       bind = [
         "$MOD, Return, exec, ${default.terminal.name}"
         "$MODSHIFT, Return, exec, ${default.terminal.name} --class='termfloat'"
-        "$MOD, E, exec, emacs"
+        "$MOD, E, exec, [workspace name:Emacs] hyprctl workspaces | rg ID | rg Emacs || emacsclient -c -a 'emacs'"
         "$MOD, D, exec, thunar"
         "$MOD, B, exec, [workspace name:Qutebrowser] hyprctl workspaces | rg ID | rg Qutebrowser || qutebrowser"
         "$MOD, W, exec, [workspace name:Firefox] hyprctl workspaces | rg ID | rg Firefox || firefox"
@@ -177,6 +177,7 @@
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
         "$MOD, B, workspace, Qutebrowser"
+        "$MOD, E, workspace, Emacs"
         "$MOD, W, workspace, Firefox"
         "$MOD, T, workspace, TG"
         # "$MOD, M, workspace, Music"
@@ -194,8 +195,9 @@
         "animation slide right, class:^(${default.terminal.name})$"
         "center 1, class:^(firefox)$,floating:1"
         "workspace name:Firefox, class:^(firefox)$"
-        "opacity 0.80 0.80, title:^(Spotify)$"
-        "workspace name:Music, title:^(Spotify)$"
+        "workspace name:Emacs, class:^(emacs)$"
+        "opacity 0.80 0.80, title:^(Spotify)"
+        "workspace name:Music, title:^(Spotify)"
         "center 1, class:^(termfloat)$"
         "size 1100 600, class:^(termfloat)$"
         "size 1100 600, class:^(thunar)$"

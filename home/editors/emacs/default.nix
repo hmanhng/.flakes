@@ -13,7 +13,7 @@
     overrides = self: super: {};
     extraPackages = epkgs: [
       epkgs.vterm
-      epkgs.editorconfig
+      # epkgs.editorconfig
       # epkgs.emms
       # epkgs.magit
     ];
@@ -23,7 +23,6 @@
   home = {
     sessionVariables = {
       # Minemacs
-      DOOMDIR = "$HOME/.flakes/home/editors/emacs/doom";
       # MINEMACS_ALPHA = "90";
     };
     sessionPath = ["$HOME/.config/emacs/bin"];

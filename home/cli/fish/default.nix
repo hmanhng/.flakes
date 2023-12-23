@@ -38,14 +38,12 @@
       lt = "eza -FaT -L 3 -I \".git\" --icons --color=always --group-directories-first"; # tree listing
       "l." = "eza -Fa | grep -E \"^\\.\"";
 
-      e = "emacs";
-      ee = "emacsclient -c -a 'emacs'";
-      ei = "emacsclient -c -nw -a 'emacs -nw'";
+      e = "emacsclient -c -nw -a 'emacs -nw'";
       v = "nvim";
       vi = "nvim";
       suvi = "sudo nvim";
       nf = "nvim $(fzf)";
-      ef = "ei $(fzf)";
+      ef = "e $(fzf)";
       f = "fzf";
 
       r = "yazi"; # change ranger -> yazi -- faster
