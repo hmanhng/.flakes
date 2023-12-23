@@ -38,7 +38,6 @@
       GNUHOME = "${config.xdg.dataHome}/gnupg";
       NODE_PATH = "${config.xdg.dataHome}/npm-packages/lib/node_modules";
       CARGO_HOME = "${config.xdg.dataHome}/cargo";
-      GOPATH = "${config.xdg.dataHome}/go";
     };
     sessionPath = [
       "$HOME/.local/bin"

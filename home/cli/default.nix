@@ -19,7 +19,6 @@
     cmake
     dotnet-sdk_7
     gcc
-    go
     gnumake
     lua
 
