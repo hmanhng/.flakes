@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 bookmark="$(wl-paste -p)"
 file="$HOME/.flakes/home/bookmarks/default"

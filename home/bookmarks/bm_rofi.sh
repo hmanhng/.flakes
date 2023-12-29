@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 trap 'rm /tmp/.bookmarks' EXIT
 rofi -modes bookmarks:~/.flakes/home/bookmarks/bm -show bookmarks

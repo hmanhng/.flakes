@@ -1,4 +1,4 @@
 https://mipmip.github.io/home-manager-option-search
-https://nix-community.github.io/home-manager/options.html
+https://nix-community.github.io/home-manager/options.xhtml
 https://www.artstation.com/voyagerillustration
 https://app.element.io
