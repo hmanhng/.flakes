@@ -5,8 +5,6 @@
 }: {
   programs.fish = {
     enable = true;
-    loginShellInit = ''
-    '';
     plugins =
       (with pkgs.fishPlugins; [
         {
@@ -16,6 +14,14 @@
         {
           name = "autopair";
           src = autopair.src;
+        }
+        {
+          name = "fzf-fish";
+          src = fzf-fish.src;
+        }
+        {
+          name = "forgit";
+          src = forgit.src;
         }
       ])
       ++ [
@@ -29,7 +35,21 @@
         #   };
         # }
       ];
-    interactiveShellInit = ''set fish_greeting ""'';
+    loginShellInit = ''
+    '';
+    interactiveShellInit = ''
+      set fish_greeting ""
+
+      # "nvim" as manpager
+      set -x MANPAGER "nvim +Man!"
+
+      # fzf-fish
+      set fzf_preview_dir_cmd eza --all --color=always
+      set fzf_fd_opts --hidden
+    '';
+    shellAbbrs = {
+      j = "z";
+    };
     shellAliases = {
       l = "eza -F --color=always --group-directories-first";
       ls = "eza -Falhg --icons --git --color=always --group-directories-first"; # my preferred listing

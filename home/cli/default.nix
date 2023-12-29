@@ -38,17 +38,15 @@
   programs.eza.enable = true;
   programs.fzf = {
     enable = true;
-    defaultCommand = "fd --type f";
+    enableFishIntegration = false;
+    defaultCommand = "fd --type f --hidden";
     defaultOptions = [
-      "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
-      "--height 80%"
-      "--layout reverse"
-      "--info inline"
-      "--border --color 'border:#b48ead'"
-    ];
-    fileWidgetCommand = "fd --type f";
-    fileWidgetOptions = [
-      "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+      "--preview 'bat --line-range :500 {}'"
+      "--preview-window=right,60%,border-left"
+      "--border=sharp --color 'border:#00B4FF'"
+      "--height=95%"
+      "--layout=reverse-list"
+      "--inline-info"
     ];
   };
   programs.bat = {
@@ -66,6 +64,14 @@
     };
     config = {
       theme = "Catppuccin-macchiato";
+      style = "numbers,changes";
+      color = "always";
+      italic-text = "always";
+      pager = "less -FR";
+      map-syntax = [
+        "*.h:cpp"
+        ".ignore:.gitignore"
+      ];
     };
   };
 }

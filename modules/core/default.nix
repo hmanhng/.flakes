@@ -9,7 +9,11 @@
     ./nix.nix
   ];
   # Change default shell to fish
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    vendor.functions.enable = false;
+    vendor.config.enable = false;
+  };
   users.defaultUserShell = pkgs.fish;
   environment.shells = with pkgs; [fish];
 
