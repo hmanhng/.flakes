@@ -71,8 +71,6 @@
     }; # Run unpatched dynamic binaries on NixOS
     nix-alien.url = "github:thiagokokada/nix-alien"; # Run unpatched binaries on Nix/NixOS
 
-    yazi.url = "github:sxyazi/yazi";
-
     spicetify-nix = {
       url = "github:MichaelPachec0/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
