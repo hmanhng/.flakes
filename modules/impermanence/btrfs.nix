@@ -1,4 +1,5 @@
 {config, ...}: {
+  services.btrfs.autoScrub.enable = true;
   boot = {
     initrd = {
       verbose = true;
