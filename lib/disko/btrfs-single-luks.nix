@@ -51,10 +51,7 @@
             content = {
               type = "btrfs";
               extraArgs = ["-f"];
-              mountOptions = [
-                "defaults"
-                "lazytime"
-              ];
+              mountOptions = ["defaults"];
               postCreateHook = ''
                 MNTPOINT=$(mktemp -d)
                 mount "/dev/mapper/pool-root" "$MNTPOINT" -o subvol=/
@@ -64,14 +61,15 @@
               subvolumes = {
                 "rootfs" = {
                   mountpoint = "/";
+                  mountOptions = ["compress=lzo" "noatime"];
                 };
                 "/nix" = {
                   mountpoint = "/nix";
-                  mountOptions = ["compress=zstd" "noatime"];
+                  mountOptions = ["compress=lzo" "noatime"];
                 };
                 "/home" = {
                   mountpoint = "/home";
-                  mountOptions = ["compress=zstd"];
+                  mountOptions = ["compress=lzo" "lazytime"];
                 };
               };
             };
