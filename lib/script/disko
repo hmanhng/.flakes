@@ -26,17 +26,26 @@ while true; do
     echo "Please select a disk partition layout:"
     echo "1. ext4-single-luks"
     echo "2. btrfs-single-luks"
+    echo "3. zfs-single-luks"
     read -p $'\e[1;32mEnter your choice(number): \e[0m' choice
 
     case $choice in
         1)
             partition_layout="$common_dir/ext4-single-luks.nix";
             ask;
+            #to set luks password
             read -p $'\e[1;31mEnter LUKS password (important!): \e[0m' -r luks_pass
             echo -n "$luks_pass" > /tmp/secret.key
             break ;;
         2)
             partition_layout="$common_dir/btrfs-single-luks.nix";
+            ask;
+            #to set luks password
+            read -p $'\e[1;31mEnter LUKS password (important!): \e[0m' -r luks_pass
+            echo -n "$luks_pass" > /tmp/secret.key
+            break ;;
+        3)
+            partition_layout="$common_dir/zfs-single-luks.nix";
             ask;
             #to set luks password
             read -p $'\e[1;31mEnter LUKS password (important!): \e[0m' -r luks_pass
