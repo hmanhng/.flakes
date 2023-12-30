@@ -25,8 +25,9 @@ while true; do
     lsblk -f
     echo "Please select a disk partition layout:"
     echo "1. ext4-single-luks"
-    echo "2. btrfs-single-luks"
-    echo "3. zfs-single-luks"
+    echo "2. btrfs-single"
+    echo "3. btrfs-single-luks"
+    echo "4. zfs-single-luks"
     read -p $'\e[1;32mEnter your choice(number): \e[0m' choice
 
     case $choice in
@@ -38,13 +39,17 @@ while true; do
             echo -n "$luks_pass" > /tmp/secret.key
             break ;;
         2)
+            partition_layout="$common_dir/btrfs-single.nix";
+            ask;
+            break ;;
+        3)
             partition_layout="$common_dir/btrfs-single-luks.nix";
             ask;
             #to set luks password
             read -p $'\e[1;31mEnter LUKS password (important!): \e[0m' -r luks_pass
             echo -n "$luks_pass" > /tmp/secret.key
             break ;;
-        3)
+        4)
             partition_layout="$common_dir/zfs-single-luks.nix";
             ask;
             #to set luks password
