@@ -9,13 +9,13 @@
   ...
 }: {
   imports =
-    [(import ../../lib/disko/btrfs-single-luks.nix {})]
+    [(import ../../lib/disko/btrfs-single.nix {})]
     ++ [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["dm-snapshot"];
+  boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
