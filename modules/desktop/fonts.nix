@@ -13,29 +13,32 @@ in {
       source = "${myFont}";
       recursive = true;
     };
+    home.packages = with pkgs; [font-manager];
   };
 
   fonts = {
     packages =
       (with pkgs; [
-        lexend
-        corefonts
-        roboto
-        roboto-serif
+        # lexend
+        # corefonts
+        # roboto
+        # roboto-serif
         # noto-fonts
+
         maple-mono
         ibm-plex
+
         noto-fonts-emoji
         twemoji-color-font
       ])
       ++ (with self.legacyPackages.${pkgs.system}; [
-        apple-fonts
+        # apple-fonts
       ]);
     fontconfig = {
       defaultFonts = {
-        serif = ["SF Pro Display"];
-        sansSerif = ["SF Pro Display"];
-        monospace = ["JetBrainsMono Nerd Font"];
+        serif = ["IBM Plex Serif"];
+        sansSerif = ["IBM Plex Sans"];
+        monospace = ["IBM Plex Mono"];
       };
       localConf = ''
         <?xml version="1.0"?>
