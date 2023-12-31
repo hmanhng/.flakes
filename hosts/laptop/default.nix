@@ -48,6 +48,7 @@
   };
 
   boot.kernelParams = [
+    "ideapad_laptop.allow_v4_dytc=Y"
     "quiet"
     "loglevel=3"
     "systemd.show_status=auto"

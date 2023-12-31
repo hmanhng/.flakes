@@ -65,6 +65,9 @@
     #   };
     # };
 
+    # battery info & stuff
+    upower.enable = true;
+
     # needed for GNOME services outside of GNOME Desktop
     dbus.packages = [pkgs.gcr];
 
