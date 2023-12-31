@@ -7,7 +7,7 @@
     ./code
     ./nvim
     ./emacs
-    ./eclipse
+    # ./eclipse
     # ./jetbrains
   ];
   home = {
