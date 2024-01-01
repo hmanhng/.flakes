@@ -1,12 +1,18 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   # Module definition
-  myGoModule = { config, lib, ... }:
-    with lib;
-    let
+  myGoModule = {
+    config,
+    lib,
+    ...
+  }:
+    with lib; let
       cfg = config.programs.go;
-    in
-    {
+    in {
       options.programs.go = {
         go111MODULE = mkOption {
           type = with types; nullOr str;
@@ -24,7 +30,7 @@ let
       };
 
       config = {
-        home.sessionVariables = (mkMerge [
+        home.sessionVariables = mkMerge [
           (mkIf (cfg.go111MODULE != null) {
             GO111MODULE = cfg.go111MODULE;
           })
@@ -32,12 +38,11 @@ let
           (mkIf (cfg.goMODCACHE != null) {
             GOMODCACHE = "${config.home.homeDirectory}/${cfg.goMODCACHE}";
           })
-        ]);
+        ];
       };
     };
-in
-{
-  imports = [ myGoModule ];
+in {
+  imports = [myGoModule];
 
   programs.go = {
     enable = true;

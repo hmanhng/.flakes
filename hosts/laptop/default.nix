@@ -41,7 +41,7 @@
       libvdpau-va-gl
     ];
   };
-
+  hardware.cpu.intel.updateMicrocode = true;
   hardware.logitech.wireless = {
     enable = true;
     enableGraphical = true;
