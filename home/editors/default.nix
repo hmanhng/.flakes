@@ -16,21 +16,39 @@
     };
   };
   home.packages = with pkgs; [
-    # shell
+    # Shell
     shfmt
     nodePackages.bash-language-server
 
-    # nix
+    # Nix
     nil
+    # nixfmt
     alejandra
 
-    # java
+    # Java
     jdt-language-server
     google-java-format
 
-    # go
+    # Go
     gopls
 
-    # texlive.combined.scheme-medium
+    # Latex
+    tectonic
+    (texliveBasic.withPackages (ps:
+      with ps; [
+        dvisvgm
+        dvipng
+        wrapfig
+        amsmath
+        ulem
+        hyperref
+        capt-of
+        # biblatex
+        # biber
+        # synctex
+        # fancyhdr
+        # latexmk
+        # babel-vietnamese # Support vietnamese // lualatex support default.
+      ]))
   ];
 }
