@@ -38,6 +38,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
+    nixpkgs-zathura.url = "github:hmanhng/nixpkgs/pr/zathura-0.5.4";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
