@@ -32,7 +32,6 @@
     wget
     zip
   ];
-  programs.man.enable = false; # Enable default in global. So dont't enable in hm to create `.manpath' in $HOME.
   programs.thefuck.enable = true;
   programs.direnv.enable = true;
   programs.zoxide.enable = true;
