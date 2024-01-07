@@ -18,6 +18,7 @@
   environment.shells = with pkgs; [fish];
 
   time.timeZone = lib.mkDefault "Asia/Ho_Chi_Minh";
+  time.hardwareClockInLocalTime = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
