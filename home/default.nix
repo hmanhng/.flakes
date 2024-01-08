@@ -7,5 +7,5 @@
     home-manager.enable = true;
   };
 
-  home.stateVersion = lib.mkDefault "23.05";
+  home.stateVersion = lib.mkDefault "23.11";
 }
