@@ -33,6 +33,7 @@ in {
           inputs.home-manager.nixosModules.home-manager
           inputs.nh.nixosModules.default
           inputs.disko.nixosModules.disko
+          inputs.auto-cpufreq.nixosModules.default
           module_args
 
           self.nixosModules.core

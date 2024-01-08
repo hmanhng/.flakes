@@ -7,7 +7,7 @@
 
   networking.hostName = "laptop"; # Define your hostname.
 
-  security.tpm2.enable = true;
+  # security.tpm2.enable = true;
 
   services = {
     # for SSD/NVME
@@ -23,9 +23,22 @@
     #   };
     # };
 
-    tlp.enable = true; # optimized for battery life
-    auto-cpufreq.enable = true; # Automatic CPU speed & power optimizer for Linux
-    # xserver.videoDrivers = [ "nvidia" ];
+    # Enable thermald (only necessary if on Intel CPUs)
+    thermald.enable = true;
+  };
+
+  programs.auto-cpufreq.enable = true;
+  # optionally, you can configure your auto-cpufreq settings, if you have any
+  programs.auto-cpufreq.settings = {
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+
+    battery = {
+      governor = "powersave";
+      turbo = "auto";
+    };
   };
 
   # Accelerated Video Playback
@@ -41,20 +54,20 @@
       libvdpau-va-gl
     ];
   };
-  hardware.cpu.intel.updateMicrocode = true;
   hardware.logitech.wireless = {
     enable = true;
     enableGraphical = true;
   };
 
   boot.kernelParams = [
-    "ideapad_laptop.allow_v4_dytc=Y"
     "quiet"
     "loglevel=3"
     "systemd.show_status=auto"
     "rd.udev.log_level=3"
     "fbcon=nodefer"
     "i915.enable_guc=2"
+    "ideapad_laptop.allow_v4_dytc=Y"
+    ''acpi_osi="Windows 2020"''
     # "nvidia-drm.modeset=1"
   ];
 }

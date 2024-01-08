@@ -87,6 +87,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin-starship = {
       url = "github:catppuccin/starship";
       flake = false;

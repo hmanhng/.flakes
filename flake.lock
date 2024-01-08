@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "auto-cpufreq": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1703833887,
+        "narHash": "sha256-gKfF45n17eDNTt+uCzXosSHfI5n/+W1VCo2TM+E6IlI=",
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "rev": "fe296206462f204c3abb9d73e005fccd8c8a6bb6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "type": "github"
+      }
+    },
     "bitwarden-menu": {
       "inputs": {
         "nixpkgs": [
@@ -733,6 +753,7 @@
     },
     "root": {
       "inputs": {
+        "auto-cpufreq": "auto-cpufreq",
         "bitwarden-menu": "bitwarden-menu",
         "catppuccin-starship": "catppuccin-starship",
         "disko": "disko",
