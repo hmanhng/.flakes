@@ -59,15 +59,17 @@
     enableGraphical = true;
   };
 
-  boot.kernelParams = [
-    "quiet"
-    "loglevel=3"
-    "systemd.show_status=auto"
-    "rd.udev.log_level=3"
-    "fbcon=nodefer"
-    "i915.enable_guc=2"
-    "ideapad_laptop.allow_v4_dytc=Y"
-    ''acpi_osi="Windows 2020"''
-    # "nvidia-drm.modeset=1"
-  ];
+  boot = {
+    consoleLogLevel = 3; # "loglevel=3"
+    kernelParams = [
+      "quiet"
+      "systemd.show_status=auto"
+      "rd.udev.log_level=3"
+      "fbcon=nodefer"
+      "i915.enable_guc=2"
+      "ideapad_laptop.allow_v4_dytc=Y"
+      ''acpi_osi="Windows 2020"''
+      # "nvidia-drm.modeset=1"
+    ];
+  };
 }
