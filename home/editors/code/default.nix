@@ -1,8 +1,8 @@
 {pkgs, ...}: let
   code = pkgs.symlinkJoin {
     name = "code";
-    inherit (pkgs.vscode) pname version;
-    paths = [pkgs.vscode];
+    inherit (pkgs.vscode-fhs) pname version;
+    paths = [pkgs.vscode-fhs];
     buildInputs = [pkgs.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/code \
