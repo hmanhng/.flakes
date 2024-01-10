@@ -71,5 +71,6 @@
       ''acpi_osi="Windows 2020"''
       # "nvidia-drm.modeset=1"
     ];
+    kernelModules = ["ideapad_laptop"];
   };
 }
