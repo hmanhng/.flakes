@@ -1,12 +1,18 @@
 {pkgs, ...}: {
   imports = [
-    #./zsh/zsh.nix
+    ./bash
     ./fish
-    ./bash.nix
     ./git.nix
     ./top.nix
     ./starship.nix
+    #./zsh/zsh
   ];
+  # add environment variables
+  home.sessionVariables = {
+    # auto-run programs using nix-index-database
+    NIX_AUTO_RUN = "1";
+  };
+
   programs.nix-index-database.comma.enable = true;
 
   home.packages = with pkgs; [

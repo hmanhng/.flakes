@@ -5,10 +5,10 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
       imports = [
-        ./hosts
         ./home/profiles
-        ./modules
+        ./hosts
         ./lib
+        # ./modules
         ./pkgs
       ];
       perSystem = {
@@ -17,7 +17,7 @@
         ...
       }: {
         # set flake-wide pkgs to the one exported by ./lib
-        imports = [{_module.args.pkgs = config.legacyPackages;}];
+        # imports = [{_module.args.pkgs = config.legacyPackages;}];
         devShells = {
           #run by `nix devlop` or `nix-shell`(legacy)
           default = import ./shell.nix {inherit pkgs;};

@@ -1,9 +1,13 @@
 {
   imports = [
     ../../editors
+    ../../editors/code
+    ../../editors/emacs
+
     ../../packages
-    ../../wayland
     ../../dev
+
+    ../../services
   ];
 
   sops.gnupg.sshKeyPaths = ["/home/hmanhng/.ssh/id_rsa"];

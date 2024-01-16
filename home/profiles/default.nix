@@ -2,37 +2,31 @@
   self,
   inputs,
   withSystem,
-  module_args,
   ...
 }: let
-  sharedModules = [
-    ../.
-    ../cli
-    module_args
-    inputs.nix-index-db.hmModules.nix-index
-    inputs.sops-nix.homeManagerModules.sops
-  ];
+  # get these into the module system
+  extraSpecialArgs = {inherit inputs self;};
 
   homeImports = {
-    "hmanhng@laptop" = [./laptop] ++ sharedModules;
+    "hmanhng@laptop" = [
+      ../.
+      ./laptop
+    ];
   };
 
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
+
+  pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 in {
-  imports = [
-    # we need to pass this to NixOS' HM module
-    {_module.args = {inherit homeImports;};}
-  ];
+  # we need to pass this to NixOS' HM module
+  _module.args = {inherit homeImports;};
 
   flake = {
-    homeConfigurations = withSystem "x86_64-linux" ({pkgs, ...}: {
+    homeConfigurations = {
       "hmanhng@laptop" = homeManagerConfiguration {
         modules = homeImports."hmanhng@laptop";
-        inherit pkgs;
+        inherit pkgs extraSpecialArgs;
       };
-    });
-
-    # homeManagerModules = {
-    # };
+    };
   };
 }

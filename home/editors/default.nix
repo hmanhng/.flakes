@@ -1,18 +1,17 @@
 {
   pkgs,
-  default,
+  config,
   ...
 }: {
   imports = [
-    ./code
     ./nvim
-    ./emacs
-    # ./eclipse
-    # ./jetbrains
   ];
   home = {
     sessionVariables = {
-      EDITOR = default.editor;
+      EDITOR =
+        if config.programs.emacs.enable
+        then "emacsclient -nw -c -a 'emacs -nw'"
+        else "nvim";
     };
   };
   home.packages = with pkgs; [

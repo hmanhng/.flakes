@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: {
   imports = [./hardware-configuration.nix];
@@ -22,23 +23,6 @@
     #     debug.end_report = true;
     #   };
     # };
-
-    # Enable thermald (only necessary if on Intel CPUs)
-    thermald.enable = true;
-  };
-
-  programs.auto-cpufreq.enable = true;
-  # optionally, you can configure your auto-cpufreq settings, if you have any
-  programs.auto-cpufreq.settings = {
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-
-    battery = {
-      governor = "powersave";
-      turbo = "auto";
-    };
   };
 
   # Accelerated Video Playback
@@ -46,31 +30,43 @@
     vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
   };
   hardware.opengl = {
-    enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
     ];
   };
+
   hardware.logitech.wireless = {
     enable = true;
     enableGraphical = true;
   };
 
   boot = {
-    consoleLogLevel = 3; # "loglevel=3"
     kernelParams = [
-      "quiet"
-      "systemd.show_status=auto"
-      "rd.udev.log_level=3"
-      "fbcon=nodefer"
       "i915.enable_guc=2"
       "ideapad_laptop.allow_v4_dytc=Y"
       ''acpi_osi="Windows 2020"''
       # "nvidia-drm.modeset=1"
     ];
-    kernelModules = ["ideapad_laptop"];
+
+    # Make some extra kernel modules available to NixOS
+    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback.out];
+
+    # Activate kernel modules (choose from built-ins and extra ones)
+    kernelModules = [
+      "ideapad_laptop"
+      # Virtual Camera
+      "v4l2loopback"
+      # Virtual Microphone, built-in
+      "snd-aloop"
+    ];
+
+    # Set initial kernel module settings
+    extraModprobeConfig = ''
+      # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
+      # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
+      # https://github.com/umlaeute/v4l2loopback
+      options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+    '';
   };
 }
