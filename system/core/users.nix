@@ -17,7 +17,7 @@
   users.users.hmanhng = {
     isNormalUser = true;
     initialHashedPassword = config.users.users.root.initialHashedPassword;
-    extraGroups = ["adbusers" "wheel" "video" "audio" "networkmanager" "input" "libvirtd" "plugdev"];
+    extraGroups = ["wheel" "video" "audio" "networkmanager" "input" "libvirtd" "plugdev"];
   };
 
   services.getty.autologinUser = "hmanhng";
