@@ -52,11 +52,11 @@
     };
     shellAliases = {
       l = "eza -F --color=always --group-directories-first";
-      ls = "eza -Falhg --icons --git --color=always --group-directories-first"; # my preferred listing
-      la = "eza -Fa --color=always --group-directories-first"; # all files and dirs
-      ll = "eza -Flhg --icons --git --color=always --group-directories-first"; # long format
-      lt = "eza -FaT -L 3 -I \".git\" --icons --color=always --group-directories-first"; # tree listing
-      "l." = "eza -Fa | grep -E \"^\\.\"";
+      ls = "eza -F -alhg --icons --git --color=always --group-directories-first"; # my preferred listing
+      la = "eza -F -a --color=always --group-directories-first"; # all files and dirs
+      ll = "eza -F -lhg --icons --git --color=always --group-directories-first"; # long format
+      lt = "eza -F -aT -L 3 -I \".git\" --icons --color=always --group-directories-first"; # tree listing
+      "l." = "eza -F -a | grep -E \"^\\.\"";
 
       e = "emacsclient -c -nw -a 'emacs -nw'";
       v = "nvim";

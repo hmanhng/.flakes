@@ -23,7 +23,7 @@
       shuffle
       seekSong
       playlistIcons
-      genre
+      # genre
       hidePodcasts
       adblock
       keyboardShortcut
