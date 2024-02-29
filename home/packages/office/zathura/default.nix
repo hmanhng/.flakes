@@ -5,7 +5,6 @@
 }: {
   programs.zathura = {
     enable = true;
-    package = inputs.nixpkgs-zathura.legacyPackages.${pkgs.system}.zathura;
     extraConfig = ''
       include ${./catppuccin-macchiato}
       set font "JetBrainsMono Nerd Font 16"
