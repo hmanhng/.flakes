@@ -6,6 +6,7 @@
     directories = [
       # "/etc/nixos" # bind mounted from /nix/persist/etc/nixos to /etc/nixos
       "/etc/NetworkManager/system-connections"
+      "/etc/v2raya"
       "/var/log"
       "/var/lib"
       # "/etc/secureboot"
