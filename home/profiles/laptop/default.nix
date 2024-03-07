@@ -4,7 +4,7 @@
     ../../editors/code
     ../../editors/emacs
 
-    ../../packages
+    ../../programs
     ../../dev
 
     ../../services
