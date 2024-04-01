@@ -2,7 +2,7 @@
   imports = [
     ./fcitx5
     ./obs-studio
-    ./motrix
+    # ./motrix
     ./qbittorrent
     ./meld
   ];
