@@ -106,11 +106,11 @@
         color: #6db7f7;
       }
       #custom-hyprpicker {
-        padding: 0px 0px 0px 7px;
+        padding: 0px 5px 0px 3px;
         color: #4BF6BC;
       }
       #custom-screenshot {
-        padding: 0px 10px 0px 12px;
+        padding: 0px 17px 0px 5px;
         color: #9255FC;
       }
 
@@ -186,6 +186,7 @@
       }
       #network {
         color: @network-color;
+        padding: 0px 5px 0px 0px;
       }
       #network.disconnected {
         color: @network-dis-color;
@@ -195,17 +196,17 @@
       #battery.icons.discharging,
       #battery.icons.full,
       #battery.icons.plugged {
-        padding: 0px 3px 0px 10px;
+        padding: 0px 5px 0px 5px;
       }
       #battery.charging,
       #battery.discharging {
         color: #cf876f;
-        padding: 0px 10px 0px 0px;
+        padding: 0px 0px 0px 5px;
       }
       #battery.full,
       #battery.plugged {
         color: #a6da95;
-        padding: 0px 10px 0px 0px;
+        padding: 0px 0px 0px 5px;
       }
       #battery.critical:not(.charging) {
         color: #d6dce7;
@@ -221,7 +222,7 @@
       }
       #custom-suspend {
         color: #4db5bd;
-        padding: 0px 9px 0px 9px;
+        padding: 0px 7px 0px 7px;
       }
       #custom-lockscreen {
         color: #c678dd;
@@ -230,7 +231,7 @@
 
       #tray {
         padding-right: 10px;
-        padding-left: 10px;
+        padding-left: 5px;
       }
       #tray menu {
         font-family: JetBrainsMono Nerd Font;
@@ -267,7 +268,7 @@
         # mode = "dock";
         # margin = "5px 5px 0px 5px";
         modules-left = [
-          "custom/launcher"
+          "group/launcher"
           "hyprland/workspaces"
           # "custom/number-windows"
           "hyprland/submap"
@@ -289,8 +290,7 @@
           "group/backlight"
           "network#icons"
           "network"
-          "battery#icons"
-          "battery"
+          "group/bat"
           "group/powermenu"
           "tray"
         ];
@@ -303,8 +303,8 @@
           orientation = "inherit";
           drawer = {
             transition-duration = 500;
-            children-class = "launcher";
-            transition-left-to-right = false;
+            children-class = "launcher-group";
+            transition-left-to-right = true;
           };
           modules = ["custom/launcher" "custom/hyprpicker" "custom/screenshot"];
         };
@@ -442,8 +442,8 @@
           orientation = "inherit";
           drawer = {
             transition-duration = 500;
-            children-class = "audio";
-            transition-left-to-right = true;
+            children-class = "audio-group";
+            transition-left-to-right = false;
           };
           modules = ["pulseaudio#icons" "pulseaudio#microphone" "pulseaudio#microphone-icons" "pulseaudio"];
         };
@@ -504,8 +504,8 @@
           orientation = "inherit";
           drawer = {
             transition-duration = 500;
-            children-class = "audio";
-            transition-left-to-right = true;
+            children-class = "blacklight-group";
+            transition-left-to-right = false;
           };
           modules = ["backlight#icons" "backlight"];
         };
@@ -540,6 +540,15 @@
           tooltip = false;
         };
 
+        "group/bat" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            children-class = "bat-group";
+            transition-left-to-right = false;
+          };
+          modules = ["battery#icons" "battery"];
+        };
         "battery#icons" = {
           format = "{icon}";
           format-charging = "󰚥";
@@ -570,8 +579,8 @@
           orientation = "inherit";
           drawer = {
             transition-duration = 500;
-            children-class = "audio";
-            transition-left-to-right = true;
+            children-class = "powermenu-group";
+            transition-left-to-right = false;
           };
           modules = ["custom/poweroff" "custom/lockscreen" "custom/suspend" "custom/reboot"];
         };
