@@ -6,10 +6,10 @@
 }:
 stdenv.mkDerivation rec {
   pname = "spoof-dpi";
-  version = "0.7";
+  version = "0.8";
   src = fetchzip {
     url = "https://github.com/xvzc/SpoofDPI/releases/download/${version}/spoof-dpi-linux.tar.gz";
-    sha256 = "sha256-Z9R6mCTwK/bJL7btM+oaKsJg7yXw4n+I/BYdtYWO7WI=";
+    sha256 = "sha256-LdnL2WRQwz4QSt74zPep5xFryEqgOiuaRAhJe69rNiE=";
     stripRoot = false;
   };
   installPhase = ''
