@@ -5,5 +5,6 @@
     # ./motrix
     ./qbittorrent
     ./meld
+    ./scrcpy
   ];
 }
