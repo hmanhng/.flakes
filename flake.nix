@@ -56,8 +56,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nh.url = "github:viperML/nh";
-
     nur.url = "github:nix-community/NUR";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 

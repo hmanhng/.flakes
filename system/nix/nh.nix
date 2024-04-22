@@ -1,12 +1,7 @@
 {inputs, ...}: {
-  imports = [
-    inputs.nh.nixosModules.default
-  ];
-
-  environment.variables.FLAKE = "/home/hmanhng/.flakes";
-
-  nh = {
+  programs.nh = {
     enable = true;
+    flake = "/home/hmanhng/.flakes";
     # weekly cleanup
     clean = {
       enable = true;
