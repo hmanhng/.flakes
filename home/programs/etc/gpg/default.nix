@@ -13,4 +13,7 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
   };
+  home.sessionVariables = {
+    GNUHOME = "${config.xdg.dataHome}/gnupg";
+  };
 }

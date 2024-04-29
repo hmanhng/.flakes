@@ -3,10 +3,6 @@
   pkgs,
   ...
 }: {
-  home.sessionVariables = {
-    GTK_THEME = "Nordic";
-    QT_QPA_PLATFORMTHEME = "gtk3";
-  };
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";

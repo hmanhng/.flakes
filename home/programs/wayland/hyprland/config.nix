@@ -6,9 +6,11 @@
   ...
 }: {
   wayland.windowManager.hyprland.settings = {
-    env = ''
-      GDK_BACKEND,wayland
-    '';
+    env = [
+      "QT_SCALE_FACTOR,1.25"
+      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+    ];
     exec-once = [
       "launch_waybar"
       "${lib.getExe pkgs.networkmanagerapplet}"

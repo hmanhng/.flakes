@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [xdg-utils];
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = false;
