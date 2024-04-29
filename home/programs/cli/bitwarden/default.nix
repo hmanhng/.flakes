@@ -15,7 +15,4 @@
     sopsFile = "${self}/secrets/bitwarden.yaml";
     path = "${config.xdg.configHome}/bwm/config.ini";
   };
-  home.activation.setupEtc = config.lib.dag.entryAfter ["writeBoundary"] ''
-    /run/current-system/sw/bin/systemctl start --user sops-nix
-  '';
 }
