@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./config.nix
+    ./settings.nix
     ./binds.nix
     ./rules.nix
   ];
