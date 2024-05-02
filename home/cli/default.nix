@@ -45,6 +45,7 @@
     nitch
     speedtest-go
     killall
+    p7zip
     socat
     unrar
     unzip
