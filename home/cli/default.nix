@@ -35,6 +35,7 @@
 
     ## Tool, etc ...
     cargo
+    clang-tools
     cmake
     dotnet-sdk_7
     gcc
