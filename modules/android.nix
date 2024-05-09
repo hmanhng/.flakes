@@ -4,5 +4,6 @@
   environment.systemPackages = with pkgs; [
     jadx # smali to java
     apktool # apktool
+    frida-tools
   ];
 }
