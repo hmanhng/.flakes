@@ -36,13 +36,27 @@
     };
 
   inputs = {
+    # global, so they can be `.follow`ed
+    systems.url = "github:nix-systems/default-linux";
+
+    flake-compat.url = "github:edolstra/flake-compat";
+
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-parts.url = "github:hercules-ci/flake-parts";
 
     disko = {
       url = "github:nix-community/disko";
@@ -57,11 +71,19 @@
     };
 
     nur.url = "github:nix-community/NUR";
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hypr-contrib.url = "github:hyprwm/contrib";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
+    # hyprwm
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hypr-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
 
     nix-ld = {
       url = "github:Mic92/nix-ld";
@@ -72,6 +94,7 @@
     spicetify-nix = {
       url = "github:MichaelPachec0/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     nix-index-db = {
@@ -93,6 +116,8 @@
       url = "github:catppuccin/starship";
       flake = false;
     };
+
+    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
   };
   nixConfig = {
     extra-substituters = [
