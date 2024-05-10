@@ -40,6 +40,9 @@
     interactiveShellInit = ''
       set fish_greeting ""
 
+      # "emacsclient" as $EDITOR
+      set -x EDITOR "emacsclient -nw -c"
+
       # "nvim" as manpager
       set -x MANPAGER "nvim +Man!"
 
