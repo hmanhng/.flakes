@@ -5,14 +5,13 @@
         device = "/dev/${disk}";
         type = "disk";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "esp";
+          type = "gpt";
+          partitions = {
+            esp = {
+              priority = 1;
               start = "1MiB";
               end = "512MiB";
-              bootable = true;
+              type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -22,10 +21,8 @@
                   "defaults"
                 ];
               };
-            }
-            {
-              name = "nixos";
-              start = "512MiB";
+            };
+            nixos = {
               end = "-150GB";
               content = {
                 type = "btrfs";
@@ -33,7 +30,7 @@
                 mountOptions = ["defaults"];
                 postCreateHook = ''
                   MNTPOINT=$(mktemp -d)
-                  mount "/dev/disk/by-partlabel/nixos" "$MNTPOINT" -o subvol=/
+                  mount "/dev/disk/by-partlabel/disk-${disk}-nixos" "$MNTPOINT" -o subvol=/
                   trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
                   btrfs subvolume snapshot -r $MNTPOINT/rootfs $MNTPOINT/rootfs-blank
                 '';
@@ -52,8 +49,8 @@
                   };
                 };
               };
-            }
-          ];
+            };
+          };
         };
       };
     };
