@@ -7,12 +7,12 @@
       description = "Rollback btrfs rootfs";
       wantedBy = ["initrd.target"];
       requires = [
-        "dev-disk-by\\x2dpartlabel-disk\\x2dnvme0n1\\x2dnixos.device"
+        "dev-disk-by\\x2dpartlabel-nixos.device"
         # for luks
         # "dev-pool-root.device"
       ];
       after = [
-        "dev-disk-by\\x2dpartlabel-disk\\x2dnvme0n1\\x2dnixos.device"
+        "dev-disk-by\\x2dpartlabel-nixos.device"
         # for luks
         # "dev-pool-root.device"
         # "systemd-cryptsetup@${config.networking.hostName}.service"
@@ -23,7 +23,7 @@
       script = ''
         mkdir -p /mnt
 
-        mount -o subvol=/ /dev/disk/by-partlabel/disk-nvme0n1-nixos /mnt
+        mount -o subvol=/ /dev/disk/by-partlabel/nixos /mnt
 
         btrfs subvolume list -o /mnt/rootfs |
         cut -f9 -d' ' |

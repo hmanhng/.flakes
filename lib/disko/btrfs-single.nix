@@ -9,9 +9,9 @@
           partitions = {
             esp = {
               priority = 1;
-              start = "1MiB";
-              end = "512MiB";
+              size = "512M";
               type = "EF00";
+              label = "boot";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -23,14 +23,15 @@
               };
             };
             nixos = {
-              end = "-150GB";
+              end = "-250G"; # space for win10 and linux mint
+              label = "nixos";
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"];
                 mountOptions = ["defaults"];
                 postCreateHook = ''
                   MNTPOINT=$(mktemp -d)
-                  mount "/dev/disk/by-partlabel/disk-${disk}-nixos" "$MNTPOINT" -o subvol=/
+                  mount "/dev/disk/by-partlabel/nixos" "$MNTPOINT" -o subvol=/
                   trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
                   btrfs subvolume snapshot -r $MNTPOINT/rootfs $MNTPOINT/rootfs-blank
                 '';
