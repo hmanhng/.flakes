@@ -14,8 +14,8 @@
       font.name = "Maple Mono";
       font.size = 19;
       keybindings = {
-        "ctrl+c" = "copy_and_clear_or_interrupt";
-        "ctrl+v" = "paste_from_clipboard";
+        # "ctrl+c" = "copy_and_clear_or_interrupt";
+        # "ctrl+v" = "paste_from_clipboard";
       };
       settings = {
         bold_font = "auto";
