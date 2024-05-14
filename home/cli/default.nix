@@ -40,18 +40,16 @@
     dotnet-sdk_7
     gcc
     gnumake
+    just
     lua
 
     #
     nitch
     speedtest-go
     killall
-    p7zip
+    p7zip # Archiving and compression
     socat
-    unrar
-    unzip
     wget
-    zip
   ];
   programs.thefuck.enable = true;
   programs.direnv.enable = true;
