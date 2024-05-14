@@ -29,11 +29,11 @@
     windowrulev2 = [
       "workspace name:Firefox, class:^(firefox)$"
       "workspace name:Emacs, class:^(emacs)$"
-      "workspace name:Music, title:^(Spotify)"
+      "workspace name:Music, title:^(Spotify.*)$"
       "size 1100 600, class:^(termfloat)$"
       "size 1100 600, class:^(thunar)$"
 
-      "opacity 0.80, title:^(Spotify)"
+      "opacity 0.9, initialTitle:^(Spotify.*)$"
 
       # make Firefox PiP window floating and sticky
       "float, title:^(Picture-in-Picture)$"

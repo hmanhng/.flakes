@@ -92,9 +92,9 @@
     nix-alien.url = "github:thiagokokada/nix-alien"; # Run unpatched binaries on Nix/NixOS
 
     spicetify-nix = {
-      url = "github:MichaelPachec0/spicetify-nix";
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     nix-index-db = {

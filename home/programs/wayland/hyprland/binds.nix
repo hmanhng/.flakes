@@ -24,7 +24,7 @@
         "$MOD, W, exec, [workspace name:Firefox] hyprctl workspaces | rg ID | rg Firefox || firefox"
         "$MODSHIFT, W, exec, firefox --private-window"
         # music
-        "$MOD, M, exec, spotify"
+        # "$MOD, M, exec, spotify"
         "$MODSHIFT, M, exec, [workspace name:Music]kitty --class='ncmpcpp' --hold sh -c 'ncmpcpp'"
 
         # launcher

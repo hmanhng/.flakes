@@ -3,30 +3,39 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.spicetify-nix.homeManagerModule];
+  imports = [inputs.spicetify-nix.homeManagerModules.default];
   # themable spotify
   programs.spicetify = let
-    spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
     enable = true;
-    injectCss = true;
-    replaceColors = true;
-    overwriteAssets = true;
-    sidebarConfig = true;
+    windowManagerPatch = true;
 
     theme = spicePkgs.themes.text;
     colorScheme = "rosepinemoon";
 
-    enabledCustomApps = with spicePkgs.apps; [lyrics-plus new-releases reddit marketplace];
+    enabledCustomApps = with spicePkgs.apps; [
+      lyricsPlus
+      newReleases
+      reddit
+      marketplace
+    ];
     enabledExtensions = with spicePkgs.extensions; [
-      fullAlbumDate
+      keyboardShortcut
       shuffle
+
+      # powerBar
       seekSong
-      playlistIcons
-      # genre
+      # playlistIcons
+      fullAlbumDate
+      fullAppDisplayMod
+      showQueueDuration
+      history
+      betterGenres
       hidePodcasts
       adblock
-      keyboardShortcut
+      playNext
+      volumePercentage
     ];
   };
 }
