@@ -17,11 +17,10 @@
       "${lib.getExe pkgs.networkmanagerapplet}"
       "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
       # "border_color"
-      "wl-paste --type text --watch cliphist store"
-      "wl-paste --type image --watch cliphist store"
-      "${lib.getExe self.legacyPackages.${pkgs.system}.spoof-dpi}"
       "ydotoold"
+      "wl-paste --watch cliphist store"
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
+      "${lib.getExe self.legacyPackages.${pkgs.system}.spoof-dpi}"
       "MINEMACS_ALPHA=90 emacs --daemon"
     ];
 
