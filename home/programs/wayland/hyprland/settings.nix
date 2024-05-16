@@ -97,7 +97,7 @@
       # focus_on_activate = true;
 
       # enable_swallow = true;
-      swallow_regex = "kitty";
+      swallow_regex = "foot";
       swallow_exception_regex = "";
     };
 

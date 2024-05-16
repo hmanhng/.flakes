@@ -13,8 +13,8 @@
       bind = [
         # utility
         # terminal
-        "$MOD, Return, exec, kitty"
-        "$MODSHIFT, Return, exec, kitty --class='termfloat'"
+        "$MOD, Return, exec, run-as-service foot"
+        "$MODSHIFT, Return, exec, run-as-service 'foot --app-id termfloat'"
         # emacs
         "$MOD, E, exec, [workspace name:Emacs] hyprctl workspaces | rg ID | rg Emacs || emacsclient -c -a 'emacs'"
         # file manager
@@ -25,7 +25,7 @@
         "$MODSHIFT, W, exec, firefox --private-window"
         # music
         # "$MOD, M, exec, spotify"
-        "$MODSHIFT, M, exec, [workspace name:Music]kitty --class='ncmpcpp' --hold sh -c 'ncmpcpp'"
+        "$MODSHIFT, M, exec, [workspace name:Music] foot --app-id ncmpcpp ncmpcpp"
 
         # launcher
         "$MOD, Space, exec, pkill rofi || rofi -show combi"

@@ -21,7 +21,7 @@
       keyBindings = {
         normal = {
           "." = "cmd-set-text :";
-          ",D" = "hint links spawn kitty yt-dlp {hint-url}";
+          ",D" = "hint links spawn foot yt-dlp {hint-url}";
           ",d" = "hint links spawn xdman {hint-url}";
           ",m" = "hint links spawn mpv --profile=M60 {hint-url}";
           ",p" = "set content.proxy http://localhost:8080/";
@@ -55,7 +55,7 @@
           default_size = "14pt";
         };
         downloads.location.directory = "~/Downloads";
-        editor.command = ["kitty" "nvim" "{file}"];
+        editor.command = ["emacsclient" "-c" "-a" "emacs" "{file}"];
         statusbar.show = "always";
         tabs.show = "always";
         url.default_page = "${../firefox/homepage.html}";

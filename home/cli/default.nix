@@ -9,6 +9,7 @@
     ./git.nix
     ./top.nix
     ./starship.nix
+    ./transient-services.nix
     #./zsh/zsh
   ];
   # add environment variables
@@ -23,6 +24,7 @@
     sessionPath = [
       "$HOME/.local/bin"
       "$HOME/.local/share/npm-packages/bin"
+      "$HOME/.local/share/cargo/bin"
     ];
   };
 
