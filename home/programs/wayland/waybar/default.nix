@@ -6,7 +6,7 @@
       target = "graphical-session.target";
     };
     style = ''
-        @define-color bg-color alpha(#303446, 0.8);
+        @define-color bg-color alpha(#282c34, 0.9);
         @define-color fg-color #e4e8ef;
         @define-color temperature-color #f5a97f;
         @define-color cpu-color #ed8796;
