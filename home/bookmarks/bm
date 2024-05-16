@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-bookmarks=~/.flakes/home/bookmarks/bookmarks.txt
+bookmarks=$(dirname "$0")/bookmarks.txt
 
 if [ -z "$1" ]; then
     grep -v "^#" $bookmarks

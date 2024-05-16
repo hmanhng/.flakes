@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-bookmark="$(wl-paste -p)"
-file="$HOME/.flakes/home/bookmarks/default"
+bookmark=$(wl-paste -p)
+file=$(dirname "$0")/bookmarks.txt
 
-if (! echo "$bookmark" | grep -q "^http"); then
+if (! echo $bookmark | grep -q "^http"); then
   notify-send "Opps." "Wrong bookmark!"
 elif grep -q "^$bookmark$" "$file"; then
   notify-send "Opps." "Already bookmarked!"
