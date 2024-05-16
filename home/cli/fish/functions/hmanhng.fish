@@ -21,7 +21,7 @@ function hmanhng -d "hmanhng function"
         case {,-}-g{pg,}
             nix develop $flake_dir/.#secret -c ssh-to-pgp -private-key -i ~/.ssh/id_rsa | gpg --import --quiet
         case {,-}-s{sh,}
-            unzip /run/media/hmanhng/Ventoy/ssh.zip -d ~/.ssh
+            7z e /run/media/hmanhng/Ventoy/ssh.zip -o$HOME/.ssh
         case {,-}-w{allpapers,}
             git clone --depth 1 https://github.com/hmanhng/wallpapers ~/Pictures/wallpapers
         case {,-}-e{macs,}
