@@ -6,9 +6,9 @@
     buildInputs = [pkgs.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/code \
-        --unset WAYLAND_DISPLAY \
         --append-flags "--enable-wayland-ime"
     '';
+    # --unset WAYLAND_DISPLAY \
   };
 in {
   programs.vscode = {
