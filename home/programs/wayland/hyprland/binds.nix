@@ -44,10 +44,10 @@
         "$MOD, O, exec, killall -SIGUSR1 .waybar-wrapped"
 
         # grimblast [screenshot]
-        "$MOD, bracketleft, exec, grimblast --notify --cursor  copysave area ~/Pictures/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
-        "$MOD, bracketright, exec, grimblast --notify --cursor  copy area"
-        "$MODSHIFT, bracketleft, exec, grimblast --notify --cursor  copysave ~/Pictures/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
-        "$MODSHIFT, bracketright, exec, grimblast --notify --cursor  copy"
+        "$MOD, bracketleft, exec, grimblast --notify --cursor copysave area $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
+        "$MOD, bracketright, exec, grimblast --notify --cursor copy area"
+        "$MODSHIFT, bracketleft, exec, grimblast --notify --cursor copysave output $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
+        "$MODSHIFT, bracketright, exec, grimblast --notify --cursor copy output"
         "$MOD, A, exec, grimblast_watermark"
 
         # compositor commands
