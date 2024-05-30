@@ -7,7 +7,7 @@
     enable = true;
     extraConfig = ''
       include ${./catppuccin-macchiato}
-      set font "JetBrainsMono Nerd Font 16"
+      set font "JetBrainsMono Nerd Font 15"
 
       # Zathura configuration file
       # See man `man zathurarc'

@@ -39,7 +39,7 @@
       window#waybar {
         font-family: Operator Mono Lig, JetBrainsMono Nerd Font;
         /* font-weight: bold; */
-        font-size: 16pt;
+        font-size: 14pt;
         background-color: @bg-color;
       }
       #workspaces {
@@ -69,7 +69,7 @@
       tooltip label {
         font-family: Operator Mono Lig;
         /* font-weight: bold; */
-        font-size: 15pt;
+        font-size: 13pt;
         color: #e4e8ef;
       }
       /* #temperature,
@@ -99,7 +99,7 @@
       #custom-launcher,
       #custom-hyprpicker,
       #custom-screenshot {
-        font-size: 25px;
+        font-size: 23px;
       }
       #custom-launcher {
         padding: 0px 7px 0px 7px;
@@ -154,7 +154,7 @@
 
       #clock {
         color: @fg-color;
-        font-size: 17pt;
+        font-size: 15pt;
         padding: 0px 10px 0px 10px;
       }
 
@@ -164,12 +164,12 @@
       #pulseaudio.icons {
         color: @pulseaudio-color;
         padding: 0px 10px 0px 3px;
-        font-size: 19pt;
+        font-size: 17pt;
       }
       #pulseaudio.microphone-icons {
         color: @pulseaudio-color;
         padding: 0px 10px 0px 3px;
-        font-size: 18pt;
+        font-size: 16pt;
       }
 
       #backlight.icons {
@@ -235,7 +235,7 @@
       }
       #tray menu {
         font-family: JetBrainsMono Nerd Font;
-        font-size: 14pt;
+        font-size: 12pt;
         background: @bg-color;
         color: @fg-color;
       }

@@ -52,7 +52,7 @@
       settings = {
         fonts = {
           default_family = "Iosevka Term";
-          default_size = "14pt";
+          default_size = "15pt";
         };
         downloads.location.directory = "~/Downloads";
         editor.command = ["emacsclient" "-c" "-a" "emacs" "{file}"];

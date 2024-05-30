@@ -2,7 +2,7 @@
   home.packages = with pkgs; [libnotify];
   services.mako = {
     enable = true;
-    font = "Liga CodeNewRoman Nerd Font 14";
+    font = "Liga CodeNewRoman Nerd Font 12";
     width = 300;
     height = 500;
     margin = "5";

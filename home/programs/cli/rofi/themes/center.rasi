@@ -9,8 +9,8 @@
     background-color:            #282c34;
     border-color:                #282c34;
     text-color:                  #bfbfbf;
-    font:                        "Maple Mono 16";
-    prompt-font:                 "Maple Mono Bold 15";
+    font:                        "Maple Mono 13";
+    prompt-font:                 "Maple Mono Bold 12";
     prompt-background:           #51afef;
     prompt-foreground:           #282c34;
     prompt-padding:              2px 4px 0px 4px;

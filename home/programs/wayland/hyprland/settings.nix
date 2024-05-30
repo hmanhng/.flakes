@@ -7,9 +7,7 @@
 }: {
   wayland.windowManager.hyprland.settings = {
     env = [
-      "QT_SCALE_FACTOR,1.25"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
     ];
 
     exec-once = [
@@ -24,7 +22,10 @@
       "MINEMACS_ALPHA=90 emacs --daemon"
     ];
 
-    monitor = [", preferred, auto, 1"];
+    monitor = [
+      "desc:AU Optronics 0x353D, preferred, 0x0, 1.2"
+      "desc:Samsung Electric Company LF24T450F HNAX500305, 1920x1080@75, auto-right, 1"
+    ];
 
     general = {
       gaps_in = 3;

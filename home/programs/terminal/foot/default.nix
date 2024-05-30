@@ -51,7 +51,7 @@ in {
     settings = {
       main = {
         # term = "xterm-256color"; # default: foot
-        font = "Maple Mono:size=19";
+        font = "Maple Mono:size=15";
         box-drawings-uses-font-glyphs = "yes";
         pad = "5x0 center";
         notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";

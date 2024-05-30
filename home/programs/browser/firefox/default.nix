@@ -59,7 +59,7 @@
           # tabcenter-reborn
         ])
         ++ (with self.legacyPackages.${pkgs.system}.firefox-addons; [
-          default-zoom
+          # default-zoom
         ]);
       search = {
         force = true;
