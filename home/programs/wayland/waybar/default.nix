@@ -39,7 +39,7 @@
       window#waybar {
         font-family: Operator Mono Lig, JetBrainsMono Nerd Font;
         /* font-weight: bold; */
-        font-size: 14pt;
+        font-size: 13pt;
         background-color: @bg-color;
       }
       #workspaces {
@@ -67,9 +67,9 @@
         background: #3b4253;
       }
       tooltip label {
-        font-family: Operator Mono Lig;
+        font-family: Maple Mono;
         /* font-weight: bold; */
-        font-size: 13pt;
+        font-size: 12pt;
         color: #e4e8ef;
       }
       /* #temperature,
@@ -99,7 +99,7 @@
       #custom-launcher,
       #custom-hyprpicker,
       #custom-screenshot {
-        font-size: 23px;
+        font-size: 22px;
       }
       #custom-launcher {
         padding: 0px 7px 0px 7px;
@@ -154,7 +154,7 @@
 
       #clock {
         color: @fg-color;
-        font-size: 15pt;
+        font-size: 14pt;
         padding: 0px 10px 0px 10px;
       }
 
@@ -164,12 +164,12 @@
       #pulseaudio.icons {
         color: @pulseaudio-color;
         padding: 0px 10px 0px 3px;
-        font-size: 17pt;
+        font-size: 16pt;
       }
       #pulseaudio.microphone-icons {
         color: @pulseaudio-color;
         padding: 0px 10px 0px 3px;
-        font-size: 16pt;
+        font-size: 15pt;
       }
 
       #backlight.icons {
@@ -310,15 +310,15 @@
         };
         "custom/launcher" = {
           format = "";
-          on-click = "wallpaper_random";
-          on-click-middle = "default_wall";
-          on-click-right = "killall dynamic_wallpaper || dynamic_wallpaper &";
+          on-click = "run-as-service foot";
+          # on-click-middle = "default_wall";
+          # on-click-right = "killall dynamic_wallpaper || dynamic_wallpaper &";
           # on-click = "pkill rofi || ~/.config/rofi/launcher.sh";
           tooltip = false;
         };
         "custom/hyprpicker" = {
           format = "";
-          on-click = "hyprpicker -a";
+          on-click = "hyprpicker -a && notify-send Hyprpicker \"$(wl-paste)\"";
           tooltip = false;
         };
         "custom/screenshot" = {
@@ -356,7 +356,7 @@
         temperature = {
           # hwmon-path= "${env:HWMON_PATH}";
           #critical-threshold= 80;
-          thermal-zone = 2;
+          # thermal-zone = 2;
           tooltip = false;
           format = "{temperatureC}°C";
         };
@@ -415,7 +415,7 @@
           format = "{:%H:%M}";
           format-alt = "{:%d %B %Y (%a)}";
           locale = "en_US.UTF-8";
-          tooltip-format = "Devops go go\n<span size='13pt' font='JetBrainsMono Nerd Font'>{calendar}</span>";
+          tooltip-format = "Devops go go\n<span size='13pt' font='Maple Mono'>{calendar}</span>";
           calendar = {
             mode-mon-col = 3;
             # weeks-pos = "right";
@@ -461,7 +461,7 @@
           format-muted = "󰝟";
           on-click = "pamixer -t";
           on-click-right = "pavucontrol";
-          scroll-step = 5;
+          scroll-step = 2;
           tooltip = false;
         };
         pulseaudio = {
@@ -472,7 +472,7 @@
           */
           on-click = "pamixer -t";
           on-click-right = "pavucontrol";
-          scroll-step = 5;
+          scroll-step = 2;
           # states = { "warning" = 85; };
           tooltip = false;
         };
@@ -483,9 +483,8 @@
           format-source-muted = "󰍭";
           on-click = "pamixer --default-source -t";
           on-click-right = "pavucontrol";
-          on-scroll-down = "pamixer --default-source -d 5";
-          on-scroll-up = "pamixer --default-source -i 5";
-          scroll-step = 5;
+          on-scroll-down = "pamixer --default-source -d 2";
+          on-scroll-up = "pamixer --default-source -i 2";
           tooltip = false;
         };
         "pulseaudio#microphone" = {
@@ -494,9 +493,8 @@
           # format-source-muted = "Muted";
           on-click = "pamixer --default-source -t";
           on-click-right = "pavucontrol";
-          on-scroll-down = "pamixer --default-source -d 5";
-          on-scroll-up = "pamixer --default-source -i 5";
-          scroll-step = 5;
+          on-scroll-down = "pamixer --default-source -d 2";
+          on-scroll-up = "pamixer --default-source -i 2";
           tooltip = false;
         };
 
@@ -510,17 +508,15 @@
           modules = ["backlight#icons" "backlight"];
         };
         "backlight#icons" = {
-          device = "intel_backlight";
-          on-scroll-up = "brillo -A 5";
-          on-scroll-down = "brillo -U 5";
+          on-scroll-up = "brillo -A 2";
+          on-scroll-down = "brillo -U 2";
           format = "{icon}";
           format-icons = ["" "" "" ""];
           tooltip = false;
         };
         backlight = {
-          device = "intel_backlight";
-          on-scroll-up = "brillo -A 5";
-          on-scroll-down = "brillo -U 5";
+          on-scroll-up = "brillo -A 2";
+          on-scroll-down = "brillo -U 2";
           format = "{percent}%";
           tooltip = false;
         };

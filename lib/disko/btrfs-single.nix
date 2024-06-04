@@ -23,7 +23,7 @@
               };
             };
             nixos = {
-              end = "-250G"; # space for win10 and linux mint
+              end = "-500G"; # space for win and linux mint
               label = "nixos";
               content = {
                 type = "btrfs";

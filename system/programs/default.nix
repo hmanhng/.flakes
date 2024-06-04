@@ -1,6 +1,5 @@
 {
   imports = [
-    ./auto-cpufreq.nix
     ./fonts.nix
     ./gui.nix
     ./home-manager.nix

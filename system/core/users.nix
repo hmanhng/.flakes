@@ -20,5 +20,5 @@
     extraGroups = ["wheel" "video" "audio" "networkmanager" "input" "libvirtd" "plugdev"];
   };
 
-  services.getty.autologinUser = "hmanhng";
+  # services.getty.autologinUser = "hmanhng";
 }

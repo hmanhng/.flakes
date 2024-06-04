@@ -10,7 +10,7 @@
 
     udev.extraRules = ''
       # add my android device to adbusers
-      SUBSYSTEM=="usb", ATTR{idVendor}=="22d9", MODE="0666", GROUP="adbusers"
+      # SUBSYSTEM=="usb", ATTR{idVendor}=="22d9", MODE="0666", GROUP="adbusers"
     '';
   };
 }

@@ -1,7 +1,7 @@
 let
   desktop = [
+    ./core
     ./core/boot.nix
-    ./core/default.nix
 
     ./hardware/opengl.nix
     ./hardware/fwupd.nix
@@ -15,7 +15,7 @@ let
     ./services
     ./services/location.nix
     ./services/gnome-services.nix
-    # ./services/greetd.nix
+    ./services/greetd.nix
     ./services/pipewire.nix
   ];
 
@@ -24,6 +24,8 @@ let
     ++ [
       ./hardware/bluetooth.nix
       ./hardware/brillo.nix
+
+      ./programs/auto-cpufreq.nix
 
       ./services/power.nix
     ];

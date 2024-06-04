@@ -26,18 +26,21 @@
           # "${self}/modules/virtual"
           # ../modules/devops
 
+          "${self}/system/hardware/amdgpu.nix" # for amdgpu
           "${self}/system/impermanence"
           "${self}/system/impermanence/btrfs.nix"
+
           {
             home-manager = {
               users.hmanhng.imports = homeImports."hmanhng@laptop";
               extraSpecialArgs = specialArgs;
             };
           }
-          # {disabledModules = ["security/pam.nix"];}
-          # "${howdy}/nixos/modules/security/pam.nix"
-          # "${howdy}/nixos/modules/services/security/howdy"
-          # "${howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
+
+          {disabledModules = ["security/pam.nix"];}
+          "${howdy}/nixos/modules/security/pam.nix"
+          "${howdy}/nixos/modules/services/security/howdy"
+          "${howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
 
           inputs.disko.nixosModules.disko
         ];

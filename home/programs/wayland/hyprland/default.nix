@@ -9,10 +9,10 @@
     ./rules.nix
   ];
 
-  programs.fish.loginShellInit = ''
-    set TTY1 (tty)
-    [ "$TTY1" = "/dev/tty1" ] && exec Hyprland
-  '';
+  # programs.fish.loginShellInit = ''
+  #   set TTY1 (tty)
+  #   [ "$TTY1" = "/dev/tty1" ] && exec Hyprland
+  # '';
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;

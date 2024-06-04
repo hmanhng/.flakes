@@ -20,11 +20,13 @@
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
       "${lib.getExe self.legacyPackages.${pkgs.system}.spoof-dpi}"
       "MINEMACS_ALPHA=90 emacs --daemon"
+      "hyprlock"
     ];
 
     monitor = [
-      "desc:AU Optronics 0x353D, preferred, 0x0, 1.2"
-      "desc:Samsung Electric Company LF24T450F HNAX500305, 1920x1080@75, auto-right, 1"
+      "desc:Lenovo Group Limited 0x8AAF, 3072x1920@120, 0x0, 2" # thinkbook 14 g6+ 14.5inh 3k 120hz
+      # "desc:AU Optronics 0x353D, preferred, 0x0, 1.2" # old ideapad 14inh
+      "desc:Samsung Electric Company LF24T450F HNAX500305, 1920x1080@75, auto-right, 1" # samsung 24inh
     ];
 
     general = {
@@ -38,7 +40,7 @@
     };
 
     decoration = {
-      rounding = 10;
+      rounding = 5;
       blur = {
         enabled = true;
         brightness = 1.0;
@@ -90,7 +92,7 @@
       force_default_wallpaper = 0;
 
       # enable variable refresh rate (effective depending on hardware)
-      vrr = 1;
+      vrr = 2;
 
       # we do, in fact, want direct scanout
       no_direct_scanout = false;

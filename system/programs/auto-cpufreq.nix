@@ -18,5 +18,5 @@
     };
   };
 
-  services.thermald.enable = true;
+  # services.thermald.enable = true; # only or intel cpu
 }

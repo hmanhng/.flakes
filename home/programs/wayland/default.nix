@@ -7,6 +7,7 @@
 {
   imports = [
     ./hyprland
+    ./hyprlock.nix
     ./scripts
     ./waybar
   ];
@@ -14,7 +15,7 @@
   home.packages = with pkgs; [
     # screenshot
     imagemagick # for grimblast
-    inputs.hypr-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 
     # utils
     wl-screenrec

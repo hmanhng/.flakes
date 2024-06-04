@@ -8,7 +8,7 @@
 
   networking.hostName = "laptop"; # Define your hostname.
 
-  # security.tpm2.enable = true;
+  security.tpm2.enable = true;
 
   services = {
     # for SSD/NVME
@@ -18,22 +18,18 @@
     #   enable = true;
     #   package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
     #   settings = {
-    #     core.no_confirmation = true;
-    #     video.device_path = "/dev/video0";
-    #     debug.end_report = true;
+    #     core = {
+    #       no_confirmation = true;
+    #       abort_if_ssh = true;
+    #     };
+    #     video.dark_threshold = 90;
     #   };
     # };
-  };
 
-  # Accelerated Video Playback
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
-  };
-  hardware.opengl = {
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-    ];
+    # linux-enable-ir-emitter = {
+    #   enable = true;
+    #   package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.linux-enable-ir-emitter;
+    # };
   };
 
   hardware.logitech.wireless = {
@@ -42,11 +38,10 @@
   };
 
   boot = {
-    kernelParams = [
-      "i915.enable_guc=2"
-      "ideapad_laptop.allow_v4_dytc=Y"
-      ''acpi_osi="Windows 2020"''
-      # "nvidia-drm.modeset=1"
+    kernelParams = [];
+
+    blacklistedKernelModules = [
+      "ideapad_laptop" # fix https://bbs.archlinux.org/viewtopic.php?id=295464
     ];
 
     # Make some extra kernel modules available to NixOS
@@ -54,7 +49,6 @@
 
     # Activate kernel modules (choose from built-ins and extra ones)
     kernelModules = [
-      "ideapad_laptop"
       # Virtual Camera
       "v4l2loopback"
       # Virtual Microphone, built-in

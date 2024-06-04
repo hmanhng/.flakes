@@ -5,16 +5,18 @@
   ...
 }: {
   imports = [
-    # ./specialisations.nix
+    ./specialisations.nix
     ./cli
+    inputs.matugen.nixosModules.default
     inputs.nix-index-db.hmModules.nix-index
     inputs.sops-nix.homeManagerModules.sops
+    self.nixosModules.theme
   ];
 
   home = {
     username = "hmanhng";
     homeDirectory = "/home/hmanhng";
-    stateVersion = lib.mkDefault "23.11";
+    stateVersion = lib.mkDefault "24.05";
   };
 
   # disable manuals as nmd fails to build often
@@ -30,8 +32,8 @@
   };
 
   nixpkgs.overlays = [
-    # (final: prev: {
-    #   lib = prev.lib // {colors = import "${self}/lib/colors" lib;};
-    # })
+    (final: prev: {
+      lib = prev.lib // {colors = import "${self}/lib/colors" lib;};
+    })
   ];
 }

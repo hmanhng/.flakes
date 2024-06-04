@@ -1,15 +1,23 @@
-{pkgs, ...}:
-# greetd display manager
 {
-  services.greetd = {
+  config,
+  lib,
+  ...
+}: {
+  # greetd display manager
+  services.greetd = let
+    session = {
+      command = "${lib.getExe config.programs.hyprland.package}";
+      user = "hmanhng";
+    };
+  in {
     enable = true;
     settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-      };
+      terminal.vt = 1;
+      default_session = session;
+      initial_session = session;
     };
   };
 
-  # # unlock GPG keyring on login
-  # security.pam.services.greetd.enableGnomeKeyring = true;
+  # unlock GPG keyring on login
+  security.pam.services.greetd.enableGnomeKeyring = true;
 }
