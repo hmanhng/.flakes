@@ -1,13 +1,35 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   launch_waybar = pkgs.writeShellScriptBin "launch_waybar" ''
-    #!/usr/bin/env bash
     killall .waybar-wrapped
     SDIR="$HOME/.config/waybar"
     waybar -c "$SDIR"/config -s "$SDIR"/style.css > /dev/null 2>&1 &
   '';
+
+  warp = pkgs.writeShellScriptBin "warp" ''
+    status=$(curl -s https://www.cloudflare.com/cdn-cgi/trace/ | grep 'warp=' | cut -d= -f2)
+    [ "$status" == "on" ] && tooltip="Connected" || tooltip="Disconnected"
+    check() {
+      printf '{"class": "%s", "tooltip": "%s"}\n' "$status" "$tooltip"
+    }
+    toggle() {
+      if [ "$status" == "on" ]; then
+        warp-cli disconnect
+        notify-send warp-cli Disconnect
+      else
+        warp-cli connect
+        notify-send warp-cli Connect
+      fi
+    }
+    [ "$1" == "toggle" ] && toggle || check
+  '';
 in {
   home.packages = with pkgs; [
     launch_waybar
+    warp
   ];
   programs.waybar = {
     enable = true;
@@ -42,7 +64,7 @@ in {
       .urgent {
         animation-name: blink_red;
         animation-duration: 1s;
-        animation-timing-function: linear;
+        animation-timing-function: steps(12);
         animation-iteration-count: infinite;
         animation-direction: alternate;
       }
@@ -168,6 +190,13 @@ in {
         padding: 0px 10px 0px 10px;
       }
 
+      #custom-warp.on {
+        color: #F68D29;
+      }
+      #custom-warp.off {
+        color: @network-dis-color;
+      }
+
       #pulseaudio {
         color: @pulseaudio-color;
       }
@@ -190,12 +219,15 @@ in {
         padding: 0px 3px 0px 0px;
       }
 
+      #network.speed {
+        padding: 0px 10px;
+      }
       #network.icons,
       #network.icons.disconnected {
-        padding: 0px 5px 0px 0px;
+        padding: 0px 5px 0px 10px;
       }
       #network.icons.wifi {
-        padding: 0px 10px 0px 0px;
+        padding: 0px 10px 0px 10px;
       }
       #network {
         color: @network-color;
@@ -214,12 +246,12 @@ in {
       #battery.charging,
       #battery.discharging {
         color: #cf876f;
-        padding: 0px 4px 0px 0px;
+        padding: 0px 6px 0px 0px;
       }
       #battery.full,
       #battery.plugged {
         color: #a6da95;
-        padding: 0px 4px 0px 0px;
+        padding: 0px 6px 0px 0px;
       }
       #battery.critical:not(.charging) {
         color: #d6dce7;
@@ -291,6 +323,7 @@ in {
           "memory"
           "cpu#icons"
           "cpu"
+          "network#speed"
           # "idle_inhibitor"
           # "custom/wall"
           "mpd"
@@ -439,7 +472,7 @@ in {
         };
 
         modules-right = [
-          "network#speed"
+          "custom/warp"
           "network#icons"
           "network"
           "group/audio"
@@ -451,9 +484,18 @@ in {
           "tray"
         ];
 
+        "custom/warp" = {
+          format = "1.1.1.1";
+          exec = "${lib.getExe warp}";
+          on-click = "${lib.getExe warp} toggle; pkill -SIGRTMIN+10 waybar";
+          return-type = "json";
+          interval = "once";
+          signal = 10;
+        };
+
         "network#speed" = {
           format = "󰄿{bandwidthUpBytes} 󰄼{bandwidthDownBytes}";
-          interval = 1;
+          interval = 5;
           tooltip = false;
         };
         "network#icons" = {
