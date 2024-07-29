@@ -3,8 +3,9 @@ let
     ./core
     ./core/boot.nix
 
-    ./hardware/opengl.nix
+    ./hardware/graphics.nix
     ./hardware/fwupd.nix
+    ./hardware/android.nix
 
     ./network/avahi.nix
     ./network/default.nix
@@ -24,8 +25,6 @@ let
     ++ [
       ./hardware/bluetooth.nix
       ./hardware/brillo.nix
-
-      ./programs/auto-cpufreq.nix
 
       ./services/power.nix
     ];

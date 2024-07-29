@@ -1,6 +1,9 @@
 # networking configuration
 {
   networking = {
+    # use quad9 with DNS over TLS
+    nameservers = ["9.9.9.9#dns.quad9.net"];
+
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
@@ -15,7 +18,10 @@
     };
 
     # DNS resolver
-    resolved.enable = true;
+    resolved = {
+      enable = true;
+      dnsovertls = "opportunistic";
+    };
   };
 
   # services.v2raya.enable = true;

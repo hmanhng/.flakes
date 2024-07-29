@@ -1,6 +1,8 @@
-{
+{pkgs, ...}: {
   imports = [
-    ./discord
-    # ./telegram
+    ./discord.nix
+  ];
+  home.packages = with pkgs; [
+    _64gram
   ];
 }

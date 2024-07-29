@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  launch_waybar = pkgs.writeShellScriptBin "launch_waybar" ''
+    #!/usr/bin/env bash
+    killall .waybar-wrapped
+    SDIR="$HOME/.config/waybar"
+    waybar -c "$SDIR"/config -s "$SDIR"/style.css > /dev/null 2>&1 &
+  '';
+in {
+  home.packages = with pkgs; [
+    launch_waybar
+  ];
   programs.waybar = {
     enable = true;
     systemd = {
@@ -163,7 +173,7 @@
       }
       #pulseaudio.icons {
         color: @pulseaudio-color;
-        padding: 0px 10px 0px 3px;
+        padding: 0px 13px 0px 3px;
         font-size: 16pt;
       }
       #pulseaudio.microphone-icons {
@@ -174,19 +184,22 @@
 
       #backlight.icons {
         color: @backlight-color;
-        padding: 0px 10px 0px 3px;
       }
       #backlight {
         color: @backlight-color;
+        padding: 0px 3px 0px 0px;
       }
 
       #network.icons,
       #network.icons.disconnected {
         padding: 0px 5px 0px 0px;
       }
+      #network.icons.wifi {
+        padding: 0px 10px 0px 0px;
+      }
       #network {
         color: @network-color;
-        padding: 0px 5px 0px 0px;
+        padding: 0px 10px 0px 0px;
       }
       #network.disconnected {
         color: @network-dis-color;
@@ -196,17 +209,17 @@
       #battery.icons.discharging,
       #battery.icons.full,
       #battery.icons.plugged {
-        padding: 0px 5px 0px 5px;
+        padding: 0px 4px 0px 9px;
       }
       #battery.charging,
       #battery.discharging {
         color: #cf876f;
-        padding: 0px 0px 0px 5px;
+        padding: 0px 4px 0px 0px;
       }
       #battery.full,
       #battery.plugged {
         color: #a6da95;
-        padding: 0px 0px 0px 5px;
+        padding: 0px 4px 0px 0px;
       }
       #battery.critical:not(.charging) {
         color: #d6dce7;
@@ -284,20 +297,6 @@
           # "custom/cava-internal"
           # "hyprland/window"
         ];
-        modules-center = ["clock"];
-        modules-right = [
-          "group/audio"
-          "group/backlight"
-          "network#icons"
-          "network"
-          "group/bat"
-          "group/powermenu"
-          "tray"
-        ];
-        "custom/spacer" = {
-          format = " ";
-          tooltip = false;
-        };
 
         "group/launcher" = {
           orientation = "inherit";
@@ -324,8 +323,7 @@
         "custom/screenshot" = {
           format = "󰸉";
           on-click = "grimblast --notify --cursor  copy area";
-          on-click-middle = "grimblast --notify --cursor  copysave area ~/Pictures/$(date \"+%Y-%m-%d\"T\"%H:%M:%S_no_watermark\").png";
-          on-click-right = "grimblast_watermark";
+          on-click-right = "grimblast --notify --cursor  copysave area ~/Pictures/$(date \"+%Y-%m-%d\"T\"%H:%M:%S_no_watermark\").png";
           tooltip = false;
         };
 
@@ -411,6 +409,8 @@
           tooltip = false;
         };
 
+        modules-center = ["clock"];
+
         clock = {
           format = "{:%H:%M}";
           format-alt = "{:%d %B %Y (%a)}";
@@ -438,6 +438,42 @@
           };
         };
 
+        modules-right = [
+          "network#speed"
+          "network#icons"
+          "network"
+          "group/audio"
+          "group/backlight"
+          # "group/bat"
+          "battery#icons"
+          "battery"
+          "group/powermenu"
+          "tray"
+        ];
+
+        "network#speed" = {
+          format = "󰄿{bandwidthUpBytes} 󰄼{bandwidthDownBytes}";
+          interval = 1;
+          tooltip = false;
+        };
+        "network#icons" = {
+          format-disconnected = "";
+          format-ethernet = "";
+          format-linked = "";
+          format-wifi = "{icon}";
+          format-icons = ["󰤟" "󰤢" "󰤥" "󰤨"];
+          tooltip = false;
+        };
+        network = {
+          # format-disconnected = "Disconnected";
+          format-ethernet = "{ipaddr}/{cidr}";
+          format-linked = "{essid} (No IP)";
+          format-wifi = "{essid}"; # show default gateway for login wifi
+          tooltip = true;
+          tooltip-format = "{ifname} via {gwaddr} 󰊗";
+          tooltip-format-wifi = "{ifname} via {gwaddr} ({signalStrength}%)";
+        };
+
         "group/audio" = {
           orientation = "inherit";
           drawer = {
@@ -460,7 +496,7 @@
           };
           format-muted = "󰝟";
           on-click = "pamixer -t";
-          on-click-right = "pavucontrol";
+          on-click-right = "pwvucontrol";
           scroll-step = 2;
           tooltip = false;
         };
@@ -471,7 +507,7 @@
           format-muted = "Muted";
           */
           on-click = "pamixer -t";
-          on-click-right = "pavucontrol";
+          on-click-right = "pwvucontrol";
           scroll-step = 2;
           # states = { "warning" = 85; };
           tooltip = false;
@@ -482,7 +518,7 @@
           format-source = "󰍬";
           format-source-muted = "󰍭";
           on-click = "pamixer --default-source -t";
-          on-click-right = "pavucontrol";
+          on-click-right = "pwvucontrol";
           on-scroll-down = "pamixer --default-source -d 2";
           on-scroll-up = "pamixer --default-source -i 2";
           tooltip = false;
@@ -492,7 +528,7 @@
           format-source = "{volume}%";
           # format-source-muted = "Muted";
           on-click = "pamixer --default-source -t";
-          on-click-right = "pavucontrol";
+          on-click-right = "pwvucontrol";
           on-scroll-down = "pamixer --default-source -d 2";
           on-scroll-up = "pamixer --default-source -i 2";
           tooltip = false;
@@ -521,21 +557,6 @@
           tooltip = false;
         };
 
-        "network#icons" = {
-          format-disconnected = "";
-          format-ethernet = "";
-          format-linked = "󰯡";
-          format-wifi = "";
-          tooltip = false;
-        };
-        network = {
-          # format-disconnected = "Disconnected";
-          format-ethernet = "{ifname} ({ipaddr})";
-          format-linked = "{essid} (No IP)";
-          format-wifi = "{essid}";
-          tooltip = false;
-        };
-
         "group/bat" = {
           orientation = "inherit";
           drawer = {
@@ -549,8 +570,8 @@
           format = "{icon}";
           format-charging = "󰚥";
           format-full = "󰚥";
-          format-plugged = "󰚥";
-          format-icons = ["" "" "" "" ""];
+          # format-plugged = "󰚥";
+          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           states = {
             critical = 10;
             warning = 20;
@@ -561,7 +582,7 @@
         battery = {
           format = "{capacity}%";
           format-charging = "{capacity}%";
-          # format-full = "Full";
+          format-full = "Full";
           # format-plugged = "Full";
           states = {
             critical = 10;
@@ -597,7 +618,7 @@
         };
         "custom/lockscreen" = {
           format = "󰌾";
-          on-click = "myswaylock";
+          on-click = "loginctl lock-session";
           tooltip = false;
         };
 

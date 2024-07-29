@@ -1,7 +1,7 @@
 {
   imports = [
-    ./gpg
-    ./gtk
-    ./xdg
+    ./gpg.nix
+    ./gtk.nix
+    ./xdg.nix
   ];
 }

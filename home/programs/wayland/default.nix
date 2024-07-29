@@ -8,8 +8,8 @@
   imports = [
     ./hyprland
     ./hyprlock.nix
-    ./scripts
-    ./waybar
+    ./waybar.nix
+    ./rofi
   ];
 
   home.packages = with pkgs; [

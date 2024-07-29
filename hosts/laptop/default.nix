@@ -38,7 +38,9 @@
   };
 
   boot = {
-    kernelParams = [];
+    kernelParams = [
+      "amd_pstate=active"
+    ];
 
     blacklistedKernelModules = [
       "ideapad_laptop" # fix https://bbs.archlinux.org/viewtopic.php?id=295464

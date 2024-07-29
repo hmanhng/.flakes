@@ -112,30 +112,13 @@
       inputs.nixpkgs.follows = "hyprland/nixpkgs";
     };
 
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
+    ags = {
+      url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
-    }; # Run unpatched dynamic binaries on NixOS
-    nix-alien.url = "github:thiagokokada/nix-alien"; # Run unpatched binaries on Nix/NixOS
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
     };
 
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    bitwarden-menu = {
-      url = "github:firecat53/bitwarden-menu";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -145,8 +128,9 @@
     };
 
     matugen = {
-      url = "github:InioX/matugen/module";
+      url = "github:InioX/matugen";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "hyprland/systems";
     };
 
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
@@ -156,14 +140,12 @@
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
       "https://hmanhng.cachix.org"
-      "https://viperml.cachix.org"
       "https://fufexan.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "hmanhng.cachix.org-1:+pXFpN2CtS0rNUdCdeiOu6QUWMVBX0nCbWREhfiiKtI="
-      "viperml.cachix.org-1:qZhKBMTfmcLL+OG6fj/hzsMEedgKvZVFRRAhq7j8Vh8="
       "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
     ];
   };

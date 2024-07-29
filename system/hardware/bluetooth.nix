@@ -6,6 +6,7 @@
       General = {
         # Battery info for Bluetooth devices
         Experimental = true;
+        ControllerMode = "bredr";
       };
     };
   };
@@ -15,5 +16,5 @@
   home-manager.users.hmanhng.services.blueman-applet.enable = true;
 
   # https://github.com/NixOS/nixpkgs/issues/114222
-  systemd.user.services.telephony_client.enable = false;
+  # systemd.user.services.telephony_client.enable = false;
 }

@@ -30,10 +30,11 @@
       "workspace name:Firefox, class:^(firefox)$"
       "workspace name:Emacs, class:^(emacs)$"
       "workspace name:Music, title:^(Spotify.*)$"
+      "workspace name:Music, class:^(tidal-hifi)$"
       "size 1100 600, class:^(termfloat)$"
       "size 1100 600, class:^(thunar)$"
 
-      "opacity 0.9, initialTitle:^(Spotify.*)$"
+      "opacity 0.9, class:^(tidal-hifi)$"
 
       # make Firefox PiP window floating and sticky
       "float, title:^(Picture-in-Picture)$"
@@ -49,7 +50,7 @@
       "float, class:^(mpv)$"
       "float, class:^(termfloat)$"
       "float, class:^(thunar)$"
-      "float, class:^(pavucontrol)$"
+      "float, class:^(com.saivert.pwvucontrol)$"
       "float, class:^(ncmpcpp)"
       "float, class:^(confirm)$"
       "float, class:^(dialog)$"

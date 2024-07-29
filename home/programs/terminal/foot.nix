@@ -1,4 +1,4 @@
-{config, ...}: let
+{pkgs, ...}: let
   colors = {
     dark = {
       foreground = "bbc2cf"; # Text
@@ -50,11 +50,12 @@ in {
 
     settings = {
       main = {
-        # term = "xterm-256color"; # default: foot
         font = "Maple Mono:size=15";
         box-drawings-uses-font-glyphs = "yes";
+        horizontal-letter-offset = 0;
+        vertical-letter-offset = 0;
         pad = "5x0 center";
-        notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
+        notify = "${pkgs.libnotify}/bin/notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
         selection-target = "clipboard";
         bold-text-in-bright = "palette-based";
       };
@@ -62,6 +63,14 @@ in {
       scrollback = {
         lines = 10000;
         multiplier = 3; # default 3
+      };
+
+      url = {
+        launch = "${pkgs.xdg-utils}/bin/xdg-open \${url}";
+        label-letters = "sadfjklewcmpgh";
+        osc8-underline = "url-mode";
+        protocols = "http, https, ftp, ftps, file, mailto, ipfs";
+        uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
       };
 
       cursor = {

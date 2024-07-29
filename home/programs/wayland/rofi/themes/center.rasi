@@ -1,0 +1,71 @@
+/* *
+ * ROFI Color theme
+ * NAME: center.rasi
+ * DESCRIPTION: This is a centered prompt.
+ * AUTHOR: Hmanhng
+ */
+
+* {
+    background-color:            #282c34;
+    border-color:                #282c34;
+    text-color:                  #bfbfbf;
+    font:                        "Maple Mono 14";
+    prompt-font:                 "Maple Mono Bold 13";
+    prompt-background:           #51afef;
+    prompt-foreground:           #282c34;
+    prompt-padding:              2px 4px 0px 4px;
+    alternate-normal-background: #21242b;
+    alternate-normal-foreground: @text-color;
+    selected-normal-background:  #a9a1e1;
+    selected-normal-foreground:  @background-color;
+    border-radius:      2px;
+}
+/*****----- Main Window -----*****/
+window {
+    padding:            7;
+    location:           north west;
+    y-offset:           -30;
+    width:              100%;
+}
+/*****----- Main Box -----*****/
+mainbox {
+    children:           [ inputbar, listview ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {}
+prompt {
+    padding:            @prompt-padding;
+    background-color:   @prompt-background;
+    text-color:         @prompt-foreground;
+    font:               @prompt-font;
+}
+entry {
+    placeholder:        "Type here";
+    cursor:             pointer;
+    padding:            0px 5px;
+}
+
+/*****----- Listview -----*****/
+listview {
+    padding:            5px 0px 0px ;
+}
+element {}
+element-text {
+    padding:            2px 4px;
+    background-color:   inherit;
+    text-color:         inherit;
+}
+element.selected.normal {
+    background-color:   @selected-normal-background;
+    text-color:         @selected-normal-foreground;
+}
+element.alternate.normal {
+    background-color:   @alternate-normal-background;
+    text-color:         @alternate-normal-foreground;
+}
+element-icon {
+    padding:            0px 0px 0px 4px;
+    background-color:   inherit;
+    size: 1em;
+}

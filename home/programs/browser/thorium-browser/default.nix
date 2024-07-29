@@ -8,8 +8,12 @@
   home = {
     sessionVariables = {
       CHROME_EXTRA_FLAGS = "
-      --high-dpi-support=1
-      # --force-device-scale-factor=1.2
+      --enable-wayland-ime
+      --ozone-platform-hint=auto
+      --enable-features=TouchpadOverscrollHistoryNavigation
+      --enable-features=VaapiVideoDecodeLinuxGL
+      # --high-dpi-support=1
+      # --force-device-scale-factor=2
       ";
     };
   };

@@ -21,10 +21,6 @@
         ++ [
           ./laptop
           "${self}/secrets"
-          "${self}/modules/android.nix"
-          # "${self}/modules/dev.nix"
-          # "${self}/modules/virtual"
-          # ../modules/devops
 
           "${self}/system/hardware/amdgpu.nix" # for amdgpu
           "${self}/system/impermanence"

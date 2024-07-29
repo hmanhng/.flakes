@@ -45,7 +45,7 @@
         suvi = "doas nvim";
 
         r = "ranger";
-        n = "neofetch";
+        n = "nitch";
 
         nrf = "doas nixos-rebuild switch --flake ~/.flakes/.#laptop";
         ncg = "nix-collect-garbage -d && doas nix-env -p /nix/var/nix/profiles/system --delete-generations old && doas nix-collect-garbage -d";

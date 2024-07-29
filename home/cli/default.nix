@@ -10,6 +10,7 @@
     ./top.nix
     ./starship.nix
     ./transient-services.nix
+    ./yazi.nix
     #./zsh/zsh
   ];
   # add environment variables
@@ -53,7 +54,7 @@
     socat
     wget
   ];
-  programs.thefuck.enable = true;
+  # programs.thefuck.enable = true;
   programs.direnv.enable = true;
   programs.zoxide.enable = true;
   programs.eza.enable = true;

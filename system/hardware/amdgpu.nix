@@ -10,5 +10,5 @@
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
 
-  boot.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = ["amdgpu"];
 }

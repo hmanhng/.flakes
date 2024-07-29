@@ -84,7 +84,7 @@
 
       r = "yazi"; # change ranger -> yazi -- faster
       y = "yazi";
-      n = "neofetch";
+      n = "nitch";
 
       wget = "wget --hsts-file=\"\$XDG_DATA_HOME/wget-hsts\"";
 

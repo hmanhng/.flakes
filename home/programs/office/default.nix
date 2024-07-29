@@ -1,9 +1,10 @@
 {pkgs, ...}: {
   imports = [
     ./zathura
-    # ./logseq
+    # ./logseq.nix
   ];
   home.packages = with pkgs; [
+    libreoffice
     teams-for-linux
   ];
 }

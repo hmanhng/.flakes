@@ -1,16 +1,20 @@
 {
   self,
-  # config,
+  config,
   pkgs,
   lib,
   ...
-}: {
+}: let
+  pointer = config.home.pointerCursor;
+in {
   wayland.windowManager.hyprland.settings = {
     env = [
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
     ];
 
     exec-once = [
+      # set cursor for HL itself
+      "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
       "launch_waybar"
       "${lib.getExe pkgs.networkmanagerapplet}"
       "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
@@ -24,7 +28,7 @@
     ];
 
     monitor = [
-      "desc:Lenovo Group Limited 0x8AAF, 3072x1920@120, 0x0, 2" # thinkbook 14 g6+ 14.5inh 3k 120hz
+      "desc:Lenovo Group Limited 0x8AAF, 3072x1920@60, 0x0, 2" # thinkbook 14 g6+ 14.5inh 3k 120hz
       # "desc:AU Optronics 0x353D, preferred, 0x0, 1.2" # old ideapad 14inh
       "desc:Samsung Electric Company LF24T450F HNAX500305, 1920x1080@75, auto-right, 1" # samsung 24inh
     ];
@@ -53,9 +57,10 @@
 
       drop_shadow = true;
       shadow_ignore_window = true;
-      shadow_offset = "0 2";
-      shadow_range = 20;
-      shadow_render_power = 3;
+      shadow_offset = "0 15";
+      shadow_range = 100;
+      shadow_render_power = 2;
+      shadow_scale = 0.97;
       "col.shadow" = "rgba(00000055)";
     };
 
@@ -112,10 +117,6 @@
       preserve_split = true;
     };
 
-    master = {
-      special_scale_factor = 0.8;
-      new_is_master = true;
-      no_gaps_when_only = false;
-    };
+    debug.disable_logs = false;
   };
 }

@@ -4,6 +4,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    self.legacyPackages.${system}.sui
+    self.legacyPackages.${pkgs.system}.sui
   ];
 }

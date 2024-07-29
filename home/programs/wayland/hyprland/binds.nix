@@ -24,11 +24,10 @@
         "$MOD, W, exec, [workspace name:Firefox] hyprctl workspaces | rg ID | rg Firefox || firefox"
         "$MODSHIFT, W, exec, firefox --private-window"
         # music
-        # "$MOD, M, exec, spotify"
-        "$MODSHIFT, M, exec, [workspace name:Music] foot --app-id ncmpcpp ncmpcpp"
+        "$MODSHIFT, M, exec, [workspace name:Music] tidal-hifi"
 
         # launcher
-        "$MOD, Space, exec, pkill rofi || rofi -show combi"
+        "$MOD, Space, exec, pkill rofi || rofi -show combi -show-icons"
         # rofi menu
         "$MOD, apostrophe, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh"
         # "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
@@ -36,9 +35,6 @@
         "$MOD, semicolon, exec, pkill rofi || ~/.flakes/home/bookmarks/bm_rofi.sh"
         "$MODSHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh"
         "$MOD, comma, exec, bwm" # bwm for password manager
-
-        # lock screen
-        "$MODSHIFT, X, exec, loginctl lock-session"
 
         # hide/unhide waybar
         "$MOD, O, exec, killall -SIGUSR1 .waybar-wrapped"
@@ -48,11 +44,12 @@
         "$MOD, bracketright, exec, grimblast --notify --cursor copy area"
         "$MODSHIFT, bracketleft, exec, grimblast --notify --cursor copysave output $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
         "$MODSHIFT, bracketright, exec, grimblast --notify --cursor copy output"
-        "$MOD, A, exec, grimblast_watermark"
 
         # compositor commands
         "$MOD, Q, killactive"
         "$MODSHIFT, Q, exit"
+        # lock screen
+        "$MODSHIFT, L, exec, loginctl lock-session"
         "$MODSHIFT, Space, togglefloating"
         "$MOD, F, fullscreen"
         "$MOD, M, fullscreen, 1"
@@ -94,7 +91,7 @@
         "$MOD, E, workspace, Emacs"
         "$MOD, W, workspace, Firefox"
         "$MOD, T, workspace, TG"
-        # "$MOD, M, workspace, Music"
+        "$MODSHIFT, M, workspace, Music"
 
         # to workspace special
         "$MOD, minus, movetoworkspace, special"
