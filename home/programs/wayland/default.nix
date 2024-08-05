@@ -24,7 +24,7 @@
     cliphist
     # wl-clip-persist
     wlr-randr
-    inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+    hyprpicker
     # wlsunset
     ydotool
   ];
