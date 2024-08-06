@@ -21,23 +21,23 @@ get_volume() {
 down() {
   pamixer -d 2
   get_volume
-  notify-send -a "VOLUME" "Decreasing to $volume%" -h int:value:"$volume" -i $icon -r 2593 -u normal
+  notify-send -a "VOLUME" "Decreasing to $volume%" -h int:value:"$volume" -i $icon -h string:x-canonical-private-synchronous:sys-notify -u low -c bottom-center
 }
 
 up() {
   pamixer -i 2
   get_volume
-  notify-send -a "VOLUME" "Increasing to $volume%" -h int:value:"$volume" -i $icon -r 2593 -u normal
+  notify-send -a "VOLUME" "Increasing to $volume%" -h int:value:"$volume" -i $icon -h string:x-canonical-private-synchronous:sys-notify -u low -c bottom-center
 }
 
 mute() {
   get_volume
   if $muted; then
     pamixer -u
-    notify-send -a "VOLUME" "UNMUTE $volume%" -h int:value:"$volume" -i $icon -r 2593 -u normal
+    notify-send -a "VOLUME" "UNMUTE $volume%" -h int:value:"$volume" -i $icon -h string:x-canonical-private-synchronous:sys-notify -u low -c bottom-center
   else
     pamixer -m
-    notify-send -a "VOLUME" "MUTED" -i $icon_mute -r 2593 -u normal
+    notify-send -a "VOLUME" "MUTED" -i $icon_mute -h string:x-canonical-private-synchronous:sys-notify -u low -c bottom-center
   fi
 }
 
@@ -45,10 +45,10 @@ mute_mic() {
   get_volume
   if $muted_mic; then
     pamixer --default-source -u
-    notify-send -a "VOLUME" "UNMUTE $volume_mic%" -h int:value:"$volume_mic" -i /home/hmanhng/.local/share/icons/svg/microphone-on.svg -r 2593 -u normal
+    notify-send -a "VOLUME" "UNMUTE $volume_mic%" -h int:value:"$volume_mic" -i /home/hmanhng/.local/share/icons/svg/microphone-on.svg -h string:x-canonical-private-synchronous:sys-notify -u low -c bottom-center
   else
     pamixer --default-source -m
-    notify-send -a "VOLUME" "MUTED" -i /home/hmanhng/.local/share/icons/svg/microphone-off.svg -r 2593 -u normal
+    notify-send -a "VOLUME" "MUTED" -i /home/hmanhng/.local/share/icons/svg/microphone-off.svg -h string:x-canonical-private-synchronous:sys-notify -u low -c bottom-center
   fi
 }
 

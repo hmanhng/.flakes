@@ -16,9 +16,15 @@
     defaultTimeout = 5000;
     extraConfig = ''
       text-alignment=center
+      outer-margin=0, 0, 50, 0
+
       [urgency=high]
       border-color=#B45C65
+
+      [category=bottom-center]
+      anchor=bottom-center
     '';
+    layer = "overlay";
   };
   xdg.dataFile."icons/svg" = {
     source = ./svg;

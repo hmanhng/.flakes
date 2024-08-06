@@ -15,13 +15,13 @@ get_light() {
 down() {
   brillo -U 2
   get_light
-  notify-send -a "BRIGHTNESS" "Decreasing to $light%" -h int:value:"$light" -i $icon -r 2593 -u normal
+  notify-send -a "BRIGHTNESS" "Decreasing to $light%" -h int:value:"$light" -i $icon -h string:x-canonical-private-synchronous:sys-notify -u low -c bottom-center
 }
 
 up() {
   brillo -A 2
   get_light
-  notify-send -a "BRIGHTNESS" "Increasing to $light%" -h int:value:"$light" -i $icon -r 2593 -u normal
+  notify-send -a "BRIGHTNESS" "Increasing to $light%" -h int:value:"$light" -i $icon -h string:x-canonical-private-synchronous:sys-notify -u low -c bottom-center
 }
 case "$1" in
 up) up ;;
