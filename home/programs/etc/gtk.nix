@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   ...
@@ -8,7 +9,6 @@
     name = "Bibata-Modern-Ice";
     size = 24;
     gtk.enable = true;
-    x11.enable = true;
   };
 
   gtk = {
@@ -31,4 +31,6 @@
       package = pkgs.nordic;
     };
   };
+
+  xdg.configFile."gtk-4.0/gtk.css".enable = lib.mkForce false;
 }

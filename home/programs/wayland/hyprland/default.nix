@@ -2,12 +2,18 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  cursor = "Bibata-Modern-Ice-Hyprcursor";
+  cursorPackage = inputs.self.legacyPackages.${pkgs.system}.bibata-hyprcursor;
+in {
   imports = [
+    inputs.hyprland.homeManagerModules.default
     ./settings.nix
     ./binds.nix
     ./rules.nix
   ];
+
+  xdg.dataFile."icons/${cursor}".source = "${cursorPackage}/share/icons/${cursor}";
 
   # programs.fish.loginShellInit = ''
   #   set TTY1 (tty)
@@ -15,7 +21,7 @@
   # '';
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
     systemd = {
       variables = ["--all"];
       # extraCommands = [

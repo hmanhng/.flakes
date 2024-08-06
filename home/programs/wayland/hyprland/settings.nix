@@ -6,15 +6,19 @@
   ...
 }: let
   pointer = config.home.pointerCursor;
+
+  cursorName = "Bibata-Modern-Ice-Hyprcursor";
 in {
   wayland.windowManager.hyprland.settings = {
     env = [
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "HYPRCURSOR_THEME,${cursorName}"
+      "HYPRCURSOR_SIZE,${toString pointer.size}"
     ];
 
     exec-once = [
       # set cursor for HL itself
-      "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
+      "hyprctl setcursor ${cursorName} ${toString pointer.size}"
       "launch_waybar"
       "${lib.getExe pkgs.networkmanagerapplet}"
       "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
