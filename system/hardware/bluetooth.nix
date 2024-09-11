@@ -7,6 +7,7 @@
         # Battery info for Bluetooth devices
         Experimental = true;
         ControllerMode = "bredr";
+        FastConnectable = true;
       };
     };
   };

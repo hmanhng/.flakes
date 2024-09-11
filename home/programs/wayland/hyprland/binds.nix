@@ -46,7 +46,9 @@
         "$MODSHIFT, bracketright, exec, grimblast --notify --cursor copy output"
 
         # compositor commands
+        "$MOD, R, exec, hyprctl reload"
         "$MOD, Q, killactive"
+        "$MOD, escape, exec, hyprctl kill"
         "$MODSHIFT, Q, exit"
         # lock screen
         "$MODSHIFT, L, exec, loginctl lock-session"

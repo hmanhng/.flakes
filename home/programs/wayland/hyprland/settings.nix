@@ -103,15 +103,14 @@ in {
       # enable variable refresh rate (effective depending on hardware)
       vrr = 2;
 
-      # we do, in fact, want direct scanout
-      no_direct_scanout = false;
-
       # focus_on_activate = true;
 
       # enable_swallow = true;
       swallow_regex = "foot";
       swallow_exception_regex = "";
     };
+
+    render.direct_scanout = true;
 
     xwayland = {force_zero_scaling = true;};
 

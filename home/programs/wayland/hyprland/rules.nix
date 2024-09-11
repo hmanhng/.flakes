@@ -63,6 +63,7 @@
       "idleinhibit focus, class:^(mpv|.+exe|vlc)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit fullscreen, class:^(firefox)$"
+      "idleinhibit always, class:^(discord)$"
 
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"

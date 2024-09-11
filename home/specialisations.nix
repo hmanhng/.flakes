@@ -1,7 +1,6 @@
 {
-  pkgs,
-  lib,
   config,
+  pkgs,
   ...
 }: {
   # light/dark specialisations
@@ -39,7 +38,8 @@
   };
 
   programs.matugen = {
-    enable = false;
-    wallpaper = config.theme.wallpaper;
+    enable = true;
+    package = pkgs.matugen;
+    inherit (config.theme) wallpaper;
   };
 }
