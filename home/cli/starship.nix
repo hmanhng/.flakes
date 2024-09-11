@@ -227,6 +227,6 @@ in {
 
         # palette = "catppuccin_${flavour}";
       }
-      // builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/palettes/${flavour}.toml");
+      // builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/themes/${flavour}.toml");
   };
 }
