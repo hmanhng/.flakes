@@ -20,6 +20,7 @@
         }
       '')
     ];
+    wireplumber.extraConfig."wireplumber.profiles".main."monitor.libcamera" = "disabled";
   };
 
   hardware.pulseaudio.enable = lib.mkForce false;
