@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   colors = {
     dark = {
       foreground = "bbc2cf"; # Text
@@ -55,22 +59,29 @@ in {
         horizontal-letter-offset = 0;
         vertical-letter-offset = 0;
         pad = "5x0 center";
-        notify = "${pkgs.libnotify}/bin/notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
         selection-target = "clipboard";
         bold-text-in-bright = "palette-based";
+      };
+
+      bell = {
+        urgent = "yes";
+        notify = "yes";
+      };
+
+      desktop-notifications = {
+        command = "${lib.getExe pkgs.libnotify} -a \${app-id} -i \${app-id} \${title} \${body}";
       };
 
       scrollback = {
         lines = 10000;
         multiplier = 3; # default 3
+        indicator-position = "relative";
+        indicator-format = "line";
       };
 
       url = {
         launch = "${pkgs.xdg-utils}/bin/xdg-open \${url}";
-        label-letters = "sadfjklewcmpgh";
-        osc8-underline = "url-mode";
         protocols = "http, https, ftp, ftps, file, mailto, ipfs";
-        uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
       };
 
       cursor = {
