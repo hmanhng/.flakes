@@ -7,6 +7,7 @@
     ./bash
     ./fish
     ./git.nix
+    ./nix.nix
     ./top.nix
     ./starship.nix
     ./transient-services.nix
@@ -55,7 +56,6 @@
     wget
   ];
   # programs.thefuck.enable = true;
-  programs.direnv.enable = true;
   programs.zoxide.enable = true;
   programs.eza.enable = true;
   programs.fzf = {
