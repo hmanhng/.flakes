@@ -12,4 +12,6 @@
   services = {
     tumbler.enable = true; # Thumbnail support for images thunar
   };
+
+  programs.gnome-disks.enable = true;
 }
