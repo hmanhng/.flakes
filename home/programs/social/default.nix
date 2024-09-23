@@ -1,8 +1,9 @@
 {pkgs, ...}: {
   imports = [
-    ./discord.nix
+    # ./discord.nix
   ];
   home.packages = with pkgs; [
     _64gram
+    vesktop
   ];
 }
