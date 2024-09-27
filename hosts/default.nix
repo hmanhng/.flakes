@@ -1,15 +1,19 @@
 {
   self,
   inputs,
-  homeImports,
   ...
 }: {
   flake.nixosConfigurations = let
+    # shorten paths
     inherit (inputs.nixpkgs.lib) nixosSystem;
+
     howdy = inputs.nixpkgs-howdy;
 
+    homeImports = import "${self}/home/profiles";
+
+    mod = "${self}/system";
     # get the basic config to build on top of
-    inherit (import "${self}/system") desktop laptop;
+    inherit (import mod) laptop;
 
     # get these into the module system
     specialArgs = {inherit inputs self;};
@@ -22,9 +26,9 @@
           ./laptop
           "${self}/secrets"
 
-          "${self}/system/hardware/amdgpu.nix" # for amdgpu
-          "${self}/system/impermanence"
-          "${self}/system/impermanence/btrfs.nix"
+          "${mod}/hardware/amdgpu.nix" # for amdgpu
+          "${mod}/impermanence"
+          "${mod}/impermanence/btrfs.nix"
 
           {
             home-manager = {
