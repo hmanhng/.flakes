@@ -1,22 +1,23 @@
 {
-  description = "Hmanhng's NixOS configuration";
+  description = "Hmanhng's NixOS flake";
 
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
+
       imports = [
         ./hosts
         ./lib
         ./modules
         ./pkgs
+        ./pre-commit-hooks.nix
       ];
+
       perSystem = {
         config,
         pkgs,
         ...
       }: {
-        # set flake-wide pkgs to the one exported by ./lib
-        # imports = [{_module.args.pkgs = config.legacyPackages;}];
         devShells = {
           #run by `nix devlop` or `nix-shell`(legacy)
           default = import ./shell.nix {inherit pkgs;};
@@ -69,6 +70,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
+    };
+
+    nix-index-db = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur.url = "github:nix-community/NUR";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -108,11 +122,6 @@
       inputs.hyprutils.follows = "hyprland/hyprutils";
       inputs.nixpkgs.follows = "hyprland/nixpkgs";
       inputs.systems.follows = "hyprland/systems";
-    };
-
-    nix-index-db = {
-      url = "github:Mic92/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin-starship = {
