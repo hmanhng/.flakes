@@ -28,6 +28,7 @@
     # window rules
     windowrulev2 = [
       "workspace name:Firefox, class:^(firefox)$"
+      "workspace name:Zen, class:^(zen)$"
       "workspace name:Emacs, class:^(emacs)$"
       "workspace name:Music, title:^(Spotify.*)$"
       "workspace name:Music, class:^(tidal-hifi)$"
@@ -36,12 +37,13 @@
 
       "opacity 0.9, class:^(tidal-hifi)$"
 
-      # make Firefox PiP window floating and sticky
+      # make Firefox/Zen PiP window floating and sticky
       "float, title:^(Picture-in-Picture)$"
       "pin, title:^(Picture-in-Picture)$"
 
       # throw sharing indicators away
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+      "workspace special silent, title:^(Zen — Sharing Indicator)$"
       "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
       # telegram media viewer
@@ -63,6 +65,8 @@
       "idleinhibit focus, class:^(mpv|.+exe|vlc)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit fullscreen, class:^(firefox)$"
+      "idleinhibit focus, class:^(zen)$, title:^(.*YouTube.*)$"
+      "idleinhibit fullscreen, class:^(zen)$"
       "idleinhibit always, class:^(discord)$"
 
       "dimaround, class:^(gcr-prompter)$"

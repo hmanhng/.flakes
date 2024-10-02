@@ -15,5 +15,6 @@ in {
     ./firefox
     ./qutebrowser
     ./thorium-browser
+    ./zen.nix
   ];
 }

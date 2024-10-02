@@ -48,14 +48,14 @@
           bitwarden
           consent-o-matic
           decentraleyes
-          multi-account-containers
-          onetab
+          # multi-account-containers
+          # onetab
           privacy-badger
           temporary-containers
           foxyproxy-standard
           translate-web-pages
           ublock-origin
-          stylus
+          # stylus
           # tabcenter-reborn
         ])
         ++ (with self.legacyPackages.${pkgs.system}.firefox-addons; [

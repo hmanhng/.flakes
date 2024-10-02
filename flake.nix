@@ -127,6 +127,10 @@
     };
 
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
+    zen-browser = {
+      url = "github:fufexan/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   nixConfig = {
     extra-substituters = [

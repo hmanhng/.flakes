@@ -21,8 +21,8 @@
         "$MOD, D, exec, thunar"
         # browser
         "$MOD, B, exec, [workspace name:Qutebrowser] hyprctl workspaces | rg ID | rg Qutebrowser || qutebrowser"
-        "$MOD, W, exec, [workspace name:Firefox] hyprctl workspaces | rg ID | rg Firefox || firefox"
-        "$MODSHIFT, W, exec, firefox --private-window"
+        "$MOD, W, exec, [workspace name:Zen] hyprctl workspaces | rg ID | rg Zen || zen"
+        "$MODSHIFT, W, exec, zen --private-window"
         # music
         "$MODSHIFT, M, exec, [workspace name:Music] tidal-hifi"
 
@@ -91,7 +91,7 @@
         "$MOD, mouse_up, workspace, e+1"
         "$MOD, B, workspace, Qutebrowser"
         "$MOD, E, workspace, Emacs"
-        "$MOD, W, workspace, Firefox"
+        "$MOD, W, workspace, Zen"
         "$MOD, T, workspace, TG"
         "$MODSHIFT, M, workspace, Music"
 
