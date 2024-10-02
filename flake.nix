@@ -74,7 +74,7 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     # hyprwm
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/hyprland";
 
     hypridle = {
       url = "github:hyprwm/hypridle";
@@ -127,6 +127,7 @@
     };
 
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
+
     zen-browser = {
       url = "github:fufexan/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
