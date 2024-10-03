@@ -8,6 +8,7 @@
     ../../dev
 
     ../../services
+    ../../services/system/power-monitor.nix
   ];
 
   sops.gnupg.home = "/home/hmanhng/.local/share/gnupg";
