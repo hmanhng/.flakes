@@ -54,10 +54,9 @@
 
     # Activate kernel modules (choose from built-ins and extra ones)
     kernelModules = [
-      # Virtual Camera
-      "v4l2loopback"
-      # Virtual Microphone, built-in
-      "snd-aloop"
+      "i2c-dev" # used by ddcutil
+      "v4l2loopback" # Virtual Camera
+      "snd-aloop" # Virtual Microphone, built-in
     ];
 
     # Set initial kernel module settings
