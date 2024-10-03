@@ -7,10 +7,9 @@
   cursorPackage = inputs.self.legacyPackages.${pkgs.system}.bibata-hyprcursor;
 in {
   imports = [
-    inputs.hyprland.homeManagerModules.default
-    ./settings.nix
     ./binds.nix
     ./rules.nix
+    ./settings.nix
   ];
 
   xdg.dataFile."icons/${cursor}".source = "${cursorPackage}/share/icons/${cursor}";
@@ -21,6 +20,8 @@ in {
   # '';
   wayland.windowManager.hyprland = {
     enable = true;
+
+    package = inputs.hyprland.packages.${pkgs.system}.default;
 
     systemd = {
       variables = ["--all"];
