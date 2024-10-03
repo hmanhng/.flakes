@@ -6,6 +6,7 @@
     ./wayland/hyprpaper.nix
     ./wayland/hypridle.nix
     ./wayland/mako
+    ./wayland/wluma.nix
     # ./wayland/swww.nix
   ];
 }
