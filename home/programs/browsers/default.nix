@@ -4,12 +4,12 @@
   lib,
   ...
 }: let
-  spoof-dpi = pkgs.writeShellScriptBin "launch_spoof-dpi" ''
-    killall spoof-dpi
-    ${lib.getExe self.legacyPackages.${pkgs.system}.spoof-dpi} &
+  spoofdpi = pkgs.writeShellScriptBin "launch_spoofdpi" ''
+    killall spoofdpi
+    ${lib.getExe self.legacyPackages.${pkgs.system}.spoofdpi} &
   '';
 in {
-  home.packages = [spoof-dpi];
+  home.packages = [spoofdpi];
 
   imports = [
     ./firefox
