@@ -28,7 +28,7 @@
     # window rules
     windowrulev2 = [
       "workspace name:Firefox, class:^(firefox)$"
-      "workspace name:Zen, class:^(zen)$"
+      "workspace name:Zen, class:^(zen)"
       "workspace name:Emacs, class:^(emacs)$"
       "workspace name:Music, title:^(Spotify.*)$"
       "workspace name:Music, class:^(tidal-hifi)$"
@@ -65,8 +65,8 @@
       "idleinhibit focus, class:^(mpv|.+exe|vlc)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit fullscreen, class:^(firefox)$"
-      "idleinhibit focus, class:^(zen)$, title:^(.*YouTube.*)$"
-      "idleinhibit fullscreen, class:^(zen)$"
+      "idleinhibit focus, class:^(zen), title:^(.*YouTube.*)$"
+      "idleinhibit fullscreen, class:^(zen)"
       "idleinhibit always, class:^(discord)$"
 
       "dimaround, class:^(gcr-prompter)$"
