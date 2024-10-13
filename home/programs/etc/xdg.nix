@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  browser = ["zen-browser"];
+  browser = ["zen"];
   imageViewer = ["imv"];
   videoPlayer = ["mpv"];
   audioPlayer = ["vlc"];
