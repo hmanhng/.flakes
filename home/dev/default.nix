@@ -1,8 +1,8 @@
 {
   imports = [
-    ./js.nix
+    # ./js.nix
     ./java.nix
-    ./golang.nix
+    # ./golang.nix
     # ./sui.nix
   ];
 }
