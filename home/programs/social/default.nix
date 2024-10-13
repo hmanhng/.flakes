@@ -1,8 +1,11 @@
 {pkgs, ...}: {
   imports = [
+    ./discord
   ];
+
   home.packages = with pkgs; [
     _64gram
-    discord
   ];
+
+  sys.discord.enable = true;
 }
