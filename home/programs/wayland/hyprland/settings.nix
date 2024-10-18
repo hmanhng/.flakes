@@ -91,6 +91,7 @@ in {
     gestures = {
       workspace_swipe = true;
       workspace_swipe_fingers = 3;
+      workspace_swipe_forever = true;
     };
 
     misc = {
@@ -100,8 +101,11 @@ in {
 
       force_default_wallpaper = 0;
 
+      # disable dragging animation
+      animate_mouse_windowdragging = false;
+
       # enable variable refresh rate (effective depending on hardware)
-      vrr = 2;
+      vrr = 1;
 
       # focus_on_activate = true;
 
@@ -115,7 +119,6 @@ in {
     xwayland = {force_zero_scaling = true;};
 
     dwindle = {
-      no_gaps_when_only = false;
       pseudotile = true;
       preserve_split = true;
     };
