@@ -1,5 +1,5 @@
 # networking configuration
-{
+{pkgs, ...}: {
   networking = {
     # use quad9 with DNS over TLS
     nameservers = ["9.9.9.9#dns.quad9.net"];
@@ -24,9 +24,8 @@
     };
   };
 
+  systemd.services.NetworkManager-wait-online.serviceConfig.ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
+
   services.cloudflare-warp.enable = true;
   # services.v2raya.enable = true;
-
-  # Don't wait for network startup
-  # systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 }
