@@ -7,7 +7,6 @@
   imports = [
     ./specialisations.nix
     ./cli
-    inputs.matugen.nixosModules.default
     inputs.nix-index-db.hmModules.nix-index
     inputs.sops-nix.homeManagerModules.sops
     self.nixosModules.theme

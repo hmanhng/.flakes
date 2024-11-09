@@ -129,12 +129,6 @@
       flake = false;
     };
 
-    matugen = {
-      url = "github:InioX/matugen";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "hyprland/systems";
-    };
-
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
 
     zen-browser = {

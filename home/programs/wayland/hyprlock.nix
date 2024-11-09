@@ -4,9 +4,6 @@
   pkgs,
   ...
 }: let
-  variant = "dark";
-  c = config.programs.matugen.theme.colors.${variant};
-
   font_family = "Maple Mono";
 in {
   programs.hyprlock = {
@@ -38,12 +35,12 @@ in {
 
           outline_thickness = 1;
 
-          outer_color = "rgb(${c.primary})";
-          inner_color = "rgb(${c.on_primary_container})";
-          font_color = "rgb(${c.primary_container})";
+          outer_color = "rgb(b6c4ff)";
+          inner_color = "rgb(dce1ff)";
+          font_color = "rgb(354479)";
 
           fade_on_empty = false;
-          placeholder_text = ''<span font_family="${font_family}" foreground="##${c.primary_container}">Password...</span>'';
+          placeholder_text = ''<span font_family="${font_family}" foreground="##354479">Password...</span>'';
 
           dots_spacing = 0.2;
           dots_center = true;
@@ -59,7 +56,7 @@ in {
           text = "$TIME";
           inherit font_family;
           font_size = 150;
-          color = "rgb(${c.primary})";
+          color = "rgb(b6c4ff)";
 
           position = "0, -300";
 
@@ -71,7 +68,7 @@ in {
           text = "Hi <span foreground='##86469C'><i>$USER</i></span> :)";
           inherit font_family;
           font_size = 30;
-          color = "rgb(${c.primary})";
+          color = "rgb(b6c4ff)";
 
           position = "0, -40";
 
