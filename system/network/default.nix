@@ -27,5 +27,4 @@
   systemd.services.NetworkManager-wait-online.serviceConfig.ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
 
   services.cloudflare-warp.enable = true;
-  # services.v2raya.enable = true;
 }
