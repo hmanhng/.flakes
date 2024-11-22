@@ -17,6 +17,8 @@ in {
     ];
 
     exec-once = [
+      # finalize startup
+      "uwsm finalize"
       # set cursor for HL itself
       "hyprctl setcursor ${cursorName} ${toString pointer.size}"
       "launch_waybar"

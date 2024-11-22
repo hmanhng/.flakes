@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -24,6 +25,7 @@ in {
     package = inputs.hyprland.packages.${pkgs.system}.default;
 
     systemd = {
+      enable = false;
       variables = ["--all"];
       # extraCommands = [
       # "systemctl --user stop graphical-session.target"
@@ -32,4 +34,5 @@ in {
     };
   };
   # systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
+  systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
 }
