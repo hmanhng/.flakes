@@ -472,7 +472,7 @@ in {
         };
 
         modules-right = [
-          "custom/warp"
+          # "custom/warp"
           "network#icons"
           "network"
           "group/audio"
