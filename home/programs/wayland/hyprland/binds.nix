@@ -1,4 +1,24 @@
-{
+let
+  # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+  workspaces = builtins.concatLists (builtins.genList (
+      x: let
+        ws = let
+          c = (x + 1) / 10;
+        in
+          builtins.toString (x + 1 - (c * 10));
+      in [
+        "$mod, ${ws}, workspace, ${toString (x + 1)}"
+        "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+      ]
+    )
+    10);
+
+  toggle = program: let
+    prog = builtins.substring 0 14 program;
+  in "pkill ${prog} || uwsm app -- ${program}";
+
+  runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
+in {
   wayland.windowManager.hyprland = {
     settings = {
       "$MOD" = "SUPER";
@@ -13,8 +33,8 @@
       bind = [
         # utility
         # terminal
-        "$MOD, Return, exec, run-as-service foot"
-        "$MODSHIFT, Return, exec, run-as-service 'foot --app-id termfloat'"
+        "$MOD, Return, exec, uwsm app -- foot"
+        "$MODSHIFT, Return, exec, uwsm app -- foot --app-id termfloat"
         # emacs
         "$MOD, E, exec, [workspace name:Emacs] hyprctl workspaces | rg ID | rg Emacs || emacsclient -c -a 'emacs'"
         # file manager
@@ -25,16 +45,6 @@
         "$MODSHIFT, W, exec, zen --private-window"
         # music
         "$MODSHIFT, M, exec, [workspace name:Music] tidal-hifi"
-
-        # launcher
-        "$MOD, Space, exec, pkill rofi || rofi -show combi -show-icons"
-        # rofi menu
-        "$MOD, apostrophe, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh"
-        # "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
-        # Bookmarks
-        "$MOD, semicolon, exec, pkill rofi || ~/.flakes/home/bookmarks/bm_rofi.sh"
-        "$MODSHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh"
-        "$MOD, comma, exec, bwm" # bwm for password manager
 
         # hide/unhide waybar
         "$MOD, O, exec, killall -SIGUSR1 .waybar-wrapped"
@@ -51,7 +61,7 @@
         "$MOD, escape, exec, hyprctl kill"
         "$MODSHIFT, Q, exit"
         # lock screen
-        "$MODSHIFT, L, exec, loginctl lock-session"
+        "$MODSHIFT, L, exec, ${runOnce "hyprlock"}"
         "$MODSHIFT, Space, togglefloating"
         "$MOD, F, fullscreen"
         "$MOD, M, fullscreen, 1"
@@ -107,6 +117,15 @@
       ];
 
       bindr = [
+        # launcher
+        "$MOD, SUPER_L, exec, ${toggle "rofi"} -show combi -show-icons"
+        # rofi menu
+        "$MOD, apostrophe, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh"
+        # "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
+        # Bookmarks
+        "$MOD, semicolon, exec, pkill rofi || ~/.flakes/home/bookmarks/bm_rofi.sh"
+        "$MODSHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh"
+        # "$MOD, comma, exec, bwm" # bwm for password manager
       ];
 
       bindl = [

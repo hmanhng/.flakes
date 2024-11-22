@@ -342,7 +342,7 @@ in {
         };
         "custom/launcher" = {
           format = "";
-          on-click = "run-as-service foot";
+          on-click = "uwsm app -- foot";
           # on-click-middle = "default_wall";
           # on-click-right = "killall dynamic_wallpaper || dynamic_wallpaper &";
           # on-click = "pkill rofi || ~/.config/rofi/launcher.sh";

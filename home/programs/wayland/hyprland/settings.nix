@@ -21,6 +21,8 @@ in {
       "uwsm finalize"
       # set cursor for HL itself
       "hyprctl setcursor ${cursorName} ${toString pointer.size}"
+      "hyprlock"
+
       "launch_waybar"
       "${lib.getExe pkgs.networkmanagerapplet}"
       "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
@@ -30,7 +32,6 @@ in {
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
       "${lib.getExe self.legacyPackages.${pkgs.system}.spoofdpi}"
       "MINEMACS_ALPHA=90 emacs --daemon"
-      "hyprlock"
     ];
 
     monitor = [

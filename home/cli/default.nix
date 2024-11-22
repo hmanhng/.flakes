@@ -10,7 +10,6 @@
     ./nix.nix
     ./top.nix
     ./starship.nix
-    ./transient-services.nix
     ./yazi.nix
     #./zsh/zsh
   ];
