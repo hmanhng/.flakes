@@ -72,6 +72,7 @@
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+      "dimaround, class:^(zen)$, title:^(File Upload)$"
 
       # fix xwayland apps
       "rounding 0, xwayland:1"
