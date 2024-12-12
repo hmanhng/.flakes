@@ -18,7 +18,7 @@
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 
     # utils
-    # wl-screenrec
+    wl-screenrec
     slurp
     wl-clipboard
     cliphist

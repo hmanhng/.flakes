@@ -40,7 +40,7 @@
     cargo
     clang-tools
     cmake
-    dotnet-sdk_7
+    dotnet-sdk
     gcc
     gnumake
     just

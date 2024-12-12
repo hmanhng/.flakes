@@ -11,7 +11,7 @@
 
     overlays = [
       inputs.neovim-nightly-overlay.overlays.default
-      inputs.nur.overlay
+      inputs.nur.overlays.default
     ];
   };
 }
