@@ -72,12 +72,15 @@
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
-      "dimaround, class:^(zen)$, title:^(File Upload)$"
+      "dimaround, class:^(zen), title:^(File Upload)$"
 
       # fix xwayland apps
       "rounding 0, xwayland:1"
       "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
       "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
+
+      # less sensitive scroll for some windows
+      "scrolltouchpad 0.1, class:^(zen|firefox|thorium-browser)"
     ];
   };
 }
