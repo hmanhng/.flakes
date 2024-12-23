@@ -1,7 +1,8 @@
 {
-  inputs,
+  # inputs,
   pkgs,
   config,
+  lib,
   ...
 }: {
   imports = [./hardware-configuration.nix];
@@ -39,6 +40,8 @@
     };
     sensor.iio.enable = true;
   };
+
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
 
   boot = {
     kernelParams = [

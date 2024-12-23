@@ -43,6 +43,7 @@
           "${howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
 
           inputs.disko.nixosModules.disko
+          inputs.chaotic.nixosModules.default
         ];
     };
   };

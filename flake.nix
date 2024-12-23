@@ -126,6 +126,8 @@
       inputs.systems.follows = "hyprland/systems";
     };
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     catppuccin-starship = {
       url = "github:catppuccin/starship";
       flake = false;
