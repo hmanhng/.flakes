@@ -26,9 +26,11 @@
       "x-extension-shtml"
       "x-extension-xht"
       "x-extension-xhtml"
+      "xhtml+xml"
     ])
     // (xdgAssociations "x-scheme-handler" browser [
       "about"
+      "chrome"
       "ftp"
       "http"
       "https"
@@ -40,7 +42,6 @@
       "application/pdf" = ["org.pwmt.zathura-pdf-mupdf"];
       "text/html" = browser;
       "text/plain" = ["emacsclient -c -nw -a 'emacs -nw'"];
-      "x-scheme-handler/chrome" = ["thorium-browser"];
       "inode/directory" = ["yazi"];
     }
     // image
