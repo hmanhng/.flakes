@@ -28,7 +28,7 @@
     # window rules
     windowrulev2 = [
       "workspace name:Firefox, class:^(firefox)$"
-      "workspace name:Zen, class:^(zen)"
+      "workspace name:Zen, class:^(zen-beta)$"
       "workspace name:Emacs, class:^(emacs)$"
       "workspace name:Music, title:^(Spotify.*)$"
       "workspace name:Music, class:^(tidal-hifi)$"
@@ -65,14 +65,14 @@
       "idleinhibit focus, class:^(mpv|.+exe|vlc)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit fullscreen, class:^(firefox)$"
-      "idleinhibit focus, class:^(zen), title:^(.*YouTube.*)$"
-      "idleinhibit fullscreen, class:^(zen)"
+      "idleinhibit focus, class:^(zen-beta)$, title:^(.*YouTube.*)$"
+      "idleinhibit fullscreen, class:^(zen-beta)$"
       "idleinhibit always, class:^(discord)$"
 
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
-      "dimaround, class:^(zen), title:^(File Upload)$"
+      "dimaround, class:^(zen-beta)$, title:^(File Upload)$"
 
       # fix xwayland apps
       "rounding 0, xwayland:1"
@@ -80,7 +80,7 @@
       "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
 
       # less sensitive scroll for some windows
-      "scrolltouchpad 0.1, class:^(zen|firefox|thorium-browser)"
+      "scrolltouchpad 0.1, class:^(zen-beta|firefox|thorium-browser)$"
     ];
   };
 }
