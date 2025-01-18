@@ -51,7 +51,8 @@ in {
     };
 
     decoration = {
-      rounding = 5;
+      rounding = 10;
+      rounding_power = 3;
       blur = {
         enabled = true;
         brightness = 1.0;
@@ -119,7 +120,12 @@ in {
       swallow_exception_regex = "";
     };
 
-    render.direct_scanout = true;
+    render = {
+      direct_scanout = true;
+      # Fixes some apps stuttering (xournalpp, hyprlock). Possibly an amdgpu bug
+      explicit_sync = 0;
+      explicit_sync_kms = 0;
+    };
 
     xwayland = {force_zero_scaling = true;};
 
