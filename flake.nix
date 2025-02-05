@@ -94,10 +94,12 @@
 
     hypridle = {
       url = "github:hyprwm/hypridle";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-      inputs.hyprutils.follows = "hyprland/hyprutils";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-      inputs.systems.follows = "hyprland/systems";
+      inputs = {
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprutils.follows = "hyprland/hyprutils";
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
+      };
     };
 
     hyprland-contrib = {
@@ -112,18 +114,24 @@
 
     hyprlock = {
       url = "github:hyprwm/hyprlock";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-      inputs.hyprutils.follows = "hyprland/hyprutils";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-      inputs.systems.follows = "hyprland/systems";
+      inputs = {
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprutils.follows = "hyprland/hyprutils";
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
+      };
     };
 
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-      inputs.hyprutils.follows = "hyprland/hyprutils";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-      inputs.systems.follows = "hyprland/systems";
+      inputs = {
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprutils.follows = "hyprland/hyprutils";
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
+      };
     };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
