@@ -27,6 +27,7 @@
           "${self}/secrets"
 
           "${mod}/hardware/amdgpu.nix" # for amdgpu
+          "${mod}/core/lanzaboote.nix"
           "${mod}/impermanence"
           "${mod}/impermanence/btrfs.nix"
 

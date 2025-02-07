@@ -6,10 +6,10 @@ flake_dir="$(cd "$(dirname "$0")"/../.. && pwd)"
 
 nixos_install() {
     cd $flake_dir
-    # sed -i '/modules\/dev\.nix/ s/^/#/' hosts/default.nix
+    sed -i '/lanzaboote\.nix/ s/^/#/' hosts/default.nix
     nixos-install --impure --no-channel-copy --no-root-passwd --flake .#laptop
 }
 mkdir -p /mnt/nix/persist
 nixos_install
-# sed -i '/modules\/dev\.nix/ s/^#*//' hosts/default.nix
+sed -i '/lanzaboote\.nix/ s/^#*//' hosts/default.nix
 cp -r "$flake_dir" /mnt/nix/persist/.flakes

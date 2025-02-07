@@ -78,6 +78,8 @@
       };
     };
 
+    lanzaboote.url = "github:nix-community/lanzaboote";
+
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
