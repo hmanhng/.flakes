@@ -48,6 +48,8 @@ while true; do
             #to set luks password
             read -p $'\e[1;31mEnter LUKS password (important!): \e[0m' -r luks_pass
             echo -n "$luks_pass" > /tmp/secret.key
+            # read -p $'\e[1;31mEnter Additional LUKS password (important!): \e[0m' -r luks_pass
+            # echo -n "$luks_pass" > /tmp/additionalSecret.key
             break ;;
         4)
             partition_layout="$common_dir/zfs-single-luks.nix";

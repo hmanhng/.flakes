@@ -9,7 +9,7 @@
   ...
 }: {
   imports =
-    [(import ../../lib/disko/btrfs-single.nix {})]
+    [(import ../../lib/disko/btrfs-single-luks.nix {})]
     ++ [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];

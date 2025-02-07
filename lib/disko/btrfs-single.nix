@@ -15,11 +15,9 @@
               content = {
                 type = "filesystem";
                 format = "vfat";
-                extraArgs = ["-F 32"];
+                # extraArgs = ["-F 32"];
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                ];
+                mountOptions = ["umask=0077"];
               };
             };
             nixos = {
@@ -27,8 +25,7 @@
               label = "nixos";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"];
-                mountOptions = ["defaults"];
+                extraArgs = ["-f"]; # Override existing partition
                 postCreateHook = ''
                   MNTPOINT=$(mktemp -d)
                   mount "/dev/disk/by-partlabel/nixos" "$MNTPOINT" -o subvol=/
@@ -38,15 +35,15 @@
                 subvolumes = {
                   "rootfs" = {
                     mountpoint = "/";
-                    mountOptions = ["compress=lzo" "noatime"];
+                    mountOptions = ["compress=zstd" "noatime"];
                   };
                   "/nix" = {
                     mountpoint = "/nix";
-                    mountOptions = ["compress=lzo" "noatime"];
+                    mountOptions = ["compress=zstd" "noatime"];
                   };
                   "/home" = {
                     mountpoint = "/home";
-                    mountOptions = ["compress=lzo" "lazytime"];
+                    mountOptions = ["compress=zstd" "lazytime"];
                   };
                 };
               };

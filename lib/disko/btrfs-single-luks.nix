@@ -5,71 +5,57 @@
         device = "/dev/${disk}";
         type = "disk";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "esp";
-              start = "1MiB";
-              end = "512MiB";
-              bootable = true;
+          type = "gpt";
+          partitions = {
+            esp = {
+              size = "512M";
+              type = "EF00";
+              label = "boot";
               content = {
                 type = "filesystem";
                 format = "vfat";
-                extraArgs = ["-F 32"];
+                # extraArgs = ["-F 32"];
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                ];
+                mountOptions = ["umask=0077"];
               };
-            }
-            {
-              name = "root";
-              start = "512MiB";
-              end = "70%";
+            };
+            luks = {
+              end = "-500G"; # space for win and linux mint
+              label = "luks";
               content = {
                 type = "luks";
                 name = "crypted";
-                extraOpenArgs = ["--allow-discards"];
-                passwordFile = "/tmp/secret.key";
+                # disable settings.keyFile if you want to use interactive password entry
+                passwordFile = "/tmp/secret.key"; # Interactive
+                settings = {
+                  allowDiscards = true;
+                  crypttabExtraOpts = ["tpm2-device=auto"];
+                  # keyFile = "/tmp/secret.key";
+                };
+                # additionalKeyFiles = ["/tmp/additionalSecret.key"];
                 content = {
-                  type = "lvm_pv";
-                  vg = "pool";
-                };
-              };
-            }
-          ];
-        };
-      };
-    };
-    lvm_vg = {
-      pool = {
-        type = "lvm_vg";
-        lvs = {
-          root = {
-            size = "100%FREE";
-            content = {
-              type = "btrfs";
-              extraArgs = ["-f"];
-              mountOptions = ["defaults"];
-              postCreateHook = ''
-                MNTPOINT=$(mktemp -d)
-                mount "/dev/mapper/pool-root" "$MNTPOINT" -o subvol=/
-                trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
-                btrfs subvolume snapshot -r $MNTPOINT/rootfs $MNTPOINT/rootfs-blank
-              '';
-              subvolumes = {
-                "rootfs" = {
-                  mountpoint = "/";
-                  mountOptions = ["compress=lzo" "noatime"];
-                };
-                "/nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = ["compress=lzo" "noatime"];
-                };
-                "/home" = {
-                  mountpoint = "/home";
-                  mountOptions = ["compress=lzo" "lazytime"];
+                  type = "btrfs";
+                  extraArgs = ["-f"]; # Override existing partition
+                  postCreateHook = ''
+                    MNTPOINT=$(mktemp -d)
+                    mount "/dev/mapper/crypted" "$MNTPOINT" -o subvol=/
+                    trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+                    btrfs subvolume snapshot -r $MNTPOINT/rootfs $MNTPOINT/rootfs-blank
+                  '';
+                  subvolumes = {
+                    "rootfs" = {
+                      mountpoint = "/";
+                      mountOptions = ["compress=zstd" "noatime"];
+                    };
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = ["compress=zstd" "noatime"];
+                    };
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = ["compress=zstd" "lazytime"];
+                    };
+                  };
                 };
               };
             };

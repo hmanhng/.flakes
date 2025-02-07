@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
@@ -15,21 +10,15 @@
       "systemd.show_status=auto"
       "rd.udev.log_level=3"
       "fbcon=nodefer"
+      "plymouth.use-simpledrm"
     ];
 
     loader = {
-      systemd-boot = lib.mkIf (config.networking.hostName == "server") {
-        enable = true;
-        consoleMode = "auto";
-      };
-      grub = {
-        enable = !config.boot.loader.systemd-boot.enable;
-        efiSupport = true;
-        useOSProber = true;
-        device = "nodev";
-        enableCryptodisk = true;
-      };
+      # systemd-boot on UEFI
       efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
     };
+
+    plymouth.enable = true;
   };
 }

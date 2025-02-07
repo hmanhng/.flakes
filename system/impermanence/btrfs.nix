@@ -3,28 +3,46 @@
   boot.initrd = {
     supportedFilesystems = ["btrfs"];
 
+    # https://guekka.github.io/nixos-server-1/
     systemd.services.restore-root = {
       description = "Rollback btrfs rootfs";
       wantedBy = ["initrd.target"];
       requires = [
-        "dev-disk-by\\x2dpartlabel-nixos.device"
+        # "dev-disk-by\\x2dpartlabel-nixos.device"
         # for luks
-        # "dev-pool-root.device"
+        "dev-mapper-crypted.device"
       ];
       after = [
-        "dev-disk-by\\x2dpartlabel-nixos.device"
+        # "dev-disk-by\\x2dpartlabel-nixos.device"
         # for luks
-        # "dev-pool-root.device"
-        # "systemd-cryptsetup@${config.networking.hostName}.service"
+        "dev-mapper-crypted.device"
+        "systemd-cryptsetup@${config.networking.hostName}.service"
       ];
       before = ["sysroot.mount"];
       unitConfig.DefaultDependencies = "no";
       serviceConfig.Type = "oneshot";
       script = ''
         mkdir -p /mnt
+        # We first mount the btrfs rootfs to /mnt
+        # so we can manipulate btrfs subvolumes.
+        #mount -o subvol=/ /dev/nvme0n1p2 /mnt
+        mount -o subvol=/ /dev/mapper/crypted /mnt
 
-        mount -o subvol=/ /dev/disk/by-partlabel/nixos /mnt
-
+        # While we're tempted to just delete /rootfs and create
+        # a new snapshot from /rootfs-blank, /rootfs is already
+        # populated at this point with a number of subvolumes,
+        # which makes `btrfs subvolume delete` fail.
+        # So, we remove them first.
+        #
+        # /rootfs contains subvolumes:
+        # - /rootfs/var/lib/portables
+        # - /rootfs/var/lib/machines
+        #
+        # I suspect these are related to systemd-nspawn, but
+        # since I don't use it I'm not 100% sure.
+        # Anyhow, deleting these subvolumes hasn't resulted
+        # in any issues so far, except for fairly
+        # benign-looking errors from systemd-tmpfiles.
         btrfs subvolume list -o /mnt/rootfs |
         cut -f9 -d' ' |
         while read subvolume; do
