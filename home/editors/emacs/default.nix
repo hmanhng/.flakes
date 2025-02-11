@@ -8,8 +8,8 @@
     enable = true;
     package =
       if builtins.hasAttr "wayland" pkgs == true
-      then pkgs.emacs29-pgtk
-      else pkgs.emacs29;
+      then pkgs.emacs30-pgtk
+      else pkgs.emacs30;
     overrides = self: super: {};
     extraPackages = epkgs: [
       epkgs.vterm

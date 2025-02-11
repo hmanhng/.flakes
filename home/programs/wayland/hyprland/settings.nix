@@ -31,7 +31,7 @@ in {
       "wl-paste --watch cliphist store"
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
       "${lib.getExe self.legacyPackages.${pkgs.system}.spoofdpi}"
-      "MINEMACS_ALPHA=90 emacs --daemon"
+      "emacs --daemon"
     ];
 
     monitor = [
