@@ -1,32 +1,22 @@
 {
+  config,
+  pkgs,
+  ...
+}: let
+  cfg = config.programs.git;
+  key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIE7SZ125Onjw0TNCng0bxbXmsIZuVZIVjNrPOH886uY hmanhng@laptop";
+in {
+  programs.gh.enable = true;
+
+  # enable scrolling in git diff
+  home.sessionVariables.DELTA_PAGER = "less -R";
+
   programs.git = {
     enable = true;
-    userName = "Hmanhng";
-    userEmail = "hmanhng@icloud.com";
-    aliases = {
-      aa = "add -A";
-      br = "branch";
-      co = "checkout";
-      cm = "commit";
-      cmm = "commit -m";
-      cmam = "commit -am";
-      cam = "commit --amend -m";
-      lg = "!sh -c 'if [ $0 = sh ]; then git log --oneline; else git log --oneline -$0; fi'";
-      lgg = "log --oneline --graph";
-      rs = "reset";
-      rss = "reset --soft";
-      rsh = "reset --hard";
-      st = "status";
-    };
-    extraConfig = {
-      url = {
-        "git@github.com:hmanhng/" = {
-          insteadOf = "https://github.com/hmanhng/";
-        };
-      };
-    };
+
     delta = {
       enable = true;
+      options.dark = true;
       options = {
         decorations = {
           file-decoration-style = "none";
@@ -48,12 +38,96 @@
         whitespace-error-style = "22 reverse";
       };
     };
-    difftastic = {
-      enable = false;
-      display = "inline";
+
+    extraConfig = {
+      diff.colorMoved = "default";
+      merge.conflictstyle = "diff3";
     };
-    diff-so-fancy = {enable = false;};
+
+    aliases = let
+      log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
+    in {
+      a = "add --patch"; # make it a habit to consciosly add hunks
+      ad = "add";
+
+      b = "branch";
+      ba = "branch -a"; # list remote branches
+      bd = "branch --delete";
+      bdd = "branch -D";
+
+      c = "commit";
+      ca = "commit --amend";
+      cm = "commit --message";
+
+      co = "checkout";
+      cb = "checkout -b";
+      pc = "checkout --patch";
+
+      cl = "clone";
+
+      d = "diff";
+      ds = "diff --staged";
+
+      h = "show";
+      h1 = "show HEAD^";
+      h2 = "show HEAD^^";
+      h3 = "show HEAD^^^";
+      h4 = "show HEAD^^^^";
+      h5 = "show HEAD^^^^^";
+
+      p = "push";
+      pf = "push --force-with-lease";
+
+      pl = "pull";
+
+      l = log;
+      lp = "${log} --patch";
+      la = "${log} --all";
+
+      r = "rebase";
+      ra = "rebase --abort";
+      rc = "rebase --continue";
+      ri = "rebase --interactive";
+
+      rs = "reset";
+      rsh = "reset --hard";
+      rss = "reset --soft";
+
+      s = "status --short --branch";
+      ss = "status";
+
+      st = "stash";
+      stc = "stash clear";
+      sth = "stash show --patch";
+      stl = "stash list";
+      stp = "stash pop";
+
+      forgor = "commit --amend --no-edit";
+      oops = "checkout --";
+    };
+
+    ignores = ["*~" "*.swp" "*result*" ".direnv" "node_modules"];
+
+    signing = {
+      key = "${config.home.homeDirectory}/.ssh/id_ed25519";
+      signByDefault = true;
+      format = "ssh";
+    };
+
+    extraConfig = {
+      gpg.ssh.allowedSignersFile = config.home.homeDirectory + "/" + config.xdg.configFile."git/allowed_signers".target;
+
+      pull.rebase = true;
+    };
+
+    userEmail = "hmanhng@icloud.com";
+    userName = "Hmanhng";
   };
+
+  xdg.configFile."git/allowed_signers".text = ''
+    ${cfg.userEmail} namespaces="git" ${key}
+  '';
+
   programs.gitui = {
     enable = true;
     keyConfig = ''
