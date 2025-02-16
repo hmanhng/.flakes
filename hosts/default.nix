@@ -31,6 +31,8 @@
           "${mod}/impermanence"
           "${mod}/impermanence/btrfs.nix"
 
+          "${mod}/programs/hyprland"
+
           {
             home-manager = {
               users.hmanhng.imports = homeImports."hmanhng@laptop";

@@ -34,5 +34,4 @@ in {
     };
   };
   # systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
-  systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
 }

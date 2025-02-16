@@ -7,7 +7,6 @@
     ./fonts.nix
     ./gui.nix
     ./home-manager.nix
-    ./hyprland.nix
     ./xdg.nix
   ];
 

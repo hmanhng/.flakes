@@ -5,7 +5,10 @@
   lib,
   ...
 }: {
-  imports = [./hardware-configuration.nix];
+  imports = [
+    ./hardware-configuration.nix
+    ./hyprland.nix
+  ];
 
   networking.hostName = "laptop"; # Define your hostname.
 
@@ -41,9 +44,8 @@
     sensor.iio.enable = true;
   };
 
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
-
   boot = {
+    kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
     kernelParams = [
       "amd_pstate=active"
     ];

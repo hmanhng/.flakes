@@ -92,7 +92,7 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     # hyprwm
-    hyprland.url = "github:hyprwm/hyprland";
+    hyprland.url = "github:hyprwm/hyprland/nix-module";
 
     hypridle = {
       url = "github:hyprwm/hypridle";
