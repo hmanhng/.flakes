@@ -25,8 +25,8 @@
     enable = true;
 
     # plugins = with inputs.hyprland-plugins.packages.${pkgs.system}; [
-      # hyprbars
-      # hyprexpo
+    # hyprbars
+    # hyprexpo
     # ];
   };
 
