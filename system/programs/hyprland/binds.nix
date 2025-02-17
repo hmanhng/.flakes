@@ -36,30 +36,30 @@ in {
         "$MOD, Return, exec, uwsm app -- foot"
         "$MODSHIFT, Return, exec, uwsm app -- foot --app-id termfloat"
         # emacs
-        "$MOD, E, exec, [workspace name:Emacs] hyprctl workspaces | rg ID | rg Emacs || emacsclient -c -a 'emacs'"
+        "$MOD, E, exec, ${runOnce "emacsclient"} -c -a 'emacs'"
         # file manager
-        "$MOD, D, exec, thunar"
+        "$MOD, D, exec, uwsm app -- thunar"
         # browser
-        "$MOD, B, exec, [workspace name:Qutebrowser] hyprctl workspaces | rg ID | rg Qutebrowser || qutebrowser"
-        "$MOD, W, exec, [workspace name:Zen] hyprctl workspaces | rg ID | rg Zen || zen"
-        "$MODSHIFT, W, exec, zen --private-window"
+        "$MOD, B, exec, ${runOnce "qutebrowser"}"
+        "$MOD, W, exec, ${runOnce "zen"}"
+        "$MODSHIFT, W, exec, uwsm app -- zen --private-window"
         # music
         "$MODSHIFT, M, exec, [workspace name:Music] tidal-hifi"
 
         # hide/unhide waybar
         "$MOD, O, exec, killall -SIGUSR1 .waybar-wrapped"
 
-        # grimblast [screenshot]
-        "$MOD, bracketleft, exec, grimblast --notify --cursor copysave area $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
-        "$MOD, bracketright, exec, grimblast --notify --cursor copy area"
-        "$MODSHIFT, bracketleft, exec, grimblast --notify --cursor copysave output $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
-        "$MODSHIFT, bracketright, exec, grimblast --notify --cursor copy output"
+        # ${runOnce "grimblast"} [screenshot]
+        "$MOD, bracketleft, exec, ${runOnce "grimblast"} --notify copysave area $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
+        "$MOD, bracketright, exec, ${runOnce "grimblast"} --notify copy area"
+        "$MODSHIFT, bracketleft, exec, ${runOnce "grimblast"} --notify --cursor copysave output $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
+        "$MODSHIFT, bracketright, exec, ${runOnce "grimblast"} --notify --cursor copy output"
 
         # compositor commands
         "$MOD, R, exec, hyprctl reload"
         "$MOD, Q, killactive"
         "$MOD, escape, exec, hyprctl kill"
-        "$MODSHIFT, Q, exit"
+        "$MODSHIFT, Q, exec, uwsm stop"
         # lock screen
         "$MODSHIFT, L, exec, ${runOnce "hyprlock"}"
         "$MODSHIFT, Space, togglefloating"
@@ -120,10 +120,10 @@ in {
         # launcher
         "$MOD, SUPER_L, exec, ${toggle "rofi"} -show combi -show-icons"
         # rofi menu
-        "$MOD, apostrophe, exec, pkill rofi || ~/.config/rofi/cliphist/cliphist-rofi.sh"
+        "$MOD, apostrophe, exec, ~/.config/rofi/cliphist/cliphist-rofi.sh"
         # "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
         # Bookmarks
-        "$MOD, semicolon, exec, pkill rofi || ~/.flakes/home/bookmarks/bm_rofi.sh"
+        "$MOD, semicolon, exec, ~/.flakes/home/bookmarks/bm_rofi.sh"
         "$MODSHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh"
         # "$MOD, comma, exec, bwm" # bwm for password manager
       ];

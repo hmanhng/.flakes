@@ -50,6 +50,7 @@
       # workspace
       "workspace name:Firefox, class:^(firefox)$"
       "workspace name:Zen, class:^(zen)$"
+      "workspace name:Qutebrowser, class:^(.*qutebrowser.*)$"
       "workspace name:Emacs, class:^(emacs)$"
       "workspace name:Music, title:^(Spotify.*)$"
       "workspace name:Music, class:^(tidal-hifi)$"

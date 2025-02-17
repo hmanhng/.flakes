@@ -9,8 +9,8 @@
     ];
 
     "device[cirq1080:00-0488:1054-touchpad]" = {
-      accel_profile = "custom ${accelpoints}";
-      scroll_points = accelpoints;
+      # accel_profile = "custom ${accelpoints}";
+      # scroll_points = accelpoints;
       natural_scroll = true;
     };
   };
