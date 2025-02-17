@@ -5,7 +5,8 @@
 
   home.packages = with pkgs; [
     _64gram
+    vesktop
   ];
 
-  sys.discord.enable = true;
+  # sys.discord.enable = true;
 }
