@@ -5,19 +5,50 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
 
-      imports = [
-        ./hosts
-        ./lib
-        ./modules
-        ./pkgs
-        ./pre-commit-hooks.nix
-      ];
+      imports =
+        [
+          ./hosts
+          ./lib
+          ./modules
+          ./pkgs
+        ]
+        ++ [
+          inputs.flake-root.flakeModule
+          inputs.treefmt-nix.flakeModule
+        ];
 
       perSystem = {
         config,
         pkgs,
         ...
       }: {
+        treefmt.config = {
+          inherit (config.flake-root) projectRootFile;
+          flakeCheck = true;
+          settings = {
+            global.excludes = [
+              "*.png"
+              "*.svg"
+              "*.conf"
+              "*.rasi"
+              "*.fish"
+              "justfile"
+              "*.dae"
+            ];
+          };
+          package = pkgs.treefmt;
+          programs.alejandra.enable = true;
+          programs.prettier.enable = true;
+          programs.shfmt.enable = true;
+          programs.stylua = {
+            enable = true;
+            settings = {
+              indent_type = "Spaces";
+              indent_width = 2;
+            };
+          };
+        };
+
         devShells = {
           #run by `nix devlop` or `nix-shell`(legacy)
           default = import ./shell.nix {inherit pkgs;};
@@ -25,13 +56,21 @@
           secret = with pkgs;
             mkShell {
               name = "secret";
-              nativeBuildInputs = [sops age gnupg ssh-to-age ssh-to-pgp];
+              nativeBuildInputs = [
+                sops
+                age
+                gnupg
+                ssh-to-age
+                ssh-to-pgp
+              ];
               shellHook = ''
                 export PS1="\e[0;31m(Secret)\$ \e[m"
               '';
             };
         };
-        formatter = pkgs.alejandra;
+
+        # used by the `nix fmt` command
+        formatter = config.treefmt.build.wrapper;
       };
     };
 
@@ -50,6 +89,8 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
+    flake-root.url = "github:srid/flake-root";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -137,6 +178,11 @@
     };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     catppuccin-starship = {
       url = "github:catppuccin/starship";

@@ -130,8 +130,8 @@ in {
 
       bindl = [
         # volume
-        ", XF86AudioMute, exec, ${./script/volume} mute"
-        ", XF86AudioMicMute, exec, ${./script/volume} mute_mic"
+        ", XF86AudioMute, exec, ${./script/volume.sh} mute"
+        ", XF86AudioMicMute, exec, ${./script/volume.sh} mute_mic"
 
         # media control
         ", XF86AudioPlay, exec, mpc -q toggle"
@@ -141,12 +141,12 @@ in {
 
       bindle = [
         # volume
-        ", XF86AudioRaiseVolume, exec, ${./script/volume} up"
-        ", XF86AudioLowerVolume, exec, ${./script/volume} down"
+        ", XF86AudioRaiseVolume, exec, ${./script/volume.sh} up"
+        ", XF86AudioLowerVolume, exec, ${./script/volume.sh} down"
 
         # backlight
-        ", XF86MonBrightnessUp, exec, ${./script/light} up"
-        ", XF86MonBrightnessDown, exec, ${./script/light} down"
+        ", XF86MonBrightnessUp, exec, ${./script/light.sh} up"
+        ", XF86MonBrightnessDown, exec, ${./script/light.sh} down"
       ];
 
       binde = [

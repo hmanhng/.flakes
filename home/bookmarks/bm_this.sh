@@ -9,5 +9,5 @@ elif grep -q "^$bookmark$" "$file"; then
   notify-send "Opps." "Already bookmarked!"
 else
   notify-send "Bookmark added!" "$bookmark is now saved to the file."
-  echo "$bookmark" >> "$file"
+  echo "$bookmark" >>"$file"
 fi
