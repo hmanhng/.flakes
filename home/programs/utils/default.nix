@@ -5,7 +5,7 @@
   ];
   home.packages = with pkgs; [
     meld
-    qbittorrent
     scrcpy
+    transmission_4-gtk
   ];
 }
