@@ -34,6 +34,9 @@ in {
       ++ (with self.legacyPackages.${pkgs.system}; [
         # apple-fonts
       ]);
+
+    enableDefaultPackages = false;
+
     fontconfig = {
       defaultFonts = {
         serif = ["IBM Plex Serif"];
