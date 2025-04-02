@@ -81,7 +81,6 @@ in {
 
       url = {
         launch = "${pkgs.xdg-utils}/bin/xdg-open \${url}";
-        protocols = "http, https, ftp, ftps, file, mailto, ipfs";
       };
 
       cursor = {
