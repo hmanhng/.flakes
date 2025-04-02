@@ -61,7 +61,7 @@ in {
         "$MOD, escape, exec, hyprctl kill"
         "$MODSHIFT, Q, exec, uwsm stop"
         # lock screen
-        "$MODSHIFT, L, exec, ${runOnce "hyprlock"}"
+        "$MODSHIFT, L, exec, loginctl lock-session"
         "$MODSHIFT, Space, togglefloating"
         "$MOD, F, fullscreen"
         "$MOD, M, fullscreen, 1"
@@ -118,7 +118,7 @@ in {
 
       bindr = [
         # launcher
-        "$MOD, SUPER_L, exec, ${toggle "rofi"} -show combi -show-icons"
+        "$MOD, SPACE, exec, ${toggle "rofi"} -show combi -show-icons"
         # rofi menu
         "$MOD, apostrophe, exec, ~/.config/rofi/cliphist/cliphist-rofi.sh"
         # "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
