@@ -102,8 +102,7 @@ in {
     };
 
     gestures = {
-      # Disable because of bug https://github.com/hyprwm/Hyprland/issues/9262
-      # workspace_swipe = true;
+      workspace_swipe = true;
       workspace_swipe_forever = true;
     };
 
@@ -132,11 +131,7 @@ in {
       swallow_exception_regex = "";
     };
 
-    render = {
-      direct_scanout = true;
-      # Fixes some apps stuttering (xournalpp, hyprlock). Possibly an amdgpu bug
-      allow_early_buffer_release = true;
-    };
+    render.direct_scanout = true;
 
     xwayland.force_zero_scaling = true;
 
