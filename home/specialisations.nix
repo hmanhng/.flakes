@@ -1,9 +1,9 @@
 {
   theme = {
     wallpaper = let
-      url = "https://github.com/hmanhng/wallpapers/blob/master/12.png?raw=true";
-      sha256 = "1knd31cl7w145z14ny7hrxmq9awd2isn7h9r55z69w2hbik7i6iz";
-      ext = "png";
+      url = "https://images.unsplash.com/photo-1529528744093-6f8abeee511d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=fit&cs=srgb&w=2560";
+      sha256 = "18r5hmzglifysjmwn5j89gbbk56lbfb3f2jzwp432lr8gb5n7q8v";
+      ext = "jpg";
     in
       builtins.fetchurl {
         name = "wallpaper-${sha256}.${ext}";
