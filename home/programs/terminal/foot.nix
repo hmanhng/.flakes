@@ -54,7 +54,7 @@ in {
 
     settings = {
       main = {
-        font = "Maple Mono:size=15";
+        font = "Maple Mono NF:size=15";
         box-drawings-uses-font-glyphs = "yes";
         horizontal-letter-offset = 0;
         vertical-letter-offset = 0;

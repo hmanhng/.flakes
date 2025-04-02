@@ -25,7 +25,7 @@ in {
         # roboto-serif
         # noto-fonts
 
-        maple-mono
+        maple-mono.NF
         ibm-plex
 
         noto-fonts-emoji

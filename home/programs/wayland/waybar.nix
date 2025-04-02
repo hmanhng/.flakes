@@ -99,7 +99,7 @@ in {
         background: #3b4253;
       }
       tooltip label {
-        font-family: Maple Mono;
+        font-family: Maple Mono NF;
         /* font-weight: bold; */
         font-size: 12pt;
         color: #e4e8ef;
@@ -448,7 +448,7 @@ in {
           format = "{:%H:%M}";
           format-alt = "{:%d %B %Y (%a)}";
           locale = "en_US.UTF-8";
-          tooltip-format = "Devops go go\n<span size='13pt' font='Maple Mono'>{calendar}</span>";
+          tooltip-format = "Devops go go\n<span size='13pt' font='Maple Mono NF'>{calendar}</span>";
           calendar = {
             mode-mon-col = 3;
             # weeks-pos = "right";

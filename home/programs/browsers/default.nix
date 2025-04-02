@@ -12,7 +12,7 @@ in {
   home.packages = [spoofdpi];
 
   imports = [
-    ./firefox
+    # ./firefox
     ./qutebrowser
     ./thorium-browser
     ./zen.nix
