@@ -25,14 +25,7 @@
     manpages.enable = false;
   };
 
-  programs = {
-    # let HM manage itself when in standalone mode
-    home-manager.enable = true;
-  };
+  # let HM manage itself when in standalone mode
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      lib = prev.lib // {colors = import "${self}/lib/colors" lib;};
-    })
-  ];
+  programs.home-manager.enable = true;
 }
