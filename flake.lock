@@ -1501,6 +1501,7 @@
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "sops-nix": "sops-nix",
+        "spicetify-nix": "spicetify-nix",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix_3",
         "zen-browser": "zen-browser"
@@ -1561,6 +1562,29 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "spicetify-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1744682091,
+        "narHash": "sha256-zudMf0YW3mB0f2XnWPAjYdKioJPaJQchhO4bCeBOZAI=",
+        "owner": "Gerg-L",
+        "repo": "spicetify-nix",
+        "rev": "44ed9eb751a6966ffb291edbda2e9bebd3ebcd4a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gerg-L",
+        "repo": "spicetify-nix",
         "type": "github"
       }
     },

@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./mpv
+    ./spicetify.nix
     # ./music
   ];
   home.packages = with pkgs; [
@@ -11,7 +12,6 @@
     pamixer
     pwvucontrol
     stremio
-    tidal-hifi
     vlc
   ];
   programs = {
