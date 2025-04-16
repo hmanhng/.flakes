@@ -14,9 +14,11 @@ in {
   programs.vscode = {
     enable = true;
     package = code;
-    extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-    ];
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+      ];
+    };
     /*
        userSettings = {
       "files.autoSave" = "off";
