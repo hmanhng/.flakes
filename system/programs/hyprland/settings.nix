@@ -138,5 +138,10 @@ in {
     xwayland.force_zero_scaling = true;
 
     debug.disable_logs = false;
+
+    ecosystem = {
+      no_update_news = true;
+      no_donation_nag = true;
+    };
   };
 }
