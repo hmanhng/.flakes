@@ -37,10 +37,6 @@
   };
 
   hardware = {
-    logitech.wireless = {
-      enable = true;
-      enableGraphical = true;
-    };
     sensor.iio.enable = true;
   };
 
