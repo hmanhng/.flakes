@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./zathura
+    ./zathura.nix
     # ./logseq.nix
   ];
   home.packages = with pkgs; [

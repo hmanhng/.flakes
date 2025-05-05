@@ -136,7 +136,6 @@
     [spack]
     symbol = "🅢 "
   '';
-  flavour = "mocha";
 in {
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
 
@@ -221,12 +220,11 @@ in {
         # Display which shell we're in
         # Do we actually need this? We use xonsh all the time.
         env_var.STARSHIP_SHELL = {
-          format = "🐙 [$env_value]($style) ";
+          format = "🪼 [$env_value]($style) ";
           style = "fg:green";
         };
 
         # palette = "catppuccin_${flavour}";
-      }
-      // builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/themes/${flavour}.toml");
+      };
   };
 }

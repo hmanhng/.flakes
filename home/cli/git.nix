@@ -16,8 +16,9 @@ in {
 
     delta = {
       enable = true;
-      options.dark = true;
       options = {
+        line-numbers = true;
+        hyperlinks = true;
         decorations = {
           file-decoration-style = "none";
           file-modified-label = "modified:";
@@ -34,7 +35,7 @@ in {
           line-numbers-right-format = " {np} ";
           line-numbers-plus-style = "#9feb98";
         };
-        features = "decorations";
+        # features = "decorations";
         whitespace-error-style = "22 reverse";
       };
     };
@@ -104,6 +105,8 @@ in {
 
       forgor = "commit --amend --no-edit";
       oops = "checkout --";
+
+      diff-side-by-side = "-c delta.features=side-by-side diff";
     };
 
     ignores = ["*~" "*.swp" "*result*" ".direnv" "node_modules"];

@@ -13,6 +13,7 @@
     ./yazi.nix
     #./zsh/zsh
   ];
+
   # add environment variables
   home = {
     sessionVariables = {
@@ -54,13 +55,16 @@
     socat
     wget
   ];
+
   # programs.thefuck.enable = true;
   programs.zoxide.enable = true;
+
   programs.eza.enable = true;
+
   programs.fzf = {
     enable = true;
     enableFishIntegration = false;
-    defaultCommand = "fd --type f --hidden";
+    defaultCommand = "fd --hidden --type l --type f --type d --exclude .git --exclude .cache";
     defaultOptions = [
       "--preview 'bat --line-range :500 {}'"
       "--preview-window=right,60%,border-left"
@@ -70,29 +74,18 @@
       "--inline-info"
     ];
   };
+
   programs.bat = {
     enable = true;
-    themes = {
-      Catppuccin-macchiato = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-          sha256 = "6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-        };
-        file = "Catppuccin-macchiato.tmTheme";
-      };
-    };
     config = {
-      theme = "Catppuccin-macchiato";
-      style = "numbers,changes";
+      style = "full";
       color = "always";
       italic-text = "always";
       pager = "less -FR";
-      map-syntax = [
-        "*.h:cpp"
-        ".ignore:.gitignore"
-      ];
+      # map-syntax = [
+      #   "*.h:cpp"
+      #   ".ignore:.gitignore"
+      # ];
     };
   };
 }

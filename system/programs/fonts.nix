@@ -24,6 +24,7 @@ in {
         # roboto
         # roboto-serif
         # noto-fonts
+        nerd-fonts.iosevka
 
         maple-mono.NF
         ibm-plex

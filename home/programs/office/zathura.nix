@@ -1,12 +1,7 @@
 {
-  pkgs,
-  inputs,
-  ...
-}: {
   programs.zathura = {
     enable = true;
     extraConfig = ''
-      include ${./catppuccin-macchiato}
       set font "JetBrainsMono Nerd Font 15"
 
       # Zathura configuration file

@@ -184,10 +184,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin-starship = {
-      url = "github:catppuccin/starship";
-      flake = false;
-    };
+    catppuccin.url = "github:catppuccin/nix"; # Soothing pastel theme for Nix ❄️
 
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
 
@@ -208,12 +205,14 @@
       "https://hyprland.cachix.org"
       "https://hmanhng.cachix.org"
       "https://fufexan.cachix.org"
+      "https://catppuccin.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "hmanhng.cachix.org-1:+pXFpN2CtS0rNUdCdeiOu6QUWMVBX0nCbWREhfiiKtI="
       "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
+      "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
     ];
   };
 }

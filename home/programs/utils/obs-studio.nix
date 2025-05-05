@@ -7,5 +7,4 @@
       # pkgs.obs-studio-plugins.wlrobs
     ];
   };
-  home.file.".config/obs-studio/themes".source = ./themes;
 }

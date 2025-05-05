@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./fcitx5
-    ./obs-studio
+    ./obs-studio.nix
   ];
   home.packages = with pkgs; [
     meld
