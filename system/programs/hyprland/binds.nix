@@ -36,7 +36,7 @@ in {
         "$MOD, Return, exec, uwsm app -- foot"
         "$MODSHIFT, Return, exec, uwsm app -- foot --app-id termfloat"
         # emacs
-        "$MOD, E, exec, ${runOnce "emacsclient"} -c -a 'emacs'"
+        "$MOD, E, exec, ${runOnce "emacs"}"
         # file manager
         "$MOD, D, exec, uwsm app -- thunar"
         # browser

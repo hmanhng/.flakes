@@ -41,7 +41,7 @@
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) ({
       "application/pdf" = ["org.pwmt.zathura-pdf-mupdf"];
       "text/html" = browser;
-      "text/plain" = ["emacsclient -c -nw -a 'emacs -nw'"];
+      "text/plain" = ["emacs -nw"];
       "inode/directory" = ["yazi"];
       "x-scheme-handler/magnet" = ["transmission-gtk"];
       # Full entry is org.telegram.desktop.desktop
