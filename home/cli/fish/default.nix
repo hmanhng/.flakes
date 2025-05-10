@@ -40,8 +40,8 @@
     interactiveShellInit = ''
       set fish_greeting ""
 
-      # "emacsclient" as $EDITOR
-      set -x EDITOR "emacsclient -nw -c"
+      # "emacs" as $EDITOR
+      set -x EDITOR "emacs -nw"
 
       # "nvim" as manpager
       set -x MANPAGER "nvim +Man!"
@@ -74,7 +74,7 @@
       lt = "eza -F -aT -L 3 -I \".git\" --icons --color=always --group-directories-first"; # tree listing
       "l." = "eza -F -a | grep -E \"^\\.\"";
 
-      e = "emacsclient -c -nw -a 'emacs -nw'";
+      e = "emacs -nw";
       v = "nvim";
       vi = "nvim";
       suvi = "sudo nvim";
