@@ -44,6 +44,8 @@
     kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
     kernelParams = [
       "amd_pstate=active"
+      ''acpi_osi="Windows 2020"''
+      "amdgpu.dcfeaturemask=0x8"
     ];
 
     blacklistedKernelModules = [
