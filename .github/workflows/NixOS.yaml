@@ -17,7 +17,7 @@ jobs:
           remove-dotnet: true
           remove-haskell: true
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: nixbuild/nix-quick-install-action@v30
       - uses: DeterminateSystems/magic-nix-cache-action@main
