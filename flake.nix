@@ -11,10 +11,10 @@
           ./lib
           ./modules
           ./pkgs
+          ./fmt-hooks.nix
         ]
         ++ [
           inputs.flake-root.flakeModule
-          inputs.treefmt-nix.flakeModule
         ];
 
       perSystem = {
@@ -22,36 +22,19 @@
         pkgs,
         ...
       }: {
-        treefmt.config = {
-          inherit (config.flake-root) projectRootFile;
-          flakeCheck = true;
-          settings = {
-            global.excludes = [
-              "*.png"
-              "*.svg"
-              "*.conf"
-              "*.rasi"
-              "*.fish"
-              "justfile"
-              "*.dae"
-            ];
-          };
-          package = pkgs.treefmt;
-          programs.alejandra.enable = true;
-          programs.prettier.enable = true;
-          programs.shfmt.enable = true;
-          programs.stylua = {
-            enable = true;
-            settings = {
-              indent_type = "Spaces";
-              indent_width = 2;
-            };
-          };
-        };
-
         devShells = {
           #run by `nix devlop` or `nix-shell`(legacy)
-          default = import ./shell.nix {inherit pkgs;};
+          default = pkgs.mkShell {
+            packages = [
+              pkgs.git
+              # config.packages.repl
+            ];
+            name = "dots";
+            env.DIRENV_LOG_FORMAT = "";
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
+          };
           #run by `nix develop .#<name>`
           secret = with pkgs;
             mkShell {
@@ -68,7 +51,6 @@
               '';
             };
         };
-
         # used by the `nix fmt` command
         formatter = config.treefmt.build.wrapper;
       };
@@ -111,8 +93,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
