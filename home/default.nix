@@ -7,7 +7,7 @@
   imports = [
     ./specialisations.nix
     ./cli
-    inputs.nix-index-db.hmModules.nix-index
+    inputs.nix-index-db.homeModules.nix-index
     inputs.sops-nix.homeManagerModules.sops
     self.nixosModules.theme
   ];
