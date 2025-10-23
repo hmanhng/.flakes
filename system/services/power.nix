@@ -1,6 +1,6 @@
 {
   services = {
-    logind.powerKey = "suspend";
+    logind.settings.Login.HandlePowerKey = "suspend";
 
     auto-cpufreq = {
       enable = true;

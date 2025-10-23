@@ -11,7 +11,7 @@
     # media
     pamixer
     pwvucontrol
-    stremio
+    # stremio
     vlc
   ];
   programs = {
