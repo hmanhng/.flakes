@@ -24,7 +24,7 @@
 window {
     padding:            7;
     location:           north west;
-    y-offset:           -30;
+    // y-offset:           -30;
     width:              100%;
 }
 /*****----- Main Box -----*****/

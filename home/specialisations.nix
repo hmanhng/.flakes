@@ -10,12 +10,11 @@
     btop.enable = true;
     delta.enable = true;
     fcitx5.enable = true;
-    foot.enable = true;
+    foot.enable = false;
     fzf.enable = true;
     # obs.enable = true;
     qutebrowser.enable = true;
     starship.enable = true;
-    waybar.enable = true;
     yazi.enable = true;
     zathura.enable = true;
   };

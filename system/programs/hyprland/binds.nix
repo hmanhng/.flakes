@@ -31,23 +31,15 @@ in {
 
       # binds
       bind = [
-        # utility
-        # terminal
+        # app
         "$MOD, Return, exec, uwsm app -- foot"
         "$MODSHIFT, Return, exec, uwsm app -- foot --app-id termfloat"
-        # emacs
         "$MOD, E, exec, ${runOnce "emacs"}"
-        # file manager
         "$MOD, D, exec, uwsm app -- thunar"
-        # browser
         "$MOD, B, exec, ${runOnce "qutebrowser"}"
         "$MOD, W, exec, ${runOnce "zen"}"
         "$MODSHIFT, W, exec, uwsm app -- zen --private-window"
-        # music
         "$MODSHIFT, M, exec, [workspace name:Music] tidal-hifi"
-
-        # hide/unhide waybar
-        "$MOD, O, exec, killall -SIGUSR1 .waybar-wrapped"
 
         # ${runOnce "grimblast"} [screenshot]
         "$MOD, bracketleft, exec, ${runOnce "grimblast"} --notify copysave area $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
@@ -61,7 +53,7 @@ in {
         "$MOD, escape, exec, hyprctl kill"
         "$MODSHIFT, Q, exec, uwsm stop"
         # lock screen
-        "$MODSHIFT, L, exec, loginctl lock-session"
+        "$MODSHIFT, L, global, caelestia:lock"
         "$MODSHIFT, Space, togglefloating"
         "$MOD, F, fullscreen"
         "$MOD, M, fullscreen, 1"
@@ -99,11 +91,10 @@ in {
         # to workspace
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
-        "$MOD, B, workspace, Qutebrowser"
-        "$MOD, E, workspace, Emacs"
-        "$MOD, W, workspace, Zen"
-        "$MOD, T, workspace, TG"
-        "$MODSHIFT, M, workspace, Music"
+        "$MOD, B, exec, caelestia toggle qutebrowser"
+        "$MOD, E, exec, caelestia toggle emacs"
+        "$MOD, W, exec, caelestia toggle zen"
+        "$MODSHIFT, M, exec, caelestia toggle music"
 
         # to workspace special
         "$MOD, minus, movetoworkspace, special"
@@ -117,6 +108,7 @@ in {
       ];
 
       bindr = [
+        "$MODCTRL, SPACE, global, caelestia:launcher"
         # launcher
         "$MOD, SPACE, exec, ${toggle "rofi"} -show combi -show-icons"
         # rofi menu
@@ -130,23 +122,27 @@ in {
 
       bindl = [
         # volume
-        ", XF86AudioMute, exec, ${./script/volume.sh} mute"
+        ", XF86AudioMute, exec,  wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioMicMute, exec, ${./script/volume.sh} mute_mic"
 
         # media control
-        ", XF86AudioPlay, exec, mpc -q toggle"
-        ", XF86AudioNext, exec, mpc -q next"
-        ", XF86AudioPrev, exec, mpc -q prev"
+        ", XF86AudioPlay, global, caelestia:mediaToggle"
+        ", XF86AudioPause, global, caelestia:mediaToggle"
+        "Ctrl+Super, Equal, global, caelestia:mediaNext"
+        ", XF86AudioNext, global, caelestia:mediaNextt"
+        "Ctrl+Super, Minus, global, caelestia:mediaPrev"
+        ", XF86AudioPrev, global, caelestia:mediaPrev"
+        ", XF86AudioStop, global, caelestia:mediaStop"
       ];
 
       bindle = [
         # volume
-        ", XF86AudioRaiseVolume, exec, ${./script/volume.sh} up"
-        ", XF86AudioLowerVolume, exec, ${./script/volume.sh} down"
+        ", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
 
         # backlight
-        ", XF86MonBrightnessUp, exec, ${./script/light.sh} up"
-        ", XF86MonBrightnessDown, exec, ${./script/light.sh} down"
+        ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
+        ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
       ];
 
       binde = [

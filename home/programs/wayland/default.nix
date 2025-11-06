@@ -8,8 +8,9 @@
 {
   imports = [
     # ./hyprland
-    ./hyprlock.nix
-    ./waybar.nix
+    # ./hyprlock.nix
+    # ./waybar.nix
+    ./quickshell.nix
     ./rofi
   ];
 
@@ -39,5 +40,5 @@
     XDG_SESSION_TYPE = "wayland";
   };
 
-  systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
+  # systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
 }

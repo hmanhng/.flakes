@@ -24,7 +24,7 @@ let
     desktop
     ++ [
       ./hardware/bluetooth.nix
-      ./hardware/brillo.nix
+      # ./hardware/brillo.nix # use caelestia-shell
 
       ./services/power.nix
     ];

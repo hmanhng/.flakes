@@ -11,6 +11,7 @@ in {
   programs.hyprland.settings = {
     env = [
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "QT_QPA_PLATFORMTHEME,gtk3"
       "HYPRCURSOR_THEME,${cursorName}"
       "HYPRCURSOR_SIZE,${toString 24}"
       # See https://github.com/hyprwm/contrib/issues/142
@@ -22,17 +23,21 @@ in {
       "uwsm finalize"
       # set cursor for HL itself
       "hyprctl setcursor ${cursorName} ${toString 24}"
-      "hyprlock"
+      # "hyprlock"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
-      "launch_waybar"
-      "${lib.getExe pkgs.networkmanagerapplet}"
       "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
-      # "border_color"
+
+      # clipboard
       "ydotoold"
       "wl-paste --watch cliphist store"
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
+
       # "${lib.getExe self.legacyPackages.${pkgs.system}.spoofdpi}"
+
+      # run shell
+      "caelestia resizer -d"
+      "caelestia shell -d && caelestia shell lock lock"
     ];
 
     general = {
@@ -65,7 +70,7 @@ in {
       };
 
       shadow = {
-        enabled = true;
+        enabled = false;
         color = "rgba(00000055)";
         ignore_window = true;
         offset = "0 15";

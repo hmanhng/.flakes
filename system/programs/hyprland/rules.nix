@@ -10,6 +10,7 @@
         "calendar"
         "notifications"
         "system-menu"
+        "caelestia-.*"
       ];
       highopacity = [
         "anyrun"
@@ -22,7 +23,8 @@
       ];
     in [
       "blur, ${toRegex blurred}"
-      "xray 1, ${toRegex ["waybar"]}"
+      "blurpopups, caelestia-.*"
+      # "xray 1, ${toRegex ["caelestia-.*"]}"
       "ignorealpha 0.5, ${toRegex (highopacity ++ ["music"])}"
       "ignorealpha 0.2, ${toRegex lowopacity}"
     ];
@@ -48,12 +50,11 @@
       "float, class:^(confirmreset)$"
 
       # workspace
-      "workspace name:Firefox, class:^(firefox)$"
-      "workspace name:Zen, class:^(zen)$"
-      "workspace name:Qutebrowser, class:^(.*qutebrowser.*)$"
-      "workspace name:Emacs, class:^(emacs)$"
-      "workspace name:Music, title:^(Spotify.*)$"
-      "workspace name:Music, class:^(tidal-hifi)$"
+      "workspace special:firefox, class:^(firefox)$"
+      "workspace special:zen, class:^(zen)$"
+      "workspace special:qutebrowser, class:^(.*qutebrowser.*)$"
+      "workspace special:emacs, class:^(emacs)$"
+      "workspace special:music, title:^(Spotify.*)$"
       "size 1100 600, class:^(termfloat)$"
       "size 1100 600, class:^(thunar)$"
 
