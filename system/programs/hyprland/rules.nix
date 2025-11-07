@@ -51,14 +51,17 @@
 
       # workspace
       "workspace special:firefox, class:^(firefox)$"
-      "workspace special:zen, class:^(zen)$"
+      "workspace special:zen, class:^(zen.*)$"
       "workspace special:qutebrowser, class:^(.*qutebrowser.*)$"
       "workspace special:emacs, class:^(emacs)$"
-      "workspace special:music, title:^(Spotify.*)$"
+      "workspace special:music, class:^(spotify)$"
       "size 1100 600, class:^(termfloat)$"
       "size 1100 600, class:^(thunar)$"
 
-      "opacity 0.9, class:^(tidal-hifi)$"
+      "opacity 0.9, class:^(spotify)$"
+      "xray 1, class:^(spotify)$"
+      "opacity 0.99999, class:(zen.*)"
+      "xray 1, class:(zen.*)"
 
       # make Firefox/Zen PiP window floating and sticky
       "float, title:^(Picture-in-Picture)$"
@@ -73,14 +76,14 @@
       "idleinhibit focus, class:^(mpv|.+exe|vlc)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit fullscreen, class:^(firefox)$"
-      "idleinhibit focus, class:^(zen)$, title:^(.*YouTube.*)$"
-      "idleinhibit fullscreen, class:^(zen)$"
+      "idleinhibit focus, class:^(zen.*)$, title:^(.*YouTube.*)$"
+      "idleinhibit fullscreen, class:^(zen.*)$"
       "idleinhibit always, class:^(discord)$"
 
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
-      "dimaround, class:^(zen)$, title:^(File Upload)$"
+      "dimaround, class:^(zen.*)$, title:^(File Upload)$"
 
       # fix xwayland apps
       "rounding 0, xwayland:1"
@@ -92,7 +95,7 @@
 
       # less sensitive scroll for some windows
       # browser(-based)
-      "scrolltouchpad 0.1, class:^(zen|firefox|chromium-browser|chrome-.*)$"
+      "scrolltouchpad 0.1, class:^(zen.*|firefox|chromium-browser|chrome-.*)$"
       "scrolltouchpad 0.1, class:^(obsidian)$"
       # GTK3
       "scrolltouchpad 0.1, class:^(com.github.xournalpp.xournalpp)$"

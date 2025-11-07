@@ -37,8 +37,8 @@ in {
         "$MOD, E, exec, ${runOnce "emacs"}"
         "$MOD, D, exec, uwsm app -- thunar"
         "$MOD, B, exec, ${runOnce "qutebrowser"}"
-        "$MOD, W, exec, ${runOnce "zen"}"
-        "$MODSHIFT, W, exec, uwsm app -- zen --private-window"
+        "$MOD, W, exec, ${runOnce "zen-beta"}"
+        "$MODSHIFT, W, exec, uwsm app -- zen-beta --private-window"
         "$MODSHIFT, M, exec, [workspace name:Music] tidal-hifi"
 
         # ${runOnce "grimblast"} [screenshot]
