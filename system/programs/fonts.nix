@@ -26,7 +26,7 @@ in {
         # noto-fonts
         nerd-fonts.iosevka
 
-        maple-mono.NF
+        maple-mono.NF-unhinted
         ibm-plex
 
         noto-fonts-emoji
