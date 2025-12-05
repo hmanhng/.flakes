@@ -58,7 +58,7 @@
           # stylus
           # tabcenter-reborn
         ])
-        ++ (with self.legacyPackages.${pkgs.system}.firefox-addons; [
+        ++ (with self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.firefox-addons; [
           # default-zoom
         ]);
       search = {

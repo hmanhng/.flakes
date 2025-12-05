@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  lock = "${pkgs.systemd}/bin/loginctl lock-session";
+  lock = "${pkgs.stdenv.hostPlatform.systemd}/bin/loginctl lock-session";
 
   brillo = lib.getExe pkgs.brillo;
 
@@ -16,7 +16,7 @@ in {
   services.hypridle = {
     enable = true;
 
-    package = inputs.hypridle.packages.${pkgs.system}.hypridle;
+    package = inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
 
     settings = {
       general = {

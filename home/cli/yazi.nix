@@ -5,7 +5,7 @@
 }: {
   programs.yazi = {
     enable = true;
-    # package = inputs.yazi.packages.${pkgs.system}.yazi;
+    # package = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.yazi;
     enableFishIntegration = true;
     settings = {
       manager = {

@@ -6,7 +6,7 @@
 }: let
   spoofdpi = pkgs.writeShellScriptBin "launch_spoofdpi" ''
     killall spoofdpi
-    ${lib.getExe self.legacyPackages.${pkgs.system}.spoofdpi} &
+    ${lib.getExe self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.spoofdpi} &
   '';
 in {
   home.packages = [spoofdpi];

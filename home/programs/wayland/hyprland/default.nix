@@ -5,7 +5,7 @@
   ...
 }: let
   cursor = "Bibata-Modern-Ice-Hyprcursor";
-  cursorPackage = inputs.self.legacyPackages.${pkgs.system}.bibata-hyprcursor;
+  cursorPackage = inputs.self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.bibata-hyprcursor;
 in {
   imports = [
     ./binds.nix
@@ -22,7 +22,7 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
 
-    package = inputs.hyprland.packages.${pkgs.system}.default;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     systemd = {
       enable = false;

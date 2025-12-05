@@ -9,7 +9,7 @@
     ./cli
     inputs.nix-index-db.homeModules.nix-index
     inputs.sops-nix.homeManagerModules.sops
-    self.nixosModules.theme
+    self.modules.theme
   ];
 
   home = {

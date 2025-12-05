@@ -17,7 +17,7 @@
   home.packages = with pkgs; [
     # screenshot
     imagemagick # for grimblast
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprland-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast
 
     # utils
     wl-screenrec

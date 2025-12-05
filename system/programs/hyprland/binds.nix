@@ -123,7 +123,7 @@ in {
       bindl = [
         # volume
         ", XF86AudioMute, exec,  wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioMicMute, exec, ${./script/volume.sh} mute_mic"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
         # media control
         ", XF86AudioPlay, global, caelestia:mediaToggle"

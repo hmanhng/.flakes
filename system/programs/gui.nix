@@ -7,7 +7,9 @@
       thunar-volman
     ];
   };
-  programs.file-roller.enable = true; # Archive manager
+  environment.systemPackages = [
+    pkgs.file-roller
+  ];
 
   services = {
     tumbler.enable = true; # Thumbnail support for images thunar

@@ -29,10 +29,10 @@ in {
         maple-mono.NF-unhinted
         ibm-plex
 
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         twemoji-color-font
       ])
-      ++ (with self.legacyPackages.${pkgs.system}; [
+      ++ (with self.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
         # apple-fonts
       ]);
 

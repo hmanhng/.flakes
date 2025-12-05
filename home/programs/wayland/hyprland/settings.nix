@@ -30,7 +30,7 @@ in {
       "ydotoold"
       "wl-paste --watch cliphist store"
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
-      "${lib.getExe self.legacyPackages.${pkgs.system}.spoofdpi}"
+      "${lib.getExe self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.spoofdpi}"
       "emacs --daemon"
     ];
 

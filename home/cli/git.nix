@@ -14,101 +14,6 @@ in {
   programs.git = {
     enable = true;
 
-    delta = {
-      enable = true;
-      options = {
-        line-numbers = true;
-        hyperlinks = true;
-        decorations = {
-          file-decoration-style = "none";
-          file-modified-label = "modified:";
-          file-style = "bold blue ul";
-          hunk-header-style = "omit";
-          hunk-header-decoration-style = "";
-          # minus-style = "#d91e46";
-          # minus-emph-style = "normal";
-          # plus-style = "#9feb98";
-          # plus-emph-style = "normal";
-          line-numbers = true;
-          line-numbers-left-format = "{nm}⋮";
-          line-numbers-minus-style = "#d91e46";
-          line-numbers-right-format = " {np} ";
-          line-numbers-plus-style = "#9feb98";
-        };
-        # features = "decorations";
-        whitespace-error-style = "22 reverse";
-      };
-    };
-
-    extraConfig = {
-      diff.colorMoved = "default";
-      merge.conflictstyle = "diff3";
-    };
-
-    aliases = let
-      log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
-    in {
-      a = "add --patch"; # make it a habit to consciosly add hunks
-      ad = "add";
-
-      b = "branch";
-      ba = "branch -a"; # list remote branches
-      bd = "branch --delete";
-      bdd = "branch -D";
-
-      c = "commit";
-      ca = "commit --amend";
-      cm = "commit --message";
-
-      co = "checkout";
-      cb = "checkout -b";
-      pc = "checkout --patch";
-
-      cl = "clone";
-
-      d = "diff";
-      ds = "diff --staged";
-
-      h = "show";
-      h1 = "show HEAD^";
-      h2 = "show HEAD^^";
-      h3 = "show HEAD^^^";
-      h4 = "show HEAD^^^^";
-      h5 = "show HEAD^^^^^";
-
-      p = "push";
-      pf = "push --force-with-lease";
-
-      pl = "pull";
-
-      l = log;
-      lp = "${log} --patch";
-      la = "${log} --all";
-
-      r = "rebase";
-      ra = "rebase --abort";
-      rc = "rebase --continue";
-      ri = "rebase --interactive";
-
-      rs = "reset";
-      rsh = "reset --hard";
-      rss = "reset --soft";
-
-      s = "status --short --branch";
-      ss = "status";
-
-      st = "stash";
-      stc = "stash clear";
-      sth = "stash show --patch";
-      stl = "stash list";
-      stp = "stash pop";
-
-      forgor = "commit --amend --no-edit";
-      oops = "checkout --";
-
-      diff-side-by-side = "-c delta.features=side-by-side diff";
-    };
-
     ignores = ["*~" "*.swp" "*result*" ".direnv" "node_modules"];
 
     signing = {
@@ -117,19 +22,115 @@ in {
       format = "ssh";
     };
 
-    extraConfig = {
+    settings = {
+      user = {
+        email = "hmanhng@icloud.com";
+        name = "Hmanhng";
+      };
+
       gpg.ssh.allowedSignersFile = config.home.homeDirectory + "/" + config.xdg.configFile."git/allowed_signers".target;
 
       pull.rebase = true;
-    };
 
-    userEmail = "hmanhng@icloud.com";
-    userName = "Hmanhng";
+      diff.colorMoved = "default";
+      merge.conflictstyle = "diff3";
+
+      alias = let
+        log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
+      in {
+        a = "add --patch"; # make it a habit to consciosly add hunks
+        ad = "add";
+
+        b = "branch";
+        ba = "branch -a"; # list remote branches
+        bd = "branch --delete";
+        bdd = "branch -D";
+
+        c = "commit";
+        ca = "commit --amend";
+        cm = "commit --message";
+
+        co = "checkout";
+        cb = "checkout -b";
+        pc = "checkout --patch";
+
+        cl = "clone";
+
+        d = "diff";
+        ds = "diff --staged";
+
+        h = "show";
+        h1 = "show HEAD^";
+        h2 = "show HEAD^^";
+        h3 = "show HEAD^^^";
+        h4 = "show HEAD^^^^";
+        h5 = "show HEAD^^^^^";
+
+        p = "push";
+        pf = "push --force-with-lease";
+
+        pl = "pull";
+
+        l = log;
+        lp = "${log} --patch";
+        la = "${log} --all";
+
+        r = "rebase";
+        ra = "rebase --abort";
+        rc = "rebase --continue";
+        ri = "rebase --interactive";
+
+        rs = "reset";
+        rsh = "reset --hard";
+        rss = "reset --soft";
+
+        s = "status --short --branch";
+        ss = "status";
+
+        st = "stash";
+        stc = "stash clear";
+        sth = "stash show --patch";
+        stl = "stash list";
+        stp = "stash pop";
+
+        forgor = "commit --amend --no-edit";
+        oops = "checkout --";
+
+        diff-side-by-side = "-c delta.features=side-by-side diff";
+      };
+    };
   };
 
   xdg.configFile."git/allowed_signers".text = ''
-    ${cfg.userEmail} namespaces="git" ${key}
+    ${cfg.settings.user.email} namespaces="git" ${key}
   '';
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      line-numbers = true;
+      hyperlinks = true;
+      decorations = {
+        file-decoration-style = "none";
+        file-modified-label = "modified:";
+        file-style = "bold blue ul";
+        hunk-header-style = "omit";
+        hunk-header-decoration-style = "";
+        # minus-style = "#d91e46";
+        # minus-emph-style = "normal";
+        # plus-style = "#9feb98";
+        # plus-emph-style = "normal";
+        line-numbers = true;
+        line-numbers-left-format = "{nm}⋮";
+        line-numbers-minus-style = "#d91e46";
+        line-numbers-right-format = " {np} ";
+        line-numbers-plus-style = "#9feb98";
+      };
+      # features = "decorations";
+      whitespace-error-style = "22 reverse";
+    };
+  };
 
   programs.gitui = {
     enable = true;
