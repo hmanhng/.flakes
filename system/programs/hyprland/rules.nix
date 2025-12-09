@@ -4,7 +4,7 @@
     layerrule = let
       toRegex = list: let
         elements = lib.concatStringsSep "|" list;
-      in "^(${elements})$";
+      in "match:namespace ^(${elements})$";
       lowopacity = [
         "waybar"
         "calendar"
@@ -22,11 +22,11 @@
         highopacity
       ];
     in [
-      "blur on, match:namespace ${toRegex blurred}"
+      "blur on, ${toRegex blurred}"
       "blur_popups on, match:namespace caelestia-.*"
       # "xray 1, ${toRegex ["caelestia-.*"]}"
-      "ignore_alpha 0.5, match:namespace ${toRegex (highopacity ++ ["music"])}"
-      "ignore_alpha 0.2, match:namespace ${toRegex lowopacity}"
+      "ignore_alpha 0.5, ${toRegex (highopacity ++ ["music"])}"
+      "ignore_alpha 0.2, ${toRegex lowopacity}"
     ];
 
     # window rules
