@@ -28,6 +28,9 @@
       set scroll-step 50
 
       set selection-clipboard clipboard
+
+      # theme
+      set recolor "false" # not change color pdf
     '';
   };
 }
