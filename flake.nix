@@ -1,59 +1,60 @@
 {
   description = "Hmanhng's NixOS flake";
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
 
-      imports =
-        [
-          ./hosts
-          ./lib
-          ./modules
-          ./pkgs
-          ./fmt-hooks.nix
-        ]
-        ++ [
-          inputs.flake-root.flakeModule
-        ];
+      imports = [
+        ./hosts
+        ./lib
+        ./modules
+        ./pkgs
+        ./fmt-hooks.nix
+      ];
 
-      perSystem = {
-        config,
-        pkgs,
-        ...
-      }: {
-        devShells = {
-          #run by `nix devlop` or `nix-shell`(legacy)
-          default = pkgs.mkShell {
-            packages = [
-              pkgs.git
-              # config.packages.repl
-            ];
-            name = "dots";
-            env.DIRENV_LOG_FORMAT = "";
-            shellHook = ''
-              ${config.pre-commit.installationScript}
-            '';
-          };
-          #run by `nix develop .#<name>`
-          secret = with pkgs;
-            mkShell {
-              name = "secret";
-              nativeBuildInputs = [
-                sops
-                age
-                gnupg
-                ssh-to-age
-                ssh-to-pgp
+      perSystem =
+        {
+          config,
+          pkgs,
+          ...
+        }:
+        {
+          devShells = {
+            #run by `nix devlop` or `nix-shell`(legacy)
+            default = pkgs.mkShell {
+              packages = [
+                pkgs.git
+                # config.packages.repl
               ];
+              name = "dots";
+              env.DIRENV_LOG_FORMAT = "";
               shellHook = ''
-                export PS1="\e[0;31m(Secret)\$ \e[m"
+                ${config.pre-commit.installationScript}
+                exec fish
               '';
             };
+            #run by `nix develop .#<name>`
+            secret =
+              with pkgs;
+              mkShell {
+                name = "secret";
+                nativeBuildInputs = [
+                  sops
+                  age
+                  gnupg
+                  ssh-to-age
+                  ssh-to-pgp
+                ];
+                shellHook = ''
+                  export PS1="\e[0;31m(Secret)\$ \e[m"
+                '';
+              };
+          };
+          # used by the `nix fmt` command
+          formatter = config.treefmt.build.wrapper;
         };
-        # used by the `nix fmt` command
-        formatter = config.treefmt.build.wrapper;
-      };
     };
 
   inputs = {
@@ -71,8 +72,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-
-    flake-root.url = "github:srid/flake-root";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
