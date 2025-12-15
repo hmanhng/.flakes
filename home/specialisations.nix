@@ -14,7 +14,7 @@
     fzf.enable = true;
     # obs.enable = true;
     qutebrowser.enable = true;
-    starship.enable = true;
+    # starship.enable = true;
     yazi.enable = true;
     zathura.enable = true;
   };

@@ -9,7 +9,7 @@
     ./git.nix
     ./nix.nix
     ./top.nix
-    ./starship.nix
+    # ./starship.nix # use tide for fast
     ./yazi.nix
     #./zsh/zsh
   ];
