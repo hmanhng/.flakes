@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   colors = {
     dark = {
       foreground = "e5e1e7"; # Text (onBackground)
@@ -51,7 +52,8 @@
       bright7 = "6c6f85"; # Subtext 0
     };
   };
-in {
+in
+{
   programs.foot = {
     enable = true;
 
@@ -96,11 +98,10 @@ in {
         hide-when-typing = "yes";
       };
 
-      colors =
-        {
-          alpha = 0.9;
-        }
-        // colors.dark;
+      colors = {
+        alpha = 0.9;
+      }
+      // colors.dark;
     };
   };
 }

@@ -12,5 +12,5 @@
   ];
 
   sops.gnupg.home = "/home/hmanhng/.local/share/gnupg";
-  sops.gnupg.sshKeyPaths = [];
+  sops.gnupg.sshKeyPaths = [ ];
 }

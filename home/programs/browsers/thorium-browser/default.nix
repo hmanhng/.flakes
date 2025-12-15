@@ -2,8 +2,9 @@
   self,
   pkgs,
   ...
-}: {
-  home.packages = [self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.thorium-browser];
+}:
+{
+  home.packages = [ self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.thorium-browser ];
 
   home = {
     sessionVariables = {

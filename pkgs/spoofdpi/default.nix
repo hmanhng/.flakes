@@ -20,6 +20,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/xvzc/SpoofDPI";
     license = licenses.asl20;
     mainProgram = "spoofdpi";
-    maintainers = with maintainers; [hmanhng];
+    maintainers = with maintainers; [ hmanhng ];
   };
 }

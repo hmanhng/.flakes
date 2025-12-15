@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   xdg.configFile."qutebrowser/userscripts/translate".source = ./translate;
   programs = {
     qutebrowser = {
@@ -48,14 +49,20 @@
         "np" = "https://search.nixos.org/packages?channel=unstable&query={}";
         "no" = "https://search.nixos.org/options?channel=unstable&query={}";
       };
-      quickmarks = {};
+      quickmarks = { };
       settings = {
         fonts = {
           default_family = "Iosevka Term";
           default_size = "15pt";
         };
         downloads.location.directory = "~/Downloads";
-        editor.command = ["emacsclient" "-c" "-a" "emacs" "{file}"];
+        editor.command = [
+          "emacsclient"
+          "-c"
+          "-a"
+          "emacs"
+          "{file}"
+        ];
         statusbar.show = "always";
         tabs.show = "always";
         url.default_page = "${../firefox/homepage.html}";

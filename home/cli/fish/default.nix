@@ -2,7 +2,8 @@
   pkgs,
   osConfig,
   ...
-}: {
+}:
+{
   programs.bash = {
     initExtra = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -48,8 +49,7 @@
         #   };
         # }
       ];
-    loginShellInit = ''
-    '';
+    loginShellInit = '''';
     interactiveShellInit = ''
       set fish_greeting ""
 

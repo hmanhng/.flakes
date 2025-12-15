@@ -1,4 +1,8 @@
-{disk ? "nvme0n1", ...}: {
+{
+  disk ? "nvme0n1",
+  ...
+}:
+{
   disko.devices = {
     disk = {
       ${disk} = {
@@ -16,7 +20,7 @@
               content = {
                 type = "filesystem";
                 format = "vfat";
-                extraArgs = ["-F 32"];
+                extraArgs = [ "-F 32" ];
                 mountpoint = "/boot";
                 mountOptions = [
                   "defaults"

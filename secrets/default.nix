@@ -2,12 +2,13 @@
   inputs,
   pkgs,
   ...
-}: {
-  imports = [inputs.sops-nix.nixosModules.sops];
-  environment.systemPackages = with pkgs; [sops];
+}:
+{
+  imports = [ inputs.sops-nix.nixosModules.sops ];
+  environment.systemPackages = with pkgs; [ sops ];
   sops.defaultSopsFile = ./secrets.yaml;
-  sops.age.sshKeyPaths = [];
-  sops.gnupg.sshKeyPaths = ["/home/hmanhng/.ssh/id_rsa"];
+  sops.age.sshKeyPaths = [ ];
+  sops.gnupg.sshKeyPaths = [ "/home/hmanhng/.ssh/id_rsa" ];
   # sops.gnupg.sshKeyPaths = [ "/home/hmanhng/.ssh" ];
   # sops.age.sshKeyPaths = [ ];
   # sops.age.keyFile = "/nix/secret_key";

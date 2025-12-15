@@ -4,10 +4,12 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   # pointer = config.home.pointerCursor;
   cursorName = "Bibata-Modern-Ice-Hyprcursor";
-in {
+in
+{
   programs.hyprland.settings = {
     env = [
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
@@ -44,7 +46,8 @@ in {
       gaps_in = 3;
       gaps_out = 5;
       border_size = 2;
-      "col.active_border" = "rgba(F38BA8FF) rgba(A6E3A1FF) rgba(F9E2AFFF) rgba(89B4FAFF) rgba(F5C2E7FF) rgba(94E2D5FF) 45deg";
+      "col.active_border" =
+        "rgba(F38BA8FF) rgba(A6E3A1FF) rgba(F9E2AFFF) rgba(89B4FAFF) rgba(F5C2E7FF) rgba(94E2D5FF) 45deg";
       "col.inactive_border" = "rgba(00000088)";
 
       resize_on_border = true;

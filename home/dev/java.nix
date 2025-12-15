@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # home.packages = with pkgs; [javaPackages.openjfx21];
   programs.java = {
     enable = true;

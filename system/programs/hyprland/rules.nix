@@ -1,33 +1,39 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   programs.hyprland.settings = {
     # layer rules
-    layerrule = let
-      toRegex = list: let
-        elements = lib.concatStringsSep "|" list;
-      in "match:namespace ^(${elements})$";
-      lowopacity = [
-        "waybar"
-        "calendar"
-        "notifications"
-        "system-menu"
-        "caelestia-.*"
+    layerrule =
+      let
+        toRegex =
+          list:
+          let
+            elements = lib.concatStringsSep "|" list;
+          in
+          "match:namespace ^(${elements})$";
+        lowopacity = [
+          "waybar"
+          "calendar"
+          "notifications"
+          "system-menu"
+          "caelestia-.*"
+        ];
+        highopacity = [
+          "anyrun"
+          "osd"
+          "logout_dialog"
+        ];
+        blurred = lib.concatLists [
+          lowopacity
+          highopacity
+        ];
+      in
+      [
+        "blur on, ${toRegex blurred}"
+        "blur_popups on, match:namespace caelestia-.*"
+        # "xray 1, ${toRegex ["caelestia-.*"]}"
+        "ignore_alpha 0.5, ${toRegex (highopacity ++ [ "music" ])}"
+        "ignore_alpha 0.2, ${toRegex lowopacity}"
       ];
-      highopacity = [
-        "anyrun"
-        "osd"
-        "logout_dialog"
-      ];
-      blurred = lib.concatLists [
-        lowopacity
-        highopacity
-      ];
-    in [
-      "blur on, ${toRegex blurred}"
-      "blur_popups on, match:namespace caelestia-.*"
-      # "xray 1, ${toRegex ["caelestia-.*"]}"
-      "ignore_alpha 0.5, ${toRegex (highopacity ++ ["music"])}"
-      "ignore_alpha 0.2, ${toRegex lowopacity}"
-    ];
 
     # window rules
     windowrule = [

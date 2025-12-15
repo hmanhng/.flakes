@@ -146,7 +146,8 @@ toolbarspring,
       (
         (2 * var(--toolbarbutton-inner-padding) + 16px) +
           (var(--toolbarbutton-outer-padding) * 2)
-      ) - var(--tab-block-margin)
+      ) -
+      var(--tab-block-margin)
   ) !important;
   position: static !important;
 }
@@ -228,10 +229,11 @@ toolbarspring,
 
 /* Hide unimportant buttons until hover */
 :root {
-  --in-transition: font-size 0.2s, padding 0.2s, margin 0.2s, max-width 0.2s,
+  --in-transition:
+    font-size 0.2s, padding 0.2s, margin 0.2s, max-width 0.2s,
     opacity 0.2s 0.15s;
-  --out-transition: font-size 0.2s, padding 0.2s, margin 0.2s, max-width 0.2s,
-    opacity 0.07s;
+  --out-transition:
+    font-size 0.2s, padding 0.2s, margin 0.2s, max-width 0.2s, opacity 0.07s;
 }
 #urlbar-container:hover #urlbar-input-container > box:not(#page-action-buttons),
 #urlbar-container:hover #page-action-buttons > *,
@@ -375,7 +377,8 @@ toolbarspring,
             (
               (2 * var(--toolbarbutton-inner-padding) + 16px) +
                 (var(--toolbarbutton-outer-padding) * 2)
-            ) - var(--tab-block-margin)
+            ) -
+            var(--tab-block-margin)
         ) !important;
       }
     }
@@ -434,7 +437,8 @@ toolbarspring,
             (
               (2 * var(--toolbarbutton-inner-padding) + 16px) +
                 (var(--toolbarbutton-outer-padding) * 2)
-            ) - var(--tab-block-margin) -
+            ) -
+            var(--tab-block-margin) -
             (var(--uc-navbar-padding, 0) + var(--uc-win-ctrl-padding))
         ) !important;
       }

@@ -2,14 +2,19 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   programs.yazi = {
     enable = true;
     # package = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.yazi;
     enableFishIntegration = true;
     settings = {
       manager = {
-        layout = [1 4 3];
+        layout = [
+          1
+          4
+          3
+        ];
         sort_by = "alphabetical";
         sort_sensitive = true;
         sort_reverse = false;

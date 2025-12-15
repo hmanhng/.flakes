@@ -1,3 +1,4 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   services.udiskie.enable = true;
 }

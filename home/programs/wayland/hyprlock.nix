@@ -3,9 +3,11 @@
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   font_family = "Maple Mono NF";
-in {
+in
+{
   programs.hyprlock = {
     enable = true;
 

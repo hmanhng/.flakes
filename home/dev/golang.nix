@@ -3,16 +3,20 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   # Module definition
-  myGoModule = {
-    config,
-    lib,
-    ...
-  }:
-    with lib; let
+  myGoModule =
+    {
+      config,
+      lib,
+      ...
+    }:
+    with lib;
+    let
       cfg = config.programs.go;
-    in {
+    in
+    {
       options.programs.go = {
         go111MODULE = mkOption {
           type = with types; nullOr str;
@@ -41,8 +45,9 @@
         ];
       };
     };
-in {
-  imports = [myGoModule];
+in
+{
+  imports = [ myGoModule ];
 
   programs.go = {
     enable = true;

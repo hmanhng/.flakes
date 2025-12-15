@@ -2,27 +2,28 @@
   self,
   inputs,
   ...
-}: {
-  flake.nixosConfigurations = let
-    # shorten paths
-    inherit (inputs.nixpkgs.lib) nixosSystem;
+}:
+{
+  flake.nixosConfigurations =
+    let
+      # shorten paths
+      inherit (inputs.nixpkgs.lib) nixosSystem;
 
-    # howdy = inputs.nixpkgs-howdy;
+      # howdy = inputs.nixpkgs-howdy;
 
-    homeImports = import "${self}/home/profiles";
+      homeImports = import "${self}/home/profiles";
 
-    mod = "${self}/system";
-    # get the basic config to build on top of
-    inherit (import mod) laptop;
+      mod = "${self}/system";
+      # get the basic config to build on top of
+      inherit (import mod) laptop;
 
-    # get these into the module system
-    specialArgs = {inherit inputs self;};
-  in {
-    laptop = nixosSystem {
-      inherit specialArgs;
-      modules =
-        laptop
-        ++ [
+      # get these into the module system
+      specialArgs = { inherit inputs self; };
+    in
+    {
+      laptop = nixosSystem {
+        inherit specialArgs;
+        modules = laptop ++ [
           ./laptop
           "${self}/secrets"
 
@@ -48,6 +49,6 @@
           inputs.disko.nixosModules.disko
           inputs.chaotic.nixosModules.default
         ];
+      };
     };
-  };
 }

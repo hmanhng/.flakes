@@ -1,29 +1,40 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   wayland.windowManager.hyprland.settings = {
     # layer rules
-    layerrule = let
-      toRegex = list: let
-        elements = lib.concatStringsSep "|" list;
-      in "^(${elements})$";
+    layerrule =
+      let
+        toRegex =
+          list:
+          let
+            elements = lib.concatStringsSep "|" list;
+          in
+          "^(${elements})$";
 
-      ignorealpha = [
-        # ags
-        "calendar"
-        "notifications"
-        "osd"
-        "system-menu"
+        ignorealpha = [
+          # ags
+          "calendar"
+          "notifications"
+          "osd"
+          "system-menu"
 
-        "rofi"
-        "logout_dialog"
+          "rofi"
+          "logout_dialog"
+        ];
+
+        layers = ignorealpha ++ [ "waybar" ];
+      in
+      [
+        "blur, ${toRegex layers}"
+        "xray 1, ${toRegex [ "waybar" ]}"
+        "ignorealpha 0.2, ${
+          toRegex [
+            "waybar"
+            "logout_dialog"
+          ]
+        }"
+        "ignorealpha 0.5, ${toRegex (ignorealpha ++ [ "music" ])}"
       ];
-
-      layers = ignorealpha ++ ["waybar"];
-    in [
-      "blur, ${toRegex layers}"
-      "xray 1, ${toRegex ["waybar"]}"
-      "ignorealpha 0.2, ${toRegex ["waybar" "logout_dialog"]}"
-      "ignorealpha 0.5, ${toRegex (ignorealpha ++ ["music"])}"
-    ];
 
     # window rules
     windowrulev2 = [

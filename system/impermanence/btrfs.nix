@@ -1,12 +1,13 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.btrfs.autoScrub.enable = true;
   boot.initrd = {
-    supportedFilesystems = ["btrfs"];
+    supportedFilesystems = [ "btrfs" ];
 
     # https://guekka.github.io/nixos-server-1/
     systemd.services.restore-root = {
       description = "Rollback btrfs rootfs";
-      wantedBy = ["initrd.target"];
+      wantedBy = [ "initrd.target" ];
       requires = [
         # "dev-disk-by\\x2dpartlabel-nixos.device"
         # for luks
@@ -18,7 +19,7 @@
         "dev-mapper-crypted.device"
         "systemd-cryptsetup@${config.networking.hostName}.service"
       ];
-      before = ["sysroot.mount"];
+      before = [ "sysroot.mount" ];
       unitConfig.DefaultDependencies = "no";
       serviceConfig.Type = "oneshot";
       script = ''

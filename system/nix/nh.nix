@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   programs.nh = {
     enable = true;
     flake = "/home/hmanhng/.flakes";

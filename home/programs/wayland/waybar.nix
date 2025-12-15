@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   launch_waybar = pkgs.writeShellScriptBin "launch_waybar" ''
     killall .waybar-wrapped
     SDIR="$HOME/.config/waybar"
@@ -26,7 +27,8 @@
     }
     [ "$1" == "toggle" ] && toggle || check
   '';
-in {
+in
+{
   home.packages = with pkgs; [
     launch_waybar
     warp
@@ -299,7 +301,7 @@ in {
           # "custom/cava-internal"
           # "hyprland/window"
         ];
-        modules-center = ["clock"];
+        modules-center = [ "clock" ];
         modules-right = [
           # "custom/warp"
           # "group/audio"
@@ -327,7 +329,11 @@ in {
             children-class = "launcher-group";
             transition-left-to-right = true;
           };
-          modules = ["custom/launcher" "custom/hyprpicker" "custom/screenshot"];
+          modules = [
+            "custom/launcher"
+            "custom/hyprpicker"
+            "custom/screenshot"
+          ];
         };
         "custom/launcher" = {
           format = "";
@@ -381,14 +387,20 @@ in {
           format = "{temperatureC}°C";
         };
 
-        "memory#icons" = {format = "mem";};
+        "memory#icons" = {
+          format = "mem";
+        };
         memory = {
           interval = 10;
           format = "{percentage}%";
-          states = {"warning" = 85;};
+          states = {
+            "warning" = 85;
+          };
         };
 
-        "cpu#icons" = {format = "cpu";};
+        "cpu#icons" = {
+          format = "cpu";
+        };
         cpu = {
           interval = 10;
           format = "{usage}%";
@@ -495,7 +507,12 @@ in {
             children-class = "audio-group";
             transition-left-to-right = false;
           };
-          modules = ["pulseaudio#icons" "pulseaudio#microphone" "pulseaudio#microphone-icons" "pulseaudio"];
+          modules = [
+            "pulseaudio#icons"
+            "pulseaudio#microphone"
+            "pulseaudio#microphone-icons"
+            "pulseaudio"
+          ];
         };
         "pulseaudio#icons" = {
           format = "vol";
@@ -540,7 +557,10 @@ in {
             children-class = "blacklight-group";
             transition-left-to-right = false;
           };
-          modules = ["backlight#icons" "backlight"];
+          modules = [
+            "backlight#icons"
+            "backlight"
+          ];
         };
         "backlight#icons" = {
           on-scroll-up = "brillo -A 2";
@@ -562,7 +582,10 @@ in {
             children-class = "bat-group";
             transition-left-to-right = false;
           };
-          modules = ["battery#icons" "battery"];
+          modules = [
+            "battery#icons"
+            "battery"
+          ];
         };
         "battery#icons" = {
           format = "bat";
@@ -588,7 +611,12 @@ in {
             children-class = "powermenu-group";
             transition-left-to-right = false;
           };
-          modules = ["custom/poweroff" "custom/lockscreen" "custom/suspend" "custom/reboot"];
+          modules = [
+            "custom/poweroff"
+            "custom/lockscreen"
+            "custom/suspend"
+            "custom/reboot"
+          ];
         };
         "custom/poweroff" = {
           format = "";

@@ -3,7 +3,8 @@
   self,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./specialisations.nix
     ./cli

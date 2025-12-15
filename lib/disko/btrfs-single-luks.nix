@@ -1,4 +1,8 @@
-{disk ? "nvme0n1", ...}: {
+{
+  disk ? "nvme0n1",
+  ...
+}:
+{
   disko.devices = {
     disk = {
       ${disk} = {
@@ -16,7 +20,7 @@
                 format = "vfat";
                 # extraArgs = ["-F 32"];
                 mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
+                mountOptions = [ "umask=0077" ];
               };
             };
             luks = {
@@ -29,13 +33,13 @@
                 passwordFile = "/tmp/secret.key"; # Interactive
                 settings = {
                   allowDiscards = true;
-                  crypttabExtraOpts = ["tpm2-device=auto"];
+                  crypttabExtraOpts = [ "tpm2-device=auto" ];
                   # keyFile = "/tmp/secret.key";
                 };
                 # additionalKeyFiles = ["/tmp/additionalSecret.key"];
                 content = {
                   type = "btrfs";
-                  extraArgs = ["-f"]; # Override existing partition
+                  extraArgs = [ "-f" ]; # Override existing partition
                   postCreateHook = ''
                     MNTPOINT=$(mktemp -d)
                     mount "/dev/mapper/crypted" "$MNTPOINT" -o subvol=/
@@ -45,15 +49,24 @@
                   subvolumes = {
                     "rootfs" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = ["compress=zstd" "lazytime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "lazytime"
+                      ];
                     };
                   };
                 };

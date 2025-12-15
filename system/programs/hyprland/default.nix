@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # (import ../../../modules/hyprland.nix inputs)
     inputs.hyprland.nixosModules.default
@@ -18,7 +19,7 @@
     inputs.self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.bibata-hyprcursor
   ];
 
-  environment.pathsToLink = ["/share/icons"];
+  environment.pathsToLink = [ "/share/icons" ];
 
   # enable hyprland and required options
   programs.hyprland = {

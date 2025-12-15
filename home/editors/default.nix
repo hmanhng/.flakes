@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ./nvim
   ];
@@ -25,8 +26,8 @@
 
     # Latex
     tectonic
-    (texliveBasic.withPackages (ps:
-      with ps; [
+    (texliveBasic.withPackages (
+      ps: with ps; [
         dvisvgm
         dvipng
         wrapfig
@@ -40,6 +41,7 @@
         # fancyhdr
         # latexmk
         # babel-vietnamese # Support vietnamese // lualatex support default.
-      ]))
+      ]
+    ))
   ];
 }

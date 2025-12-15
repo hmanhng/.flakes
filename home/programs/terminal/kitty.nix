@@ -7,8 +7,8 @@
   programs = {
     kitty = {
       enable = true;
-      environment = {};
-      keybindings = {};
+      environment = { };
+      keybindings = { };
       theme = "Rosé Pine";
       # font.name = "JetBrainsMono Nerd Font";
       font.name = "Maple Mono";

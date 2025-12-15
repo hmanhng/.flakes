@@ -1,11 +1,12 @@
-{config, ...}: {
+{ config, ... }:
+{
   networking = {
     hostId = "a2e4eded";
   };
   boot = {
     initrd = {
       verbose = true;
-      supportedFilesystems = ["zfs"];
+      supportedFilesystems = [ "zfs" ];
       postDeviceCommands = ''
         zfs rollback -r rpool/zroot@blank
       '';

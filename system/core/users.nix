@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Change default shell to fish
   # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
   # programs.fish = {

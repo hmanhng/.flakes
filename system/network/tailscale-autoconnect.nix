@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.tailscaleAutoconnect;
-in {
+in
+{
   options.services.tailscaleAutoconnect = {
     enable = mkEnableOption "tailscaleAutoconnect";
     authkeyFile = mkOption {
@@ -59,9 +61,15 @@ in {
       description = "Automatic connection to Tailscale";
 
       # make sure tailscale is running before trying to connect to tailscale
-      after = ["network-pre.target" "tailscale.service"];
-      wants = ["network-pre.target" "tailscale.service"];
-      wantedBy = ["multi-user.target"];
+      after = [
+        "network-pre.target"
+        "tailscale.service"
+      ];
+      wants = [
+        "network-pre.target"
+        "tailscale.service"
+      ];
+      wantedBy = [ "multi-user.target" ];
 
       serviceConfig.Type = "oneshot";
 
@@ -94,8 +102,8 @@ in {
     };
 
     networking.firewall = {
-      trustedInterfaces = ["tailscale0"];
-      allowedUDPPorts = [config.services.tailscale.port];
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
       # required to connect to Tailscale exit nodes
       checkReversePath = "loose";
     };
@@ -103,10 +111,7 @@ in {
     services.tailscale = {
       enable = true;
       openFirewall = true;
-      useRoutingFeatures =
-        if cfg.advertiseExitNode
-        then "server"
-        else "client";
+      useRoutingFeatures = if cfg.advertiseExitNode then "server" else "client";
     };
   };
 }

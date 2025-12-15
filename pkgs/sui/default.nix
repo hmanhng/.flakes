@@ -34,8 +34,8 @@ rustPlatform.buildRustPackage rec {
     changelog = "";
     description = "";
     homepage = "";
-    license = with lib.licenses; [];
+    license = with lib.licenses; [ ];
     mainProgram = "";
-    maintainers = with lib.maintainers; [];
+    maintainers = with lib.maintainers; [ ];
   };
 }

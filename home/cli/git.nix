@@ -2,10 +2,12 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.programs.git;
   key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIE7SZ125Onjw0TNCng0bxbXmsIZuVZIVjNrPOH886uY hmanhng@laptop";
-in {
+in
+{
   programs.gh.enable = true;
 
   # enable scrolling in git diff
@@ -14,7 +16,13 @@ in {
   programs.git = {
     enable = true;
 
-    ignores = ["*~" "*.swp" "*result*" ".direnv" "node_modules"];
+    ignores = [
+      "*~"
+      "*.swp"
+      "*result*"
+      ".direnv"
+      "node_modules"
+    ];
 
     signing = {
       key = "${config.home.homeDirectory}/.ssh/id_ed25519";
@@ -28,76 +36,79 @@ in {
         name = "Hmanhng";
       };
 
-      gpg.ssh.allowedSignersFile = config.home.homeDirectory + "/" + config.xdg.configFile."git/allowed_signers".target;
+      gpg.ssh.allowedSignersFile =
+        config.home.homeDirectory + "/" + config.xdg.configFile."git/allowed_signers".target;
 
       pull.rebase = true;
 
       diff.colorMoved = "default";
       merge.conflictstyle = "diff3";
 
-      alias = let
-        log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
-      in {
-        a = "add --patch"; # make it a habit to consciosly add hunks
-        ad = "add";
+      alias =
+        let
+          log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
+        in
+        {
+          a = "add --patch"; # make it a habit to consciosly add hunks
+          ad = "add";
 
-        b = "branch";
-        ba = "branch -a"; # list remote branches
-        bd = "branch --delete";
-        bdd = "branch -D";
+          b = "branch";
+          ba = "branch -a"; # list remote branches
+          bd = "branch --delete";
+          bdd = "branch -D";
 
-        c = "commit";
-        ca = "commit --amend";
-        cm = "commit --message";
+          c = "commit";
+          ca = "commit --amend";
+          cm = "commit --message";
 
-        co = "checkout";
-        cb = "checkout -b";
-        pc = "checkout --patch";
+          co = "checkout";
+          cb = "checkout -b";
+          pc = "checkout --patch";
 
-        cl = "clone";
+          cl = "clone";
 
-        d = "diff";
-        ds = "diff --staged";
+          d = "diff";
+          ds = "diff --staged";
 
-        h = "show";
-        h1 = "show HEAD^";
-        h2 = "show HEAD^^";
-        h3 = "show HEAD^^^";
-        h4 = "show HEAD^^^^";
-        h5 = "show HEAD^^^^^";
+          h = "show";
+          h1 = "show HEAD^";
+          h2 = "show HEAD^^";
+          h3 = "show HEAD^^^";
+          h4 = "show HEAD^^^^";
+          h5 = "show HEAD^^^^^";
 
-        p = "push";
-        pf = "push --force-with-lease";
+          p = "push";
+          pf = "push --force-with-lease";
 
-        pl = "pull";
+          pl = "pull";
 
-        l = log;
-        lp = "${log} --patch";
-        la = "${log} --all";
+          l = log;
+          lp = "${log} --patch";
+          la = "${log} --all";
 
-        r = "rebase";
-        ra = "rebase --abort";
-        rc = "rebase --continue";
-        ri = "rebase --interactive";
+          r = "rebase";
+          ra = "rebase --abort";
+          rc = "rebase --continue";
+          ri = "rebase --interactive";
 
-        rs = "reset";
-        rsh = "reset --hard";
-        rss = "reset --soft";
+          rs = "reset";
+          rsh = "reset --hard";
+          rss = "reset --soft";
 
-        s = "status --short --branch";
-        ss = "status";
+          s = "status --short --branch";
+          ss = "status";
 
-        st = "stash";
-        stc = "stash clear";
-        sth = "stash show --patch";
-        stl = "stash list";
-        stp = "stash pop";
+          st = "stash";
+          stc = "stash clear";
+          sth = "stash show --patch";
+          stl = "stash list";
+          stp = "stash pop";
 
-        forgor = "commit --amend --no-edit";
-        oops = "checkout --";
+          forgor = "commit --amend --no-edit";
+          oops = "checkout --";
 
-        diff-side-by-side = "-c delta.features=side-by-side diff";
-      };
+          diff-side-by-side = "-c delta.features=side-by-side diff";
+        };
     };
   };
 

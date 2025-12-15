@@ -1,4 +1,4 @@
 {
   programs.adb.enable = true;
-  users.users.hmanhng.extraGroups = ["adbusers"];
+  users.users.hmanhng.extraGroups = [ "adbusers" ];
 }

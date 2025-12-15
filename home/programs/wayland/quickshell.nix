@@ -1,11 +1,12 @@
-{inputs, ...}: {
-  imports = [inputs.caelestia-shell.homeManagerModules.default];
+{ inputs, ... }:
+{
+  imports = [ inputs.caelestia-shell.homeManagerModules.default ];
   programs.caelestia = {
     enable = true;
     systemd = {
       enable = false; # if you prefer starting from your compositor
       target = "graphical-session.target";
-      environment = [];
+      environment = [ ];
     };
     settings = {
       appearance = {
@@ -21,7 +22,7 @@
         };
       };
       general = {
-        apps.audio = ["pwvucontrol"];
+        apps.audio = [ "pwvucontrol" ];
       };
       bar = {
         status = {

@@ -2,12 +2,13 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./tailscale-autoconnect.nix
   ];
 
-  sops.secrets.tailscale_auth = {};
+  sops.secrets.tailscale_auth = { };
   services = {
     tailscaleAutoconnect = {
       enable = true;

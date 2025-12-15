@@ -3,29 +3,26 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   programs.emacs = {
     enable = true;
-    package =
-      if builtins.hasAttr "wayland" pkgs == true
-      then pkgs.emacs-pgtk
-      else pkgs.emacs;
-    overrides = self: super: {};
+    package = if builtins.hasAttr "wayland" pkgs == true then pkgs.emacs-pgtk else pkgs.emacs;
+    overrides = self: super: { };
     extraPackages = epkgs: [
       epkgs.vterm
       # epkgs.editorconfig
       # epkgs.emms
       # epkgs.magit
     ];
-    extraConfig = ''
-    '';
+    extraConfig = '''';
   };
   home = {
     sessionVariables = {
       # Minemacs
       # MINEMACS_ALPHA = "90";
     };
-    sessionPath = ["$HOME/.config/emacs/bin"];
+    sessionPath = [ "$HOME/.config/emacs/bin" ];
   };
   # systemd.user.services.emacs.Service = {
   #   Environment = [
@@ -38,7 +35,7 @@
     defaultEditor = false;
     client = {
       enable = true;
-      arguments = ["-c"];
+      arguments = [ "-c" ];
     };
   };
 }

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # File explore
   programs.thunar = {
     enable = true;

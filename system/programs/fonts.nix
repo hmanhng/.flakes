@@ -2,18 +2,20 @@
   pkgs,
   self,
   ...
-}: let
+}:
+let
   myFont = builtins.fetchTarball {
     url = "https://github.com/hmanhng/fonts/archive/master.tar.gz";
     sha256 = "02ifsl1rvigslxdlrfm54d8lgx14i70zc0w6r3k1izzh13m76ggg";
   };
-in {
+in
+{
   home-manager.users.hmanhng = {
     xdg.dataFile."./fonts" = {
       source = "${myFont}";
       recursive = true;
     };
-    home.packages = with pkgs; [font-manager];
+    home.packages = with pkgs; [ font-manager ];
   };
 
   fonts = {
@@ -40,9 +42,9 @@ in {
 
     fontconfig = {
       defaultFonts = {
-        serif = ["IBM Plex Serif"];
-        sansSerif = ["IBM Plex Sans"];
-        monospace = ["IBM Plex Mono"];
+        serif = [ "IBM Plex Serif" ];
+        sansSerif = [ "IBM Plex Sans" ];
+        monospace = [ "IBM Plex Mono" ];
       };
       localConf = ''
         <?xml version="1.0"?>

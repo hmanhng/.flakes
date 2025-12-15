@@ -20,14 +20,13 @@ let
     ./services/pipewire.nix
   ];
 
-  laptop =
-    desktop
-    ++ [
-      ./hardware/bluetooth.nix
-      # ./hardware/brillo.nix # use caelestia-shell
+  laptop = desktop ++ [
+    ./hardware/bluetooth.nix
+    # ./hardware/brillo.nix # use caelestia-shell
 
-      ./services/power.nix
-    ];
-in {
+    ./services/power.nix
+  ];
+in
+{
   inherit desktop laptop;
 }

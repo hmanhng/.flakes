@@ -2,7 +2,8 @@
   pkgs,
   self,
   ...
-}: {
+}:
+{
   home = {
     sessionVariables = {
       BROWSER = "firefox";
@@ -66,31 +67,31 @@
         default = "Google";
         engines = {
           "Nix Packages" = {
-            urls = [{template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";}];
+            urls = [ { template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; } ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = ["np"];
+            definedAliases = [ "np" ];
           };
           "Nix Options" = {
-            urls = [{template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}";}];
+            urls = [ { template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; } ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = ["no"];
+            definedAliases = [ "no" ];
           };
           "MyNixOS" = {
-            urls = [{template = "https://mynixos.com/search?q={searchTerms}";}];
+            urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = ["nm"];
+            definedAliases = [ "nm" ];
           };
 
           "NixOS Wiki" = {
-            urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
+            urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
             iconUpdateURL = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = ["nw"];
+            definedAliases = [ "nw" ];
           };
           "YouTube" = {
-            urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
+            urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
             iconUpdateURL = "https://cdn-icons-png.flaticon.com/512/1384/1384060.png";
-            definedAliases = ["yt"];
+            definedAliases = [ "yt" ];
           };
           #"Google".metaData.hidden = true;
           "DuckDuckGo".metaData.hidden = true;

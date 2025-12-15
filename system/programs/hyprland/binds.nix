@@ -1,24 +1,32 @@
 let
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-  workspaces = builtins.concatLists (builtins.genList (
-      x: let
-        ws = let
-          c = (x + 1) / 10;
-        in
+  workspaces = builtins.concatLists (
+    builtins.genList (
+      x:
+      let
+        ws =
+          let
+            c = (x + 1) / 10;
+          in
           builtins.toString (x + 1 - (c * 10));
-      in [
+      in
+      [
         "$mod, ${ws}, workspace, ${toString (x + 1)}"
         "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
       ]
-    )
-    10);
+    ) 10
+  );
 
-  toggle = program: let
-    prog = builtins.substring 0 14 program;
-  in "pkill ${prog} || uwsm app -- ${program}";
+  toggle =
+    program:
+    let
+      prog = builtins.substring 0 14 program;
+    in
+    "pkill ${prog} || uwsm app -- ${program}";
 
   runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
-in {
+in
+{
   programs.hyprland = {
     settings = {
       "$MOD" = "SUPER";
@@ -79,14 +87,23 @@ in {
         "ALT, Tab, bringactivetotop" # bring it to the top
 
         # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-        "${builtins.concatStringsSep "\n" (builtins.genList (x: let
-            ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10));
-          in ''
-            bind = $MOD, ${ws}, workspace, ${toString (x + 1)}
-            bind = $MODSHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
-            bind = $MODCTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}
-          '')
-          10)}"
+        "${builtins.concatStringsSep "\n" (
+          builtins.genList (
+            x:
+            let
+              ws =
+                let
+                  c = (x + 1) / 10;
+                in
+                builtins.toString (x + 1 - (c * 10));
+            in
+            ''
+              bind = $MOD, ${ws}, workspace, ${toString (x + 1)}
+              bind = $MODSHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+              bind = $MODCTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}
+            ''
+          ) 10
+        )}"
 
         # to workspace
         "$MOD, mouse_down, workspace, e-1"
