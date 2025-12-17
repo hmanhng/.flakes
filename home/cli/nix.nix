@@ -6,8 +6,8 @@
 # nix tooling
 {
   home.packages = with pkgs; [
-    alejandra
     deadnix
+    nixfmt
     statix
     # self.packages.${pkgs.stdenv.hostPlatform.system}.repl
   ];

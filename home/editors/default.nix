@@ -14,8 +14,6 @@
 
     # Nix
     nil
-    # nixfmt
-    alejandra
 
     # Java
     jdt-language-server
