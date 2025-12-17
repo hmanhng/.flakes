@@ -3,6 +3,7 @@
     ../../editors
     ../../editors/code
     ../../editors/emacs
+    ../../editors/antigravity
 
     ../../programs
     ../../dev
