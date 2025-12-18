@@ -4,7 +4,7 @@
   ...
 }:
 {
-  home.packages = [ self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.thorium-browser ];
+  home.packages = [ pkgs.ungoogled-chromium ];
 
   home = {
     sessionVariables = {
@@ -12,9 +12,9 @@
       --enable-wayland-ime
       --ozone-platform-hint=auto
       --enable-features=TouchpadOverscrollHistoryNavigation
-      --enable-features=VaapiVideoDecodeLinuxGL
-      # --high-dpi-support=1
-      # --force-device-scale-factor=2
+      --enable-features=AcceleratedVideoDecodeLinuxGL
+      --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL
+      --force-device-scale-factor=1
       ";
     };
   };

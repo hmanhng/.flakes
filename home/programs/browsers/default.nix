@@ -16,7 +16,7 @@ in
   imports = [
     # ./firefox
     ./qutebrowser
-    ./thorium-browser
+    ./ungoogled-chromium.nix
     ./zen.nix
   ];
 }
