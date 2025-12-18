@@ -109,7 +109,6 @@
       fl = "cd ~/.flakes";
 
       xdg-ninja = ", xdg-ninja";
-      adb = "alias adb='HOME=\"${config.xdg.dataHome}\"/android adb'";
     };
   };
   home.file.".config/fish/functions/owf.fish".text = import ./functions/owf.nix;

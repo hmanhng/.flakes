@@ -24,22 +24,5 @@
 
     # Latex
     tectonic
-    (texliveBasic.withPackages (
-      ps: with ps; [
-        dvisvgm
-        dvipng
-        wrapfig
-        amsmath
-        ulem
-        hyperref
-        capt-of
-        # biblatex
-        # biber
-        # synctex
-        # fancyhdr
-        # latexmk
-        # babel-vietnamese # Support vietnamese // lualatex support default.
-      ]
-    ))
   ];
 }

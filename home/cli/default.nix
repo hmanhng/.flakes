@@ -35,8 +35,8 @@
 
   home.packages = with pkgs; [
     fd
-    ripgrep
     jaq
+    ripgrep
 
     ## Tool, etc ...
     cargo
