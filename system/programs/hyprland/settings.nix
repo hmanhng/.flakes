@@ -35,8 +35,6 @@ in
       "wl-paste --watch cliphist store"
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
 
-      # "${lib.getExe self.legacyPackages.${pkgs.stdenv.hostPlatform.system}.spoofdpi}"
-
       # run shell
       "caelestia resizer -d"
       "caelestia shell -d && caelestia shell lock lock"
@@ -56,6 +54,9 @@ in
     decoration = {
       rounding = 10;
       rounding_power = 2.5;
+      # active_opacity = 1;
+      # inactive_opacity = 0.8;
+      dim_inactive = true;
       blur = {
         enabled = true;
         brightness = 1.0;
@@ -65,11 +66,8 @@ in
         vibrancy = 0.2;
         vibrancy_darkness = 0.5;
 
-        passes = 4;
+        passes = 3;
         size = 7;
-
-        popups = true;
-        popups_ignorealpha = 0.2;
       };
 
       shadow = {
@@ -85,22 +83,30 @@ in
 
     animations.enabled = true;
 
-    animation = [
-      "border, 1, 2, default"
-      "fade, 1, 4, default"
-      "windows, 1, 3, default, popin 80%"
-      "workspaces, 1, 2, default, slide"
+    bezier = [
+      "fluent_decel, 0, 0.2, 0.4, 1"
+      "easeOutCirc, 0, 0.55, 0.45, 1"
+      "easeOutCubic, 0.33, 1, 0.68, 1"
+      "fade_curve, 0, 0.55, 0.45, 1"
     ];
+    animation = [
+      # name, enable, speed, curve, style
 
-    group = {
-      groupbar = {
-        font_size = 10;
-        gradients = false;
-        text_color = "rgb(b6c4ff)";
-      };
-      "col.border_active" = "rgba(35447988)";
-      "col.border_inactive" = "rgba(dce1ff88)";
-    };
+      # Windows
+      "windowsIn,   0, 4, easeOutCubic,  popin 20%" # window open
+      "windowsOut,  0, 4, fluent_decel,  popin 80%" # window close.
+      "windowsMove, 1, 2, fluent_decel, slide" # everything in between, moving, dragging, resizing.
+
+      # Fade
+      "fadeIn,      1, 3,   fade_curve" # fade in (open) -> layers and windows
+      "fadeOut,     1, 3,   fade_curve" # fade out (close) -> layers and windows
+      "fadeSwitch,  0, 1,   easeOutCirc" # fade on changing activewindow and its opacity
+      "fadeShadow,  1, 10,  easeOutCirc" # fade on changing activewindow for shadows
+      "fadeDim,     1, 4,   fluent_decel" # the easing of the dimming of inactive windows
+      # "border,      1, 2.7, easeOutCirc"  # for animating the border's color switch speed
+      # "borderangle, 1, 30,  fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
+      "workspaces,  1, 4,   easeOutCubic, fade" # styles: slide, slidevert, fade, slidefade, slidefadevert
+    ];
 
     input = {
       kb_layout = "us";
@@ -122,6 +128,16 @@ in
       "4, pinch, fullscreen"
     ];
 
+    group = {
+      groupbar = {
+        font_size = 10;
+        gradients = false;
+        text_color = "rgb(b6c4ff)";
+      };
+      "col.border_active" = "rgba(35447988)";
+      "col.border_inactive" = "rgba(dce1ff88)";
+    };
+
     dwindle = {
       # keep floating dimentions while tiling
       pseudotile = true;
@@ -142,12 +158,14 @@ in
 
       # focus_on_activate = true;
 
+      on_focus_under_fullscreen = 0;
+
       # enable_swallow = true;
       swallow_regex = "foot";
       swallow_exception_regex = "";
     };
 
-    render.direct_scanout = true;
+    render.direct_scanout = 2;
 
     xwayland.force_zero_scaling = true;
 

@@ -74,14 +74,11 @@
       "pin on, match:title ^(Picture-in-Picture)$"
 
       # throw sharing indicators away
-      "workspace special silent, match:title ^(Firefox — Sharing Indicator)$"
       "workspace special silent, match:title ^(Zen — Sharing Indicator)$"
       "workspace special silent, match:title ^(.*is sharing (your screen|a window)\.)$"
 
       # idle inhibit while watching videos
       "idle_inhibit focus, match:class ^(mpv|.+exe|vlc)$"
-      "idle_inhibit focus, match:class ^(firefox)$, match:title ^(.*YouTube.*)$"
-      "idle_inhibit fullscreen, match:class ^(firefox)$"
       "idle_inhibit focus, match:class ^(zen.*)$, match:title ^(.*YouTube.*)$"
       "idle_inhibit fullscreen, match:class ^(zen.*)$"
       "idle_inhibit always, match:class ^(discord)$"
@@ -98,18 +95,9 @@
 
       # less sensitive scroll for some windows
       # browser(-based)
-      "scroll_touchpad 0.1, match:class ^(zen.*|firefox|chromium-browser|chrome-.*)$"
-      "scroll_touchpad 0.1, match:class ^(obsidian)$"
-      # GTK3
-      "scroll_touchpad 0.1, match:class ^(com.github.xournalpp.xournalpp)$"
-      "scroll_touchpad 0.1, match:class ^(libreoffice.*)$"
-      "scroll_touchpad 0.1, match:class ^(.virt-manager-wrapped)$"
-      "scroll_touchpad 0.1, match:class ^(xdg-desktop-portal-gtk)$"
-      # Qt5
-      "scroll_touchpad 0.1, match:class ^(org.prismlauncher.PrismLauncher)$"
-      "scroll_touchpad 0.1, match:class ^(org.kde.kdeconnect.app)$"
+      "scroll_touchpad 0.1, match:class ^(zen.*|firefox)$"
       # Others
-      "scroll_touchpad 0.1, match:class ^(org.pwmt.zathura)$"
+      # "scroll_touchpad 0.1, match:class ^(org.pwmt.zathura)$"
     ];
   };
 }
