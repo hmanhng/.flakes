@@ -7,6 +7,7 @@
 
     ../../programs
     ../../dev
+    ../../cli/llm.nix
 
     ../../services
     ../../services/system/power-monitor.nix
