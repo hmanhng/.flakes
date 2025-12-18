@@ -104,7 +104,7 @@
           # "firefox-extension@steamdb.info" = "steam-database";
           # "@searchengineadremover" = "searchengineadremover";
           # "jid1-BoFifL9Vbdl2zQ@jetpack" = "decentraleyes";
-          "{b86e4813-687a-43e6-ab65-0bde4ab75758}" = "localcdn-fork-of-decentraleyes";
+          # "{b86e4813-687a-43e6-ab65-0bde4ab75758}" = "localcdn-fork-of-decentraleyes";
           # "trackmenot@mrl.nyu.edu" = "trackmenot";
           # "{861a3982-bb3b-49c6-bc17-4f50de104da1}" = "custom-user-agent-revived";
           "sponsorBlocker@ajay.app" = "sponsorblock";
