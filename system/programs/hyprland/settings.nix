@@ -56,7 +56,7 @@ in
       rounding_power = 2.5;
       # active_opacity = 1;
       # inactive_opacity = 0.8;
-      dim_inactive = true;
+      # dim_inactive = true;
       blur = {
         enabled = true;
         brightness = 1.0;

@@ -7,7 +7,7 @@
     {
       monitor = [
         "eDP-1, 3072x1920@60, 0x0, 2" # thinkbook 14 g6+ 14.5inh 3k 120hz
-        "desc:Samsung Electric Company LF24T450F HNAX500305, 1920x1080@75, auto-right, 1" # samsung 24inh
+        "desc:Samsung Electric Company LF24T450F HNAX500305, 1920x1080@75, auto-up, 1" # samsung 24inh
       ];
 
       "device[cirq1080:00-0488:1054-touchpad]" = {
