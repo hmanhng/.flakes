@@ -96,8 +96,6 @@
       ef = "e $(fzf)";
       f = "fzf";
 
-      r = "yazi"; # change ranger -> yazi -- faster
-      y = "yazi";
       n = "nitch";
 
       wget = "wget --hsts-file=\"\$XDG_DATA_HOME/wget-hsts\"";
@@ -107,8 +105,6 @@
       nhs = "nh os switch -H ${osConfig.networking.hostName}";
       fc = "nix flake check";
       fl = "cd ~/.flakes";
-
-      xdg-ninja = ", xdg-ninja";
     };
   };
   home.file.".config/fish/functions/owf.fish".text = import ./functions/owf.nix;
