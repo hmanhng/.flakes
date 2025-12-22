@@ -47,13 +47,19 @@
   ];
 
   # programs.thefuck.enable = true;
-  programs.zoxide.enable = true;
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 
-  programs.eza.enable = true;
+  programs.eza = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 
   programs.fzf = {
     enable = true;
-    enableFishIntegration = false;
+    enableFishIntegration = true;
     defaultCommand = "fd --hidden --type l --type f --type d --exclude .git --exclude .cache";
     defaultOptions = [
       "--preview 'bat --line-range :500 {}'"
