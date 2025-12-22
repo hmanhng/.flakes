@@ -39,21 +39,10 @@
     ripgrep
 
     ## Tool, etc ...
-    cargo
-    clang-tools
-    cmake
-    dotnet-sdk
-    gcc
-    gnumake
-    just
-    lua
-
-    #
     nitch
     speedtest-go
     killall
-    p7zip # Archiving and compression
-    socat
+    ouch # Archiving and compression
     wget
   ];
 

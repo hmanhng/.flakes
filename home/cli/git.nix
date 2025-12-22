@@ -33,7 +33,7 @@ in
     settings = {
       user = {
         email = "hmanhng@icloud.com";
-        name = "Hmanhng";
+        name = "hmanhng";
       };
 
       gpg.ssh.allowedSignersFile =
