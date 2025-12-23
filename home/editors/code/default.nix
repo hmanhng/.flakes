@@ -15,7 +15,7 @@ in
 {
   programs.vscode = {
     enable = true;
-    package = code;
+    package = pkgs.vscode-fhs;
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
