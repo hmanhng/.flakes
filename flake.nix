@@ -107,7 +107,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        nix-index-database.follows = "nix-index-db";
+      };
+    };
 
     nur.url = "github:nix-community/NUR";
 
@@ -165,13 +172,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix"; # Soothing pastel theme for Nix ❄️
+    catppuccin = {
+      url = "github:catppuccin/nix"; # Soothing pastel theme for Nix ❄️
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
     spicetify-nix = {
@@ -187,8 +200,11 @@
     };
 
     antigravity-nix = {
-      url = "github:jacopone/antigravity-nix/v1.11.17-6639170008514560";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:jacopone/antigravity-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
 
     llm-agents.url = "github:numtide/llm-agents.nix";
