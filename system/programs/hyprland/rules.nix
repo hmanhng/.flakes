@@ -45,7 +45,7 @@
       "float on, match:class ^(imv)$"
       "float on, match:class ^(mpv)$"
       "float on, match:class ^(termfloat)$"
-      "float on, match:class ^(thunar)$"
+      "float on, match:class ^(Thunar)$"
       "float on, match:class ^(com.saivert.pwvucontrol)$"
       "float on, match:class ^(ncmpcpp)"
       "float on, match:class ^(confirm)$"
@@ -62,7 +62,7 @@
       "workspace special:emacs, match:class ^(emacs)$"
       "workspace special:music, match:class ^(spotify)$"
       "size 1100 600, match:class ^(termfloat)$"
-      "size 1100 600, match:class ^(thunar)$"
+      "size 1100 600, match:class ^(Thunar)$"
 
       "opacity 0.9, match:class ^(spotify)$"
       "xray 1, match:class ^(spotify)$"
