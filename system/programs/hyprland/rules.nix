@@ -96,7 +96,7 @@
 
       # less sensitive scroll for some windows
       # browser(-based)
-      "scroll_touchpad 0.1, match:class ^(zen.*|firefox)$"
+      "scroll_touchpad 0.1, match:class ^(zen.*|firefox|chromium-browser)$"
       # Others
       # "scroll_touchpad 0.1, match:class ^(org.pwmt.zathura)$"
     ];
