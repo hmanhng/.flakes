@@ -10,9 +10,16 @@
     enable = true;
     package = inputs.hyprpaper.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
+    importantPrefixes = [ "monitor" ];
     settings = {
-      preload = [ "${config.theme.wallpaper}" ];
-      wallpaper = [ ", ${config.theme.wallpaper}" ];
+      splash = false;
+      wallpaper = [
+        {
+          monitor = "";
+          path = config.theme.wallpaper;
+          fit_mode = "cover";
+        }
+      ];
     };
   };
 }
