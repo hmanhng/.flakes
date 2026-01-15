@@ -127,10 +127,7 @@ in
       bindr = [
         "$MODCTRL, SPACE, global, caelestia:launcher"
         # launcher
-        "$MOD, SPACE, exec, ${toggle "rofi"} -show combi -show-icons"
-        # rofi menu
-        "$MOD, apostrophe, exec, ~/.config/rofi/cliphist/cliphist-rofi.sh"
-        # "$MODSHIFT, P, exec, bash ~/.config/rofi/powermenu/powermenu.sh"
+        "$MOD, SUPER_L, exec, vicinae toggle"
         # Bookmarks
         "$MOD, semicolon, exec, ~/.flakes/home/bookmarks/bm_rofi.sh"
         "$MODSHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh"

@@ -31,8 +31,8 @@ in
       "${lib.getExe' pkgs.wlsunset "wlsunset"} -t 5000 -S 7:00 -s 20:00"
 
       # clipboard
-      "ydotoold"
-      "wl-paste --watch cliphist store"
+      # "ydotoold"
+      # "wl-paste --watch cliphist store"
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
 
       # run shell

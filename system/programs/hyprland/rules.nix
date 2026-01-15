@@ -18,7 +18,7 @@
           "caelestia-.*"
         ];
         highopacity = [
-          "anyrun"
+          "vicinae"
           "osd"
           "logout_dialog"
         ];
@@ -33,6 +33,7 @@
         # "xray 1, ${toRegex ["caelestia-.*"]}"
         "ignore_alpha 0.5, ${toRegex (highopacity ++ [ "music" ])}"
         "ignore_alpha 0.2, ${toRegex lowopacity}"
+        "no_anim on, match:namespace vicinae"
       ];
 
     # window rules
