@@ -34,6 +34,8 @@
 
           "${mod}/programs/hyprland"
 
+          "${mod}/virtualisation/docker.nix"
+
           {
             home-manager = {
               users.hmanhng.imports = homeImports."hmanhng@laptop";
