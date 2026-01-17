@@ -5,13 +5,13 @@ let
 
     ./hardware/graphics.nix
     ./hardware/fwupd.nix
-    ./hardware/android.nix
 
     ./network/avahi.nix
     ./network/default.nix
     # ./network/tailscale.nix
 
     ./programs
+    ./programs/android.nix
 
     ./services
     ./services/location.nix
