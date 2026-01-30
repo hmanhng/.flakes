@@ -3,7 +3,7 @@
   imports = [ inputs.catppuccin.homeModules.catppuccin ];
   catppuccin = {
     enable = false;
-    cache.enable = true;
+    # cache.enable = true;
     flavor = "macchiato"; # "latte", "frappe", "macchiato", "mocha"
 
     mako.enable = false; # FIXME: https://github.com/nix-community/home-manager/issues/6971

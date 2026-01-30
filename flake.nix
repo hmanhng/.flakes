@@ -172,10 +172,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin = {
-      url = "github:catppuccin/nix"; # Soothing pastel theme for Nix ❄️
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    catppuccin.url = "github:catppuccin/nix";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
