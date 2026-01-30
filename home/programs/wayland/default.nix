@@ -7,7 +7,6 @@
 # Wayland config
 {
   imports = [
-    # ./hyprland
     ./hyprlock.nix
     # ./waybar.nix
     ./quickshell.nix
