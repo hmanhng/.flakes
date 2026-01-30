@@ -25,7 +25,7 @@ in
       "uwsm finalize"
       # set cursor for HL itself
       "hyprctl setcursor ${cursorName} ${toString 24}"
-      # "hyprlock"
+      "hyprlock"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
       # clipboard
@@ -35,7 +35,7 @@ in
 
       # run shell
       "caelestia resizer -d"
-      "caelestia shell -d && caelestia shell lock lock"
+      "caelestia shell -d"
     ];
 
     general = {

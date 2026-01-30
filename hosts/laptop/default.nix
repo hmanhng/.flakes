@@ -1,5 +1,4 @@
 {
-  # inputs,
   pkgs,
   config,
   lib,
@@ -9,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./hyprland.nix
+    ./howdy.nix
   ];
 
   networking.hostName = "laptop"; # Define your hostname.
@@ -18,23 +18,6 @@
   services = {
     # for SSD/NVME
     fstrim.enable = true;
-
-    # howdy = {
-    #   enable = true;
-    #   package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.stdenv.hostPlatform.system}.howdy;
-    #   settings = {
-    #     core = {
-    #       no_confirmation = true;
-    #       abort_if_ssh = true;
-    #     };
-    #     video.dark_threshold = 90;
-    #   };
-    # };
-
-    # linux-enable-ir-emitter = {
-    #   enable = true;
-    #   package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linux-enable-ir-emitter;
-    # };
   };
 
   hardware = {
@@ -51,7 +34,6 @@
       ''acpi_osi="Windows 2020"''
       "amdgpu.dcfeaturemask=0x8"
     ];
-
     blacklistedKernelModules = [
       # "ideapad_laptop" # fix https://bbs.archlinux.org/viewtopic.php?id=295464
     ];

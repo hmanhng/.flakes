@@ -9,8 +9,6 @@
       # shorten paths
       inherit (inputs.nixpkgs.lib) nixosSystem;
 
-      # howdy = inputs.nixpkgs-howdy;
-
       homeImports = import "${self}/home/profiles";
 
       mod = "${self}/system";
@@ -43,13 +41,7 @@
             };
           }
 
-          # {disabledModules = ["security/pam.nix"];}
-          # "${howdy}/nixos/modules/security/pam.nix"
-          # "${howdy}/nixos/modules/services/security/howdy"
-          # "${howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
-
           inputs.disko.nixosModules.disko
-          inputs.chaotic.nixosModules.default
         ];
       };
     };

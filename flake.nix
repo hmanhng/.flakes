@@ -167,8 +167,6 @@
       };
     };
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -178,8 +176,6 @@
       url = "github:catppuccin/nix"; # Soothing pastel theme for Nix ❄️
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";

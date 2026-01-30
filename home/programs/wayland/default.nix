@@ -8,7 +8,7 @@
 {
   imports = [
     # ./hyprland
-    # ./hyprlock.nix
+    ./hyprlock.nix
     # ./waybar.nix
     ./quickshell.nix
     ./rofi
