@@ -44,7 +44,7 @@ in
         "$MODSHIFT, Return, exec, uwsm app -- foot --app-id termfloat"
         "$MOD, E, exec, ${runOnce "emacs"}"
         "$MOD, D, exec, uwsm app -- thunar"
-        "$MOD, B, exec, ${runOnce "qutebrowser"}"
+        # "$MOD, B, exec, uwsm app -- qutebrowser"
         "$MOD, W, exec, ${runOnce "zen-beta"}"
         "$MODSHIFT, W, exec, uwsm app -- zen-beta --private-window"
         "$MODSHIFT, M, exec, [workspace name:Music] tidal-hifi"

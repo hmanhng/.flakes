@@ -11,22 +11,23 @@
       };
       greasemonkey = [
         (pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/afreakk/greasemonkeyscripts/1d1be041a65c251692ee082eda64d2637edf6444/youtube_sponsorblock.js";
-          sha256 = "sha256-e3QgDPa3AOpPyzwvVjPQyEsSUC9goisjBUDMxLwg8ZE=";
+          url = "https://raw.githubusercontent.com/afreakk/greasemonkeyscripts/2ff7742d56fa626b4023a365a85e11750245b27c/youtube_adblock.js";
+          sha256 = "sha256-AyD9VoLJbKPfqmDEwFIEBMl//EIV/FYnZ1+ona+VU9c=";
         })
         (pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/afreakk/greasemonkeyscripts/bebaf31afa8b0f0ef3c0248faafabbd9bb7a1d54/youtube_adblock.js";
-          sha256 = "sha256-CaG6lw3Tg34BtIhL3MzAZSx/J6khCEBKUydHKhTtiHY=";
+          url = "https://raw.githubusercontent.com/afreakk/greasemonkeyscripts/4cb4b6dfcb31545f88b2fcae87f5fde33157fd72/youtube_sponsorblock.js";
+          sha256 = "sha256-nwNade1oHP+w5LGUPJSgAX1+nQZli4Rhe8FFUoF5mLE=";
+        })
+        (pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/afreakk/greasemonkeyscripts/69df2b309eae2af18bb1d1ff1790f1d92d8e6a5d/youtube_shorts_block.js";
+          sha256 = "sha256-e9qCSAuEMoNivepy7W/W5F9D1PJZrPAJoejsBi9ejiY=";
         })
       ];
       keyBindings = {
         normal = {
           "." = "cmd-set-text :";
           ",D" = "hint links spawn foot yt-dlp {hint-url}";
-          ",d" = "hint links spawn xdman {hint-url}";
           ",m" = "hint links spawn mpv --profile=M60 {hint-url}";
-          ",p" = "set content.proxy http://localhost:8080/";
-          ",P" = "set content.proxy system";
           "ch" = "history-clear";
           "t" = "cmd-set-text -s :open -t";
           "xb" = "config-cycle statusbar.show always never";
@@ -56,13 +57,6 @@
           default_size = "15pt";
         };
         downloads.location.directory = "~/Downloads";
-        editor.command = [
-          "emacsclient"
-          "-c"
-          "-a"
-          "emacs"
-          "{file}"
-        ];
         statusbar.show = "always";
         tabs.show = "always";
         url.default_page = "${../firefox/homepage.html}";
@@ -73,7 +67,7 @@
           adblock.lists = [
             "https://easylist.to/easylist/easylist.txt"
             "https://easylist.to/easylist/easyprivacy.txt"
-            "https://abpvn.com/filter/abpvn-iOCIg8.txt"
+            "https://abpvn.com/filter/abpvn-O2ghOE.txt"
           ];
           hosts.lists = [
             "https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts"

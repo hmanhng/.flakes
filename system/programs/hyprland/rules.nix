@@ -50,6 +50,7 @@
       "float on, match:class ^(notification)$"
       "float on, match:class ^(error)$"
       "float on, match:class ^(confirmreset)$"
+      "float on, match:class ^(xdg-desktop-portal-gtk)$"
 
       # workspace
       "workspace special:firefox, match:class ^(firefox)$"
