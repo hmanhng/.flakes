@@ -1,22 +1,4 @@
 let
-  # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-  workspaces = builtins.concatLists (
-    builtins.genList (
-      x:
-      let
-        ws =
-          let
-            c = (x + 1) / 10;
-          in
-          builtins.toString (x + 1 - (c * 10));
-      in
-      [
-        "$mod, ${ws}, workspace, ${toString (x + 1)}"
-        "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-      ]
-    ) 10
-  );
-
   toggle =
     program:
     let
@@ -46,8 +28,6 @@ in
         "$MOD, D, exec, uwsm app -- thunar"
         # "$MOD, B, exec, uwsm app -- qutebrowser"
         "$MOD, W, exec, ${runOnce "zen-beta"}"
-        "$MODSHIFT, W, exec, uwsm app -- zen-beta --private-window"
-        "$MODSHIFT, M, exec, [workspace name:Music] tidal-hifi"
 
         # ${runOnce "grimblast"} [screenshot]
         "$MOD, bracketleft, exec, ${runOnce "grimblast"} --notify copysave area $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d'T'%H:%M:%S_no_watermark').png"
@@ -108,10 +88,9 @@ in
         # to workspace
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
-        "$MOD, B, exec, caelestia toggle qutebrowser"
-        "$MOD, E, exec, caelestia toggle emacs"
-        "$MOD, W, exec, caelestia toggle zen"
-        "$MODSHIFT, M, exec, caelestia toggle music"
+        "$MOD, B, workspace, Qutebrowser"
+        "$MOD, E, workspace, Emacs"
+        "$MOD, W, workspace, Zen"
 
         # to workspace special
         "$MOD, minus, movetoworkspace, special"

@@ -53,11 +53,10 @@
       "float on, match:class ^(xdg-desktop-portal-gtk)$"
 
       # workspace
-      "workspace special:firefox, match:class ^(firefox)$"
-      "workspace special:zen, match:class ^(zen.*)$"
-      "workspace special:qutebrowser, match:class ^(.*qutebrowser.*)$"
-      "workspace special:emacs, match:class ^(emacs)$"
-      "workspace special:music, match:class ^(spotify)$"
+      "workspace name:Firefox, match:class ^(firefox)$"
+      "workspace name:Zen, match:class ^(zen.*)$"
+      "workspace name:Qutebrowser, match:class ^(.*qutebrowser.*)$"
+      "workspace name:Emacs, match:class ^(emacs)$"
       "size 1100 600, match:class ^(termfloat)$"
       "size 1100 600, match:class ^(Thunar)$"
 

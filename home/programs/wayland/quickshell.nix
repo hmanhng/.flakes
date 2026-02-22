@@ -32,11 +32,16 @@
         tray = {
           compact = true;
         };
-        workspaces.label = "";
+        workspaces = {
+          activeLabel = "";
+          label = "";
+          occupiedLabel = "";
+        };
       };
       osd.enableMicrophone = true;
       services = {
         useFahrenheit = false;
+        useFahrenheitPerformance = false;
         useTwelveHourClock = false;
       };
       utilities.toasts.nowPlaying = true;
