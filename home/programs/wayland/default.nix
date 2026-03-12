@@ -10,7 +10,6 @@
     ./hyprlock.nix
     # ./waybar.nix
     ./quickshell.nix
-    ./rofi
   ];
 
   home.packages = with pkgs; [

@@ -107,10 +107,6 @@ in
         "$MODCTRL, SPACE, global, caelestia:launcher"
         # launcher
         "$MOD, SUPER_L, exec, vicinae toggle"
-        # Bookmarks
-        "$MOD, semicolon, exec, ~/.flakes/home/bookmarks/bm_rofi.sh"
-        "$MODSHIFT, semicolon, exec, ~/.flakes/home/bookmarks/bm_this.sh"
-        # "$MOD, comma, exec, bwm" # bwm for password manager
       ];
 
       bindl = [
