@@ -14,6 +14,7 @@ let
     ./programs/android.nix
 
     ./services
+    ./services/fcitx5-lotus.nix
     ./services/location.nix
     ./services/gnome-services.nix
     ./services/greetd.nix

@@ -206,6 +206,11 @@
 
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions.url = "github:vicinaehq/extensions";
+
+    fcitx5-lotus = {
+      url = "github:LotusInputMethod/fcitx5-lotus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   nixConfig = {
     extra-substituters = [
