@@ -6,6 +6,6 @@
   ];
   home.packages = with pkgs; [
     libreoffice
-    teams-for-linux
+    # teams-for-linux
   ];
 }

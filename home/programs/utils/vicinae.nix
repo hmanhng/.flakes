@@ -4,10 +4,16 @@
 
   services.vicinae = {
     enable = true;
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      autoStart = true; # default: false
+      environment = {
+        USE_LAYER_SHELL = 1;
+      };
+    };
 
     settings = {
-      close_on_focus_loss = true;
+      close_on_focus_loss = false;
       theme = {
         light = {
           name = "vicinae-light";
@@ -42,7 +48,7 @@
     };
 
     extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
-      # bluetooth
+      bluetooth
       nix
       wifi-commander
       hypr-keybinds

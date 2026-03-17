@@ -9,37 +9,10 @@
     inputs.zen-browser.homeModules.beta
   ];
 
-  # xdg.mimeApps = let
-  #   associations = builtins.listToAttrs (map (name: {
-  #       inherit name;
-  #       value = let
-  #         zen-browser = config.programs.zen-browser.package;
-  #       in
-  #         zen-browser.meta.desktopFileName;
-  #     }) [
-  #       "application/x-extension-shtml"
-  #       "application/x-extension-xhtml"
-  #       "application/x-extension-html"
-  #       "application/x-extension-xht"
-  #       "application/x-extension-htm"
-  #       "x-scheme-handler/unknown"
-  #       "x-scheme-handler/mailto"
-  #       "x-scheme-handler/chrome"
-  #       "x-scheme-handler/about"
-  #       "x-scheme-handler/https"
-  #       "x-scheme-handler/http"
-  #       "application/xhtml+xml"
-  #       "application/json"
-  #       "text/plain"
-  #       "text/html"
-  #     ]);
-  # in {
-  #   associations.added = associations;
-  #   defaultApplications = associations;
-  # };
-
   programs.zen-browser = {
     enable = true;
+    languagePacks = [ "en-US" ];
+    setAsDefaultBrowser = true;
 
     policies =
       let
@@ -78,12 +51,17 @@
         DisablePocket = true; # save webs for later reading
         DisableTelemetry = true;
         DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
         OfferToSaveLogins = false;
         EnableTrackingProtection = {
           Value = true;
           Locked = true;
           Cryptomining = true;
           Fingerprinting = true;
+        };
+        SanitizeOnShutdown = {
+          FormData = true;
+          Cache = true;
         };
         ExtensionSettings = mkExtensionSettings {
           "wappalyzer@crunchlabz.com" = mkExtensionEntry {
@@ -121,6 +99,12 @@
           "browser.topsites.contile.enabled" = false;
 
           "privacy.resistFingerprinting" = true;
+          "privacy.resistFingerprinting.randomization.canvas.use_siphash" = true;
+          "privacy.resistFingerprinting.randomization.daily_reset.enabled" = true;
+          "privacy.resistFingerprinting.randomization.daily_reset.private.enabled" = true;
+          "privacy.resistFingerprinting.block_mozAddonManager" = true;
+          "privacy.spoof_english" = 1;
+
           "privacy.firstparty.isolate" = true;
           "network.cookie.cookieBehavior" = 5;
           "dom.battery.enabled" = false;
@@ -140,31 +124,45 @@
         "zen.view.compact.animate-sidebar" = false;
         "zen.view.use-single-toolbar" = false;
         "zen.welcome-screen.seen" = true;
+        "zen.urlbar.behavior" = "float";
       };
 
-      bookmarks = {
-        force = true;
-        settings = [
-          {
-            name = "Nix sites";
-            toolbar = true;
-            bookmarks = [
-              {
-                name = "homepage";
-                url = "https://nixos.org/";
-              }
-              {
-                name = "wiki";
-                tags = [
-                  "wiki"
-                  "nix"
-                ];
-                url = "https://wiki.nixos.org/";
-              }
-            ];
-          }
-        ];
-      };
+      mods = [
+        "7190e4e9-bead-4b40-8f57-95d852ddc941" # Tab title fixes
+        "803c7895-b39b-458e-84f8-a521f4d7a064" # Hide Inactive Workspaces
+        "906c6915-5677-48ff-9bfc-096a02a72379" # Floating Status Bar
+        "a6335949-4465-4b71-926c-4a52d34bc9c0" # Better Find Bar
+        "c6813222-6571-4ba6-8faf-58f3343324f6" # Disable Rounded Corners
+        "c8d9e6e6-e702-4e15-8972-3596e57cf398" # Zen Back Forward
+        "cb15abdb-0514-4e09-8ce5-722cf1f4a20f" # Hide Extension Name
+        "e122b5d9-d385-4bf8-9971-e137809097d0" # No Top Sites
+        "f7c71d9a-bce2-420f-ae44-a64bd92975ab" # Better Unloaded Tabs
+        "642854b5-88b4-4c40-b256-e035532109df" # Transparent Zen
+      ];
+
+      # bookmarks = {
+      #   force = true;
+      #   settings = [
+      #     {
+      #       name = "Nix sites";
+      #       toolbar = true;
+      #       bookmarks = [
+      #         {
+      #           name = "homepage";
+      #           url = "https://nixos.org/";
+      #         }
+      #         {
+      #           name = "wiki";
+      #           tags = [
+      #             "wiki"
+      #             "nix"
+      #           ];
+      #           url = "https://wiki.nixos.org/";
+      #         }
+      #       ];
+      #     }
+      #   ];
+      # };
 
       pinsForce = true;
       pins = {
@@ -217,16 +215,12 @@
           container = containers."Shopping".id;
           position = 1002;
         };
-        "Big Big Big Problem" = {
-          id = "8ed24375-68d4-4d37-ab7e-b2e121f994c1";
-          icon = "😫";
-          position = 1003;
-        };
       };
 
       search = {
         force = true;
         default = "google";
+        privateDefault = "ddg";
         engines =
           let
             nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
@@ -255,6 +249,7 @@
               icon = nixSnowflakeIcon;
               definedAliases = [ "np" ];
             };
+
             "Nix Options" = {
               urls = [
                 {
@@ -272,8 +267,9 @@
                 }
               ];
               icon = nixSnowflakeIcon;
-              definedAliases = [ "nop" ];
+              definedAliases = [ "no" ];
             };
+
             "Home Manager Options" = {
               urls = [
                 {
@@ -293,6 +289,27 @@
               icon = nixSnowflakeIcon;
               definedAliases = [ "hmop" ];
             };
+
+            "ddg" = {
+              urls = [
+                {
+                  template = "https://duckduckgo.com";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [
+                "@duck"
+                "@ddg"
+                "@dck"
+                "@dckk"
+              ];
+            };
+
             bing.metaData.hidden = "true";
           };
       };

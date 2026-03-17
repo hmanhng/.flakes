@@ -98,7 +98,7 @@ in
         hide-when-typing = "yes";
       };
 
-      colors = {
+      colors-dark = {
         alpha = 0.9;
       }
       // colors.dark;

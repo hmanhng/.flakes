@@ -13,7 +13,7 @@ in
     scripts = with pkgs.mpvScripts; [
       uosc
       thumbfast
-      mpv-cheatsheet
+      mpv-cheatsheet-ng
       # mpv-notify-send # error now
       autosubsync-mpv
       webtorrent-mpv-hook
