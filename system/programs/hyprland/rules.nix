@@ -95,6 +95,7 @@
       "scroll_touchpad 0.1, match:class ^(zen.*|firefox|chromium-browser)$"
       # Others
       # "scroll_touchpad 0.1, match:class ^(org.pwmt.zathura)$"
+      "scroll_touchpad 0.1, match:class ^(vesktop)$"
     ];
   };
 }

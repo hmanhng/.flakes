@@ -110,6 +110,7 @@ in
       kb_layout = "us";
 
       follow_mouse = 1; # 0|1|2|3
+      focus_on_close = 1;
       accel_profile = "flat";
       tablet.output = "current";
     };
@@ -154,9 +155,12 @@ in
       # enable variable refresh rate (effective depending on hardware)
       vrr = 1;
 
-      # focus_on_activate = true;
+      mouse_move_enables_dpms = true;
+      key_press_enables_dpms = true;
 
-      on_focus_under_fullscreen = 0;
+      focus_on_activate = true;
+
+      on_focus_under_fullscreen = 2;
 
       # enable_swallow = true;
       swallow_regex = "foot";

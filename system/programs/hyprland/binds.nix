@@ -47,7 +47,7 @@ in
         "$MOD, M, fullscreen, 1"
         "$MOD, Y, pin"
         "$MOD, P, pseudo" # dwindle"
-        "$MOD, S, togglesplit" # dwindle
+        "$MOD, S, layoutmsg, togglesplit" # dwindle
 
         # change gap
         "$MODSHIFT, G, exec, hyprctl --batch 'keyword general:gaps_out 5;keyword general:gaps_in 3'"
