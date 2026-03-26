@@ -33,6 +33,7 @@
           "${mod}/programs/hyprland"
 
           "${mod}/virtualisation/docker.nix"
+          "${mod}/virtualisation/k8s.nix"
 
           {
             home-manager = {
