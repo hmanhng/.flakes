@@ -58,8 +58,8 @@ let
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) (
     {
       "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf" ];
-      "text/html" = browser;
-      "text/plain" = [ "emacs -nw" ];
+      # "text/html" = browser;
+      # "text/plain" = [ "nvim" ];
       "inode/directory" = [ "yazi" ];
       "x-scheme-handler/magnet" = [ "transmission-gtk" ];
       # Full entry is org.telegram.desktop.desktop
@@ -69,7 +69,7 @@ let
     // image
     // video
     // audio
-    // browserTypes
+    # // browserTypes
   );
 in
 {
@@ -85,6 +85,7 @@ in
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = false;
       extraConfig = {
         SCREENSHOTS = "${config.xdg.userDirs.pictures}/Screenshots";
       };

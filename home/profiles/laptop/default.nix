@@ -18,7 +18,7 @@
     ../../services/system/udiskie.nix
 
     # wayland services
-    ../../services/wayland/wlsunset.nix
+    ../../services/wayland/hyprsunset.nix
   ];
 
   sops.gnupg.home = "/home/hmanhng/.local/share/gnupg";

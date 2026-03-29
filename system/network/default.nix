@@ -2,8 +2,8 @@
 { pkgs, ... }:
 {
   networking = {
-    # use quad9 with DNS over TLS
-    nameservers = [ "9.9.9.9#dns.quad9.net" ];
+    # use 1.1.1.1 with DNS over TLS
+    nameservers = [ "1.1.1.1#one.one.one.one" ];
 
     networkmanager = {
       enable = true;
@@ -21,9 +21,7 @@
     # DNS resolver
     resolved = {
       enable = true;
-      # Disable until https://github.com/NixOS/nixpkgs/issues/440073 is fixed
-      # Waiting for https://github.com/NixOS/nixpkgs/pull/440130 to land in nixos-unstable
-      # dnsovertls = "opportunistic";
+      settings.Resolve.DNSOverTLS = true;
     };
   };
 

@@ -29,8 +29,6 @@ in
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
       # clipboard
-      # "ydotoold"
-      # "wl-paste --watch cliphist store"
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
 
       # run shell

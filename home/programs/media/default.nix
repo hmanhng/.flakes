@@ -12,7 +12,7 @@
     # media
     pamixer
     pwvucontrol
-    # stremio
+    # stremio-linux-shell
     vlc
   ];
   programs = {

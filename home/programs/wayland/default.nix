@@ -21,12 +21,8 @@
     wl-screenrec
     slurp
     wl-clipboard
-    cliphist
-    # wl-clip-persist
     wlr-randr
     hyprpicker
-    # wlsunset
-    ydotool
   ];
 
   # make stuff work on wayland
