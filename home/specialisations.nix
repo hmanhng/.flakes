@@ -6,7 +6,7 @@
     # cache.enable = true;
     flavor = "macchiato"; # "latte", "frappe", "macchiato", "mocha"
 
-    mako.enable = false; # FIXME: https://github.com/nix-community/home-manager/issues/6971
+    # mako.enable = false; # FIXME: https://github.com/nix-community/home-manager/issues/6971
     bat.enable = true;
     btop.enable = true;
     delta.enable = true;
@@ -18,6 +18,7 @@
     # starship.enable = true;
     yazi.enable = true;
     zathura.enable = true;
+    # waybar.enable = true;
   };
 
   theme = {

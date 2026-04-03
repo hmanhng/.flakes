@@ -23,7 +23,7 @@ let
 
   laptop = desktop ++ [
     ./hardware/bluetooth.nix
-    # ./hardware/brillo.nix # use caelestia-shell
+    # ./hardware/brillo.nix # use noctalia
 
     ./services/power.nix
   ];

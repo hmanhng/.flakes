@@ -25,15 +25,13 @@ in
       "uwsm finalize"
       # set cursor for HL itself
       "hyprctl setcursor ${cursorName} ${toString 24}"
-      "hyprlock"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+      # "hyprlock"
 
       # clipboard
       "${lib.getExe pkgs.wl-clip-persist} --clipboard both"
 
       # run shell
-      "caelestia resizer -d"
-      "caelestia shell -d"
+      "noctalia-shell"
     ];
 
     general = {

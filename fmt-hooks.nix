@@ -20,6 +20,7 @@
           ".js"
           ".md"
           ".ts"
+          "home/programs/wayland/noctalia/settings.json"
         ];
       };
     };

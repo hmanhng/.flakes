@@ -12,6 +12,7 @@ in
   programs.hyprland = {
     settings = {
       "$MOD" = "SUPER";
+      "$ipc" = "noctalia-shell ipc call";
 
       # mouse movements
       bindm = [
@@ -24,7 +25,7 @@ in
         # app
         "$MOD, Return, exec, uwsm app -- foot"
         "$MODSHIFT, Return, exec, uwsm app -- foot --app-id termfloat"
-        "$MOD, E, exec, ${runOnce "emacs"}"
+        "$MOD, E, exec, ${runOnce "zeditor"}"
         "$MOD, D, exec, uwsm app -- thunar"
         # "$MOD, B, exec, uwsm app -- qutebrowser"
         "$MOD, W, exec, ${runOnce "zen-beta"}"
@@ -41,7 +42,7 @@ in
         "$MOD, escape, exec, hyprctl kill"
         "$MODSHIFT, Q, exec, uwsm stop"
         # lock screen
-        "$MODSHIFT, L, global, caelestia:lock"
+        "$MODSHIFT, L, exec, $ipc lockScreen lock"
         "$MODSHIFT, Space, togglefloating"
         "$MOD, F, fullscreen"
         "$MOD, M, fullscreen, 1"
@@ -104,34 +105,24 @@ in
       ];
 
       bindr = [
-        "$MODCTRL, SPACE, global, caelestia:launcher"
         # launcher
         "$MOD, SUPER_L, exec, vicinae toggle"
       ];
 
       bindl = [
         # volume
-        ", XF86AudioMute, exec,  wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-
-        # media control
-        ", XF86AudioPlay, global, caelestia:mediaToggle"
-        ", XF86AudioPause, global, caelestia:mediaToggle"
-        "Ctrl+Super, Equal, global, caelestia:mediaNext"
-        ", XF86AudioNext, global, caelestia:mediaNextt"
-        "Ctrl+Super, Minus, global, caelestia:mediaPrev"
-        ", XF86AudioPrev, global, caelestia:mediaPrev"
-        ", XF86AudioStop, global, caelestia:mediaStop"
+        ", XF86AudioMute, exec,  $ipc volume muteOutput"
+        ", XF86AudioMicMute, exec, $ipc volume muteInput"
       ];
 
       bindle = [
         # volume
-        ", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
+        ", XF86AudioRaiseVolume, exec, $ipc volume increase"
+        ", XF86AudioLowerVolume, exec, $ipc volume decrease"
 
         # backlight
-        ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
-        ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
+        ", XF86MonBrightnessUp, exec, $ipc brightness increase"
+        ", XF86MonBrightnessDown, exec, $ipc brightness decrease"
       ];
 
       binde = [

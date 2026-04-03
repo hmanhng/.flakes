@@ -75,12 +75,12 @@ in
 {
   xdg = {
     enable = true;
-    cacheHome = config.home.homeDirectory + "/.local/cache";
 
     mimeApps = {
       enable = true;
       defaultApplications = associations;
     };
+    configFile."mimeapps.list".force = true;
 
     userDirs = {
       enable = true;

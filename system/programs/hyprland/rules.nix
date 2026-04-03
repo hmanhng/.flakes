@@ -12,10 +12,10 @@
           "match:namespace ^(${elements})$";
         lowopacity = [
           "waybar"
-          "caelestia-.*"
         ];
         highopacity = [
           "vicinae"
+          "noctalia-background-.*$"
         ];
         blurred = lib.concatLists [
           lowopacity
@@ -24,8 +24,7 @@
       in
       [
         "blur on, ${toRegex blurred}"
-        "blur_popups on, match:namespace caelestia-.*"
-        # "xray 1, ${toRegex ["caelestia-.*"]}"
+        "blur_popups on, match:namespace noctalia-background-.*$"
         "ignore_alpha 0.5, ${toRegex highopacity}"
         "ignore_alpha 0.2, ${toRegex lowopacity}"
         "no_anim on, match:namespace vicinae"

@@ -7,9 +7,9 @@
 # Wayland config
 {
   imports = [
-    ./hyprlock.nix
+    # ./hyprlock.nix
     # ./waybar.nix
-    ./quickshell.nix
+    ./noctalia
   ];
 
   home.packages = with pkgs; [
