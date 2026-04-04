@@ -32,14 +32,14 @@ let
   pamServicesToEnable = [
     "login" # Console login
     "sudo" # sudo command
-    "doas" # doas (sudo alternative)
-    "su" # switch user
-    "polkit-1" # PolicyKit authentication
-    "greetd" # greetd login manager
-    "hyprlock" # Hyprland screen locker
-    "swaylock" # Sway screen locker
-    "vlock" # Virtual console locker
-    "systemd-run0" # systemd run0 (modern sudo replacement)
+    # "doas" # doas (sudo alternative)
+    # "su" # switch user
+    # "polkit-1" # PolicyKit authentication
+    # "greetd" # greetd login manager
+    # "hyprlock" # Hyprland screen locker
+    # "swaylock" # Sway screen locker
+    # "vlock" # Virtual console locker
+    # "systemd-run0" # systemd run0 (modern sudo replacement)
   ];
 in
 {
@@ -70,6 +70,7 @@ in
   security.pam.services = {
     # Disable Howdy for SSH
     sshd.howdy.enable = false;
+    polkit-1.howdy.enable = false;
   }
   // builtins.listToAttrs (map mkIrEmitterRule pamServicesToEnable);
 }
