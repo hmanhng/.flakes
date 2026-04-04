@@ -109,7 +109,7 @@ window-rule {
 
 window-rule {
     match app-id="dev.zed.Zed"
-    opacity 0.9
+    opacity 0.95
 }
 
 // Example: block out two password managers from screen capture.

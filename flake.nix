@@ -141,6 +141,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zed.url = "github:zed-industries/zed";
+
     catppuccin.url = "github:catppuccin/nix";
 
     zen-browser = {

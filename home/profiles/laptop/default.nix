@@ -2,9 +2,8 @@
   imports = [
     # editors
     ../../editors
-    ../../editors/code
-    ../../editors/emacs
     ../../editors/antigravity
+    ../../editors/zed.nix
 
     ../../programs
     ../../programs/wayland/niri

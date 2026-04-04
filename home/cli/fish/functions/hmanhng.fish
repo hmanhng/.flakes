@@ -24,15 +24,9 @@ function hmanhng -d "hmanhng function"
             7z e /run/media/hmanhng/Ventoy/ssh.zip -o$HOME/.ssh
         case {,-}-w{allpapers,}
             git clone --depth 1 https://github.com/hmanhng/wallpapers ~/Pictures/wallpapers
-        case {,-}-e{macs,}
-            rm -rf ~/.emacs.d && git clone git@github.com:hmanhng/minemacs ~/.emacs.d
-            cd ~/.emacs.d && git remote add fork https://github.com/abougouffa/minemacs && cd -
-            git clone git@github.com:hmanhng/.minemacs.d ~/.minemacs.d
-            cd ~/.minemacs.d && bash tangle.sh && cd -
         case \*
             echo -e "\ahmanhng function:"
             echo -e "[-c | --clone]:        Clone .flakes --branch=tmpfs and Symbolic nvim from flakes"
-            echo -e "[-e | --emacs]:        Clone minemacs"
             echo -e "[-g | --gpg]:          Import ssh-to-pgp for sops"
             echo -e "[-n | --nvim]:         Symbolic nvim"
             echo -e "[-s | --ssh]:          Unzip .ssh from usb"

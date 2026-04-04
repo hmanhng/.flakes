@@ -50,7 +50,7 @@
         #   };
         # }
       ];
-    loginShellInit = '''';
+    loginShellInit = "";
     interactiveShellInit = ''
       set fish_greeting ""
 
@@ -88,12 +88,10 @@
       lt = "eza -F -aT -L 3 -I \".git\" --icons --color=always --group-directories-first"; # tree listing
       "l." = "eza -F -a | grep -E \"^\\.\"";
 
-      e = "emacs -nw";
       v = "nvim";
       vi = "nvim";
       suvi = "sudo nvim";
       nf = "nvim $(fzf)";
-      ef = "e $(fzf)";
       f = "fzf";
 
       n = "nitch";
