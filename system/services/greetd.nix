@@ -1,6 +1,8 @@
 {
   config,
   lib,
+  inputs,
+  pkgs,
   ...
 }:
 {
@@ -8,7 +10,9 @@
   services.greetd =
     let
       session = {
-        command = "${lib.getExe config.programs.uwsm.package} start hyprland.desktop";
+        command = "${
+          inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable
+        }/bin/niri-session";
         user = "hmanhng";
       };
     in

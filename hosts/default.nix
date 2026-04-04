@@ -30,8 +30,6 @@
           "${mod}/impermanence"
           "${mod}/impermanence/btrfs.nix"
 
-          "${mod}/programs/hyprland"
-
           "${mod}/virtualisation/docker.nix"
           "${mod}/virtualisation/k8s.nix"
 

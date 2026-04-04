@@ -90,6 +90,17 @@ in
         SCREENSHOTS = "${config.xdg.userDirs.pictures}/Screenshots";
       };
     };
+
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      config = {
+        common.default = [ "gtk" ];
+      };
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+      ];
+    };
   };
 
   home.packages = [

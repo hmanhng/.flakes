@@ -4,25 +4,17 @@
   lib,
   ...
 }:
-# Wayland config
 {
   imports = [
-    # ./hyprlock.nix
-    # ./waybar.nix
     ./noctalia
   ];
 
   home.packages = with pkgs; [
-    # screenshot
-    imagemagick # for grimblast
-    inputs.hyprland-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast
-
     # utils
-    wl-screenrec
     slurp
+    wl-screenrec
     wl-clipboard
-    wlr-randr
-    hyprpicker
+    # wlr-randr
   ];
 
   # make stuff work on wayland
@@ -33,6 +25,4 @@
     CLUTTER_BACKEND = "wayland";
     XDG_SESSION_TYPE = "wayland";
   };
-
-  # systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
 }

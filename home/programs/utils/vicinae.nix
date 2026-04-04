@@ -26,7 +26,7 @@
       };
 
       launcher_window = {
-        opacity = 0.7;
+        opacity = 0.9;
       };
 
       providers = {
@@ -35,24 +35,18 @@
             connectionToggleable = true;
           };
         };
-        "applications" = {
-          preferences = {
-            launchPrefix = "uwsm app -- ";
-          };
-        };
+        # "applications" = {
+        #   preferences = {
+        #     launchPrefix = "uwsm app -- ";
+        #   };
+        # };
       };
-
-      fallbacks = [
-        "Search"
-      ];
     };
 
     extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
       bluetooth
       nix
       wifi-commander
-      hypr-keybinds
-      hyprland-monitors
       simple-bookmarks
     ];
   };
