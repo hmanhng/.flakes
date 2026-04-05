@@ -27,7 +27,7 @@ jobs:
         with:
           name: hmanhng
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-          extraPullNames: nix-community, hyprland
+          extraPullNames: nix-community, fufexan, catppuccin, vicinae, noctalia, niri, zed
 
       - name: Set default git branch (to reduce log spam)
         run: git config --global init.defaultBranch master
