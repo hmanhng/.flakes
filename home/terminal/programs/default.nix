@@ -5,33 +5,11 @@
 }:
 {
   imports = [
-    ./bash
-    ./fish
     ./git.nix
     ./nix.nix
     ./top.nix
-    # ./starship.nix # use tide for fast
     ./yazi.nix
-    #./zsh/zsh
   ];
-
-  # add environment variables
-  home = {
-    sessionVariables = {
-      # auto-run programs using nix-index-database
-      NIX_AUTO_RUN = "1";
-
-      NODE_PATH = "${config.xdg.dataHome}/npm-packages/lib/node_modules";
-      CARGO_HOME = "${config.xdg.dataHome}/cargo";
-    };
-    sessionPath = [
-      "$HOME/.local/bin"
-      "$HOME/.local/share/npm-packages/bin"
-      "$HOME/.local/share/cargo/bin"
-    ];
-  };
-
-  programs.nix-index-database.comma.enable = true;
 
   home.packages = with pkgs; [
     fd

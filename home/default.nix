@@ -7,7 +7,7 @@
 {
   imports = [
     ./specialisations.nix
-    ./cli
+    ./terminal
     inputs.nix-index-db.homeModules.nix-index
     inputs.sops-nix.homeManagerModules.sops
     self.modules.theme
@@ -27,6 +27,5 @@
   };
 
   # let HM manage itself when in standalone mode
-
   programs.home-manager.enable = true;
 }

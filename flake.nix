@@ -32,7 +32,6 @@
               env.DIRENV_LOG_FORMAT = "";
               shellHook = ''
                 ${config.pre-commit.installationScript}
-                exec fish
               '';
             };
             #run by `nix develop .#<name>`

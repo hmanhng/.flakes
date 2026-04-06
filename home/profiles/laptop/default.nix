@@ -8,9 +8,8 @@
     ../../programs
     ../../programs/wayland/niri
 
-    ../../dev
-
-    ../../cli/llm.nix
+    ../../terminal/emulators/foot.nix
+    ../../terminal/programs/llm.nix
 
     # system services
     # ../../services/system/polkit-agent.nix # use noctalia instead
