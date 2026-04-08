@@ -11,10 +11,10 @@ let
 in
 {
   home-manager.users.hmanhng = {
-    xdg.dataFile."./fonts" = {
-      source = "${myFont}";
-      recursive = true;
-    };
+    # xdg.dataFile."./fonts" = {
+    #   source = "${myFont}";
+    #   recursive = true;
+    # };
     home.packages = with pkgs; [ font-manager ];
   };
 
@@ -36,6 +36,7 @@ in
       ])
       ++ (with self.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
         # apple-fonts
+        dank-mono-fonts
       ]);
 
     enableDefaultPackages = false;
