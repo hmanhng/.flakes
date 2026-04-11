@@ -13,19 +13,21 @@
     ];
     userSettings = {
       format_on_save = "off";
+      autosave.after_delay.milliseconds = 1000;
       vim_mode = true;
       theme = "Aura Dark";
       icon_theme = "Warm Charmed Icons";
+      agent_buffer_font_size = 18.0;
       buffer_font_family = "DankMono Nerd Font";
       buffer_font_size = 18;
-      ui_font_family = "DankMono Nerd Font";
+      ui_font_family = ".ZedMono";
       ui_font_size = 18;
       base_keymap = "VSCode";
 
       title_bar = {
         show_onboarding_banner = false;
-        show_project_items = false;
-        show_branch_name = false;
+        show_project_items = true;
+        show_branch_name = true;
         show_user_menu = false;
       };
       tab_bar = {
@@ -76,7 +78,9 @@
       seed_search_query_from_cursor = "never";
       current_line_highlight = "none";
       show_whitespaces = "none";
+      close_on_file_delete = true;
       restore_on_startup = "launchpad";
+      relative_line_numbers = "enabled";
 
       theme_overrides = {
         "Aura Dark" = {

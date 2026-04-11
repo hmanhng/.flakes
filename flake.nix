@@ -140,7 +140,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zed.url = "github:zed-industries/zed";
+    zed.url = "github:zed-industries/zed?ref=nightly";
 
     catppuccin.url = "github:catppuccin/nix";
 
