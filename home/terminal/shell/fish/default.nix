@@ -98,9 +98,9 @@
 
       wget = "wget --hsts-file=\"\$XDG_DATA_HOME/wget-hsts\"";
 
-      nhb = "nh os boot -H ${osConfig.networking.hostName}";
-      nht = "nh os test -H ${osConfig.networking.hostName}";
-      nhs = "nh os switch -H ${osConfig.networking.hostName}";
+      nhb = "nh os boot";
+      nht = "nh os test";
+      nhs = "nh os switch";
       fc = "nix flake check";
       fl = "cd ~/.flakes";
     };
