@@ -1,5 +1,4 @@
 {
-  lib,
   config,
   pkgs,
   ...
@@ -21,6 +20,7 @@
     };
 
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+    gtk4.theme = null;
 
     iconTheme = {
       name = "Papirus-Dark";
@@ -31,6 +31,5 @@
       name = "Nordic";
       package = pkgs.nordic;
     };
-    gtk4.theme = null;
   };
 }

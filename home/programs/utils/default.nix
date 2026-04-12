@@ -6,7 +6,6 @@
   ];
   home.packages = with pkgs; [
     meld
-    scrcpy
-    transmission_4-qt
+    transmission_4-gtk
   ];
 }

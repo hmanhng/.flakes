@@ -2,7 +2,7 @@
   programs.zathura = {
     enable = true;
     extraConfig = ''
-      set font "JetBrainsMono Nerd Font 15"
+      set font "IBM Plex Mono 15"
 
       # Zathura configuration file
       # See man `man zathurarc'

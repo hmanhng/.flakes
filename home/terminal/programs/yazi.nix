@@ -94,7 +94,7 @@
         ;
     };
     extraPackages = with pkgs; [
-      ouch
+      ouch-rar
       mediainfo
       glow
     ];

@@ -20,7 +20,7 @@
     nitch
     speedtest-go
     killall
-    ouch # Archiving and compression
+    ouch-rar # Archiving and compression
     wget
   ];
 
