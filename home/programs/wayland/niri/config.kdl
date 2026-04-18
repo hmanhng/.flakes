@@ -69,6 +69,14 @@ layout {
     }
 }
 
+blur {
+    // off
+    passes 3
+    offset 3
+    noise 0.02
+    saturation 1.5
+}
+
 spawn-at-startup "noctalia-shell"
 
 hotkey-overlay {
@@ -109,7 +117,7 @@ window-rule {
 
 window-rule {
     match app-id="dev.zed.Zed"
-    opacity 0.95
+    opacity 0.9
 }
 
 // Example: block out two password managers from screen capture.
@@ -128,6 +136,9 @@ window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
     draw-border-with-background false
+    background-effect {
+        blur true
+    }
 }
 
 // Set the overview wallpaper on the backdrop.

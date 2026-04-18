@@ -24,6 +24,7 @@ in
 
   home.packages = [
     pkgs.jq
+    pkgs.ffmpeg # for music search
   ];
 
   home.file = {
