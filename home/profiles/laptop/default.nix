@@ -2,7 +2,6 @@
   imports = [
     # editors
     ../../editors
-    ../../editors/antigravity
     ../../editors/zed.nix
 
     ../../programs

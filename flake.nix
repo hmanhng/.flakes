@@ -158,14 +158,6 @@
       inputs.systems.follows = "systems";
     };
 
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
   nixConfig = {
