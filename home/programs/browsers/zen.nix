@@ -13,6 +13,7 @@
     enable = true;
     languagePacks = [ "en-US" ];
     setAsDefaultBrowser = true;
+    enablePrivateDesktopEntry = true;
 
     policies =
       let
@@ -64,15 +65,18 @@
           Cache = true;
         };
         ExtensionSettings = mkExtensionSettings {
-          "wappalyzer@crunchlabz.com" = mkExtensionEntry {
-            id = "wappalyzer";
-            pinned = true;
-          };
+          # "wappalyzer@crunchlabz.com" = mkExtensionEntry {
+          #   id = "wappalyzer";
+          #   pinned = true;
+          # };
           "uBlock0@raymondhill.net" = mkExtensionEntry {
             id = "ublock-origin";
             pinned = true;
           };
-          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = mkExtensionEntry {
+            id = "bitwarden-password-manager";
+            pinned = true;
+          };
           "{036a55b4-5e72-4d05-a06c-cba2dfcc134a}" = "traduzir-paginas-web";
           "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = "github-file-icons";
           # "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = "return-youtube-dislikes";
