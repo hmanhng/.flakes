@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   ...
 }:
@@ -13,6 +12,7 @@
     enable = true;
     languagePacks = [ "en-US" ];
     setAsDefaultBrowser = true;
+    enablePrivateDesktopEntry = true;
 
     policies =
       let
@@ -64,15 +64,18 @@
           Cache = true;
         };
         ExtensionSettings = mkExtensionSettings {
-          "wappalyzer@crunchlabz.com" = mkExtensionEntry {
-            id = "wappalyzer";
-            pinned = true;
-          };
+          # "wappalyzer@crunchlabz.com" = mkExtensionEntry {
+          #   id = "wappalyzer";
+          #   pinned = true;
+          # };
           "uBlock0@raymondhill.net" = mkExtensionEntry {
             id = "ublock-origin";
             pinned = true;
           };
-          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = mkExtensionEntry {
+            id = "bitwarden-password-manager";
+            pinned = true;
+          };
           "{036a55b4-5e72-4d05-a06c-cba2dfcc134a}" = "traduzir-paginas-web";
           "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = "github-file-icons";
           # "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = "return-youtube-dislikes";
@@ -164,7 +167,7 @@
       #   ];
       # };
 
-      pinsForce = true;
+      pinsForce = false;
       pins = {
         "GitHub" = {
           id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
@@ -188,32 +191,43 @@
         # };
       };
 
-      containersForce = true;
+      containersForce = false;
       containers = {
+        Personal = {
+          color = "purple";
+          icon = "fingerprint";
+          id = 1;
+        };
+        Work = {
+          color = "blue";
+          icon = "briefcase";
+          id = 2;
+        };
         Shopping = {
           color = "yellow";
           icon = "dollar";
-          id = 2;
+          id = 3;
         };
       };
 
-      spacesForce = true;
+      spacesForce = false;
       spaces = {
         "hmanhng" = {
           id = "572910e1-4468-4832-a869-0b3a93e2f165";
-          icon = "🎭";
+          icon = "🏠";
           position = 1000;
         };
-        "Research" = {
-          id = "ec287d7f-d910-4860-b400-513f269dee77";
-          icon = "💌";
-          position = 1001;
+        "Work" = {
+          id = "cdd10fab-4fc5-494b-9041-325e5759195b";
+          icon = "💼";
+          container = containers."Work".id;
+          position = 2000;
         };
         "Shopping" = {
           id = "2441acc9-79b1-4afb-b582-ee88ce554ec0";
           icon = "💸";
           container = containers."Shopping".id;
-          position = 1002;
+          position = 3000;
         };
       };
 
