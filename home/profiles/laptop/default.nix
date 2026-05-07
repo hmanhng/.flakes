@@ -1,7 +1,7 @@
 {
   imports = [
     # editors
-    ../../editors
+    ../../editors/helix
     ../../editors/zed.nix
 
     ../../programs

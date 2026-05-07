@@ -54,12 +54,6 @@
     interactiveShellInit = ''
       set fish_greeting ""
 
-      # "nvim" as $EDITOR
-      set -x EDITOR "nvim"
-
-      # "nvim" as manpager
-      set -x MANPAGER "nvim +Man!"
-
       # fzf-fish
       set fzf_preview_dir_cmd eza --all --color=always
       set fzf_fd_opts --hidden
@@ -88,10 +82,7 @@
       lt = "eza -F -aT -L 3 -I \".git\" --icons --color=always --group-directories-first"; # tree listing
       "l." = "eza -F -a | grep -E \"^\\.\"";
 
-      v = "nvim";
-      vi = "nvim";
-      suvi = "sudo nvim";
-      nf = "nvim $(fzf)";
+      hf = "hx $(fzf)";
       f = "fzf";
 
       n = "nitch";

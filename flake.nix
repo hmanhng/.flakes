@@ -117,8 +117,6 @@
 
     nur.url = "github:nix-community/NUR";
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -142,6 +140,16 @@
 
     zed.url = "github:zed-industries/zed?ref=nightly";
 
+    helix.url = "github:helix-editor/helix";
+
+    uwu-colors = {
+      url = "github:q60/uwu_colors";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
+    };
+
     catppuccin.url = "github:catppuccin/nix";
 
     zen-browser = {
@@ -162,6 +170,9 @@
   };
   nixConfig = {
     extra-substituters = [
+      # high priority since it's almost always used
+      "https://cache.nixos.org?priority=10"
+
       "https://nix-community.cachix.org"
       "https://hmanhng.cachix.org"
       "https://fufexan.cachix.org"
@@ -171,8 +182,11 @@
       "https://noctalia.cachix.org"
       "https://niri.cachix.org"
       "https://zed.cachix.org"
+      "https://helix.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hmanhng.cachix.org-1:+pXFpN2CtS0rNUdCdeiOu6QUWMVBX0nCbWREhfiiKtI="
       "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
@@ -182,6 +196,7 @@
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       "zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU="
+      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
     ];
   };
 }
