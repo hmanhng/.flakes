@@ -1,0 +1,3 @@
+[sticky.pip]
+app-id  = "^zen-beta$" 
+title   = "^Picture-in-Picture$"

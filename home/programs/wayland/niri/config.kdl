@@ -78,6 +78,7 @@ blur {
 }
 
 spawn-at-startup "noctalia-shell"
+spawn-at-startup "nsticky"
 
 hotkey-overlay {
     skip-at-startup
