@@ -15,11 +15,13 @@ in
   };
   home.packages = [
     inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite-unstable
+    inputs.nsticky.packages.${pkgs.stdenv.hostPlatform.system}.nsticky
   ];
 
   home.file = {
     ".config/niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${srcPath}/config.kdl";
     ".config/niri/binds.kdl".source = config.lib.file.mkOutOfStoreSymlink "${srcPath}/binds.kdl";
+    ".config/nsticky/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${srcPath}/nsticky/config.toml";
   };
 
   xdg.portal = {

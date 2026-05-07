@@ -1,6 +1,7 @@
 
 binds {
     Mod+Shift+Slash repeat=false { spawn "noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"; }
+    Mod+p hotkey-overlay-title="Toggle Sticky Windows" repeat=false { spawn "nsticky" "sticky" "toggle-active"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" repeat=false { spawn "foot"; }

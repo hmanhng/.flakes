@@ -125,6 +125,14 @@
     # niri wm
     niri.url = "github:sodiboo/niri-flake";
 
+    nsticky = {
+      url = "github:lonerOrz/nsticky";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -144,10 +152,7 @@
 
     uwu-colors = {
       url = "github:q60/uwu_colors";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin.url = "github:catppuccin/nix";
