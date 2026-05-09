@@ -18,14 +18,13 @@ in
     package = (
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
         calendarSupport = true;
+        extraPackages = [
+          pkgs.jq # for music search
+          pkgs.ffmpeg # for music search
+        ];
       }
     );
   };
-
-  home.packages = [
-    pkgs.jq
-    pkgs.ffmpeg # for music search
-  ];
 
   home.file = {
     # Link thủ công các file quan trọng ở gốc
