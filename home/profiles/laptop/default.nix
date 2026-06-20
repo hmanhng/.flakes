@@ -7,6 +7,8 @@
     ../../programs
     ../../programs/wayland/niri
 
+    ../../work
+
     ../../terminal/emulators/foot.nix
     ../../terminal/programs/llm.nix
 

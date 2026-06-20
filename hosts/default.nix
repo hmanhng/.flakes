@@ -31,8 +31,6 @@
           "${mod}/impermanence/btrfs.nix"
 
           "${mod}/virtualisation/docker.nix"
-          "${mod}/virtualisation/k8s.nix"
-
           {
             home-manager = {
               users.hmanhng.imports = homeImports."hmanhng@laptop";
