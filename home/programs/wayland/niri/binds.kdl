@@ -1,31 +1,24 @@
 
 binds {
-    Mod+Shift+Slash repeat=false { spawn "noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"; }
     Mod+p hotkey-overlay-title="Toggle Sticky Windows" repeat=false { spawn "nsticky" "sticky" "toggle-active"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" repeat=false { spawn "foot"; }
     Mod+Space hotkey-overlay-title="Run an Application: vicinae" repeat=false { spawn "vicinae" "toggle"; }
     Mod+Slash hotkey-overlay-title="Open Vicinae Clipboard History" repeat=false { spawn "vicinae" "vicinae://launch/clipboard/history?toggle=true"; }
-    Super+Shift+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
-    Mod+Period hotkey-overlay-title="Open Noctalia Settings" repeat=false { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Super+Shift+L hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia msg session lock"; }
+    Mod+Period hotkey-overlay-title="Open Noctalia Settings" repeat=false { spawn-sh "noctalia msg settings-toggle"; }
 
     // Application
     Mod+E repeat=false { spawn "zeditor"; }
 
     // Audio & Brightness
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute        allow-when-locked=true repeat=false { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-    XF86AudioMicMute     allow-when-locked=true repeat=false { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-
-    XF86AudioPlay        allow-when-locked=true repeat=false { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
-    XF86AudioStop        allow-when-locked=true repeat=false { spawn "noctalia-shell" "ipc" "call" "media" "stop"; }
-    XF86AudioPrev        allow-when-locked=true repeat=false { spawn "noctalia-shell" "ipc" "call" "media" "previous"; }
-    XF86AudioNext        allow-when-locked=true repeat=false { spawn "noctalia-shell" "ipc" "call" "media" "next"; }
-
-    XF86MonBrightnessUp  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
+    XF86AudioMicMute { spawn-sh "noctalia msg mic-mute"; }
+    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

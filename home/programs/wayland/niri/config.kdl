@@ -40,7 +40,7 @@ output "eDP-1" {
 }
 
 output "HDMI-A-1" {
-    position x=0 y=-1080
+    // position x=0 y=-1080
 }
 
 layout {
@@ -77,7 +77,7 @@ blur {
     saturation 1.5
 }
 
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-at-startup "nsticky"
 
 hotkey-overlay {
@@ -94,6 +94,14 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+}
+
+// Floating Noctalia settings window.
+window-rule {
+    match app-id="dev.noctalia.Noctalia.Settings"
+    open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
 }
 
 // Work around WezTerm's initial configure bug
@@ -144,13 +152,26 @@ window-rule {
 
 // Set the overview wallpaper on the backdrop.
 layer-rule {
-  match namespace="^noctalia-overview*"
-  place-within-backdrop true
+    match namespace="^noctalia-backdrop"
+    place-within-backdrop true
+}
+
+/*
+  Noctalia
+  Disable xray on all our surfaces so it looks more realistic.
+  Noctalia publishes blur regions automatically when ext-background-effects is available.
+*/
+layer-rule {
+    match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+    background-effect {
+        xray false
+        // blur false
+    }
 }
 
 debug {
-  // Allows notification actions and window activation from Noctalia.
-  honor-xdg-activation-with-invalid-serial
+    // Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
 }
 
 include "binds.kdl"

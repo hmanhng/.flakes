@@ -2,7 +2,8 @@
 {
   imports = [ inputs.catppuccin.homeModules.catppuccin ];
   catppuccin = {
-    enable = false;
+    enable = true;
+    autoEnable = false;
     # cache.enable = true;
     flavor = "macchiato"; # "latte", "frappe", "macchiato", "mocha"
 
