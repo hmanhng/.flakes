@@ -8,7 +8,18 @@
         edit = "ask";
         bash = {
           "*" = "ask";
-          "ls" = "allow";
+          "git *" = "allow";
+          "git commit *" = "deny";
+          "git push *" = "deny";
+        };
+      };
+      plugin = [ "opencode-with-claude" ];
+      provider = {
+        anthropic = {
+          options = {
+            baseURL = "http://127.0.0.1:3456";
+            apiKey = "dummy";
+          };
         };
       };
     };
