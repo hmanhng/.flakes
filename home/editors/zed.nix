@@ -37,7 +37,7 @@
         quick_actions = false;
       };
       status_bar = {
-        "experimental.show" = false;
+        "experimental.show" = true;
       };
       project_panel = {
         dock = "right";
@@ -45,7 +45,8 @@
         hide_root = true;
         auto_fold_dirs = false;
         starts_open = false;
-        git_status = false;
+        git_status = true;
+        git_status_indicator = true;
         sticky_scroll = false;
         scrollbar = {
           show = "never";
@@ -54,6 +55,8 @@
           show = "never";
         };
       };
+      git_panel.dock = "right";
+      agent.dock = "right";
       outline_panel = {
         default_width = 300;
         indent_guides = {
