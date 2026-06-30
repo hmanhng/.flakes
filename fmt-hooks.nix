@@ -21,6 +21,7 @@
           ".md"
           ".ts"
           "home/programs/wayland/noctalia/settings.json"
+          "secrets/*.yaml"
         ];
       };
     };
